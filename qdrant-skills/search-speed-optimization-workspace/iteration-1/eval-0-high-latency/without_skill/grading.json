@@ -1,0 +1,35 @@
+{
+  "expectations": [
+    {
+      "text": "followed_phase_structure",
+      "passed": false,
+      "evidence": "The response uses an issue-numbered structure (Issue #1, #2, #3, etc.) rather than the expected phase structure (Phase 1 Detect, Phase 2 Classify, Phase 3 Diagnose, Phase 4 Recommend). While the response does have diagnostic flow, it does not explicitly reference the phases by their specified labels. The structure is: Executive Summary, Cluster Details, Issue #1-5, Latency Breakdown, Action Plan, Raw Data. This is not the phase structure defined in the assertions."
+    },
+    {
+      "text": "separated_qdrant_vs_network_latency",
+      "passed": true,
+      "evidence": "The response clearly breaks down the 500ms into components in the 'Latency Breakdown' section (lines 112-129). It shows: Network round-trip (120-130ms), Qdrant internal search (0.5ms), Payload disk I/O + serialization (0.3-0.4ms), Response transfer (30-60ms), with total of 190-200ms. Also references different measurements: 'Search with full payload: ~0.5-0.9ms internal, ~190ms HTTP round-trip' and 'Search without payload: ~0.25ms internal, ~135ms HTTP round-trip' (lines 64-66). These are actual measured values breaking down components."
+    },
+    {
+      "text": "referenced_qdrant_docs",
+      "passed": false,
+      "evidence": "The response does not contain any URL linking to qdrant.tech documentation. It provides curl commands and configuration examples but no documentation links. A search for 'http', 'qdrant.tech', 'docs', or 'url' in the response yields no documentation references."
+    },
+    {
+      "text": "correct_latency_classification",
+      "passed": true,
+      "evidence": "The response correctly identifies this as a latency problem (single query speed). Line 1 states 'High Search Latency' and the Executive Summary discusses 'elevated search latency'. The response explicitly explains that the brute-force scan time is 'well under 1ms' (line 124) and focuses on query response time, not throughput/QPS. It does not confuse this with throughput optimization."
+    },
+    {
+      "text": "avoided_recommending_exact_true",
+      "passed": true,
+      "evidence": "The response does not mention 'exact=true' or 'exact' parameter anywhere. The recommendations focus on: lowering indexing_threshold, selective payload retrieval, adding payload indexes, enabling quantization, and setting on_disk_payload=false. None of these involve exact=true, which would disable HNSW and force brute-force search."
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 2,
+    "total": 5,
+    "pass_rate": 0.6
+  }
+}

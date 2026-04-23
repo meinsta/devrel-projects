@@ -1,0 +1,16 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+*.hdf5
+results/archive/
+results/*.hdr
+results/*.json
+results/charts/
+results/REPORT.md
+.claude/
+uv.lock
+*.egg-info/
+dist/
+build/
+.DS_Store

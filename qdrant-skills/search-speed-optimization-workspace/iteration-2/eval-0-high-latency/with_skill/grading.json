@@ -1,0 +1,35 @@
+{
+  "expectations": [
+    {
+      "text": "followed_phase_structure: Response explicitly uses a structured diagnostic flow with labeled phases/sections (Detect/Classify/Diagnose/Recommend or equivalent structured labels), not just ad-hoc issue listing",
+      "passed": false,
+      "evidence": "The response uses 'Summary', 'Cluster Details', 'Root Cause Analysis' with numbered issues, 'Recommended Action Plan', 'What NOT to Change', and 'Verification' sections. While well-organized, it does not use explicitly labeled diagnostic phases (Detect/Classify/Diagnose/Recommend or equivalent phase labels). The structure is a report format with numbered issues, not a phased diagnostic flow."
+    },
+    {
+      "text": "separated_qdrant_vs_network_latency: Response breaks down the 500ms into Qdrant internal time vs network/payload transfer with actual measurements or estimates",
+      "passed": true,
+      "evidence": "Issue 5 (lines 120-133) explicitly breaks down the latency: 'Qdrant internal search: <0.5ms', 'TCP connect: ~40ms', 'TLS handshake: ~40-60ms additional', 'Server processing (TTFB minus connect): ~40ms'. The summary also states 'Qdrant's internal search time is consistently under 0.5ms (~0.2ms)' while attributing the 500ms to network, TLS, serialization overhead."
+    },
+    {
+      "text": "referenced_qdrant_docs: Response contains at least one URL linking to qdrant.tech documentation",
+      "passed": false,
+      "evidence": "No qdrant.tech URLs found anywhere in the response. The response provides curl commands and configuration guidance but does not link to any Qdrant documentation pages."
+    },
+    {
+      "text": "correct_latency_classification: Response identifies this as a latency problem (single query speed), not throughput",
+      "passed": true,
+      "evidence": "Title is 'Search Latency Diagnostic'. The entire response focuses on single query latency (500ms per query), analyzing per-request time breakdown including network round-trip and internal search time. No mention of throughput or queries-per-second as the metric of concern."
+    },
+    {
+      "text": "avoided_recommending_exact_true: Response does not suggest exact=true as a fix",
+      "passed": true,
+      "evidence": "The response does not mention 'exact=true' or 'exact: true' anywhere. The recommended fixes are: lower indexing threshold, enable quantization, selective payload retrieval, connection pooling, and same-region deployment."
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 2,
+    "total": 5,
+    "pass_rate": 0.6
+  }
+}

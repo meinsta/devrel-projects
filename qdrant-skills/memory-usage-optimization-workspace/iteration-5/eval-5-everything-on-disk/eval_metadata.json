@@ -1,0 +1,31 @@
+{
+  "eval_id": 5,
+  "eval_name": "everything-on-disk-still-high",
+  "prompt": "We have 2.7 billion UUID points across 6 instances. Everything is configured to be on disk, vectors, payloads, HNSW. But each instance is still using 20 GB of RAM. Our calculation says ID tracker should only be ~7-8 GB (460M points x 16 bytes). Why is memory so high, and will it double if we increase replication factor to 2?",
+  "assertions": [
+    {
+      "text": "Identifies this as Phase 3B unexpectedly high memory",
+      "type": "content_check"
+    },
+    {
+      "text": "Lists RAM consumers beyond ID tracker: HNSW graph, payload indexes, collection overhead, segment overhead, OS page cache",
+      "type": "content_check"
+    },
+    {
+      "text": "Correctly states RF=2 doubles data memory but not OS page cache",
+      "type": "content_check"
+    },
+    {
+      "text": "Warns about stream_records OOM risk during resharding for large shards",
+      "type": "content_check"
+    },
+    {
+      "text": "Recommends checking telemetry to separate data from cache before concluding",
+      "type": "content_check"
+    },
+    {
+      "text": "Recommends escalating to support if config doesn't explain the gap",
+      "type": "content_check"
+    }
+  ]
+}

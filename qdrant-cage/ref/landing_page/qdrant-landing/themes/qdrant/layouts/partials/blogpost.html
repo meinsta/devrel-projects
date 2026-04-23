@@ -1,0 +1,22 @@
+<!-- News block Two -->
+{{ $link := .Permalink }}
+{{ if .Params.external_link }}
+{{ $link = .Params.external_link }}
+{{ end }}
+
+<div class="news-block-two blog-detail">
+    <div class="inner-box">
+        {{ if eq (.Scratch.Get "scope") "list" }}
+        <div class="upper-box pb-3">
+            <h2><a href="{{ $link }}">{{ .Title }}</a></h2>
+        </div>
+        {{ end }}
+        <div class="lower-box pt-0">
+            <article class="{{ if eq .Section "blog"}}blog{{else}}article article_narrow{{end}}">
+                {{ .Content }}
+            </article>
+            <hr>
+            {{ partial "blogpost_footer" . }}
+        </div>
+    </div>
+</div>

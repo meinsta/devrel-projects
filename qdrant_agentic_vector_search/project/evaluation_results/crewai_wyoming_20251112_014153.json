@@ -1,0 +1,130 @@
+{
+  "state": "wyoming",
+  "collection": "housing_statutes_wyoming",
+  "num_questions": 10,
+  "successful_runs": 10,
+  "failed_runs": 0,
+  "success_rate": 100.0,
+  "results": [
+    {
+      "question_idx": 55,
+      "question": "Is there a state/territory law regulating residential evictions?",
+      "golden_answer": "Yes",
+      "generated_answer": "\"1-21-1211. Owner's remedies; eviction; judicial remedies; damages. (a) If the renter does not vacate the premises as required by a court order issued pursuant to W.S. 1-21-1001 et seq., the sheriff may remove the renter from the premises.\"",
+      "golden_statute_ids": [
+        1074954
+      ],
+      "success": true
+    },
+    {
+      "question_idx": 212,
+      "question": "Does the law specify a minimum number of days a tenant can be late on rent before the landlord can file an eviction action for nonpayment?",
+      "golden_answer": "Yes",
+      "generated_answer": "Thought: I need to analyze the retrieved statutes to determine if they provide information about the minimum number of days a tenant can be late on rent before eviction can be filed.",
+      "golden_statute_ids": [
+        1074956
+      ],
+      "success": true
+    },
+    {
+      "question_idx": 236,
+      "question": "Does the law require the tenant to respond to an eviction action before a hearing?",
+      "golden_answer": "No",
+      "generated_answer": "The statutes do not contain enough information to determine whether the law requires the tenant to respond to an eviction action before a hearing.",
+      "golden_statute_ids": [
+        1074957
+      ],
+      "success": true
+    },
+    {
+      "question_idx": 329,
+      "question": "In eviction proceedings, does the filing of an appeal stay the execution of a writ?",
+      "golden_answer": "Yes",
+      "generated_answer": "\"If the officer receives notice from the circuit court that the proceedings have been stayed on appeal, he shall immediately delay all further proceedings...\" (WY Stat \u00a7 1-21-1014 (2021)). Therefore, the filing of an appeal does stay the execution of a writ in eviction proceedings.",
+      "golden_statute_ids": [
+        1074967
+      ],
+      "success": true
+    },
+    {
+      "question_idx": 581,
+      "question": "Is it specified whether the law requires a tenant to pay a bond in order to appeal an eviction judgment?",
+      "golden_answer": "Yes",
+      "generated_answer": "Yes, the law specifies that a tenant must pay a bond in order to appeal an eviction judgment. According to WY Stat \u00a7 1-21-1014, the appellant is required to file a bond in an amount determined by the court to cover the costs of the appeal. Additionally, under WY Stat \u00a7 1-21-1015, in appeals from the judgment of a circuit court for rents due and payable, the appellant must also deposit the amount of rent due and payable as determined by the circuit court with the clerk of the district court.",
+      "golden_statute_ids": [
+        1074968,
+        1074960,
+        1074967
+      ],
+      "success": true
+    },
+    {
+      "question_idx": 582,
+      "question": "Does the law require a tenant to pay a bond in order to appeal an eviction judgment?",
+      "golden_answer": "Yes",
+      "generated_answer": "Yes, the law requires a tenant to pay a bond in order to appeal an eviction judgment. According to WY Stat \u00a7 1-21-1014, a bond is required for the stay on appeal, and WY Stat \u00a7 1-21-1015 specifies that in appeals from the judgment of a circuit court for rents due and payable, the appellant must also deposit the amount of rent due with the clerk of the court.",
+      "golden_statute_ids": [
+        1074968,
+        1074960,
+        1074967
+      ],
+      "success": true
+    },
+    {
+      "question_idx": 1848,
+      "question": "Can a landlord evict a tenant for material falsification on the rental application?",
+      "golden_answer": "No",
+      "generated_answer": "The statutes provided do not contain specific information regarding whether a landlord can evict a tenant for material falsification on a rental application.",
+      "golden_statute_ids": [
+        1074981,
+        1074955,
+        1074973,
+        1074974,
+        1074975
+      ],
+      "success": true
+    },
+    {
+      "question_idx": 1849,
+      "question": "Can a landlord evict a tenant for material breach? The law should explicitly mention \"material breach\", or allow for eviction if there is a substantial violation of the lease, material noncompliance with the lease, or when the breach is one that materially affects health, safety or welfare",
+      "golden_answer": "No",
+      "generated_answer": "Yes, a landlord can evict a tenant for material breach as per WY Stat \u00a7 1-21-1303, and for substantial violations affecting health and safety as per WY Stat \u00a7 40-14-610 and WY Stat \u00a7 1-21-1203. These statutes allow for eviction in cases of material noncompliance with the lease or breaches that materially affect health, safety, or welfare.",
+      "golden_statute_ids": [
+        1074981,
+        1074955,
+        1074973,
+        1074974,
+        1074975
+      ],
+      "success": true
+    },
+    {
+      "question_idx": 1850,
+      "question": "Can a landlord evict a tenant for removal of unit from market? This includes when the law allows a tenant to be evicted based on: the landlord selling the property; demolition, rehabilitation, or a change in use of the premises; repairs that would require the tenant to lose access to the property; a change to a policy of excluding children; or conversion of a rental property to a condominium, cooperative, or other form of ownership arrangement.",
+      "golden_answer": "No",
+      "generated_answer": "The statutes do not contain enough information to determine if a landlord can evict a tenant for removal of a unit from the market, including the specific scenarios of selling the property, demolition, rehabilitation, change in use, repairs requiring tenant to lose access, excluding children, or conversion to a condominium.",
+      "golden_statute_ids": [
+        1074981,
+        1074955,
+        1074973,
+        1074974,
+        1074975
+      ],
+      "success": true
+    },
+    {
+      "question_idx": 1851,
+      "question": "Can a landlord evict a tenant for commiting substantial damage to the property?",
+      "golden_answer": "Yes",
+      "generated_answer": "\"If the renter does not vacate the premises as required by a court order issued pursuant to W.S. 1-21-1001 et seq., the sheriff may remove the renter from the premises and the owner may recover damages for any substantial damage caused by the renter.\" (WY Stat \u00a7 1-21-1211 (2021))",
+      "golden_statute_ids": [
+        1074981,
+        1074955,
+        1074973,
+        1074974,
+        1074975
+      ],
+      "success": true
+    }
+  ]
+}

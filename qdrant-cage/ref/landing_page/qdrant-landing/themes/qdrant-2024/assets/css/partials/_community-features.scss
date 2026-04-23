@@ -1,0 +1,66 @@
+@use '../helpers/functions' as *;
+@use '../mixins/mixins' as mixins;
+
+.community-features {
+  padding-top: $spacer * 4;
+  padding-bottom: $spacer * 4;
+  background-color: $neutral-94;
+
+  &__title {
+    font-size: $spacer * 2.5;
+    line-height: $spacer * 3;
+    color: $neutral-20;
+    margin-bottom: $spacer * 2.5;
+    text-align: center;
+  }
+
+  &__card {
+    &-icon {
+      height: $spacer * 1.5;
+      width: $spacer * 1.5;
+      margin-bottom: $spacer * 1.5;
+    }
+
+    &-title {
+      font-size: $spacer * 1.5;
+      line-height: pxToRem(34);
+      color: $neutral-20;
+      margin-bottom: $spacer;
+    }
+
+    &-description {
+      font-size: pxToRem(14);
+      line-height: pxToRem(21);
+      color: $neutral-40;
+      margin-bottom: $spacer * 1.5;
+    }
+
+    &-link {
+      @include mixins.link-color($neutral-20);
+    }
+    &:hover {
+      .community-features__card-title {
+        color: $primary-50;
+      }
+    }
+  }
+
+  @include media-breakpoint-up(lg) {
+    padding-top: $spacer * 6.5;
+    padding-bottom: $spacer * 5;
+
+    &__title {
+      font-size: $spacer * 3.5;
+      line-height: pxToRem(67);
+      margin-bottom: $spacer * 5;
+    }
+
+    &__card {
+      justify-content: flex-start;
+
+      &-link {
+        margin-top: auto;
+      }
+    }
+  }
+}

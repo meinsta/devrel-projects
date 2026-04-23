@@ -1,0 +1,31 @@
+{
+  "eval_id": 2,
+  "eval_name": "quantization-didnt-help",
+  "prompt": "We enabled scalar quantization on our collection but RAM usage didn't decrease at all. Looking at the node-level metrics, there's still a bunch of cache memory. What went wrong?",
+  "assertions": [
+    {
+      "text": "Explains cache is separate from quantization savings",
+      "type": "content_check"
+    },
+    {
+      "text": "Explains that original vectors still get cached via memmap during rescoring",
+      "type": "content_check"
+    },
+    {
+      "text": "Recommends setting on_disk=True for original vectors",
+      "type": "content_check"
+    },
+    {
+      "text": "Warns against setting always_ram=False (causes CPU spikes)",
+      "type": "content_check"
+    },
+    {
+      "text": "Provides the correct pattern: quantized vectors in RAM, originals explicitly on disk",
+      "type": "content_check"
+    },
+    {
+      "text": "Provides working Python code for the fix",
+      "type": "content_check"
+    }
+  ]
+}

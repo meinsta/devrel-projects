@@ -1,0 +1,16 @@
+<section class="legal-tech-challengers">
+  <div class="container">
+    <h3 class="legal-tech-challengers__title">{{ .Params.title | safeHTML }}</h3>
+    <div class="legal-tech-challengers__cards row g-4 g-lg-6">
+      {{ range .Params.cards }}
+        <div class="col-12 col-lg-4">
+          <div class="legal-tech-challengers__card">
+            <img class="legal-tech-challengers__card-icon" src="{{ .icon.src }}" alt="{{ .icon.alt }}" />
+            <h3 class="legal-tech-challengers__card-title">{{ .title | safeHTML }}</h3>
+            <p class="legal-tech-challengers__card-description">{{ .description | safeHTML }}</p>
+          </div>
+        </div>
+      {{ end }}
+    </div>
+  </div>
+</section>

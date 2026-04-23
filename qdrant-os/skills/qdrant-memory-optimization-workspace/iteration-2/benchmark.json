@@ -1,0 +1,323 @@
+{
+  "metadata": {
+    "skill_name": "qdrant-memory-optimization",
+    "skill_path": "<path/to/skill>",
+    "executor_model": "<model-name>",
+    "analyzer_model": "<model-name>",
+    "timestamp": "2026-03-02T03:16:40Z",
+    "evals_run": [
+      0,
+      1,
+      2
+    ],
+    "runs_per_configuration": 3
+  },
+  "runs": [
+    {
+      "eval_id": 0,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "failed": 0,
+        "total": 5,
+        "time_seconds": 75.5,
+        "tokens": 21426,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Recommends enabling mmap storage as immediate fix",
+          "passed": true,
+          "evidence": "Step 1: Enable mmap storage immediately (stops the crashes). 'Switch vector storage from in-RAM to memory-mapped files.'"
+        },
+        {
+          "text": "Recommends quantization (scalar or binary)",
+          "passed": true,
+          "evidence": "Step 2: Apply scalar quantization (4x memory reduction). Step 3: Consider binary quantization if your model supports it (32x reduction)."
+        },
+        {
+          "text": "Explains HNSW index overhead",
+          "passed": true,
+          "evidence": "'Your HNSW index consuming 80GB out of 96GB leaves almost no headroom.' Working backward memory math provided."
+        },
+        {
+          "text": "Links to Qdrant documentation",
+          "passed": true,
+          "evidence": "Links to storage docs, quantization docs, monitoring docs with full URLs."
+        },
+        {
+          "text": "Does NOT recommend just buying more RAM as primary solution",
+          "passed": true,
+          "evidence": "'Do not shard before trying quantization + mmap.' Explicitly says NOT to do various things. No mention of adding RAM."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "failed": 0,
+        "total": 5,
+        "time_seconds": 54.5,
+        "tokens": 19674,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Distinguishes between full disk and mmap",
+          "passed": true,
+          "evidence": "'You switched to full disk storage, not mmap. These are fundamentally different.' Clear explanation of 200-250 random reads vs OS-managed caching."
+        },
+        {
+          "text": "Recommends mmap as the middle ground",
+          "passed": true,
+          "evidence": "'mmap (memory-mapped files) is the middle ground you are looking for.'"
+        },
+        {
+          "text": "Recommends quantization with always_ram=true",
+          "passed": true,
+          "evidence": "'Enable scalar quantization with always_ram: true. The always_ram: true flag is critical.'"
+        },
+        {
+          "text": "Sets latency expectations (under 500ms or similar)",
+          "passed": true,
+          "evidence": "Provides comparison table: mmap + scalar = 50ms p50, 500ms p95. 'You should go from 3-4 seconds down to under 500ms.'"
+        },
+        {
+          "text": "Does NOT recommend going back to full RAM",
+          "passed": true,
+          "evidence": "'Do not go back to full RAM. You switched away for a reason.' Listed under What NOT to Do."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.8,
+        "passed": 4,
+        "failed": 1,
+        "total": 5,
+        "time_seconds": 43.7,
+        "tokens": 17544,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Recommends scalar quantization as starting point",
+          "passed": false,
+          "evidence": "Recommends binary quantization first: 'Use binary quantization. Your model is on the verified compatibility list.' Scalar is mentioned as fallback only."
+        },
+        {
+          "text": "Mentions binary quantization is compatible with OpenAI models",
+          "passed": true,
+          "evidence": "'Your model (OpenAI text-embedding-3-small) is on the verified compatibility list for binary quantization.'"
+        },
+        {
+          "text": "Explains rescoring/oversampling for binary quantization",
+          "passed": true,
+          "evidence": "'Oversampling at 3-5x to fetch enough candidates. Rescoring enabled against full float32 vectors (recovers recall to 95-98%).'"
+        },
+        {
+          "text": "Provides memory estimation or formula",
+          "passed": true,
+          "evidence": "Full table: None=737GB, Scalar=184GB, Binary=23GB. Uses the formula from the skill."
+        },
+        {
+          "text": "Does NOT recommend product quantization as first choice",
+          "passed": true,
+          "evidence": "Product quantization not mentioned. Only binary (primary) and scalar (fallback)."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 0,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.8,
+        "passed": 4,
+        "failed": 1,
+        "total": 5,
+        "time_seconds": 67.6,
+        "tokens": 15842,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Recommends enabling mmap storage as immediate fix",
+          "passed": true,
+          "evidence": "Section 1: Switch HNSW to Memory-Mapped (mmap) Storage. 'This is the single highest-impact change.'"
+        },
+        {
+          "text": "Recommends quantization (scalar or binary)",
+          "passed": true,
+          "evidence": "Section 3: Quantization. Covers scalar, binary, and product quantization."
+        },
+        {
+          "text": "Explains HNSW index overhead",
+          "passed": true,
+          "evidence": "'The HNSW graph size is directly proportional to the m parameter.' Provides RAM reduction estimates."
+        },
+        {
+          "text": "Links to Qdrant documentation",
+          "passed": false,
+          "evidence": "No links to Qdrant documentation provided. Only code snippets."
+        },
+        {
+          "text": "Does NOT recommend just buying more RAM as primary solution",
+          "passed": true,
+          "evidence": "Does not recommend adding RAM. Lists 8 alternatives."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "failed": 0,
+        "total": 5,
+        "time_seconds": 53.8,
+        "tokens": 15679,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Distinguishes between full disk and mmap",
+          "passed": true,
+          "evidence": "Section 1: Use Memmap Storage Instead of Pure On-Disk. Explains OS page cache behavior."
+        },
+        {
+          "text": "Recommends mmap as the middle ground",
+          "passed": true,
+          "evidence": "'This is the single biggest win. Qdrant supports mmap as a storage option, which sits between full RAM and pure disk.'"
+        },
+        {
+          "text": "Recommends quantization with always_ram=true",
+          "passed": true,
+          "evidence": "Section 3: scalar quantization with always_ram=True explicitly shown in code."
+        },
+        {
+          "text": "Sets latency expectations (under 500ms or similar)",
+          "passed": true,
+          "evidence": "Table shows combined strategy at 30-80ms. Summary says '30-100ms.'"
+        },
+        {
+          "text": "Does NOT recommend going back to full RAM",
+          "passed": true,
+          "evidence": "Summary says 'you do not have to choose between all in RAM and all on disk.' Does not recommend full RAM."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "failed": 0,
+        "total": 5,
+        "time_seconds": 61.8,
+        "tokens": 15603,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Recommends scalar quantization as starting point",
+          "passed": true,
+          "evidence": "'Use Scalar Quantization (SQ, int8) as the primary recommendation.' Clearly the first choice."
+        },
+        {
+          "text": "Mentions binary quantization is compatible with OpenAI models",
+          "passed": true,
+          "evidence": "'OpenAI embeddings do work with binary quantization better than many other models because they are high-dimensional and normalized.'"
+        },
+        {
+          "text": "Explains rescoring/oversampling for binary quantization",
+          "passed": true,
+          "evidence": "'You must use oversampling (e.g., 2-3x) and rescoring against original vectors to recover quality.'"
+        },
+        {
+          "text": "Provides memory estimation or formula",
+          "passed": true,
+          "evidence": "Detailed calculation: '1536 dims * 4 bytes = 6,144 bytes per vector. 80M vectors = ~460 GB.' Summary table with all options."
+        },
+        {
+          "text": "Does NOT recommend product quantization as first choice",
+          "passed": true,
+          "evidence": "PQ discussed as third option. 'Why PQ is not the top recommendation here' section explicitly."
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 0.9333,
+        "stddev": 0.1155,
+        "min": 0.8,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 57.9,
+        "stddev": 16.1703,
+        "min": 43.7,
+        "max": 75.5
+      },
+      "tokens": {
+        "mean": 19548.0,
+        "stddev": 1944.0648,
+        "min": 17544,
+        "max": 21426
+      }
+    },
+    "without_skill": {
+      "pass_rate": {
+        "mean": 0.9333,
+        "stddev": 0.1155,
+        "min": 0.8,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 61.0667,
+        "stddev": 6.9292,
+        "min": 53.8,
+        "max": 67.6
+      },
+      "tokens": {
+        "mean": 15708.0,
+        "stddev": 122.1106,
+        "min": 15603,
+        "max": 15842
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.00",
+      "time_seconds": "-3.2",
+      "tokens": "+3840"
+    }
+  },
+  "notes": []
+}

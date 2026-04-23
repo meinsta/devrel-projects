@@ -1,0 +1,40 @@
+{
+  "expectations": [
+    {
+      "text": "Identifies this as the Phase 3A memory growth pattern",
+      "passed": true,
+      "evidence": "The response states: 'This is almost certainly not a memory leak in the traditional sense, and v1.13 is relevant context.' The skill documentation quote is cited: 'If data memory grows with zero traffic (1-12 MB/day): known issue in versions before v1.13.' The structure closely follows Phase 3A analysis with the telemetry check as central action."
+    },
+    {
+      "text": "Mentions the 1-12 MB/day growth is a known issue in versions before v1.13",
+      "passed": true,
+      "evidence": "The response directly quotes the skill: 'The rate you describe, 10-12 MB/day, is exactly the range documented as a known pre-v1.13 slow-growth issue.' and 'The skill documentation is explicit on this point: If data memory grows with zero traffic (1-12 MB/day): known issue in versions before v1.13.'"
+    },
+    {
+      "text": "Does NOT dismiss restart behavior as proof it was 'just cache'",
+      "passed": true,
+      "evidence": "The response explicitly states: 'Restart flushes both actual data memory and the OS page cache. You cannot tell them apart from restart behavior alone.' and 'Do not treat the restart as evidence of a problem or a fix. It is a valid operational tool, but it masks the distinction between cache and data memory.'"
+    },
+    {
+      "text": "Recommends checking GET /telemetry to separate data from cache",
+      "passed": true,
+      "evidence": "Step 1 under 'What to Collect': 'Run GET /telemetry and record app.memory_usage alongside the sum of all collections.{name}.memory_usage values.' The 'One Call That Will Answer This' section specifically highlights GET /telemetry as the key diagnostic call."
+    },
+    {
+      "text": "Recommends checking collection count for overhead",
+      "passed": true,
+      "evidence": "Step 2 under 'What to Collect': 'GET /collections - Each collection carries 12-14 MB of baseline overhead regardless of data. If you have dozens of collections, the collection overhead alone could explain the growth pattern if collections are being created and not cleaned up.'"
+    },
+    {
+      "text": "Recommends upgrading to latest version and escalating to support if persists",
+      "passed": true,
+      "evidence": "'If data memory itself is growing on v1.13 with confirmed zero ingestion: collect the full telemetry output, version string, and collection configs, then open a report with Qdrant support. This is the documented escalation path for this exact pattern on the current version.'"
+    }
+  ],
+  "summary": {
+    "passed": 6,
+    "failed": 0,
+    "total": 6,
+    "pass_rate": 1.0
+  }
+}

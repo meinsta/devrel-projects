@@ -1,0 +1,35 @@
+{
+  "expectations": [
+    {
+      "text": "Identifies additional RAM consumers beyond raw vectors (HNSW graph, ID tracker, metadata, collection overhead)",
+      "passed": true,
+      "evidence": "Response explicitly identifies and explains: (1) HNSW graph structure (6-12 GB), (2) ID tracker including UUID/integer ID mapping (3-11 GB), (3) Payload storage in RAM (0-10+ GB), (4) Payload indexes (0-5 GB), (5) Segment overhead and multiple segments. Each component is described in detail with estimation formulas."
+    },
+    {
+      "text": "Asks about or checks on_disk settings and quantization config",
+      "passed": true,
+      "evidence": "Response provides explicit Python code snippets to check configuration: (1) Lines 39-42 check HNSW config and m parameter, (2) Lines 171-175 check vector on_disk field, on_disk_payload, and quantization_config, (3) Lines 177-186 show how to set vectors on_disk explicitly, (4) Lines 209-219 demonstrate scalar quantization configuration with always_ram parameter."
+    },
+    {
+      "text": "Explains cache behavior (memmap cache inflates reported memory)",
+      "passed": true,
+      "evidence": "Lines 57-71 provide detailed explanation of OS page cache behavior: 'If your vectors are stored via memmap (the default when on_disk is not explicitly set), the OS will cache recently accessed mmap pages in the page cache. Tools like htop, top, and docker stats report RSS + shared memory, which includes this cache.' Also explains that cache persists after idle periods due to lack of memory pressure."
+    },
+    {
+      "text": "Suggests checking collection config to verify what is in RAM vs cached",
+      "passed": true,
+      "evidence": "Response provides multiple diagnostic approaches: (1) Lines 65-71 recommend checking /metrics endpoint and Qdrant dashboard to distinguish data memory from mmap cache, (2) Lines 170-175 provide exact Python code to inspect collection configuration including vectors, payloads, HNSW, and quantization settings, (3) Lines 113-118 show how to check segment count as indicator of overhead."
+    },
+    {
+      "text": "Diagnoses before prescribing solutions",
+      "passed": true,
+      "evidence": "Response follows a clear diagnosis-first approach: (1) Lines 3-11 address the math gap (7-8GB vs 20GB), (2) Lines 15-120 provide extensive diagnostic breakdown of all components, (3) Lines 157-175 start with 'What to do' by getting actual breakdown and checking config (diagnosis), (4) Only after diagnosis (lines 177-219) does it prescribe solutions like setting on_disk and adding quantization. Lines 230-239 further diagnose why stopping ingestion didn't change memory."
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 0,
+    "total": 5,
+    "pass_rate": 1.0
+  }
+}

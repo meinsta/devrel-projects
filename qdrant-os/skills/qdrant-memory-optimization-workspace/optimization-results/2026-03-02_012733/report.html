@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>qdrant-memory-optimization — Skill Description Optimization</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&family=Lora:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Lora', Georgia, serif;
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 20px;
+            background: #faf9f5;
+            color: #141413;
+        }
+        h1 { font-family: 'Poppins', sans-serif; color: #141413; }
+        .explainer {
+            background: white;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            border: 1px solid #e8e6dc;
+            color: #b0aea5;
+            font-size: 0.875rem;
+            line-height: 1.6;
+        }
+        .summary {
+            background: white;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            border: 1px solid #e8e6dc;
+        }
+        .summary p { margin: 5px 0; }
+        .best { color: #788c5d; font-weight: bold; }
+        .table-container {
+            overflow-x: auto;
+            width: 100%;
+        }
+        table {
+            border-collapse: collapse;
+            background: white;
+            border: 1px solid #e8e6dc;
+            border-radius: 6px;
+            font-size: 12px;
+            min-width: 100%;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border: 1px solid #e8e6dc;
+            white-space: normal;
+            word-wrap: break-word;
+        }
+        th {
+            font-family: 'Poppins', sans-serif;
+            background: #141413;
+            color: #faf9f5;
+            font-weight: 500;
+        }
+        th.test-col {
+            background: #6a9bcc;
+        }
+        th.query-col { min-width: 200px; }
+        td.description {
+            font-family: monospace;
+            font-size: 11px;
+            word-wrap: break-word;
+            max-width: 400px;
+        }
+        td.result {
+            text-align: center;
+            font-size: 16px;
+            min-width: 40px;
+        }
+        td.test-result {
+            background: #f0f6fc;
+        }
+        .pass { color: #788c5d; }
+        .fail { color: #c44; }
+        .rate {
+            font-size: 9px;
+            color: #b0aea5;
+            display: block;
+        }
+        tr:hover { background: #faf9f5; }
+        .score {
+            display: inline-block;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 11px;
+        }
+        .score-good { background: #eef2e8; color: #788c5d; }
+        .score-ok { background: #fef3c7; color: #d97706; }
+        .score-bad { background: #fceaea; color: #c44; }
+        .train-label { color: #b0aea5; font-size: 10px; }
+        .test-label { color: #6a9bcc; font-size: 10px; font-weight: bold; }
+        .best-row { background: #f5f8f2; }
+        th.positive-col { border-bottom: 3px solid #788c5d; }
+        th.negative-col { border-bottom: 3px solid #c44; }
+        th.test-col.positive-col { border-bottom: 3px solid #788c5d; }
+        th.test-col.negative-col { border-bottom: 3px solid #c44; }
+        .legend { font-family: 'Poppins', sans-serif; display: flex; gap: 20px; margin-bottom: 10px; font-size: 13px; align-items: center; }
+        .legend-item { display: flex; align-items: center; gap: 6px; }
+        .legend-swatch { width: 16px; height: 16px; border-radius: 3px; display: inline-block; }
+        .swatch-positive { background: #141413; border-bottom: 3px solid #788c5d; }
+        .swatch-negative { background: #141413; border-bottom: 3px solid #c44; }
+        .swatch-test { background: #6a9bcc; }
+        .swatch-train { background: #141413; }
+    </style>
+</head>
+<body>
+    <h1>qdrant-memory-optimization — Skill Description Optimization</h1>
+    <div class="explainer">
+        <strong>Optimizing your skill's description.</strong> This page updates automatically as Claude tests different versions of your skill's description. Each row is an iteration — a new description attempt. The columns show test queries: green checkmarks mean the skill triggered correctly (or correctly didn't trigger), red crosses mean it got it wrong. The "Train" score shows performance on queries used to improve the description; the "Test" score shows performance on held-out queries the optimizer hasn't seen. When it's done, Claude will apply the best-performing description to your skill.
+    </div>
+
+    <div class="summary">
+        <p><strong>Original:</strong> Diagnoses and fixes Qdrant memory problems. Use when a</p>
+        <p class="best"><strong>Best:</strong> Diagnoses and fixes Qdrant memory problems. Use when a</p>
+        <p><strong>Best Score:</strong> 4/8 (test)</p>
+        <p><strong>Iterations:</strong> 3 | <strong>Train:</strong> 12 | <strong>Test:</strong> 8</p>
+    </div>
+
+    <div class="legend">
+        <span style="font-weight:600">Query columns:</span>
+        <span class="legend-item"><span class="legend-swatch swatch-positive"></span> Should trigger</span>
+        <span class="legend-item"><span class="legend-swatch swatch-negative"></span> Should NOT trigger</span>
+        <span class="legend-item"><span class="legend-swatch swatch-train"></span> Train</span>
+        <span class="legend-item"><span class="legend-swatch swatch-test"></span> Test</span>
+    </div>
+
+    <div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>Iter</th>
+                <th>Train</th>
+                <th>Test</th>
+                <th class="query-col">Description</th>
+                <th class="positive-col">need to estimate memory requirements for scaling from 10M to 100M vectors in qdrant. using cohere embed-v3 at 1024 dims with scalar quantization already enabled</th>
+                <th class="positive-col">how do we fit 100M vectors in qdrant without buying bigger machines? currently at 30M on nodes with 64GB RAM and it&#x27;s already tight</th>
+                <th class="positive-col">mmap vs keeping everything in RAM for our qdrant use case. we have 50M vectors at 1536 dims on a 3-node cluster. latency SLA is under 500ms, QPS is maybe 40-50</th>
+                <th class="positive-col">HNSW index is consuming 80GB of RAM on a 96GB node, no room for growth. we&#x27;re adding about 1M vectors per week and at this rate we&#x27;ll hit the wall in a month</th>
+                <th class="positive-col">qdrant keeps getting OOM killed on our production k8s cluster. we have 96GB RAM nodes and the HNSW index alone is eating 80GB. three crashes this week, our SRE team is losing it. what are our options besides just throwing more RAM at it</th>
+                <th class="positive-col">memory at 87% with only 200 users, need to support 5000 by end of year. at this rate we&#x27;d need to 25x our infrastructure. there has to be a smarter way to scale qdrant</th>
+                <th class="negative-col">how do I configure qdrant snapshots for disaster recovery? we need automated daily backups stored in S3 and the ability to restore to a point in time</th>
+                <th class="negative-col">I need to write a python script that does batch upserts into qdrant with error handling and retry logic. we have about 10M documents to embed and insert</th>
+                <th class="negative-col">we want to squeeze every millisecond of latency out of our qdrant setup. willing to throw hardware at it. currently at p95 of 25ms and need to get to p95 under 10ms</th>
+                <th class="negative-col">we&#x27;re setting up qdrant for the first time on our k8s cluster using the helm chart. the persistent volume is 500GB NVMe SSD. should we enable mmap storage from the start or just go with the default settings</th>
+                <th class="negative-col">trying to decide between openai text-embedding-3-large at 3072 dims vs text-embedding-3-small at 1536 dims for our legal document search corpus of about 2M documents</th>
+                <th class="negative-col">does qdrant support multi-tenancy? we have a SaaS product and each customer needs isolated search. separate collections per tenant or payload-based filtering</th>
+                <th class="test-col positive-col">our 4-node qdrant cluster with replication factor 3 seems over-provisioned. we only have 15M vectors and 30 QPS. whats the minimum viable setup that still gives us high availability</th>
+                <th class="test-col positive-col">we switched from full RAM to disk-based storage in qdrant to save memory but now search latency went from 15ms to like 3-4 seconds which is completely unusable for our chatbot. is there a middle ground</th>
+                <th class="test-col positive-col">what quantization should we use to reduce qdrant memory footprint? we&#x27;re using openai text-embedding-3-small at 1536 dims, about 80M vectors, currently no quantization enabled</th>
+                <th class="test-col positive-col">qdrant node crashes from RAM consumption during peak traffic hours. fine in the morning, dies around 2pm when concurrent searches spike. 48GB node, about 20M vectors unquantized</th>
+                <th class="test-col negative-col">we&#x27;re evaluating qdrant vs weaviate vs pinecone for our RAG pipeline. main criteria are hybrid search support, filtering performance, and managed cloud availability in eu-west</th>
+                <th class="test-col negative-col">we need to set up monitoring and alerting for our qdrant cluster. what prometheus metrics should we track and what are reasonable alert thresholds</th>
+                <th class="test-col negative-col">how do I set up scalar quantization in qdrant? I found the docs but I&#x27;m confused about the always_ram parameter and whether I need to recreate the collection</th>
+                <th class="test-col negative-col">our qdrant search results aren&#x27;t great, we&#x27;re getting like 70% recall. we&#x27;re using dot product distance with openai embeddings. should we switch to cosine? also chunk size might be too big</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="best-row">
+                <td>1</td>
+                <td><span class="score score-ok">12/24</span></td>
+                <td><span class="score score-ok">8/16</span></td>
+                <td class="description">Diagnoses and fixes Qdrant memory problems. Use when a</td>
+                <td class="result fail">✗<span class="rate">0/2</span></td>
+                <td class="result fail">✗<span class="rate">0/2</span></td>
+                <td class="result fail">✗<span class="rate">0/2</span></td>
+                <td class="result fail">✗<span class="rate">0/2</span></td>
+                <td class="result fail">✗<span class="rate">0/2</span></td>
+                <td class="result fail">✗<span class="rate">0/2</span></td>
+                <td class="result pass">✓<span class="rate">0/2</span></td>
+                <td class="result pass">✓<span class="rate">0/2</span></td>
+                <td class="result pass">✓<span class="rate">0/2</span></td>
+                <td class="result pass">✓<span class="rate">0/2</span></td>
+                <td class="result pass">✓<span class="rate">0/2</span></td>
+                <td class="result pass">✓<span class="rate">0/2</span></td>
+                <td class="result test-result fail">✗<span class="rate">0/2</span></td>
+                <td class="result test-result fail">✗<span class="rate">0/2</span></td>
+                <td class="result test-result fail">✗<span class="rate">0/2</span></td>
+                <td class="result test-result fail">✗<span class="rate">0/2</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/2</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/2</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/2</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/2</span></td>
+            </tr>
+            <tr class="">
+                <td>2</td>
+                <td><span class="score score-ok">12/24</span></td>
+                <td><span class="score score-ok">8/16</span></td>
+                <td class="description">Use this skill whenever someone has a Qdrant memory problem or memory-related scaling question. Triggers include: OOM crashes or nodes being killed, HNSW index consuming too much RAM, estimating how much memory is needed for a given vector count and dimensions, trying to fit more vectors onto existing hardware without buying bigger machines, deciding between mmap and in-RAM storage, choosing a quantization method (scalar, binary, 4-bit, etc.), or memory usage growing unsustainably as a collection scales. Also use when someone is planning ahead for vector count growth and worried about RAM costs.
+
+Do NOT use for: initial Qdrant cluster setup, writing API client code, backup and snapshot configuration, choosing between embedding models, search recall or accuracy tuning, or comparing Qdrant to other vector databases.</td>
+                <td class="result fail">✗<span class="rate">0/2</span></td>
+                <td class="result fail">✗<span class="rate">0/2</span></td>
+                <td class="result fail">✗<span class="rate">0/2</span></td>
+                <td class="result fail">✗<span class="rate">0/2</span></td>
+                <td class="result fail">✗<span class="rate">0/2</span></td>
+                <td class="result fail">✗<span class="rate">0/2</span></td>
+                <td class="result pass">✓<span class="rate">0/2</span></td>
+                <td class="result pass">✓<span class="rate">0/2</span></td>
+                <td class="result pass">✓<span class="rate">0/2</span></td>
+                <td class="result pass">✓<span class="rate">0/2</span></td>
+                <td class="result pass">✓<span class="rate">0/2</span></td>
+                <td class="result pass">✓<span class="rate">0/2</span></td>
+                <td class="result test-result fail">✗<span class="rate">0/2</span></td>
+                <td class="result test-result fail">✗<span class="rate">0/2</span></td>
+                <td class="result test-result fail">✗<span class="rate">0/2</span></td>
+                <td class="result test-result fail">✗<span class="rate">0/2</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/2</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/2</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/2</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/2</span></td>
+            </tr>
+            <tr class="">
+                <td>3</td>
+                <td><span class="score score-ok">13/24</span></td>
+                <td><span class="score score-ok">8/16</span></td>
+                <td class="description">Activate for Qdrant RAM exhaustion and memory scaling problems. This skill covers: OOM crashes and nodes being killed by the OS, HNSW indexes consuming most available memory, calculating RAM requirements before scaling to tens or hundreds of millions of vectors, choosing between mmap and in-memory storage, selecting quantization methods (scalar, 4-bit, binary) to compress vector memory footprint, and fitting more vectors onto fixed hardware without provisioning larger machines.
+
+Also use when memory usage is growing unsustainably relative to user or vector count growth.
+
+Skip for: writing Qdrant client code, initial cluster setup, backup/snapshot configuration, embedding model selection, search recall tuning.</td>
+                <td class="result fail">✗<span class="rate">0/2</span></td>
+                <td class="result fail">✗<span class="rate">0/2</span></td>
+                <td class="result fail">✗<span class="rate">0/2</span></td>
+                <td class="result fail">✗<span class="rate">0/2</span></td>
+                <td class="result fail">✗<span class="rate">0/2</span></td>
+                <td class="result pass">✓<span class="rate">1/2</span></td>
+                <td class="result pass">✓<span class="rate">0/2</span></td>
+                <td class="result pass">✓<span class="rate">0/2</span></td>
+                <td class="result pass">✓<span class="rate">0/2</span></td>
+                <td class="result pass">✓<span class="rate">0/2</span></td>
+                <td class="result pass">✓<span class="rate">0/2</span></td>
+                <td class="result pass">✓<span class="rate">0/2</span></td>
+                <td class="result test-result fail">✗<span class="rate">0/2</span></td>
+                <td class="result test-result fail">✗<span class="rate">0/2</span></td>
+                <td class="result test-result fail">✗<span class="rate">0/2</span></td>
+                <td class="result test-result fail">✗<span class="rate">0/2</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/2</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/2</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/2</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/2</span></td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+{
+  "eval_id": 4,
+  "eval_name": "quant-cache-confusion",
+  "prompt": "We enabled scalar int8 quantization on our collection with 5 million vectors (768 dimensions), but memory usage didn't go down. We set always_ram=true for quantized vectors and on_disk=true for originals. The optimizer shows 'ok' status. What's wrong?",
+  "assertions": [
+    {
+      "text": "Identifies this as Phase 3C quantization no-op pattern",
+      "type": "content_check"
+    },
+    {
+      "text": "Explains quantization reduces forced-resident memory, not OS page cache",
+      "type": "content_check"
+    },
+    {
+      "text": "Recommends checking telemetry for actual data memory vs total (not htop)",
+      "type": "content_check"
+    },
+    {
+      "text": "Acknowledges the config is actually correct (always_ram=true, on_disk=true) and the 'problem' may just be cache",
+      "type": "content_check"
+    },
+    {
+      "text": "Mentions full-text indexes as a possible hidden consumer",
+      "type": "content_check"
+    },
+    {
+      "text": "Does NOT recommend setting always_ram=false",
+      "type": "content_check"
+    }
+  ]
+}

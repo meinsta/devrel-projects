@@ -1,0 +1,35 @@
+{
+  "expectations": [
+    {
+      "text": "followed_phase_structure: Response explicitly uses a structured diagnostic flow with labeled phases/sections (Detect/Classify/Diagnose/Recommend or equivalent structured labels), not just ad-hoc issue listing",
+      "passed": false,
+      "evidence": "The response uses 'Cluster Details', 'Observed Latency', 'Root Causes Identified' (with CRITICAL/HIGH/MEDIUM/LOW severity labels), 'Summary of Recommendations', and 'Key Takeaway'. While it has severity labels, it does not follow a structured diagnostic flow with named phases (Detect/Classify/Diagnose/Recommend or equivalent). The structure is a severity-ranked issue list with a recommendations table, not an explicit phased diagnostic workflow."
+    },
+    {
+      "text": "separated_qdrant_vs_network_latency: Response breaks down the 500ms into Qdrant internal time vs network/payload transfer with actual measurements or estimates",
+      "passed": true,
+      "evidence": "The 'Observed Latency' table breaks down 'Qdrant Internal Time' vs 'HTTP Round-Trip' with measurements: basic search with payload is ~0.43ms internal / ~200-240ms HTTP, without payload is ~0.21ms / ~130-140ms. The text states 'The Qdrant server-side processing time is sub-millisecond. The 500ms latency the user reports likely includes network latency (~130ms round-trip to us-west-2), payload serialization overhead, and potentially client-side processing.'"
+    },
+    {
+      "text": "referenced_qdrant_docs: Response contains at least one URL linking to qdrant.tech documentation",
+      "passed": false,
+      "evidence": "No qdrant.tech URLs found anywhere in the response. The response provides technical analysis and curl commands but does not link to any Qdrant documentation."
+    },
+    {
+      "text": "correct_latency_classification: Response identifies this as a latency problem (single query speed), not throughput",
+      "passed": true,
+      "evidence": "Title is 'High Search Latency on products-us Collection'. The entire analysis focuses on per-query latency, measuring individual query times (internal and round-trip), and the user's reported 500ms per search. No discussion of throughput or QPS."
+    },
+    {
+      "text": "avoided_recommending_exact_true: Response does not suggest exact=true as a fix",
+      "passed": true,
+      "evidence": "No mention of 'exact=true' or 'exact: true' anywhere in the response. Recommendations focus on lowering indexing threshold, reducing segment fragmentation, payload optimization, quantization, and cleaning up payload data."
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 2,
+    "total": 5,
+    "pass_rate": 0.6
+  }
+}

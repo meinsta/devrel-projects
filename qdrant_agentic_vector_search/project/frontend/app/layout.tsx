@@ -1,0 +1,24 @@
+import type { Metadata } from "next";
+import "./globals.css";
+import { Toaster } from "@/components/ui/toaster";
+
+export const metadata: Metadata = {
+  title: "California Housing Law Research",
+  description: "AI-powered legal research for California housing statutes",
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en">
+      <body className="antialiased">
+        {children}
+        <Toaster />
+      </body>
+    </html>
+  );
+}
+

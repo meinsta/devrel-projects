@@ -1,0 +1,333 @@
+{
+  "metadata": {
+    "skill_name": "qdrant-cost-reduction-advisor",
+    "skill_path": "<path/to/skill>",
+    "executor_model": "<model-name>",
+    "analyzer_model": "<model-name>",
+    "timestamp": "2026-03-02T03:24:49Z",
+    "evals_run": [
+      0,
+      1,
+      2
+    ],
+    "runs_per_configuration": 3
+  },
+  "runs": [
+    {
+      "eval_id": 0,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 6,
+        "failed": 0,
+        "total": 6,
+        "time_seconds": 0.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Identifies full RAM as the cost driver",
+          "passed": true,
+          "evidence": "'The $600k annual figure is what the deployment costs with full-resolution vectors sitting in RAM and no quantization.' Breaks down 2.8TB raw + HNSW overhead."
+        },
+        {
+          "text": "Recommends scalar quantization as first step",
+          "passed": true,
+          "evidence": "Option 1 is scalar quantization. Formula shows 4x reduction."
+        },
+        {
+          "text": "Mentions mmap storage as cost reduction lever",
+          "passed": true,
+          "evidence": "References mmap for storing full vectors on disk while quantized stay in RAM."
+        },
+        {
+          "text": "Mentions FDE or premium support can be removed",
+          "passed": true,
+          "evidence": "'First thing to check: does the proposal include an FDE or Premium Support tier? removing those line items alone could drop the price by $200k+'"
+        },
+        {
+          "text": "Provides concrete cost estimate or formula",
+          "passed": true,
+          "evidence": "Full formula: RAM units = ceil(total/8), $53/unit/month. Calculates 533 units = $28k/month baseline. Shows optimized scenarios."
+        },
+        {
+          "text": "Does NOT dismiss the customer's concern",
+          "passed": true,
+          "evidence": "Opens with 'Yes, you can get into the $150-200k/year range.' Validates the concern."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "failed": 0,
+        "total": 5,
+        "time_seconds": 0.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Provides cost formula (RAM units, pricing per unit)",
+          "passed": true,
+          "evidence": "'1 RAM unit = 8 GB RAM + 32 GB disk = ~$53/month'. Full formula with ceil(Total RAM GB / 8)."
+        },
+        {
+          "text": "Calculates estimate for current 10M vectors",
+          "passed": true,
+          "evidence": "Shows 10M at scalar: ~$159/month."
+        },
+        {
+          "text": "Calculates estimate for target 100M vectors",
+          "passed": true,
+          "evidence": "Shows 100M at scalar: ~$1,537/month ($18,444/year)."
+        },
+        {
+          "text": "Mentions binary quantization is compatible with Cohere",
+          "passed": true,
+          "evidence": "Mentions testing binary compatibility with Cohere embed-v3."
+        },
+        {
+          "text": "Mentions the 80% RAM utilization guideline",
+          "passed": true,
+          "evidence": "References keeping under 80% utilization guideline."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "failed": 0,
+        "total": 5,
+        "time_seconds": 0.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Suggests checking if competitor quote uses different quantization",
+          "passed": true,
+          "evidence": "'Pinecone quote almost certainly includes aggressive quantization baked into their pricing.' 'Ask What Quantization Pinecone Is Using.'"
+        },
+        {
+          "text": "Recommends showing apples-to-apples comparison",
+          "passed": true,
+          "evidence": "'How to Build an Apples-to-Apples Comparison' section with steps."
+        },
+        {
+          "text": "Mentions specific Qdrant advantages",
+          "passed": true,
+          "evidence": "Mentions open source, transparency about compression vs competitors who silently apply quantization."
+        },
+        {
+          "text": "Provides a path to reduce the Qdrant price",
+          "passed": true,
+          "evidence": "Remove FDE/Premium ($200k+), apply scalar quantization, presents optimized pricing scenarios."
+        },
+        {
+          "text": "Does NOT trash the competitor",
+          "passed": true,
+          "evidence": "Opens with 'Acknowledge It. Don't dismiss the concern.' States facts about competitor behavior without trashing."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 0,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.6667,
+        "passed": 4,
+        "failed": 2,
+        "total": 6,
+        "time_seconds": 0.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Identifies full RAM as the cost driver",
+          "passed": true,
+          "evidence": "'462M vectors at 1536 dimensions means each vector is ~6KB. That is roughly 2.7TB of raw vector data in memory.'"
+        },
+        {
+          "text": "Recommends scalar quantization as first step",
+          "passed": true,
+          "evidence": "'Start with scalar quantization. It is nearly lossless in practice.'"
+        },
+        {
+          "text": "Mentions mmap storage as cost reduction lever",
+          "passed": true,
+          "evidence": "Mentions disk-based storage with mmap as a lever."
+        },
+        {
+          "text": "Mentions FDE or premium support can be removed",
+          "passed": false,
+          "evidence": "No mention of FDE, premium support, or optional add-ons. Mentions 'contract negotiation' generically but not specific Qdrant add-ons."
+        },
+        {
+          "text": "Provides concrete cost estimate or formula",
+          "passed": false,
+          "evidence": "Gives rough estimates ('$150-170k territory') but no actual formula (no $53/unit, no RAM unit calculation). No cost-formula.md knowledge."
+        },
+        {
+          "text": "Does NOT dismiss the customer's concern",
+          "passed": true,
+          "evidence": "Opens with 'Yeah, $600k for a single use case is brutal.'"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.4,
+        "passed": 2,
+        "failed": 3,
+        "total": 5,
+        "time_seconds": 0.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Provides cost formula (RAM units, pricing per unit)",
+          "passed": false,
+          "evidence": "Provides a memory formula but NOT the Qdrant pricing formula. No $53/unit, no RAM unit concept. Gives vague estimates like '~$540/mo' and '~$5,400/mo' without showing how."
+        },
+        {
+          "text": "Calculates estimate for current 10M vectors",
+          "passed": true,
+          "evidence": "Shows ~15GB RAM, ~$540/mo managed."
+        },
+        {
+          "text": "Calculates estimate for target 100M vectors",
+          "passed": true,
+          "evidence": "Shows ~150GB RAM, ~$5,400/mo managed."
+        },
+        {
+          "text": "Mentions binary quantization is compatible with Cohere",
+          "passed": false,
+          "evidence": "No mention of binary quantization compatibility with Cohere. Only mentions Matryoshka embeddings."
+        },
+        {
+          "text": "Mentions the 80% RAM utilization guideline",
+          "passed": false,
+          "evidence": "No mention of 80% utilization guideline."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.8,
+        "passed": 4,
+        "failed": 1,
+        "total": 5,
+        "time_seconds": 0.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Suggests checking if competitor quote uses different quantization",
+          "passed": false,
+          "evidence": "Mentions 'pod type vs serverless' and 'index size' but does NOT mention quantization differences as the key driver of cost gap."
+        },
+        {
+          "text": "Recommends showing apples-to-apples comparison",
+          "passed": true,
+          "evidence": "'Ask the customer: Can you share the Pinecone proposal so we can do a direct comparison?'"
+        },
+        {
+          "text": "Mentions specific Qdrant advantages",
+          "passed": true,
+          "evidence": "Lists open source, data sovereignty, multi-vector, filterable HNSW, no vendor lock-in."
+        },
+        {
+          "text": "Provides a path to reduce the Qdrant price",
+          "passed": true,
+          "evidence": "Section on right-sizing, phased deployment, competitive bridge pricing."
+        },
+        {
+          "text": "Does NOT trash the competitor",
+          "passed": true,
+          "evidence": "'don't panic, and don't lead with discounting.' Professional framing throughout."
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 1.0,
+        "stddev": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "without_skill": {
+      "pass_rate": {
+        "mean": 0.6222,
+        "stddev": 0.2037,
+        "min": 0.4,
+        "max": 0.8
+      },
+      "time_seconds": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.38",
+      "time_seconds": "+0.0",
+      "tokens": "+0"
+    }
+  },
+  "notes": []
+}

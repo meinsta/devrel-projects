@@ -1,0 +1,22 @@
+[project]
+name = "snippets-amalgamation"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+    "datasets>=4.4.1",
+    "fastembed",
+    "qdrant-client",
+    "qdrant-edge-py==0.6.0"
+]
+
+[tool.uv.sources]
+qdrant-client = { git = "https://github.com/qdrant/qdrant-client", tag = "dev" }
+
+[dependency-groups]
+dev = [
+    "mypy>=1.18.2",
+]
+
+[[tool.mypy.overrides]]
+module = ["datasets", "qdrant_edge"]
+ignore_missing_imports = true

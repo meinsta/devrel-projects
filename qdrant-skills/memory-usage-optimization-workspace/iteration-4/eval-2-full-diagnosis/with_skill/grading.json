@@ -1,0 +1,40 @@
+{
+  "expectations": [
+    {
+      "text": "Actually connects and inspects multiple collections",
+      "passed": true,
+      "evidence": "Response shows a full inventory table of all 12 collections with actual data pulled from the cluster (points, segments, vector dim, quantization, HNSW on_disk, vectors on_disk, on_disk_payload, payload indexes). References real cluster URL, version 1.16.3, and memory metrics from /metrics endpoint."
+    },
+    {
+      "text": "Identifies the locale collections antipattern (10+ products-{locale} collections)",
+      "passed": true,
+      "evidence": "Finding 1 states: 'This is the dominant cause of disproportionate memory usage relative to actual data volume.' Lists all 10 locale collections, calculates 87x overhead-to-data ratio (13 MB overhead vs 150 KB actual data), and recommends consolidation into a single products collection with locale keyword field."
+    },
+    {
+      "text": "Identifies products-us issues: vectors in RAM, no quantization, full-text index on description",
+      "passed": true,
+      "evidence": "The inventory table shows products-us with vectors on_disk=false and no quantization. Finding 4 covers payload indexes: 'description: full-text index, word tokenizer... As products-us grows, this is the highest-risk index for RAM consumption. Full-text indexes typically consume 2-5x the size of the indexed text.' Both vectors in RAM and full-text index on description are identified."
+    },
+    {
+      "text": "Identifies embeddings-archive backwards quantization (always_ram=false, on_disk=false)",
+      "passed": true,
+      "evidence": "Finding 2 explicitly states: 'always_ram: false is the wrong setting for quantized vectors' and 'the original float32 vectors are NOT on disk either (vectors.on_disk: false)... This is the exact inverse of the correct configuration.' Priority 2 fix sets always_ram=true and vectors.on_disk=true."
+    },
+    {
+      "text": "Provides prioritized recommendations matching Phase 4 order",
+      "passed": true,
+      "evidence": "Phase 4 recommendations are numbered Priority 1 through 4: (1) Consolidate 10 locale collections, (2) Fix embeddings-archive quantization, (3) Enable HNSW on_disk proactively, (4) Monitor products-us payload indexes as data grows. Ordered by impact with rationale."
+    },
+    {
+      "text": "Mentions total collection count and overhead calculation",
+      "passed": true,
+      "evidence": "Response states '12 collections active', 'Total vectors: 1,200', and calculates '10 collections x 13 MB = ~130 MB in pure structural overhead' vs '10 x 150 KB = ~1.5 MB actual vector data'. Also states 'Overhead ratio: ~87x' per locale collection."
+    }
+  ],
+  "summary": {
+    "passed": 6,
+    "failed": 0,
+    "total": 6,
+    "pass_rate": 1.0
+  }
+}

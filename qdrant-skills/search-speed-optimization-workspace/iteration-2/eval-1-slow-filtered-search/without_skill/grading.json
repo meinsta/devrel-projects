@@ -1,0 +1,35 @@
+{
+  "expectations": [
+    {
+      "text": "followed_3C_checklist: Response explicitly references a structured filtered search diagnostic or follows a labeled checklist, not ad-hoc",
+      "passed": false,
+      "evidence": "The response uses 'Root Cause', 'Additional Observations' (numbered 1-5), 'Solution', and 'Summary' sections. It does not reference a '3C checklist' or any named diagnostic framework. The structure is a standard root-cause analysis report, not an explicitly labeled checklist methodology."
+    },
+    {
+      "text": "explained_filterable_hnsw_interaction: Response explains how HNSW graph and payload indexes interact for filtered search (filterable index, subgraph links, pre/post-filter)",
+      "passed": true,
+      "evidence": "Lines 26-35 explain the interaction: 'Without an HNSW graph, Qdrant falls back to a plain linear scan... When a filter is applied on a collection without an HNSW index, the engine must: 1. Evaluate the payload filter against every point... 2. Score the filtered subset of vectors using brute-force distance computation... With an HNSW index, filtered search is efficient because Qdrant can traverse the graph and check filter conditions at each node, pruning large portions of the search space. Without the graph, there is no structure to prune against, so the filter adds pure overhead.'"
+    },
+    {
+      "text": "referenced_qdrant_docs: Response contains at least one URL linking to qdrant.tech documentation",
+      "passed": false,
+      "evidence": "No qdrant.tech URLs found anywhere in the response. The response provides technical analysis and curl commands but includes no documentation links."
+    },
+    {
+      "text": "included_monitoring_checklist: Response includes post-fix verification steps (check indexed_vectors_count, segment count, re-run search)",
+      "passed": false,
+      "evidence": "The solution section mentions 'wait for the optimizer to complete (check optimizer_status and indexed_vectors_count). Once indexed_vectors_count equals 500...' but this is a brief inline mention, not a post-fix verification checklist. There is no explicit step to check segment count after the fix, no re-run search verification step, and no structured post-fix monitoring checklist."
+    },
+    {
+      "text": "did_not_recommend_unnecessary_indexes: Response correctly notes category already has an index and does NOT recommend creating a redundant one",
+      "passed": true,
+      "evidence": "The response clearly states 'The category field does have a keyword index, so the filter evaluation itself is not the bottleneck. The problem is the lack of a vector index (HNSW) to combine with it.' and 'These payload indexes are correctly configured.' It does not recommend creating a redundant category index."
+    }
+  ],
+  "summary": {
+    "passed": 2,
+    "failed": 3,
+    "total": 5,
+    "pass_rate": 0.4
+  }
+}

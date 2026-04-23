@@ -1,0 +1,27 @@
+{
+  "eval_id": 0,
+  "eval_name": "locale-collections-antipattern",
+  "prompt": "We have product catalogs for different locales and memory seems higher than expected. Can you check what's going on?",
+  "assertions": [
+    {
+      "text": "Actually connects to the cluster and lists collections",
+      "type": "execution_check"
+    },
+    {
+      "text": "Identifies the 10+ products-{locale} collections as an antipattern",
+      "type": "content_check"
+    },
+    {
+      "text": "Calculates or mentions the per-collection overhead (12-14 MB each)",
+      "type": "content_check"
+    },
+    {
+      "text": "Recommends consolidating into a single collection with a tenant field",
+      "type": "content_check"
+    },
+    {
+      "text": "Checks collection config (on_disk, quantization) not just collection count",
+      "type": "content_check"
+    }
+  ]
+}

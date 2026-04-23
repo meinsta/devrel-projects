@@ -1,0 +1,82 @@
+[
+  {
+    "query": "qdrant keeps getting OOM killed on our production k8s cluster. we have 96GB RAM nodes and the HNSW index alone is eating 80GB. three crashes this week, our SRE team is losing it. what are our options besides just throwing more RAM at it",
+    "should_trigger": true
+  },
+  {
+    "query": "memory at 87% with only 200 users, need to support 5000 by end of year. at this rate we'd need to 25x our infrastructure. there has to be a smarter way to scale qdrant",
+    "should_trigger": true
+  },
+  {
+    "query": "we switched from full RAM to disk-based storage in qdrant to save memory but now search latency went from 15ms to like 3-4 seconds which is completely unusable for our chatbot. is there a middle ground",
+    "should_trigger": true
+  },
+  {
+    "query": "what quantization should we use to reduce qdrant memory footprint? we're using openai text-embedding-3-small at 1536 dims, about 80M vectors, currently no quantization enabled",
+    "should_trigger": true
+  },
+  {
+    "query": "mmap vs keeping everything in RAM for our qdrant use case. we have 50M vectors at 1536 dims on a 3-node cluster. latency SLA is under 500ms, QPS is maybe 40-50",
+    "should_trigger": true
+  },
+  {
+    "query": "HNSW index is consuming 80GB of RAM on a 96GB node, no room for growth. we're adding about 1M vectors per week and at this rate we'll hit the wall in a month",
+    "should_trigger": true
+  },
+  {
+    "query": "how do we fit 100M vectors in qdrant without buying bigger machines? currently at 30M on nodes with 64GB RAM and it's already tight",
+    "should_trigger": true
+  },
+  {
+    "query": "our 4-node qdrant cluster with replication factor 3 seems over-provisioned. we only have 15M vectors and 30 QPS. whats the minimum viable setup that still gives us high availability",
+    "should_trigger": true
+  },
+  {
+    "query": "qdrant node crashes from RAM consumption during peak traffic hours. fine in the morning, dies around 2pm when concurrent searches spike. 48GB node, about 20M vectors unquantized",
+    "should_trigger": true
+  },
+  {
+    "query": "need to estimate memory requirements for scaling from 10M to 100M vectors in qdrant. using cohere embed-v3 at 1024 dims with scalar quantization already enabled",
+    "should_trigger": true
+  },
+  {
+    "query": "we're setting up qdrant for the first time on our k8s cluster using the helm chart. the persistent volume is 500GB NVMe SSD. should we enable mmap storage from the start or just go with the default settings",
+    "should_trigger": false
+  },
+  {
+    "query": "I need to write a python script that does batch upserts into qdrant with error handling and retry logic. we have about 10M documents to embed and insert",
+    "should_trigger": false
+  },
+  {
+    "query": "our qdrant search results aren't great, we're getting like 70% recall. we're using dot product distance with openai embeddings. should we switch to cosine? also chunk size might be too big",
+    "should_trigger": false
+  },
+  {
+    "query": "we're evaluating qdrant vs weaviate vs pinecone for our RAG pipeline. main criteria are hybrid search support, filtering performance, and managed cloud availability in eu-west",
+    "should_trigger": false
+  },
+  {
+    "query": "how do I set up scalar quantization in qdrant? I found the docs but I'm confused about the always_ram parameter and whether I need to recreate the collection",
+    "should_trigger": false
+  },
+  {
+    "query": "we need to set up monitoring and alerting for our qdrant cluster. what prometheus metrics should we track and what are reasonable alert thresholds",
+    "should_trigger": false
+  },
+  {
+    "query": "does qdrant support multi-tenancy? we have a SaaS product and each customer needs isolated search. separate collections per tenant or payload-based filtering",
+    "should_trigger": false
+  },
+  {
+    "query": "we want to squeeze every millisecond of latency out of our qdrant setup. willing to throw hardware at it. currently at p95 of 25ms and need to get to p95 under 10ms",
+    "should_trigger": false
+  },
+  {
+    "query": "how do I configure qdrant snapshots for disaster recovery? we need automated daily backups stored in S3 and the ability to restore to a point in time",
+    "should_trigger": false
+  },
+  {
+    "query": "trying to decide between openai text-embedding-3-large at 3072 dims vs text-embedding-3-small at 1536 dims for our legal document search corpus of about 2M documents",
+    "should_trigger": false
+  }
+]

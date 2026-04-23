@@ -1,0 +1,40 @@
+{
+  "expectations": [
+    {
+      "text": "Identifies this as Phase 3C quantization no-op pattern",
+      "passed": true,
+      "evidence": "Response explicitly states in the Quick Routing section: 'Your symptom maps directly to Phase 3C: Quantization didn't reduce memory.' This is a direct identification of the Phase 3C pattern."
+    },
+    {
+      "text": "Explains quantization reduces forced-resident memory, not OS page cache",
+      "passed": true,
+      "evidence": "Core Issue section: 'Scalar int8 quantization reduces forced-resident data memory by approximately 4x. It does NOT reduce OS page cache. Tools like htop, top, and docker stats report data memory plus OS page cache combined.' Memory Accounting table shows original float32 vectors 'on disk (mmap, page cache pressure only).'"
+    },
+    {
+      "text": "Recommends checking telemetry for actual data memory vs total (not htop)",
+      "passed": true,
+      "evidence": "'How to Verify: Check Telemetry, Not htop' section explicitly recommends GET /telemetry and explains: 'If collections.{name}.memory_usage dropped after quantization but app.memory_usage did not, quantization worked. The unchanged total is OS page cache filling available RAM.'"
+    },
+    {
+      "text": "Acknowledges the config is actually correct (always_ram=true, on_disk=true) and the 'problem' may just be cache",
+      "passed": true,
+      "evidence": "'Your configuration is correct: always_ram=true for quantized vectors: correct. on_disk=true for original float32 vectors: correct. The optimizer status ok confirms quantization and optimization completed successfully.' Summary table also confirms 'Configuration correct.'"
+    },
+    {
+      "text": "Mentions full-text indexes as a possible hidden consumer",
+      "passed": true,
+      "evidence": "Checklist item 5: 'Payload indexes consuming RAM. Check payload_schema in collection info. Full-text indexes are especially large (2-5x the indexed text size). Keyword indexes on UUID fields can be GBs. If you have indexes on fields not used in filters, remove them.'"
+    },
+    {
+      "text": "Does NOT recommend setting always_ram=false",
+      "passed": true,
+      "evidence": "'Do Not Do This' section explicitly states: 'Do not set always_ram=false on the quantization config to try to save additional RAM. This forces the quantized vectors to be read from disk on every search candidate evaluation. The result is extreme disk I/O, high CPU usage, and query performance collapse.'"
+    }
+  ],
+  "summary": {
+    "passed": 6,
+    "failed": 0,
+    "total": 6,
+    "pass_rate": 1.0
+  }
+}

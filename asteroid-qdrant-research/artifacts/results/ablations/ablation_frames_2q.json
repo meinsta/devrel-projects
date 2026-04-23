@@ -1,0 +1,20 @@
+{
+  "benchmark": "frames",
+  "model": "Qwen/Qwen3-4B-Instruct-2507",
+  "n": 2,
+  "results": [
+    {
+      "label": "baseline (dense + BM25 + unweighted RRF)",
+      "ablation_type": "baseline",
+      "metrics": {
+        "score": 0.3,
+        "output_recall": 1.0,
+        "output_precision": 0.0,
+        "f1": 0.0,
+        "trajectory_recall": 1.0,
+        "n": 2,
+        "errors": 1
+      }
+    }
+  ]
+}

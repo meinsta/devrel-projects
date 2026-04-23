@@ -1,0 +1,40 @@
+{
+  "expectations": [
+    {
+      "text": "Actually connects and inspects the embeddings-archive collection config",
+      "passed": true,
+      "evidence": "Response shows the full raw JSON API response from GET /collections/embeddings-archive including all config fields (vectors.on_disk, quantization_config, optimizer_config, hnsw_config). States cluster version 1.16.3."
+    },
+    {
+      "text": "Identifies always_ram=false as the problem (quantized vectors on disk)",
+      "passed": true,
+      "evidence": "Problem 1 states: 'The quantization config has always_ram: false. This is the core misconfiguration.' and 'With always_ram: false (the current setting), the quantized vectors are treated like any other mmap'd file. The OS decides whether to keep them in RAM. No memory is guaranteed to be freed.'"
+    },
+    {
+      "text": "Identifies on_disk=false as the problem (originals in RAM)",
+      "passed": true,
+      "evidence": "Response states: 'The original float32 vectors are also still on-RAM (on_disk: false). Both the originals and the quantized copies compete for the same page cache. Net result: memory footprint is the same or larger than before quantization was enabled, because now there are two copies of the data.'"
+    },
+    {
+      "text": "Explains the correct pattern: always_ram=true for quantized, on_disk=true for originals",
+      "passed": true,
+      "evidence": "Response explains: 'The reduction only happens when the small quantized copy is pinned in RAM (always_ram: true) and the large original is pushed off-RAM (on_disk: true). These two settings must be applied together.' Provides explicit PATCH API calls for both changes."
+    },
+    {
+      "text": "Checks optimizer status before concluding quantization failed",
+      "passed": true,
+      "evidence": "Response checks optimizer status: 'optimizer_status: ok, zero running optimizations via /metrics' and identifies indexed_vectors_count: 0 as evidence quantization has not been applied. States 'Indexing only triggers when a segment exceeds indexing_threshold points.'"
+    },
+    {
+      "text": "Warns against the performance impact of always_ram=false",
+      "passed": true,
+      "evidence": "Section 'What NOT to Do' explicitly states: 'Do not keep always_ram: false as a way to save additional RAM beyond what quantization provides. When always_ram: false, searches must load quantized vectors from disk for candidate scoring. Every search query triggers page faults. Search latency and CPU overhead spike. This is one of the most damaging misconfigurations in Qdrant.'"
+    }
+  ],
+  "summary": {
+    "passed": 6,
+    "failed": 0,
+    "total": 6,
+    "pass_rate": 1.0
+  }
+}

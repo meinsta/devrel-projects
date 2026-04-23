@@ -1,0 +1,119 @@
+{
+  "timestamp": "20251111_093404",
+  "num_questions": 5,
+  "collection_name": "housing_statutes",
+  "model": "gpt-4-turbo-preview",
+  "top_k": 5,
+  "aggregate_metrics": {
+    "retrieval": {
+      "avg_precision": 0.0,
+      "avg_recall": 0.0,
+      "avg_f1": 0.0
+    },
+    "answer_quality": {
+      "exact_match_rate": 0.0
+    }
+  },
+  "results": [
+    {
+      "question_idx": 0,
+      "question": "Is there a state/territory law regulating residential evictions?",
+      "state": "Alabama",
+      "generated_answer": "Unable to answer: No relevant statutes found.",
+      "golden_answer": "Yes",
+      "retrieval_metrics": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "answer_metrics": {
+        "exact_match": false,
+        "contains_answer": false,
+        "generated_length": 45,
+        "golden_length": 3
+      },
+      "retrieved_count": 0,
+      "golden_statute_count": 1
+    },
+    {
+      "question_idx": 163,
+      "question": "Does the law specify a minimum number of days a tenant can be late on rent before the landlord can file an eviction action for nonpayment?",
+      "state": "Alabama",
+      "generated_answer": "Unable to answer: No relevant statutes found.",
+      "golden_answer": "Yes",
+      "retrieval_metrics": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "answer_metrics": {
+        "exact_match": false,
+        "contains_answer": false,
+        "generated_length": 45,
+        "golden_length": 3
+      },
+      "retrieved_count": 0,
+      "golden_statute_count": 1
+    },
+    {
+      "question_idx": 237,
+      "question": "Does the law specify rebuttals available to tenants subject to eviction proceedings?",
+      "state": "Alabama",
+      "generated_answer": "Unable to answer: No relevant statutes found.",
+      "golden_answer": "Yes",
+      "retrieval_metrics": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "answer_metrics": {
+        "exact_match": false,
+        "contains_answer": false,
+        "generated_length": 45,
+        "golden_length": 3
+      },
+      "retrieved_count": 0,
+      "golden_statute_count": 5
+    },
+    {
+      "question_idx": 286,
+      "question": "In eviction proceedings, does the filing of an appeal stay the execution of a writ?",
+      "state": "Alabama",
+      "generated_answer": "Unable to answer: No relevant statutes found.",
+      "golden_answer": "Yes",
+      "retrieval_metrics": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "answer_metrics": {
+        "exact_match": false,
+        "contains_answer": false,
+        "generated_length": 45,
+        "golden_length": 3
+      },
+      "retrieved_count": 0,
+      "golden_statute_count": 1
+    },
+    {
+      "question_idx": 353,
+      "question": "Is it specified whether a landlord waives their right to evict for nonpayment of rent by accepting partial payment of rent?",
+      "state": "Alabama",
+      "generated_answer": "Unable to answer: No relevant statutes found.",
+      "golden_answer": "Yes",
+      "retrieval_metrics": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "answer_metrics": {
+        "exact_match": false,
+        "contains_answer": false,
+        "generated_length": 45,
+        "golden_length": 3
+      },
+      "retrieved_count": 0,
+      "golden_statute_count": 1
+    }
+  ]
+}

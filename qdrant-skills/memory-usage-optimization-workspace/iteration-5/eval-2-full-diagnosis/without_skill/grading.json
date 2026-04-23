@@ -1,0 +1,40 @@
+{
+  "expectations": [
+    {
+      "text": "Actually connects and inspects multiple collections",
+      "passed": true,
+      "evidence": "Response connects to cluster, lists all 12 collections in an inventory table with configs, includes actual metrics from /metrics endpoint showing RSS 25.1 MB, 573 open mmaps. Product-specific details are shown including payload data for products-us and quantization config for embeddings-archive."
+    },
+    {
+      "text": "Identifies the locale collections antipattern (10+ products-{locale} collections)",
+      "passed": true,
+      "evidence": "Issue 5 'Collection proliferation - 10 locale-specific collections with identical schema' identifies the antipattern. Recommends 'Consolidate locale-specific collections into a single products collection with a locale keyword payload field.' Listed as Medium severity."
+    },
+    {
+      "text": "Identifies products-us issues: vectors in RAM, no quantization, full-text index on description",
+      "passed": true,
+      "evidence": "Issue 1 identifies all vectors in RAM (on_disk: false). Issue 2 notes 'Only embeddings-archive has quantization...all 10 products-* locale collections and products-us have quantization_config: null.' Issue 4 discusses 'Bloated payload in products-us' and mentions the text index on description."
+    },
+    {
+      "text": "Identifies embeddings-archive backwards quantization (always_ram=false, on_disk=false)",
+      "passed": true,
+      "evidence": "Issue 6 'embeddings-archive - quantization configured with always_ram: false but no on_disk vectors' identifies both problems. States 'original 1536-dim float32 vectors are in RAM (200 x 1536 x 4 = 1.17 MB)' and 'int8 quantized vectors are eligible to be on disk.' However, it partially misframes the issue by calling always_ram=false 'correct in intent.'"
+    },
+    {
+      "text": "Provides prioritized recommendations matching Phase 4 order",
+      "passed": false,
+      "evidence": "The recommendations are prioritized differently from Phase 4 order. The response orders: 1. consolidate locale collections, 2. enable on_disk for vectors, 3. add quantization to products-us, 4. remove/truncate bloated payloads. The expected Phase 4 order prioritizes fixing embeddings-archive quantization higher than bulk on_disk vector changes. The ordering does not closely match the expected Phase 4 priority table."
+    },
+    {
+      "text": "Mentions total collection count and overhead calculation",
+      "passed": false,
+      "evidence": "The response does not mention the 12-14 MB per-collection overhead or calculate total collection overhead. It discusses WAL capacity (32 MB x 12 = 384 MB) and mmap overhead but never cites the fixed 12-14 MB baseline per collection figure that is central to explaining the memory mismatch."
+    }
+  ],
+  "summary": {
+    "passed": 4,
+    "failed": 2,
+    "total": 6,
+    "pass_rate": 0.667
+  }
+}

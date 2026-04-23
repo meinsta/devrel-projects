@@ -1,0 +1,35 @@
+{
+  "expectations": [
+    {
+      "text": "followed_3C_checklist",
+      "passed": false,
+      "evidence": "Response does NOT reference Phase 3C or follow a structured checklist for filtered search diagnosis. Instead, it lists issues ad-hoc: root cause (no HNSW index), then additional issues (segment fragmentation, bloated payload, full_scan_threshold). There is no explicit 3-part checklist structure like 'Phase 3C: Diagnosis' mentioned."
+    },
+    {
+      "text": "explained_filterable_hnsw_interaction",
+      "passed": true,
+      "evidence": "Response explicitly explains HNSW and filter interaction in the 'Why filtered search is disproportionately slow' section: 'With an HNSW index in place, Qdrant can: (1) Pre-filter candidates using the payload index before traversing the HNSW graph (for highly selective filters). (2) Post-filter during HNSW traversal by checking the payload condition as it explores graph neighbors. (3) Dynamically choose the best strategy based on filter selectivity.' This directly explains filterable HNSW interaction."
+    },
+    {
+      "text": "referenced_qdrant_docs",
+      "passed": false,
+      "evidence": "Response contains NO URLs linking to qdrant.tech documentation. The response references Qdrant concepts and configuration but provides zero documentation links. No qdrant.tech URLs present."
+    },
+    {
+      "text": "included_monitoring_checklist",
+      "passed": false,
+      "evidence": "Response does NOT include specific steps to verify after applying the fix. There is a summary at the end but NO monitoring checklist. No mention of checking indexed_vectors_count, segment count, re-running search, or any verification steps after the fix is applied."
+    },
+    {
+      "text": "did_not_recommend_unnecessary_indexes",
+      "passed": true,
+      "evidence": "Response correctly identifies that category already has an index: 'Payload Indexes: category: keyword (500 points)' and later states 'The payload index on `category` already exists, so once the HNSW index is built, Qdrant can use its optimized filtered search strategies.' The response does NOT recommend creating a redundant index on category and does not suggest indexing all fields. Only recommends deleting the wasteful description text index."
+    }
+  ],
+  "summary": {
+    "passed": 2,
+    "failed": 3,
+    "total": 5,
+    "pass_rate": 0.4
+  }
+}

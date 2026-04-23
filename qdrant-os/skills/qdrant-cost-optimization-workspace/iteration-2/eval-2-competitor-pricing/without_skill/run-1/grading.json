@@ -1,0 +1,35 @@
+{
+  "expectations": [
+    {
+      "text": "Suggests checking if competitor quote uses different quantization",
+      "passed": false,
+      "evidence": "Mentions 'pod type vs serverless' and 'index size' but does NOT mention quantization differences as the key driver of cost gap."
+    },
+    {
+      "text": "Recommends showing apples-to-apples comparison",
+      "passed": true,
+      "evidence": "'Ask the customer: Can you share the Pinecone proposal so we can do a direct comparison?'"
+    },
+    {
+      "text": "Mentions specific Qdrant advantages",
+      "passed": true,
+      "evidence": "Lists open source, data sovereignty, multi-vector, filterable HNSW, no vendor lock-in."
+    },
+    {
+      "text": "Provides a path to reduce the Qdrant price",
+      "passed": true,
+      "evidence": "Section on right-sizing, phased deployment, competitive bridge pricing."
+    },
+    {
+      "text": "Does NOT trash the competitor",
+      "passed": true,
+      "evidence": "'don't panic, and don't lead with discounting.' Professional framing throughout."
+    }
+  ],
+  "summary": {
+    "passed": 4,
+    "failed": 1,
+    "total": 5,
+    "pass_rate": 0.8
+  }
+}

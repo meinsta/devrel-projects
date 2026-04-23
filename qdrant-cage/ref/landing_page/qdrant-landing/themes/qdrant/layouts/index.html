@@ -1,0 +1,229 @@
+{{ partial "header" . }}
+
+  <!-- Banner Section -->
+  <section class="banner-section-two">
+    <div class="outer-container">
+      <div class="auto-container">
+        <div class="row clearfix">
+
+          <!-- Content Column -->
+          <div class="content-column col-lg-6 col-md-7 col-sm-12">
+            <div class="inner-column">
+              <h1>Vector Database</h1>
+              <h4 class="d-inline-block">Powering the next generation of AI applications
+                with advanced and high-performant vector similarity search technology.</h4><br>
+
+                <div class="hero-code mb-4">
+                  <!-- Don't change an alignment inside this code tag-->
+                  <code class="hero-code__text">docker pull qdrant/qdrant
+docker run -p 6333:6333 qdrant/qdrant</code>
+                  <a class="hero-code__logo" href="https://hub.docker.com/r/qdrant/qdrant/" target="_blank">
+                    <i class="fab fa-docker"></i>
+                  </a>
+                </div> <br>
+
+              <div class="sec-title text">Take a look at our <a target="_blank" href="{{ .Site.Params.quick_start }}">Quick Start Guide</a>
+                or build your own neural search <br> with our step-by-step <a target="_blank" href="{{ .Site.Params.tutorial }}">Tutorial</a></div>
+
+                <a class="theme-btn btn-style-four btn-style-four_rounded btn-style-four_reversed btn-style-four_big btn-style-four_responsive mr-sm-3 mb-2 mb-lg-0" href="{{ .Site.Params.benchmarks }}">
+                  <span class="text">Benchmarks</span>
+                </a>
+                <a class="theme-btn btn-style-four btn-style-four_rounded btn-style-four_reversed btn-style-four_big btn-style-four_responsive" href="{{ .Site.Params.demos }}">
+                  <span class="text">Demos</span>
+                </a>
+
+            </div>
+          </div>
+
+          <!-- Image Column -->
+          <div class="image-column col-lg-6 col-md-5 col-sm-12">
+            <div class="inner-column">
+              <div data-depth="0.30" class="image">
+                <img src="/images/qdrant_hero_image.svg" alt=""/>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Banner Section -->
+
+  <!--Customers Section-->
+  <section class="pt-5 mt-5">
+    {{ with (.Site.GetPage "section" "stack") }}
+      {{ partial "customers-section" . }}
+    {{ end }}
+  </section>
+  <!--End Customers Section-->
+
+
+  {{ with (.Site.GetPage "section" "features") }}
+
+  <!-- Feature Section -->
+  <section class="features-section pt-5">
+    <div class="auto-container">
+      <div class="row clearfix">
+
+        <!-- Content Column -->
+        <div class="content-column col-lg-12 col-md-12 col-sm-12">
+          <div class="inner-column">
+            <!-- Sec Title -->
+            <div class="sec-title">
+              <h2>{{ .Title | safeHTML }}</h2>
+              <div class="text">{{ .Content }}
+              </div>
+            </div>
+            <div class="row clearfix">
+
+              <div class="col-12 d-flex justify-content-between flex-wrap">
+                {{ range .Pages }}
+                <!-- Features Block -->
+                <div class="feature-block">
+                  <div class="inner-box wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
+                    <div class="icon-box">
+                      {{ range .Params.Icon }}
+                      <img src="{{ .url }}" loading="lazy" alt="">
+                      {{ end }}
+                    </div>
+                    <h5>{{ .Title }}</h5>
+                    <div class="text">
+                      {{ .Content }}
+                    </div>
+                  </div>
+                </div>
+                {{ end }}
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  {{ end }}
+  <!-- End Features Section -->
+
+  <!-- Business Section Two -->
+  {{ with (.Site.GetPage "section" "solutions") }}
+
+  <section class="business-section-two">
+    <div class="auto-container">
+      <!-- Sec Title -->
+      <div class="sec-title">
+        <h2>{{ .Params.section_title | safeHTML }}</h2>
+        <div class="text">{{ .Params.subtitle }}</div>
+      </div>
+      <div class="inner-container">
+        <!-- Business Info Tabs -->
+        <div class="business-info-tabs splide" aria-label="How Qdrant vector database can help your Business"
+              data-splide='{
+              "direction": "ttb",
+               "type": "loop",
+               "height": 560,
+               "drag": false,
+               "loop": true,
+               "autoplay": true,
+               "interval": 3000,
+               "speed": 1000,
+               "pauseOnHover": true,
+               "pauseOnFocus": false,
+               "arrows":  false,
+               "paginationDirection": "ttb",
+               "classes": {
+                  "pagination": "splide__pagination tab-btns",
+                  "page": "splide__pagination__page tab-btn"
+               },
+               "breakpoints": {
+                  "992": {
+                    "destroy": true
+                  }
+               }
+             }'>
+          <!-- Business Tabs -->
+          <div class="business-tabs tabs-box splide__track">
+
+            <ul class="tabs-content splide__list">
+            <!--Tab Btns-->
+            {{ range $i, $e := first 3 .Pages }}
+
+            <!--Tabs Container-->
+
+              <!--Tab / Active Tab-->
+              <li class="tab splide__slide">
+                <div class="content">
+
+                    <!-- Content Column -->
+                    <div class="content-column">
+                      <div class="inner-column mb-5">
+                        <h5>{{ .Params.title }}</h5>
+                        {{ .Content }}
+                        <div class="tab-content-btns">
+                          {{ if .Params.default_link }}<a target="_blank" href="{{ .Params.default_link }}" class="theme-btn btn-style-four btn-style-four_reversed btn-style-four_big mr-sm-3"><span class="text">{{ .Params.default_link_name }}</span></a>{{end}}
+                          <a target="_blank" href="{{ .Site.Params.mailchimp_contact_form }}" class="theme-btn btn-style-four btn-style-four_reversed btn-style-four_big"><span class="text">Contact us</span></a>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Image Column -->
+                    <div class="image-column">
+                      <div class="inner-column">
+                        <div class="image">
+                          <picture>
+                            <source srcset="{{ .Params.landing_image }}" type="image/webp">
+                            <img src="{{ .Params.landing_image_png }}" loading="lazy" alt="{{ .Params.title }}"/>
+                          </picture>
+                        </div>
+                      </div>
+                    </div>
+
+                </div>
+              </li>
+
+            {{ end }}
+
+
+            </ul>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+  {{ end }}
+  <!-- End Business Section -->
+
+{{ with (.Site.GetPage "section" "articles") }}
+  <!-- Start Articles Section -->
+  <section id="articles" class="projects-section-two" style="background: var(--brand-light);">
+    <div class="auto-container">
+      <!-- Sec Title -->
+      <div class="sec-title mb-4">
+        <h2>{{ .Title | safeHTML }}</h2>
+        <div class="text">{{ .Params.subtitle | safeHTML }}
+        </div>
+      </div>
+      <div class="row clearfix">
+
+        {{ range $i, $e := first 3 .Pages }}
+
+
+        <!-- Project Block -->
+        <div class="d-flex col-md-4 col-sm-12">
+          {{ partial "article-card" (dict "context" . "classes" "") }}
+        </div>
+        {{ end }}
+
+      </div>
+    </div>
+  </section>
+  <!-- End Articles Section -->
+
+  {{ end }}
+
+{{ partial "contact-section" . }}
+{{ partial "footer" . }}

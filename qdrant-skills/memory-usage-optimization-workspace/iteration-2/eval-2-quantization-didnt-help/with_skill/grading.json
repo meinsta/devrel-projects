@@ -1,0 +1,42 @@
+{
+  "eval_id": 2,
+  "eval_name": "quantization-didnt-help",
+  "expectations": [
+    {
+      "text": "Explains cache is separate from quantization savings",
+      "passed": true,
+      "evidence": "Lines 4-5 clearly distinguish between OS page cache and Qdrant's quantization-controlled memory: 'Enabling quantization does not evict the OS page cache. The cache that built up from your original float32 vectors is still resident in RAM, and Qdrant does nothing to forcibly flush it.'"
+    },
+    {
+      "text": "Explains that original vectors still get cached via memmap during rescoring",
+      "passed": true,
+      "evidence": "Lines 6-7 and 17-18 explain the memmap caching behavior: 'your original float32 vectors are still set to be memory-mapped without on_disk=True, which means every time a search runs rescoring (or vectors are read for any reason), those original vectors get pulled back into the page cache.'"
+    },
+    {
+      "text": "Recommends setting on_disk=True for original vectors",
+      "passed": true,
+      "evidence": "Lines 40-42 present on_disk=True as part of the correct configuration, and lines 47-57 show the implementation: client.update_collection(..., vectors_config=models.VectorParamsDiff(on_disk=True), ...)"
+    },
+    {
+      "text": "Warns against setting always_ram=False (causes CPU spikes)",
+      "passed": true,
+      "evidence": "Lines 62-64 explicitly warn against disabling always_ram: 'Some operators try to set always_ram=False on the quantization config to save RAM. This causes the quantized vectors themselves to be read from disk during every search, which collapses search performance.' The warning addresses the performance degradation that would result from this incorrect approach."
+    },
+    {
+      "text": "Provides the correct pattern: quantized vectors in RAM, originals explicitly on disk",
+      "passed": true,
+      "evidence": "Lines 42-43 and the full section describe the pattern: 'Original vectors: on_disk=True (they stay on disk...) Quantized vectors: always_ram=True (small INT8 copies stay in RAM...)' This is reinforced in lines 13-18 which explain the split between quantized and original vectors."
+    },
+    {
+      "text": "Provides working Python code for the fix",
+      "passed": true,
+      "evidence": "Lines 47-57 provide syntactically correct, executable Python code using client.update_collection() with proper Qdrant API arguments: vectors_config=models.VectorParamsDiff(on_disk=True) and quantization_config with scalar quantization settings."
+    }
+  ],
+  "summary": {
+    "passed": 6,
+    "failed": 0,
+    "total": 6,
+    "pass_rate": 1.0
+  }
+}

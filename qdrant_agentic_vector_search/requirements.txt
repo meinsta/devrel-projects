@@ -1,0 +1,26 @@
+# Agentic Vector Search Demo - Dependencies
+
+# Core dependencies
+datasets>=2.16.0,<3.0.0
+qdrant-client[fastembed]>=1.15.1
+python-dotenv>=1.0.0
+openai>=1.0.0
+crewai>=0.80.0
+crewai-tools>=0.9.0
+
+# Utilities
+rich>=13.0.0
+tqdm>=4.65.0
+chonkie>=0.1.0
+ijson>=3.2.0
+
+# Optional: For evaluation and monitoring
+arize-phoenix>=3.0.0
+openinference-instrumentation-openai>=0.1.0
+
+# Dashboard and visualization
+plotly>=5.18.0
+dash>=2.14.0
+dash-bootstrap-components>=2.0.0
+pandas>=2.0.0
+

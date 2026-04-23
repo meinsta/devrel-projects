@@ -1,0 +1,24 @@
+# 4B full dataset: all 824 questions, all tools, 100 steps
+# No warm start. Train from scratch with new tool design.
+# 4B starts at 0.28 (same floor as gpt-oss). Room for RL to improve.
+
+model = "Qwen/Qwen3-4B-Instruct-2507"
+max_steps = 100
+
+batch_size = 16
+rollouts_per_example = 4
+
+[sampling]
+max_tokens = 2048
+
+[[env]]
+id = "thierrydamiba/frames-search"
+args = { stage = 4 }
+
+[wandb]
+project = "asteroid"
+entity = "thierrydamiba"
+name = "frames-4b-full-100steps"
+
+[checkpoints]
+interval = 10

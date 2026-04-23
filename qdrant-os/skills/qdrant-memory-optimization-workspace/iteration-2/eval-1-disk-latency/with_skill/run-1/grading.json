@@ -1,0 +1,35 @@
+{
+  "expectations": [
+    {
+      "text": "Distinguishes between full disk and mmap",
+      "passed": true,
+      "evidence": "'You switched to full disk storage, not mmap. These are fundamentally different.' Clear explanation of 200-250 random reads vs OS-managed caching."
+    },
+    {
+      "text": "Recommends mmap as the middle ground",
+      "passed": true,
+      "evidence": "'mmap (memory-mapped files) is the middle ground you are looking for.'"
+    },
+    {
+      "text": "Recommends quantization with always_ram=true",
+      "passed": true,
+      "evidence": "'Enable scalar quantization with always_ram: true. The always_ram: true flag is critical.'"
+    },
+    {
+      "text": "Sets latency expectations (under 500ms or similar)",
+      "passed": true,
+      "evidence": "Provides comparison table: mmap + scalar = 50ms p50, 500ms p95. 'You should go from 3-4 seconds down to under 500ms.'"
+    },
+    {
+      "text": "Does NOT recommend going back to full RAM",
+      "passed": true,
+      "evidence": "'Do not go back to full RAM. You switched away for a reason.' Listed under What NOT to Do."
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 0,
+    "total": 5,
+    "pass_rate": 1.0
+  }
+}

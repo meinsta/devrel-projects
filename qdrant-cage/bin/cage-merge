@@ -1,0 +1,125 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# safe worktree merge - agents never do raw merges
+# this script handles conflict detection and safe integration
+
+usage() {
+  cat <<'EOF'
+cage merge - safe merge from feature worktree
+
+usage: cage merge <branch> [--into <target>] [--squash] [--dry-run]
+
+options:
+  --into <target>   target branch (default: current branch)
+  --squash          squash merge (default)
+  --no-squash       regular merge
+  --dry-run         check for conflicts without merging
+
+the agent should never run git merge directly. this script:
+  1. checks for conflicts before attempting merge
+  2. creates a backup tag
+  3. performs squash merge
+  4. reports results
+EOF
+}
+
+BRANCH=""
+TARGET=""
+SQUASH=true
+DRY_RUN=false
+
+while [ $# -gt 0 ]; do
+  case "$1" in
+    --into) TARGET="$2"; shift 2 ;;
+    --squash) SQUASH=true; shift ;;
+    --no-squash) SQUASH=false; shift ;;
+    --dry-run) DRY_RUN=true; shift ;;
+    --help|-h) usage; exit 0 ;;
+    -*) echo "error: unknown option '$1'" >&2; exit 1 ;;
+    *) BRANCH="$1"; shift ;;
+  esac
+done
+
+if [ -z "$BRANCH" ]; then
+  echo "error: branch name required" >&2
+  usage
+  exit 1
+fi
+
+if [ -z "$TARGET" ]; then
+  TARGET="$(git branch --show-current)"
+fi
+
+echo "merge: $BRANCH -> $TARGET"
+
+# verify branch exists
+if ! git rev-parse --verify "$BRANCH" &>/dev/null; then
+  echo "error: branch '$BRANCH' does not exist" >&2
+  exit 1
+fi
+
+# check for uncommitted changes
+if ! git diff --quiet || ! git diff --cached --quiet; then
+  echo "error: uncommitted changes on $TARGET. commit or stash first." >&2
+  exit 1
+fi
+
+# conflict check
+echo "checking for conflicts..."
+MERGE_BASE=$(git merge-base "$TARGET" "$BRANCH")
+if ! git merge-tree "$MERGE_BASE" "$TARGET" "$BRANCH" | grep -q "^<<<<<<<"; then
+  echo "no conflicts detected"
+else
+  echo ""
+  echo "CONFLICTS DETECTED between $TARGET and $BRANCH"
+  echo ""
+  echo "conflicting files:"
+  git merge-tree "$MERGE_BASE" "$TARGET" "$BRANCH" | grep -E "^[<=>]{7}" | head -20
+  echo ""
+
+  if [ "$DRY_RUN" = true ]; then
+    echo "dry run: stopping here. resolve conflicts manually before merging."
+    exit 1
+  fi
+
+  echo "error: conflicts must be resolved manually before merging." >&2
+  echo "use 'cage merge $BRANCH --dry-run' to see details." >&2
+  exit 1
+fi
+
+if [ "$DRY_RUN" = true ]; then
+  echo "dry run: merge would succeed cleanly."
+  BEHIND=$(git rev-list --count "$TARGET".."$BRANCH")
+  echo "  $BEHIND commits to merge"
+  exit 0
+fi
+
+# create backup tag
+BACKUP_TAG="cage/backup/$TARGET/$(date +%Y%m%d-%H%M%S)"
+git tag "$BACKUP_TAG" "$TARGET"
+echo "backup tag: $BACKUP_TAG"
+
+# perform merge
+if [ "$SQUASH" = true ]; then
+  git merge --squash "$BRANCH"
+  echo ""
+  echo "squash merge staged. review changes and commit:"
+  echo "  git diff --cached --stat"
+  echo "  git commit -m 'merge $BRANCH'"
+else
+  git merge --no-ff "$BRANCH" -m "merge $BRANCH into $TARGET"
+  echo "merge complete."
+fi
+
+# transition pipeline state if this is a feature branch
+CAGE_CORE="$(cd "$(dirname "$0")/.." && pwd)/core/dist/cage-core"
+FEATURE_NAME=$(echo "$BRANCH" | sed 's|^feat/||')
+if [ "$FEATURE_NAME" != "$BRANCH" ] && [ -x "$CAGE_CORE" ]; then
+  "$CAGE_CORE" pipeline transition "$FEATURE_NAME" merged 2>/dev/null && \
+    echo "pipeline: $FEATURE_NAME -> merged" || true
+fi
+
+echo ""
+echo "to undo: git reset --hard $BACKUP_TAG"
+echo "to clean up worktree: cage worktree clean"

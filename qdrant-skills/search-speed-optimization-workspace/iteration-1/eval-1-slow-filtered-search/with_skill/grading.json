@@ -1,0 +1,35 @@
+{
+  "expectations": [
+    {
+      "text": "followed_3C_checklist",
+      "passed": true,
+      "evidence": "Response explicitly states 'This matches the skill's Phase 3C: \"Filtered search is slow.\"' and then walks through a structured checklist: (1) Is the filtered field indexed?, (2) High-cardinality field?, (3) Filter too restrictive?, (4) Multiple filter conditions?, (5) On-disk payload without indexes?. Each item is systematically addressed with explicit 'Yes/No' answers and diagnostic details."
+    },
+    {
+      "text": "explained_filterable_hnsw_interaction",
+      "passed": true,
+      "evidence": "Response explains: 'When the point count is below indexing_threshold, Qdrant skips building the HNSW graph entirely and performs brute-force (plain) search on all segments.' Then states 'Once built, filtered search uses the filterable HNSW index with the existing category keyword index, avoiding brute-force scans entirely.' Also mentions 'the lack of HNSW means the search falls back to plain segment scanning. During plain scanning with filters, the payload index helps narrow candidates, but the lack of HNSW means there is no graph traversal to benefit from the filterable index links.' This clearly explains the interaction between HNSW graph construction and payload indexes for filtered search."
+    },
+    {
+      "text": "referenced_qdrant_docs",
+      "passed": true,
+      "evidence": "Response contains multiple qdrant.tech documentation URLs: (1) https://qdrant.tech/documentation/concepts/optimizer/, (2) https://qdrant.tech/documentation/concepts/indexing/#on-disk-payload-index, (3) https://qdrant.tech/documentation/concepts/optimizer/#merge-optimizer, (4) https://qdrant.tech/documentation/guides/quantization/#scalar-quantization. All are properly formatted Qdrant documentation links."
+    },
+    {
+      "text": "included_monitoring_checklist",
+      "passed": true,
+      "evidence": "Response includes explicit 'Monitoring Checklist' section with 5 specific steps: (1) Check optimizer_status is ok, (2) Verify indexed_vectors_count equals points_count (500), (3) Verify segment count has decreased (target: 2), (4) Re-run both filtered and unfiltered searches to confirm latency parity, (5) Monitor with /metrics endpoint. These are concrete, actionable verification steps."
+    },
+    {
+      "text": "did_not_recommend_unnecessary_indexes",
+      "passed": true,
+      "evidence": "Response correctly identifies that category already has an index (in Payload Schema table: 'category | keyword | 500'). It does NOT recommend creating a redundant index on category. In 'Priority 4' discussion, it notes 'Do not create payload indexes on full_text_content or locale unless you filter on those fields.' The 'What NOT to Do' section further reinforces this: 'Do not create payload indexes on full_text_content or locale unless you filter on those fields.' This demonstrates the response explicitly avoids unnecessary index recommendations."
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 0,
+    "total": 5,
+    "pass_rate": 1.0
+  }
+}

@@ -1,0 +1,370 @@
+{
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "split": "holdout",
+  "scoring_mode": "retrieval",
+  "n": 20,
+  "score_avg": 0.3,
+  "score_pass": 0.0,
+  "results": [
+    {
+      "index": 1,
+      "question": "Imagine there is a building called Bronte tower whose height in feet is the same number as the dewey decimal classification for the Charlotte Bronte book that was published in 1847. Where would this building rank among tallest buildings in New York City, as of August 2024?",
+      "answer": "37th",
+      "prediction": "",
+      "score": 0.3,
+      "tool_calls": 0,
+      "error": "Error code: 500 - {'error': {'message': 'Failed to generate completions: no endpoints available to route work', 'type': 'server_error', 'param': None, 'code': 'server_error'}, 'request_id': '9e48227eee85e8cc-SJC', 'inference_id': 'req_cf9c91219b964c41b96c23fdbea89a66'}",
+      "retrieval_metrics": {
+        "output_doc_ids": [],
+        "output_recall": 1.0,
+        "output_precision": 0.0,
+        "f1": 0.0,
+        "trajectory_recall": 1.0,
+        "final_answer_found": false,
+        "parse_error": "empty output"
+      }
+    },
+    {
+      "index": 2,
+      "question": "How many years earlier would Punxsutawney Phil have to be canonically alive to have made a Groundhog Day prediction in the same state as the US capitol?",
+      "answer": "87",
+      "prediction": "",
+      "score": 0.3,
+      "tool_calls": 0,
+      "error": "Error code: 500 - {'error': {'message': 'Failed to generate completions: no endpoints available to route work', 'type': 'server_error', 'param': None, 'code': 'server_error'}, 'request_id': '9e48228d8f7ee8cc-SJC', 'inference_id': 'req_4bddb03cdb79401fba191c31fd681558'}",
+      "retrieval_metrics": {
+        "output_doc_ids": [],
+        "output_recall": 1.0,
+        "output_precision": 0.0,
+        "f1": 0.0,
+        "trajectory_recall": 1.0,
+        "final_answer_found": false,
+        "parse_error": "empty output"
+      }
+    },
+    {
+      "index": 3,
+      "question": "As of August 1, 2024, which country were holders of the FIFA World Cup the last time the UEFA Champions League was won by a club from London?",
+      "answer": "France",
+      "prediction": "",
+      "score": 0.3,
+      "tool_calls": 0,
+      "error": "Error code: 500 - {'error': {'message': 'Failed to generate completions: no endpoints available to route work', 'type': 'server_error', 'param': None, 'code': 'server_error'}, 'request_id': '9e48229bca17e8cc-SJC', 'inference_id': 'req_0672dfbc1a1045028e3babfbdaaf3fe4'}",
+      "retrieval_metrics": {
+        "output_doc_ids": [],
+        "output_recall": 1.0,
+        "output_precision": 0.0,
+        "f1": 0.0,
+        "trajectory_recall": 1.0,
+        "final_answer_found": false,
+        "parse_error": "empty output"
+      }
+    },
+    {
+      "index": 5,
+      "question": "According to the 2000 United States census, what was the 2000 population of the birth city of the only 21st-century mayor of Austin, Texas who also served as mayor in the 1990s? Round your answer to the nearest thousand.",
+      "answer": "506000",
+      "prediction": "",
+      "score": 0.3,
+      "tool_calls": 0,
+      "error": "Error code: 500 - {'error': {'message': 'Failed to generate completions: no endpoints available to route work', 'type': 'server_error', 'param': None, 'code': 'server_error'}, 'request_id': '9e4822b91d14e8cc-SJC', 'inference_id': 'req_66aaf2efd0ce47e0a29e31640ee31f6d'}",
+      "retrieval_metrics": {
+        "output_doc_ids": [],
+        "output_recall": 1.0,
+        "output_precision": 0.0,
+        "f1": 0.0,
+        "trajectory_recall": 1.0,
+        "final_answer_found": false,
+        "parse_error": "empty output"
+      }
+    },
+    {
+      "index": 6,
+      "question": "I have an element in mind and would like you to identify the person it was named after. Here's a clue: The element's atomic number is 9 higher than that of an element discovered by the scientist who discovered Zirconium in the same year.",
+      "answer": "Mendelevium is named after Dmitri Mendeleev.",
+      "prediction": "",
+      "score": 0.3,
+      "tool_calls": 0,
+      "error": "Error code: 500 - {'error': {'message': 'Failed to generate completions: no endpoints available to route work', 'type': 'server_error', 'param': None, 'code': 'server_error'}, 'request_id': '9e4822c5bec0e8cc-SJC', 'inference_id': 'req_72c4f87f8fde48419a0ee7b323418602'}",
+      "retrieval_metrics": {
+        "output_doc_ids": [],
+        "output_recall": 1.0,
+        "output_precision": 0.0,
+        "f1": 0.0,
+        "trajectory_recall": 1.0,
+        "final_answer_found": false,
+        "parse_error": "empty output"
+      }
+    },
+    {
+      "index": 8,
+      "question": "A general motors vehicle is named after the largest ward in the country of Monaco.  How many people had walked on the moon as of the first model year of the vehicle? Note: the model year is not the same as the year the model was first produced.",
+      "answer": "4",
+      "prediction": "",
+      "score": 0.3,
+      "tool_calls": 0,
+      "error": "Error code: 500 - {'error': {'message': 'Failed to generate completions: no endpoints available to route work', 'type': 'server_error', 'param': None, 'code': 'server_error'}, 'request_id': '9e4822d44d84e8cc-SJC', 'inference_id': 'req_7da237a05f3d4cc09493d4abaee2b592'}",
+      "retrieval_metrics": {
+        "output_doc_ids": [],
+        "output_recall": 1.0,
+        "output_precision": 0.0,
+        "f1": 0.0,
+        "trajectory_recall": 1.0,
+        "final_answer_found": false,
+        "parse_error": "empty output"
+      }
+    },
+    {
+      "index": 9,
+      "question": "The Pope born Pietro Barbo ended a long-running war two years after his papacy began, which famous conflict, immortalized in tapestry took place 400 years earlier?",
+      "answer": "The Battle of Hastings.",
+      "prediction": "",
+      "score": 0.3,
+      "tool_calls": 0,
+      "error": "Error code: 500 - {'error': {'message': 'Failed to generate completions: no endpoints available to route work', 'type': 'server_error', 'param': None, 'code': 'server_error'}, 'request_id': '9e4822f15956e8cc-SJC', 'inference_id': 'req_534f037df5574c7d984aeb11b630eb98'}",
+      "retrieval_metrics": {
+        "output_doc_ids": [],
+        "output_recall": 1.0,
+        "output_precision": 0.0,
+        "f1": 0.0,
+        "trajectory_recall": 1.0,
+        "final_answer_found": false,
+        "parse_error": "empty output"
+      }
+    },
+    {
+      "index": 11,
+      "question": "As of July 1, 2024, what is the parent company of the current record label of the singer of Edge of Seventeen?",
+      "answer": "Warner Music Group",
+      "prediction": "",
+      "score": 0.3,
+      "tool_calls": 0,
+      "error": "Error code: 500 - {'error': {'message': 'Failed to generate completions: no endpoints available to route work', 'type': 'server_error', 'param': None, 'code': 'server_error'}, 'request_id': '9e4822ff3819e8cc-SJC', 'inference_id': 'req_a15b5f052e5e4eb7aba94fe4926be0a1'}",
+      "retrieval_metrics": {
+        "output_doc_ids": [],
+        "output_recall": 1.0,
+        "output_precision": 0.0,
+        "f1": 0.0,
+        "trajectory_recall": 1.0,
+        "final_answer_found": false,
+        "parse_error": "empty output"
+      }
+    },
+    {
+      "index": 14,
+      "question": "Which football player got 15 or more assists in La Liga during the 2010-2011 season and also played for Arsenal at one point in his career?",
+      "answer": "This was Mesut Ozil.",
+      "prediction": "",
+      "score": 0.3,
+      "tool_calls": 0,
+      "error": "Error code: 500 - {'error': {'message': 'Failed to generate completions: no endpoints available to route work', 'type': 'server_error', 'param': None, 'code': 'server_error'}, 'request_id': '9e48233aae73e8cc-SJC', 'inference_id': 'req_09a7ce9704c74e6b9eede0ae459b1878'}",
+      "retrieval_metrics": {
+        "output_doc_ids": [],
+        "output_recall": 1.0,
+        "output_precision": 0.0,
+        "f1": 0.0,
+        "trajectory_recall": 1.0,
+        "final_answer_found": false,
+        "parse_error": "empty output"
+      }
+    },
+    {
+      "index": 15,
+      "question": "In Slovakia there is a well known Film Festival called the Bratistlava International Film Festival. What city/ town was the film editor for the Grand Prix winner of 2003 born in?",
+      "answer": "Roudnice nad Labem",
+      "prediction": "",
+      "score": 0.3,
+      "tool_calls": 0,
+      "error": "Error code: 500 - {'error': {'message': 'Failed to generate completions: no endpoints available to route work', 'type': 'server_error', 'param': None, 'code': 'server_error'}, 'request_id': '9e4823482b56e8cc-SJC', 'inference_id': 'req_2fdeea309c37483f8dfba32fc7032a60'}",
+      "retrieval_metrics": {
+        "output_doc_ids": [],
+        "output_recall": 1.0,
+        "output_precision": 0.0,
+        "f1": 0.0,
+        "trajectory_recall": 1.0,
+        "final_answer_found": false,
+        "parse_error": "empty output"
+      }
+    },
+    {
+      "index": 16,
+      "question": "On March 7th, 2012, the director James Cameron explored a very deep underseas trench.  As of August 3, 2024, how many times would the tallest building in San Francisco fit end to end from the bottom of the New Britain Trench to the surface of the ocean? The answer should be a rounded-off whole number.   ",
+      "answer": "28",
+      "prediction": "",
+      "score": 0.3,
+      "tool_calls": 0,
+      "error": "Error code: 500 - {'error': {'message': 'Failed to generate completions: no endpoints available to route work', 'type': 'server_error', 'param': None, 'code': 'server_error'}, 'request_id': '9e482356aac2e8cc-SJC', 'inference_id': 'req_8b3e527065ec4ceeb4915bc92d074e5a'}",
+      "retrieval_metrics": {
+        "output_doc_ids": [],
+        "output_recall": 1.0,
+        "output_precision": 0.0,
+        "f1": 0.0,
+        "trajectory_recall": 1.0,
+        "final_answer_found": false,
+        "parse_error": "empty output"
+      }
+    },
+    {
+      "index": 18,
+      "question": "How many years after the founding of the 50th most populous US city, based on 2023 estimate population data, did Frank Fox receive UK Patent (1344259)?",
+      "answer": "98 Years (Arlington, TX & Rubik's Cube)",
+      "prediction": "",
+      "score": 0.3,
+      "tool_calls": 0,
+      "error": "Error code: 500 - {'error': {'message': 'Failed to generate completions: no endpoints available to route work', 'type': 'server_error', 'param': None, 'code': 'server_error'}, 'request_id': '9e48237e0f9ee8cc-SJC', 'inference_id': 'req_1ed4053d157e499fb3e366192cb87eba'}",
+      "retrieval_metrics": {
+        "output_doc_ids": [],
+        "output_recall": 1.0,
+        "output_precision": 0.0,
+        "f1": 0.0,
+        "trajectory_recall": 1.0,
+        "final_answer_found": false,
+        "parse_error": "empty output"
+      }
+    },
+    {
+      "index": 19,
+      "question": "As of August 4, 2024, in what state was the first secretary of the latest United States federal executive department born?",
+      "answer": "Pennsylvania",
+      "prediction": "",
+      "score": 0.3,
+      "tool_calls": 0,
+      "error": "Error code: 500 - {'error': {'message': 'Failed to generate completions: no endpoints available to route work', 'type': 'server_error', 'param': None, 'code': 'server_error'}, 'request_id': '9e4823a75996e8cc-SJC', 'inference_id': 'req_e7eaec9604194126af7453426935db3e'}",
+      "retrieval_metrics": {
+        "output_doc_ids": [],
+        "output_recall": 1.0,
+        "output_precision": 0.0,
+        "f1": 0.0,
+        "trajectory_recall": 1.0,
+        "final_answer_found": false,
+        "parse_error": "empty output"
+      }
+    },
+    {
+      "index": 20,
+      "question": "As of August 1 2024, what is the most recently described genus of Colosteidae?",
+      "answer": "Deltaherpeton, first described in 2010",
+      "prediction": "",
+      "score": 0.3,
+      "tool_calls": 0,
+      "error": "Error code: 500 - {'error': {'message': 'Failed to generate completions: no endpoints available to route work', 'type': 'server_error', 'param': None, 'code': 'server_error'}, 'request_id': '9e4823b48c41e8cc-SJC', 'inference_id': 'req_5e6ad92471834e1aacbb929237650eb4'}",
+      "retrieval_metrics": {
+        "output_doc_ids": [],
+        "output_recall": 1.0,
+        "output_precision": 0.0,
+        "f1": 0.0,
+        "trajectory_recall": 1.0,
+        "final_answer_found": false,
+        "parse_error": "empty output"
+      }
+    },
+    {
+      "index": 21,
+      "question": "Ma\u0142gorzata Ro\u017cniecka is a model who won the title of Miss International. What is the difference in title years from when she won and the pageant winner who was murdered by her stalker?",
+      "answer": "10 years",
+      "prediction": "",
+      "score": 0.3,
+      "tool_calls": 0,
+      "error": "Error code: 500 - {'error': {'message': 'Failed to generate completions: no endpoints available to route work', 'type': 'server_error', 'param': None, 'code': 'server_error'}, 'request_id': '9e4823c28fe3e8cc-SJC', 'inference_id': 'req_4224a8e3e23a4726822d5472fcb0b64a'}",
+      "retrieval_metrics": {
+        "output_doc_ids": [],
+        "output_recall": 1.0,
+        "output_precision": 0.0,
+        "f1": 0.0,
+        "trajectory_recall": 1.0,
+        "final_answer_found": false,
+        "parse_error": "empty output"
+      }
+    },
+    {
+      "index": 22,
+      "question": "According to the 1990 United States census, what was the total population of the cities in Oklahoma that had at least 100,000 residents according to the 2020 United States census?",
+      "answer": "950135",
+      "prediction": "",
+      "score": 0.3,
+      "tool_calls": 0,
+      "error": "Error code: 500 - {'error': {'message': 'Failed to generate completions: no endpoints available to route work', 'type': 'server_error', 'param': None, 'code': 'server_error'}, 'request_id': '9e4823d02c1de8cc-SJC', 'inference_id': 'req_ed8347c0d2be47808c9e4b46271ffde1'}",
+      "retrieval_metrics": {
+        "output_doc_ids": [],
+        "output_recall": 1.0,
+        "output_precision": 0.0,
+        "f1": 0.0,
+        "trajectory_recall": 1.0,
+        "final_answer_found": false,
+        "parse_error": "empty output"
+      }
+    },
+    {
+      "index": 23,
+      "question": "What was the political party of the person who advocated for the type of government used in Chikhali, Latur district to become the foundation of India's political system?",
+      "answer": "Indian National Congress",
+      "prediction": "",
+      "score": 0.3,
+      "tool_calls": 0,
+      "error": "Error code: 500 - {'error': {'message': 'Failed to generate completions: no endpoints available to route work', 'type': 'server_error', 'param': None, 'code': 'server_error'}, 'request_id': '9e4823de69e2e8cc-SJC', 'inference_id': 'req_4b3793066bdb45428d77aa0c5d82d277'}",
+      "retrieval_metrics": {
+        "output_doc_ids": [],
+        "output_recall": 1.0,
+        "output_precision": 0.0,
+        "f1": 0.0,
+        "trajectory_recall": 1.0,
+        "final_answer_found": false,
+        "parse_error": "empty output"
+      }
+    },
+    {
+      "index": 24,
+      "question": "Giorgio Rognoni was an Italian professional footballer who played as a midfielder. 10 years after his death who was the midfielder who played in Milan that was born in Besana in Brianza,?",
+      "answer": "Demetrio Albertini",
+      "prediction": "",
+      "score": 0.3,
+      "tool_calls": 0,
+      "error": "Error code: 500 - {'error': {'message': 'Failed to generate completions: no endpoints available to route work', 'type': 'server_error', 'param': None, 'code': 'server_error'}, 'request_id': '9e4823ec7eade8cc-SJC', 'inference_id': 'req_285a3965a5b64fb0b2c19c848bc3e820'}",
+      "retrieval_metrics": {
+        "output_doc_ids": [],
+        "output_recall": 1.0,
+        "output_precision": 0.0,
+        "f1": 0.0,
+        "trajectory_recall": 1.0,
+        "final_answer_found": false,
+        "parse_error": "empty output"
+      }
+    },
+    {
+      "index": 25,
+      "question": "What was the age difference between Mike Tyson and Tyson Fury on the respective days on which they lost their first ever fights? Represent the figure in years only.",
+      "answer": "12 years.",
+      "prediction": "",
+      "score": 0.3,
+      "tool_calls": 0,
+      "error": "Error code: 500 - {'error': {'message': 'Failed to generate completions: no endpoints available to route work', 'type': 'server_error', 'param': None, 'code': 'server_error'}, 'request_id': '9e4823f979d4e8cc-SJC', 'inference_id': 'req_354cdbe8f32047c6bd97bcf6191b564b'}",
+      "retrieval_metrics": {
+        "output_doc_ids": [],
+        "output_recall": 1.0,
+        "output_precision": 0.0,
+        "f1": 0.0,
+        "trajectory_recall": 1.0,
+        "final_answer_found": false,
+        "parse_error": "empty output"
+      }
+    },
+    {
+      "index": 26,
+      "question": "Using the Pruett rule, out of all of the blue moons that occurred between the beginning of World War I and the end of World War II, how many of them occurred on the 31st of the month?",
+      "answer": "9",
+      "prediction": "",
+      "score": 0.3,
+      "tool_calls": 0,
+      "error": "Error code: 404 - {'error': {'message': 'Model not found', 'type': 'server_error', 'param': None, 'code': 'not_found_error'}, 'request_id': '9e4824321bc0e8cc-SJC', 'inference_id': 'req_a7a78e9acb964e32b7af6b9e5f37983e'}",
+      "retrieval_metrics": {
+        "output_doc_ids": [],
+        "output_recall": 1.0,
+        "output_precision": 0.0,
+        "f1": 0.0,
+        "trajectory_recall": 1.0,
+        "final_answer_found": false,
+        "parse_error": "empty output"
+      }
+    }
+  ]
+}

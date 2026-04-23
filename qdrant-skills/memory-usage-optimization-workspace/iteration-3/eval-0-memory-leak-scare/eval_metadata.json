@@ -1,0 +1,31 @@
+{
+  "eval_id": 0,
+  "eval_name": "memory-leak-scare",
+  "prompt": "Our Qdrant cluster RAM keeps growing even though we stopped ingesting data a week ago. We're getting alerts at 80% memory (3.24GB of 4GB). When we restart the cluster, memory drops back down immediately. Is this a memory leak?",
+  "assertions": [
+    {
+      "text": "Distinguishes between DATA memory (80% = danger) and TOTAL memory including cache (80% = often fine)",
+      "type": "content_check"
+    },
+    {
+      "text": "Does NOT dismiss the issue as 'just cache' - acknowledges 1-12MB/day slow growth as a known issue pattern",
+      "type": "content_check"
+    },
+    {
+      "text": "Recommends checking collection count as a diagnostic step (12-14MB overhead per collection)",
+      "type": "content_check"
+    },
+    {
+      "text": "Recommends upgrading to latest Qdrant version",
+      "type": "content_check"
+    },
+    {
+      "text": "Recommends checking Qdrant metrics endpoint to separate data from cache",
+      "type": "content_check"
+    },
+    {
+      "text": "Does NOT treat restart as bad practice - acknowledges it as a valid operational tool",
+      "type": "content_check"
+    }
+  ]
+}

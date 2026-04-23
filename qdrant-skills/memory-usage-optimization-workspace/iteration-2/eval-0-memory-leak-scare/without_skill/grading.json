@@ -1,0 +1,40 @@
+{
+  "expectations": [
+    {
+      "text": "Explains this is likely OS page cache, not a memory leak",
+      "passed": true,
+      "evidence": "Response explicitly states 'This pattern is a classic signature of memory-mapped file caching, not a leak' and 'Memory-mapped files (mmap) extensively for serving vectors and payload indexes from disk. When you read data... the OS kernel loads the relevant file pages into RAM and keeps them there as long as free memory is available. This is called the page cache.'"
+    },
+    {
+      "text": "Distinguishes between actual data RAM and page cache",
+      "passed": true,
+      "evidence": "Response clearly distinguishes in multiple places: 'The OS treats page cache as free memory that is being used productively' and provides a detailed section 'Check RSS vs. cache breakdown' with specific commands to check VmRSS vs buff/cache, explaining 'If the majority of memory is in the buff/cache column of free -h rather than in used, you are looking at page cache, not a leak.'"
+    },
+    {
+      "text": "Explains why restart drops memory (flushes cache)",
+      "passed": true,
+      "evidence": "Response states: 'When you restart the cluster, the process exits, all mmap mappings are released, and the OS reclaims the page cache. Memory drops instantly. This is expected and is not recovery from a leak.'"
+    },
+    {
+      "text": "Recommends checking Qdrant metrics for actual data vs cache breakdown",
+      "passed": true,
+      "evidence": "Response includes 'Check Qdrant's own memory telemetry' section recommending: 'Qdrant exposes a /metrics endpoint (Prometheus format) and a /telemetry REST endpoint. Look at: app_info and memory fields under /telemetry, process_resident_memory_bytes in Prometheus metrics. If Qdrant's self-reported RSS is stable and only the OS-level used figure is climbing, page cache is the culprit.'"
+    },
+    {
+      "text": "Does NOT immediately jump to 'enable quantization' as the fix",
+      "passed": true,
+      "evidence": "Response does not mention quantization at all. Instead it recommends: Option 1 (do nothing), Option 2 (tune on_disk_payload and mmap settings), Option 3 (set memmap_threshold), Option 4 (tune OS page cache), and Option 5 (add more RAM). Quantization is appropriately absent."
+    },
+    {
+      "text": "Mentions upgrading to latest version if slow growth persists",
+      "passed": false,
+      "evidence": "The response does not mention upgrading to the latest Qdrant version as a troubleshooting step. The response focuses on configuration tuning and diagnosis but does not recommend checking version updates if slow growth persists."
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 1,
+    "total": 6,
+    "pass_rate": "83.33%"
+  }
+}

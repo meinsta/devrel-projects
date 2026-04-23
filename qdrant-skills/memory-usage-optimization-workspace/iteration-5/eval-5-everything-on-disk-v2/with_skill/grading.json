@@ -1,0 +1,40 @@
+{
+  "expectations": [
+    {
+      "text": "Identifies this as Phase 3B unexpectedly high memory",
+      "passed": false,
+      "evidence": "The response does not explicitly identify this as 'Phase 3B unexpectedly high memory'. While it discusses why memory is higher than expected (20 GB vs 7-8 GB calculated), it does not use the specific terminology of 'Phase 3B' or reference any phase classification system."
+    },
+    {
+      "text": "Lists RAM consumers beyond ID tracker: HNSW graph, payload indexes, collection overhead, segment overhead, OS page cache",
+      "passed": true,
+      "evidence": "The response identifies all required RAM consumers: (1) HNSW graph (lines 33-41: 'HNSW entry point and top-level graph layer connections are kept in RAM'), (2) Payload indexes (lines 43-51: 'payload indexes are kept in RAM by default', keyword index on UUID field), (3) Collection overhead (lines 69-71: '12-14 MB of fixed overhead'), (4) Segment overhead (lines 24-31: bitset for deleted points, version vectors, metadata), and (5) OS page cache (lines 53-67: 'The 20 GB combines actual data memory with OS page cache')."
+    },
+    {
+      "text": "Correctly states RF=2 doubles data memory but not OS page cache",
+      "passed": true,
+      "evidence": "Lines 89-97 explicitly state: 'If 20 GB is mostly data memory: RF=2 doubles data memory... If 20 GB is mostly OS page cache: RF=2 increases data memory but cache behavior depends on access patterns. The relationship is not linear.' The response correctly distinguishes that RF=2 doubles data memory but not cache."
+    },
+    {
+      "text": "Warns about stream_records OOM risk during resharding for large shards",
+      "passed": true,
+      "evidence": "Line 99 provides explicit warning: 'when Qdrant replicates large shards, the default `stream_records` method buffers data in memory during transfer... you need 1.5-2x data memory headroom during the replication operation itself. Use snapshot-based replication instead of stream_records to avoid OOM during replica setup.'"
+    },
+    {
+      "text": "Recommends checking telemetry to separate data from cache before concluding",
+      "passed": true,
+      "evidence": "Lines 105-111 recommend as Step 1: 'GET /telemetry' and explain 'This single call will tell you whether you have a real problem or a measurement artifact.' Lines 59-67 also explain how to use telemetry to separate data memory from cache by comparing `app.memory_usage` versus collection memory_usage."
+    },
+    {
+      "text": "Recommends escalating to support if config doesn't explain the gap",
+      "passed": false,
+      "evidence": "The response does not recommend escalating to support if the configuration doesn't explain the gap. The final recommendation in Step 5 (lines 129-133) focuses on replication best practices but does not suggest escalation to support as a follow-up action if the diagnostic steps don't resolve the question."
+    }
+  ],
+  "summary": {
+    "passed": 4,
+    "failed": 2,
+    "total": 6,
+    "pass_rate": 0.667
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "skill": "qdrant-community-skill-creator",
+  "should_trigger": [
+    "I want to create a community skill for qdrant memory optimization",
+    "help me build a public qdrant skill for vector quantization guidance",
+    "how do I make an open source qdrant skill for developers",
+    "create a qdrant skill for the community about cluster sizing",
+    "I want to build an external skill that helps developers with qdrant storage choices",
+    "help me create a qdrant skill for public use about HNSW tuning",
+    "build a community qdrant skill for diagnosing latency issues",
+    "I want to make a qdrant skill that any developer can use for migration planning"
+  ],
+  "should_not_trigger": [
+    "help me create a skill for my python project",
+    "I want to build a skill for code review automation",
+    "how do I create a general purpose coding assistant skill",
+    "build a skill for react component generation",
+    "our qdrant node is using too much memory, getting OOM killed",
+    "how do I set up scalar quantization in qdrant",
+    "create an internal qdrant skill for our SA team's pricing conversations",
+    "help me build an internal skill for qdrant deal objections"
+  ]
+}

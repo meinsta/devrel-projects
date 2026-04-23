@@ -1,0 +1,5 @@
+public
+node_modules
+.idea/
+.hugo_build.lock
+resources/_gen

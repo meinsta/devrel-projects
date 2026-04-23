@@ -1,0 +1,1 @@
+{"eval_id": 0, "eval_name": "fp16", "prompt": "Does Qdrant support FP16 (float16) vector storage? We want to cut memory in half without quantization. Also what quantization bit-widths does Qdrant support beyond scalar and binary?"}

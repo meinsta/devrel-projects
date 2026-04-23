@@ -1,0 +1,35 @@
+{
+  "expectations": [
+    {
+      "text": "Actually connects to the cluster and lists collections",
+      "passed": true,
+      "evidence": "Response shows cluster URL, lists all 12 collections in the inventory table, includes memory metrics from /metrics endpoint, and references actual API responses throughout."
+    },
+    {
+      "text": "Identifies the 10+ products-{locale} collections as an antipattern",
+      "passed": true,
+      "evidence": "Issue 1 'Redundant Locale Collections (High Impact)' identifies 11 separate locale-specific product collections and explicitly states 'The correct approach is a single products collection with a locale keyword field.'"
+    },
+    {
+      "text": "Calculates or mentions the per-collection overhead (12-14 MB each)",
+      "passed": false,
+      "evidence": "The response does not mention the 12-14 MB per-collection overhead. It mentions per-collection segment overhead vaguely but does not cite the 12-14 MB figure. The closest reference is 'Segment + WAL overhead (12 collections x 2 segments each) ~5-10 MB (estimated)' which is not the correct per-collection overhead figure."
+    },
+    {
+      "text": "Recommends consolidating into a single collection with a tenant field",
+      "passed": true,
+      "evidence": "Recommendation 1: 'Consolidate locale collections into one (or few) collections' with example code showing a single products collection with locale keyword field and filtered search."
+    },
+    {
+      "text": "Checks collection config (on_disk, quantization) not just collection count",
+      "passed": true,
+      "evidence": "Collections inventory table shows on_disk status for each collection, quantization config. Issues 3 and 4 specifically discuss on_disk=false configuration and quantization config on embeddings-archive."
+    }
+  ],
+  "summary": {
+    "passed": 4,
+    "failed": 1,
+    "total": 5,
+    "pass_rate": 0.8
+  }
+}

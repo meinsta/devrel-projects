@@ -1,0 +1,318 @@
+{
+  "experiment_name": "gpt5_top5_wyoming_fixed",
+  "model": "gpt-5",
+  "top_k": 5,
+  "num_questions": 4,
+  "metrics": {
+    "retrieval": {
+      "precision": 0.08333333333333333,
+      "recall": 0.25,
+      "f1": 0.125
+    },
+    "answer": {
+      "exact_match_rate": 0.0
+    }
+  },
+  "results": [
+    {
+      "id": "q_55",
+      "question": "Is there a state/territory law regulating residential evictions?",
+      "state": "Wyoming",
+      "generated_answer": "Error generating answer: Error code: 400 - {'error': {'message': \"Unsupported value: 'temperature' does not support 0.1 with this model. Only the default (1) value is supported.\", 'type': 'invalid_request_error', 'param': 'temperature', 'code': 'unsupported_value'}}",
+      "golden_answer": "Yes",
+      "golden_statutes": "[{'citation': 'WYO. STAT. \u00a7 1-21-1001', 'excerpt': 'Any circuit court within the judicial district may inquire against those who make unlawful and forcible entry into lands and tenements and detain the same, or against those who, having a lawful and peaceable entry into lands or tenements, unlawfully or by force hold the same. If it is found that an unlawful and forcible entry was made and the lands or tenements are held by force, or that after a lawful entry the lands are held unlawfully, the judge shall require restitution to the complaining party.', 'statute_idx': 1074954}]",
+      "retrieved_chunks": [
+        {
+          "text": "1-21-1205. Prohibited acts by renter.| (a) No renter shall:  (i) Intentionally or negligently destroy, deface, damage, impair or remove any part of the residential rental unit or knowingly permit any person to do so;  (ii) Interfere with another person's peaceful enjoyment of the residential property; or  (iii) Unreasonably deny access to, refuse entry to or withhold consent to enter the residential rental unit to the owner, agent or manager for the purpose of making repairs to or inspecting the unit, and showing the unit for rent or sale. ",
+          "citation": "WY Stat \u00a7 1-21-1205 (2021)",
+          "state": "wyoming",
+          "statute_idx": 1074975,
+          "chunk_idx": 0,
+          "path": "2021 Wyoming Statutes|Title 1 - Code of Civil Procedure|Chapter 21 - Procedure and Actions|Article 12 - Residential Rental Property|Section 1-21-1205 - Prohibited Acts by Renter.",
+          "score": 0.88323796
+        },
+        {
+          "text": "1-21-1205. Prohibited acts by renter.| (a) No renter shall:  (i) Intentionally or negligently destroy, deface, damage, impair or remove any part of the residential rental unit or knowingly permit any person to do so;  (ii) Interfere with another person's peaceful enjoyment of the residential property; or  (iii) Unreasonably deny access to, refuse entry to or withhold consent to enter the residential rental unit to the owner, agent or manager for the purpose of making repairs to or inspecting the unit, and showing the unit for rent or sale. ",
+          "citation": "WY Stat \u00a7 1-21-1205 (2021)",
+          "state": "wyoming",
+          "statute_idx": 1074975,
+          "chunk_idx": 0,
+          "path": "2021 Wyoming Statutes|Title 1 - Code of Civil Procedure|Chapter 21 - Procedure and Actions|Article 12 - Residential Rental Property|Section 1-21-1205 - Prohibited Acts by Renter.",
+          "score": 0.88323796
+        },
+        {
+          "text": "35-18-107. Lessee's rights.| Action by a lessee to enforce his rights under this act shall not be grounds for termination of the rental agreement. ",
+          "citation": "WY Stat \u00a7 35-18-107 (2021)",
+          "state": "wyoming",
+          "statute_idx": 1073892,
+          "chunk_idx": 0,
+          "path": "2021 Wyoming Statutes|Title 35 - Public Health and Safety|Chapter 18 - Mobile Home Warranties|Section 35-18-107 - Lessee's Rights.",
+          "score": 0.86829305
+        },
+        {
+          "text": "35-18-107. Lessee's rights.| Action by a lessee to enforce his rights under this act shall not be grounds for termination of the rental agreement. ",
+          "citation": "WY Stat \u00a7 35-18-107 (2021)",
+          "state": "wyoming",
+          "statute_idx": 1073892,
+          "chunk_idx": 0,
+          "path": "2021 Wyoming Statutes|Title 35 - Public Health and Safety|Chapter 18 - Mobile Home Warranties|Section 35-18-107 - Lessee's Rights.",
+          "score": 0.86829305
+        },
+        {
+          "text": "1-21-1204. Renter's duties.| (a) Each renter shall:  (i) Maintain the residential rental unit occupied in a clean and safe condition and not unreasonably burden any common area;  (ii) Dispose of all garbage and other waste in a clean and safe manner;  (iii) Maintain all plumbing fixtures in a condition as sanitary as the fixtures permit;  (iv) Use all electrical, plumbing, sanitary, heating and other facilities and appliances in a reasonable manner;  (v) Occupy the residential rental unit in the manner for which it was designed and shall not increase the number of occupants above that specified in the rental agreement without written permission of the owner;  (vi) Be current on all payments required by the rental agreement;  (vii) Comply with all lawful requirements of the rental agreement between the owner and the renter; and  (viii) Remove all property and garbage either owned or placed within the residential rental unit by the renter or his guests prior to termination of the rental agreement and clean the rental unit to the condition at the beginning of the rental agreement. ",
+          "citation": "WY Stat \u00a7 1-21-1204 (2021)",
+          "state": "wyoming",
+          "statute_idx": 1074974,
+          "chunk_idx": 0,
+          "path": "2021 Wyoming Statutes|Title 1 - Code of Civil Procedure|Chapter 21 - Procedure and Actions|Article 12 - Residential Rental Property|Section 1-21-1204 - Renter's Duties.",
+          "score": 0.86270314
+        }
+      ],
+      "retrieval_metrics": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "retrieved_count": 3,
+        "golden_count": 1,
+        "matched_by_citation": false
+      },
+      "answer_metrics": {
+        "exact_match": false,
+        "contains_answer": false,
+        "generated_length": 266,
+        "golden_length": 3
+      },
+      "retrieved_count": 5,
+      "golden_statute_count": 1,
+      "experiment_name": "gpt5_top5_wyoming_fixed",
+      "model": "gpt-5",
+      "top_k": 5
+    },
+    {
+      "id": "q_212",
+      "question": "Does the law specify a minimum number of days a tenant can be late on rent before the landlord can file an eviction action for nonpayment?",
+      "state": "Wyoming",
+      "generated_answer": "Error generating answer: Error code: 400 - {'error': {'message': \"Unsupported value: 'temperature' does not support 0.1 with this model. Only the default (1) value is supported.\", 'type': 'invalid_request_error', 'param': 'temperature', 'code': 'unsupported_value'}}",
+      "golden_answer": "Yes",
+      "golden_statutes": "[{'citation': 'WYO. STAT. \u00a7 1-21-1003', 'excerpt': 'The party desiring to commence an action for forcible entry or detainer must notify the adverse party to leave the premises involved. The notice shall be served at least three (3) days before commencing the action, by leaving a written copy with the defendant or at his usual place of abode or business if he cannot be found.', 'statute_idx': 1074956}]",
+      "retrieved_chunks": [
+        {
+          "text": "35-18-107. Lessee's rights.| Action by a lessee to enforce his rights under this act shall not be grounds for termination of the rental agreement. ",
+          "citation": "WY Stat \u00a7 35-18-107 (2021)",
+          "state": "wyoming",
+          "statute_idx": 1073892,
+          "chunk_idx": 0,
+          "path": "2021 Wyoming Statutes|Title 35 - Public Health and Safety|Chapter 18 - Mobile Home Warranties|Section 35-18-107 - Lessee's Rights.",
+          "score": 0.9006224
+        },
+        {
+          "text": "35-18-107. Lessee's rights.| Action by a lessee to enforce his rights under this act shall not be grounds for termination of the rental agreement. ",
+          "citation": "WY Stat \u00a7 35-18-107 (2021)",
+          "state": "wyoming",
+          "statute_idx": 1073892,
+          "chunk_idx": 0,
+          "path": "2021 Wyoming Statutes|Title 35 - Public Health and Safety|Chapter 18 - Mobile Home Warranties|Section 35-18-107 - Lessee's Rights.",
+          "score": 0.9006224
+        },
+        {
+          "text": "36-5-109. When rental due; procedure upon failure to pay.| Upon notice provided not less than thirty (30) days prior to the anniversary date of a lease, all rentals accruing to the state by virtue of this act, except those for the first year, shall become due and payable at the office of the director on the anniversary date of the lease. If the rent is not paid on the anniversary date, the director shall notify the lessee or his authorized agent by certified mail that the lease will be cancelled if the rent and a late fee equal to ten percent (10%) of the annual rental is not received within thirty (30) days following the date of the notice. If the lease is cancelled, the director shall as soon as possible thereafter, advertise the lands in the county where located, as vacant and subject to lease. ",
+          "citation": "WY Stat \u00a7 36-5-109 (2021)",
+          "state": "wyoming",
+          "statute_idx": 1074013,
+          "chunk_idx": 0,
+          "path": "2021 Wyoming Statutes|Title 36 - State Lands|Chapter 5 - Leasing Generally|Section 36-5-109 - When Rental Due; Procedure Upon Failure to Pay.",
+          "score": 0.8864889
+        },
+        {
+          "text": "36-5-109. When rental due; procedure upon failure to pay.| Upon notice provided not less than thirty (30) days prior to the anniversary date of a lease, all rentals accruing to the state by virtue of this act, except those for the first year, shall become due and payable at the office of the director on the anniversary date of the lease. If the rent is not paid on the anniversary date, the director shall notify the lessee or his authorized agent by certified mail that the lease will be cancelled if the rent and a late fee equal to ten percent (10%) of the annual rental is not received within thirty (30) days following the date of the notice. If the lease is cancelled, the director shall as soon as possible thereafter, advertise the lands in the county where located, as vacant and subject to lease. ",
+          "citation": "WY Stat \u00a7 36-5-109 (2021)",
+          "state": "wyoming",
+          "statute_idx": 1074013,
+          "chunk_idx": 0,
+          "path": "2021 Wyoming Statutes|Title 36 - State Lands|Chapter 5 - Leasing Generally|Section 36-5-109 - When Rental Due; Procedure Upon Failure to Pay.",
+          "score": 0.8864889
+        },
+        {
+          "text": "34-24-130. Periods of limitation.| (a) The expiration, before or after the effective date of this act, of any period of time specified by contract, statute or court order, during which a claim for money or property can be made or during which an action or proceeding may be commenced or enforced to obtain payment of a claim for money or to recover property, does not prevent the money or property from being deemed abandoned or affect any duty to file a report or to pay or deliver abandoned property to the administrator as required by this act.  (b) No action or proceeding may be commenced by the administrator against any holder concerning any provision of this act more than ten (10) years after the holder either specifically reported the property, or gave notice of a dispute regarding the property, to the administrator. ",
+          "citation": "WY Stat \u00a7 34-24-130 (2021)",
+          "state": "wyoming",
+          "statute_idx": 1073770,
+          "chunk_idx": 0,
+          "path": "2021 Wyoming Statutes|Title 34 - Property, Conveyances and Security Transactions|Chapter 24 - Uniform Unclaimed Property Act|Section 34-24-130 - Periods of Limitation.",
+          "score": 0.8823333
+        }
+      ],
+      "retrieval_metrics": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "retrieved_count": 3,
+        "golden_count": 1,
+        "matched_by_citation": false
+      },
+      "answer_metrics": {
+        "exact_match": false,
+        "contains_answer": false,
+        "generated_length": 266,
+        "golden_length": 3
+      },
+      "retrieved_count": 5,
+      "golden_statute_count": 1,
+      "experiment_name": "gpt5_top5_wyoming_fixed",
+      "model": "gpt-5",
+      "top_k": 5
+    },
+    {
+      "id": "q_236",
+      "question": "Does the law require the tenant to respond to an eviction action before a hearing?",
+      "state": "Wyoming",
+      "generated_answer": "Error generating answer: Error code: 400 - {'error': {'message': \"Unsupported value: 'temperature' does not support 0.1 with this model. Only the default (1) value is supported.\", 'type': 'invalid_request_error', 'param': 'temperature', 'code': 'unsupported_value'}}",
+      "golden_answer": "No",
+      "golden_statutes": "[{'citation': 'WYO. STAT. \u00a7 1-21-1004', 'excerpt': 'The summons shall state the cause of the complaint against the defendant, the time and place of trial and shall be served and returned as in other cases. Such service shall be not less than three (3) nor more than twelve (12) days before the day of trial set by the judge. The defendant shall not be required to file a written answer to the complaint as a condition of being allowed to participate fully in the trial.', 'statute_idx': 1074957}]",
+      "retrieved_chunks": [
+        {
+          "text": "1-21-1303. Breach of lease; recovery of rent; affirmative defense.| (a) In any action brought by a landlord against a tenant to recover rent for breach of lease, the tenant shall have an affirmative defense and not be liable for rent for the period after which a tenant vacates the premises owned by the landlord and covered by the lease, if by a preponderance of the evidence, the court finds that:  (i) At the time the tenant vacated the premises, the tenant or a member of the tenant's household was under a credible imminent threat of domestic abuse or sexual violence at the premises, as demonstrated by medical, court or police evidence of domestic abuse or sexual violence; and  (ii) The tenant gave seven (7) days written notice to the landlord prior to vacating the premises stating that the reason for vacating the premises was because of a credible imminent threat of domestic abuse or sexual violence against the tenant or a member of the tenant's household.  (b) In any action brought by a landlord against a tenant to recover rent for breach of lease, the tenant shall have an affirmative defense and not be liable for rent for the period after which a tenant vacates the premises owned by the landlord and covered by the lease, if by a preponderance of the evidence, the court finds that:  (i) The tenant or a member of the tenant's household was a victim of domestic abuse or sexual violence on the premises that are owned or controlled by the landlord and the tenant has vacated the premises as a result of the sexual violence;  (ii) The tenant gave seven (7) days written notice to the landlord prior to vacating the premises stating that the reason for vacating the premises was because of the domestic abuse or sexual violence against the tenant or a member of the tenant's household, the date of the sexual violence, and that the tenant provided medical, court or police evidence of domestic abuse or sexual violence to the landlord supporting the claim of domestic abuse or sexual violence; and  (iii) The domestic abuse or sexual violence occurred not more than sixty (60) days prior to the date of giving the written notice to the landlord, or if circumstances are such that the tenant could not reasonably give notice within that time period because of reasons related to the domestic abuse or sexual violence, including, but not limited to, hospitalization or seeking assistance for shelter or counseling, then as soon thereafter as practicable.  (c) A landlord may not terminate a tenancy based solely on the tenant's or applicant's or a household member's status as a victim of domestic abuse or sexual violence. This subsection does not prohibit adverse housing decisions based upon other lawful factors within the landlord's knowledge.  (d) Nothing in this act shall be construed to be a defense against:  (i) An action for recovery of rent for the period of time before the tenant vacated the landlord's premises and gave notice to the landlord as required in this section; or  (ii) Forcible entry and detainer for failure to pay rent before the tenant gave notice to the landlord as required in this section and vacated the premises. ",
+          "citation": "WY Stat \u00a7 1-21-1303 (2021)",
+          "state": "wyoming",
+          "statute_idx": 1074984,
+          "chunk_idx": 0,
+          "path": "2021 Wyoming Statutes|Title 1 - Code of Civil Procedure|Chapter 21 - Procedure and Actions|Article 13 - Wyoming Safe Homes Act|Section 1-21-1303 - Breach of Lease; Recovery of Rent; Affirmative Defense.",
+          "score": 0.87120646
+        },
+        {
+          "text": "1-21-1303. Breach of lease; recovery of rent; affirmative defense.| (a) In any action brought by a landlord against a tenant to recover rent for breach of lease, the tenant shall have an affirmative defense and not be liable for rent for the period after which a tenant vacates the premises owned by the landlord and covered by the lease, if by a preponderance of the evidence, the court finds that:  (i) At the time the tenant vacated the premises, the tenant or a member of the tenant's household was under a credible imminent threat of domestic abuse or sexual violence at the premises, as demonstrated by medical, court or police evidence of domestic abuse or sexual violence; and  (ii) The tenant gave seven (7) days written notice to the landlord prior to vacating the premises stating that the reason for vacating the premises was because of a credible imminent threat of domestic abuse or sexual violence against the tenant or a member of the tenant's household.  (b) In any action brought by a landlord against a tenant to recover rent for breach of lease, the tenant shall have an affirmative defense and not be liable for rent for the period after which a tenant vacates the premises owned by the landlord and covered by the lease, if by a preponderance of the evidence, the court finds that:  (i) The tenant or a member of the tenant's household was a victim of domestic abuse or sexual violence on the premises that are owned or controlled by the landlord and the tenant has vacated the premises as a result of the sexual violence;  (ii) The tenant gave seven (7) days written notice to the landlord prior to vacating the premises stating that the reason for vacating the premises was because of the domestic abuse or sexual violence against the tenant or a member of the tenant's household, the date of the sexual violence, and that the tenant provided medical, court or police evidence of domestic abuse or sexual violence to the landlord supporting the claim of domestic abuse or sexual violence; and  (iii) The domestic abuse or sexual violence occurred not more than sixty (60) days prior to the date of giving the written notice to the landlord, or if circumstances are such that the tenant could not reasonably give notice within that time period because of reasons related to the domestic abuse or sexual violence, including, but not limited to, hospitalization or seeking assistance for shelter or counseling, then as soon thereafter as practicable.  (c) A landlord may not terminate a tenancy based solely on the tenant's or applicant's or a household member's status as a victim of domestic abuse or sexual violence. This subsection does not prohibit adverse housing decisions based upon other lawful factors within the landlord's knowledge.  (d) Nothing in this act shall be construed to be a defense against:  (i) An action for recovery of rent for the period of time before the tenant vacated the landlord's premises and gave notice to the landlord as required in this section; or  (ii) Forcible entry and detainer for failure to pay rent before the tenant gave notice to the landlord as required in this section and vacated the premises. ",
+          "citation": "WY Stat \u00a7 1-21-1303 (2021)",
+          "state": "wyoming",
+          "statute_idx": 1074984,
+          "chunk_idx": 0,
+          "path": "2021 Wyoming Statutes|Title 1 - Code of Civil Procedure|Chapter 21 - Procedure and Actions|Article 13 - Wyoming Safe Homes Act|Section 1-21-1303 - Breach of Lease; Recovery of Rent; Affirmative Defense.",
+          "score": 0.87120646
+        },
+        {
+          "text": "2-7-603. When conveyance required; hearing.| At the hearing all persons interested in the estate may appear and contest the petition by filing their objections in writing. The court may examine, on oath, the petitioner and all before him for that purpose. ",
+          "citation": "WY Stat \u00a7 2-7-603 (2021)",
+          "state": "wyoming",
+          "statute_idx": 1075441,
+          "chunk_idx": 0,
+          "path": "2021 Wyoming Statutes|Title 2 - Wills, Decedents' Estates and Probate Code|Chapter 7 - Administration of Estates|Article 6 - Sale and Other Disposition of Property|Section 2-7-603 - When Conveyance Required; Hearing.",
+          "score": 0.8685757
+        },
+        {
+          "text": "1-32-303. Hearing of petition; order for and effect of sale.| Upon hearing the petition if it is shown a sale of the estate would be for the benefit of the tenant in tail or for life, and do no substantial injury to the heirs in tail or others in expectancy, succession, reversion or remainder, the court shall direct a sale of the estate to be made and the manner thereof, and shall appoint some suitable person to make the sale. The sale shall vest the estate sold in the purchaser, freed from the entailment, limitation or condition. ",
+          "citation": "WY Stat \u00a7 1-32-303 (2021)",
+          "state": "wyoming",
+          "statute_idx": 1075097,
+          "chunk_idx": 0,
+          "path": "2021 Wyoming Statutes|Title 1 - Code of Civil Procedure|Chapter 32 - Real Property|Article 3 - Sale or Lease of Certain Interests|Section 1-32-303 - Hearing of Petition; Order for and Effect of Sale.",
+          "score": 0.86536694
+        },
+        {
+          "text": "1-32-303. Hearing of petition; order for and effect of sale.| Upon hearing the petition if it is shown a sale of the estate would be for the benefit of the tenant in tail or for life, and do no substantial injury to the heirs in tail or others in expectancy, succession, reversion or remainder, the court shall direct a sale of the estate to be made and the manner thereof, and shall appoint some suitable person to make the sale. The sale shall vest the estate sold in the purchaser, freed from the entailment, limitation or condition. ",
+          "citation": "WY Stat \u00a7 1-32-303 (2021)",
+          "state": "wyoming",
+          "statute_idx": 1075097,
+          "chunk_idx": 0,
+          "path": "2021 Wyoming Statutes|Title 1 - Code of Civil Procedure|Chapter 32 - Real Property|Article 3 - Sale or Lease of Certain Interests|Section 1-32-303 - Hearing of Petition; Order for and Effect of Sale.",
+          "score": 0.86536694
+        }
+      ],
+      "retrieval_metrics": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "retrieved_count": 3,
+        "golden_count": 1,
+        "matched_by_citation": false
+      },
+      "answer_metrics": {
+        "exact_match": false,
+        "contains_answer": true,
+        "generated_length": 266,
+        "golden_length": 2
+      },
+      "retrieved_count": 5,
+      "golden_statute_count": 1,
+      "experiment_name": "gpt5_top5_wyoming_fixed",
+      "model": "gpt-5",
+      "top_k": 5
+    },
+    {
+      "id": "q_329",
+      "question": "In eviction proceedings, does the filing of an appeal stay the execution of a writ?",
+      "state": "Wyoming",
+      "generated_answer": "Error generating answer: Error code: 400 - {'error': {'message': \"Unsupported value: 'temperature' does not support 0.1 with this model. Only the default (1) value is supported.\", 'type': 'invalid_request_error', 'param': 'temperature', 'code': 'unsupported_value'}}",
+      "golden_answer": "Yes",
+      "golden_statutes": "[{'citation': 'WYO. STAT. \u00a7 1-21-1014', 'excerpt': '(a) If the officer receives notice from the circuit court that the proceedings have been stayed on appeal, he shall immediately delay all further proceedings upon execution and writ of restitution. If the premises have been restored to the plaintiff he shall immediately place the defendant in possession thereof and return the writ and execution with his proceedings and costs taxed thereon. (b) An appeal by a defendant shall not stay the proceedings on judgment unless within forty-eight (48) hours after judgment, Sundays excepted, the appellant executes and files with the court his bond to plaintiff, with two (2) or more sufficient sureties approved by the court, conditioned that the appellant will pay all costs which have accrued or may thereafter accrue and all damages which plaintiff may have sustained or may thereafter sustain in consequence of the wrongful detention of the premises during the pendency of the appeal. Upon taking the appeal and filing the bond, all further proceedings in the case shall be stayed and the appellate court shall thereafter issue all writs and processes to carry out the judgment of the appellate court. The court in which the appeal is pending may require a new bond in a larger amount, with sureties approved by the appellate court, if deemed necessary to secure the rights of the parties.', 'statute_idx': 1074967}]",
+      "retrieved_chunks": [
+        {
+          "text": "1-21-1014. Proceedings upon stay on appeal; bond required.| (a) If the officer receives notice from the circuit court that the proceedings have been stayed on appeal, he shall immediately delay all further proceedings upon execution and writ of restitution. If the premises have been restored to the plaintiff he shall immediately place the defendant in possession thereof and return the writ and execution with his proceedings and costs taxed thereon.  (b) An appeal by a defendant shall not stay the proceedings on judgment unless within forty-eight (48) hours after judgment, Sundays excepted, the appellant executes and files with the court his bond to plaintiff, with two (2) or more sufficient sureties approved by the court, conditioned that the appellant will pay all costs which have accrued or may thereafter accrue and all damages which plaintiff may have sustained or may thereafter sustain in consequence of the wrongful detention of the premises during the pendency of the appeal. Upon taking the appeal and filing the bond, all further proceedings in the case shall be stayed and the appellate court shall thereafter issue all writs and processes to carry out the judgment of the appellate court. The court in which the appeal is pending may require a new bond in a larger amount, with sureties approved by the appellate court, if deemed necessary to secure the rights of the parties. ",
+          "citation": "WY Stat \u00a7 1-21-1014 (2021)",
+          "state": "wyoming",
+          "statute_idx": 1074967,
+          "chunk_idx": 0,
+          "path": "2021 Wyoming Statutes|Title 1 - Code of Civil Procedure|Chapter 21 - Procedure and Actions|Article 10 - Forcible Entry and Detainer|Section 1-21-1014 - Proceedings Upon Stay on Appeal; Bond Required.",
+          "score": 0.8932086
+        },
+        {
+          "text": "1-21-1014. Proceedings upon stay on appeal; bond required.| (a) If the officer receives notice from the circuit court that the proceedings have been stayed on appeal, he shall immediately delay all further proceedings upon execution and writ of restitution. If the premises have been restored to the plaintiff he shall immediately place the defendant in possession thereof and return the writ and execution with his proceedings and costs taxed thereon.  (b) An appeal by a defendant shall not stay the proceedings on judgment unless within forty-eight (48) hours after judgment, Sundays excepted, the appellant executes and files with the court his bond to plaintiff, with two (2) or more sufficient sureties approved by the court, conditioned that the appellant will pay all costs which have accrued or may thereafter accrue and all damages which plaintiff may have sustained or may thereafter sustain in consequence of the wrongful detention of the premises during the pendency of the appeal. Upon taking the appeal and filing the bond, all further proceedings in the case shall be stayed and the appellate court shall thereafter issue all writs and processes to carry out the judgment of the appellate court. The court in which the appeal is pending may require a new bond in a larger amount, with sureties approved by the appellate court, if deemed necessary to secure the rights of the parties. ",
+          "citation": "WY Stat \u00a7 1-21-1014 (2021)",
+          "state": "wyoming",
+          "statute_idx": 1074967,
+          "chunk_idx": 0,
+          "path": "2021 Wyoming Statutes|Title 1 - Code of Civil Procedure|Chapter 21 - Procedure and Actions|Article 10 - Forcible Entry and Detainer|Section 1-21-1014 - Proceedings Upon Stay on Appeal; Bond Required.",
+          "score": 0.8932086
+        },
+        {
+          "text": "1-21-1013. Writ of restitution; execution and return.| Unless the defendant takes an appeal, the officer shall execute the writ of restitution within two (2) days after receiving it, Sundays excepted, by restoring the plaintiff to possession of the premises. He shall levy and collect the execution for rent and costs and make return as upon other executions. ",
+          "citation": "WY Stat \u00a7 1-21-1013 (2021)",
+          "state": "wyoming",
+          "statute_idx": 1074966,
+          "chunk_idx": 0,
+          "path": "2021 Wyoming Statutes|Title 1 - Code of Civil Procedure|Chapter 21 - Procedure and Actions|Article 10 - Forcible Entry and Detainer|Section 1-21-1013 - Writ of Restitution; Execution and Return.",
+          "score": 0.88812673
+        },
+        {
+          "text": "1-21-1013. Writ of restitution; execution and return.| Unless the defendant takes an appeal, the officer shall execute the writ of restitution within two (2) days after receiving it, Sundays excepted, by restoring the plaintiff to possession of the premises. He shall levy and collect the execution for rent and costs and make return as upon other executions. ",
+          "citation": "WY Stat \u00a7 1-21-1013 (2021)",
+          "state": "wyoming",
+          "statute_idx": 1074966,
+          "chunk_idx": 0,
+          "path": "2021 Wyoming Statutes|Title 1 - Code of Civil Procedure|Chapter 21 - Procedure and Actions|Article 10 - Forcible Entry and Detainer|Section 1-21-1013 - Writ of Restitution; Execution and Return.",
+          "score": 0.88812673
+        },
+        {
+          "text": "1-17-210. Stay on appeal.| Execution of a judgment or final order, other than those enumerated in W.S. 1-17-201, of any judicial tribunal, or the levy or collection of any tax or assessment therein litigated, may be stayed on such terms as may be prescribed by the court in which the appeal is filed. ",
+          "citation": "WY Stat \u00a7 1-17-210 (2021)",
+          "state": "wyoming",
+          "statute_idx": 1074847,
+          "chunk_idx": 0,
+          "path": "2021 Wyoming Statutes|Title 1 - Code of Civil Procedure|Chapter 17 - Enforcement of Judgments|Article 2 - Stay of Execution|Section 1-17-210 - Stay on Appeal.",
+          "score": 0.8809123
+        }
+      ],
+      "retrieval_metrics": {
+        "precision": 0.3333333333333333,
+        "recall": 1.0,
+        "f1": 0.5,
+        "tp": 1,
+        "retrieved_count": 3,
+        "golden_count": 1,
+        "matched_by_citation": false
+      },
+      "answer_metrics": {
+        "exact_match": false,
+        "contains_answer": false,
+        "generated_length": 266,
+        "golden_length": 3
+      },
+      "retrieved_count": 5,
+      "golden_statute_count": 1,
+      "experiment_name": "gpt5_top5_wyoming_fixed",
+      "model": "gpt-5",
+      "top_k": 5
+    }
+  ]
+}

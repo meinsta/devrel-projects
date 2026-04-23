@@ -1,0 +1,119 @@
+@use '../helpers/functions' as *;
+
+.investors {
+  background-color: $neutral-94;
+  padding: pxToRem(64) 0 pxToRem(80);
+  position: relative;
+
+  &__container {
+    position: relative;
+
+    &:before {
+      content: "";
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: 1px;
+      background-color: $neutral-90;
+      left: 0;
+      top: pxToRem(-64);
+    }
+  }
+
+  &__title {
+    font-size: $h3-font-size;
+    font-weight: $font-weight-semibold;
+    line-height: 1.1;
+    letter-spacing: -0.5px;
+    text-align: center;
+    color: $neutral-20;
+    margin: 0 0 pxToRem(48);
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: pxToRem(32);
+  }
+
+  &__logos {
+    order: 2;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: pxToRem(16);
+    justify-items: stretch;
+  }
+
+  &__card {
+    background-color: $neutral-98;
+    border: 1px solid $neutral-90;
+    border-radius: pxToRem(8);
+    height: pxToRem(80);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: pxToRem(24) $spacer * 2;
+  }
+
+  &__logo {
+    max-height: pxToRem(44);
+    max-width: 100%;
+    width: auto;
+    object-fit: contain;
+  }
+
+  &__links {
+    order: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__link-outer {
+    width: 100%;
+    padding: pxToRem(30) 0;
+    border-top: 1px solid $neutral-90;
+  }
+
+  &__link-outer:last-child {
+    border-bottom: 1px solid $neutral-90;
+  }
+
+  &__link {
+    font-weight: 350;
+    padding-right: pxToRem(20);
+  }
+
+  @include media-breakpoint-up(lg) {
+    &__content {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: pxToRem(48);
+    }
+
+    &__logos {
+      order: 1;
+      flex: 1 1 0;
+      min-width: 0;
+    }
+
+    &__links {
+      order: 2;
+      flex: 0 0 35%;
+      align-items: flex-start;
+    }
+
+    &__link-outer {
+      width: 100%;
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+}

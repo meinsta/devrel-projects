@@ -1,0 +1,611 @@
+/* Vector Search Studio - shadcn-inspired with Qdrant Colors */
+@import url('https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,600,700,800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+    /* Qdrant Brand Colors */
+    --qd-amaranth: #DC244C;
+    --qd-violet:   #8547FF;
+    --qd-blue:     #2F6FF0;
+    --qd-teal:     #038585;
+    --qd-black:    #090E1A;
+    --qd-white:    #FFFFFF;
+    
+    /* shadcn-inspired backgrounds (zinc/slate) */
+    --background: 0 0% 3.9%;           /* hsl(0, 0%, 3.9%) #0a0a0a */
+    --foreground: 0 0% 98%;            /* hsl(0, 0%, 98%) #fafafa */
+    
+    --card: 0 0% 7%;                   /* hsl(0, 0%, 7%) #121212 */
+    --card-foreground: 0 0% 98%;
+    
+    --popover: 0 0% 7%;
+    --popover-foreground: 0 0% 98%;
+    
+    --primary: 260 100% 65%;           /* Qdrant Violet */
+    --primary-foreground: 0 0% 100%;
+    
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    
+    --destructive: 348 87% 49%;        /* Qdrant Amaranth */
+    --destructive-foreground: 0 0% 98%;
+    
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 260 100% 65%;              /* Qdrant Violet */
+    
+    --radius: 0.5rem;
+}
+
+body {
+    font-family: 'Satoshi', -apple-system, BlinkMacSystemFont, sans-serif !important;
+    background: hsl(var(--background)) !important;
+    color: hsl(var(--foreground)) !important;
+    font-feature-settings: "rlig" 1, "calt" 1;
+}
+
+/* Cards - shadcn style */
+.mission-card {
+    background: hsl(var(--card)) !important;
+    border: 1px solid hsl(var(--border)) !important;
+    border-radius: var(--radius) !important;
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05) !important;
+    transition: all 0.15s ease !important;
+}
+
+.mission-card:hover {
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1) !important;
+}
+
+/* KPI Cards */
+.kpi-card {
+    background: hsl(var(--card)) !important;
+    border: 1px solid hsl(var(--border)) !important;
+    border-radius: var(--radius) !important;
+    padding: 1.5rem !important;
+    transition: all 0.15s ease;
+}
+
+.kpi-card:hover {
+    border-color: hsl(var(--ring) / 0.3) !important;
+}
+
+.kpi-value {
+    font-size: 2rem !important;
+    font-weight: 700 !important;
+    font-family: 'JetBrains Mono', monospace !important;
+    letter-spacing: -0.025em;
+    line-height: 1;
+}
+
+.kpi-card.kpi-recall .kpi-value {
+    color: var(--qd-blue);
+}
+
+.kpi-card.kpi-speed .kpi-value {
+    color: var(--qd-teal);
+}
+
+.kpi-card.kpi-cost .kpi-value {
+    color: var(--qd-teal);
+}
+
+.kpi-card.kpi-config .kpi-value {
+    color: var(--qd-violet);
+}
+
+.kpi-label {
+    font-size: 0.875rem !important;
+    font-weight: 500 !important;
+    color: hsl(var(--muted-foreground)) !important;
+    text-transform: none;
+    letter-spacing: -0.01em;
+}
+
+.kpi-sublabel {
+    font-size: 0.875rem !important;
+    color: hsl(var(--muted-foreground)) !important;
+    margin-top: 0.25rem;
+    font-weight: 400;
+}
+
+/* Scenario chips - shadcn badge style */
+.scenario-chip {
+    display: inline-flex;
+    align-items: center;
+    border-radius: calc(var(--radius) - 2px);
+    padding: 0.25rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    background: hsl(var(--secondary));
+    color: hsl(var(--secondary-foreground));
+    border: none;
+    margin-right: 0.5rem;
+    transition: all 0.15s ease;
+}
+
+.scenario-chip:hover {
+    background: hsl(var(--secondary) / 0.8);
+}
+
+/* Experiment Summary */
+.experiment-summary {
+    background: hsl(var(--muted) / 0.5);
+    border-left: 2px solid var(--qd-violet);
+    border-radius: calc(var(--radius) - 2px);
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+}
+
+.experiment-summary.verdict-success {
+    border-left-color: var(--qd-teal);
+}
+
+.experiment-summary.verdict-danger {
+    border-left-color: var(--qd-amaranth);
+}
+
+.verdict-pill {
+    background: var(--qd-violet);
+    color: white;
+    padding: 0.125rem 0.5rem;
+    border-radius: calc(var(--radius) - 4px);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: inline-block;
+    margin-right: 0.5rem;
+}
+
+.verdict-highlight {
+    color: var(--qd-violet);
+    font-weight: 600;
+}
+
+.verdict-highlight.success {
+    color: var(--qd-teal);
+}
+
+.verdict-highlight.danger {
+    color: var(--qd-amaranth);
+}
+
+/* Control section labels */
+.control-section-label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: hsl(var(--foreground));
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.01em;
+}
+
+/* Segmented control - shadcn style */
+.segmented-btn {
+    flex: 1;
+    font-size: 0.875rem !important;
+    font-weight: 500 !important;
+    padding: 0.5rem 1rem !important;
+    border-radius: 0 !important;
+    transition: all 0.15s ease !important;
+    letter-spacing: -0.01em;
+}
+
+.segmented-btn:first-child {
+    border-radius: calc(var(--radius) - 2px) 0 0 calc(var(--radius) - 2px) !important;
+}
+
+.segmented-btn:last-child {
+    border-radius: 0 calc(var(--radius) - 2px) calc(var(--radius) - 2px) 0 !important;
+}
+
+.segmented-btn[outline="false"] {
+    background: var(--qd-violet) !important;
+    border-color: var(--qd-violet) !important;
+    color: white !important;
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+}
+
+.segmented-btn[outline="true"] {
+    background: transparent !important;
+    border-color: hsl(var(--border)) !important;
+    color: hsl(var(--muted-foreground)) !important;
+}
+
+.segmented-btn[outline="true"]:hover {
+    background: hsl(var(--accent)) !important;
+    color: hsl(var(--accent-foreground)) !important;
+}
+
+/* Buttons - shadcn style */
+.btn-mission-primary {
+    background: var(--qd-violet) !important;
+    border: none !important;
+    color: white !important;
+    font-weight: 500 !important;
+    padding: 0.5rem 1rem !important;
+    border-radius: calc(var(--radius) - 2px) !important;
+    transition: all 0.15s ease !important;
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05) !important;
+    letter-spacing: -0.01em;
+}
+
+.btn-mission-primary:hover {
+    background: hsl(260 100% 70%) !important;
+}
+
+.btn-launch {
+    height: 2.75rem !important;
+    font-size: 0.9375rem !important;
+    font-weight: 500 !important;
+}
+
+.btn-mission-secondary {
+    background: transparent !important;
+    border: 1px solid hsl(var(--border)) !important;
+    color: hsl(var(--foreground)) !important;
+    font-weight: 500 !important;
+    padding: 0.5rem 1rem !important;
+    border-radius: calc(var(--radius) - 2px) !important;
+    font-size: 0.875rem !important;
+    transition: all 0.15s ease !important;
+    letter-spacing: -0.01em;
+}
+
+.btn-mission-secondary:hover {
+    background: hsl(var(--accent)) !important;
+    color: hsl(var(--accent-foreground)) !important;
+}
+
+/* Sliders - shadcn style */
+.rc-slider-track {
+    background: var(--qd-violet) !important;
+    height: 0.5rem !important;
+}
+
+.rc-slider-rail {
+    background: hsl(var(--muted)) !important;
+    height: 0.5rem !important;
+}
+
+.rc-slider-handle {
+    border: 2px solid var(--qd-violet) !important;
+    background: hsl(var(--background)) !important;
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05) !important;
+    width: 1.25rem !important;
+    height: 1.25rem !important;
+    margin-top: -0.375rem !important;
+}
+
+.rc-slider-handle:hover {
+    border-color: hsl(260 100% 70%) !important;
+}
+
+/* Tables - shadcn style */
+.leaderboard-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.leaderboard-table th {
+    border-bottom: 1px solid hsl(var(--border));
+    padding: 0.75rem 1rem;
+    text-align: left;
+    font-weight: 500;
+    font-size: 0.875rem;
+    color: hsl(var(--muted-foreground));
+    letter-spacing: -0.01em;
+}
+
+.leaderboard-table td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid hsl(var(--border));
+    font-size: 0.875rem;
+    color: hsl(var(--foreground));
+}
+
+.leaderboard-table tbody tr {
+    transition: background-color 0.15s ease;
+}
+
+.leaderboard-table tbody tr:hover {
+    background: hsl(var(--muted) / 0.5);
+}
+
+/* Badges - shadcn style */
+.badge-new {
+    display: inline-flex;
+    align-items: center;
+    border-radius: calc(var(--radius) - 4px);
+    padding: 0.125rem 0.625rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    background: var(--qd-teal);
+    color: white;
+    letter-spacing: -0.01em;
+}
+
+.badge-baseline {
+    display: inline-flex;
+    align-items: center;
+    border-radius: calc(var(--radius) - 4px);
+    padding: 0.125rem 0.625rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    background: var(--qd-violet);
+    color: white;
+    letter-spacing: -0.01em;
+}
+
+.badge-regression {
+    display: inline-flex;
+    align-items: center;
+    border-radius: calc(var(--radius) - 4px);
+    padding: 0.125rem 0.625rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    background: var(--qd-amaranth);
+    color: white;
+    letter-spacing: -0.01em;
+}
+
+/* Typography - shadcn style */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600 !important;
+    letter-spacing: -0.025em !important;
+    color: hsl(var(--foreground)) !important;
+}
+
+h1 {
+    font-size: 2.25rem !important;
+    line-height: 2.5rem !important;
+}
+
+h2 {
+    font-size: 1.875rem !important;
+    line-height: 2.25rem !important;
+}
+
+h3 {
+    font-size: 1.5rem !important;
+    line-height: 2rem !important;
+}
+
+.section-header {
+    margin-bottom: 0.5rem;
+    font-size: 1.125rem !important;
+    font-weight: 600 !important;
+    letter-spacing: -0.025em !important;
+}
+
+/* Tab description */
+.tab-description {
+    font-size: 0.875rem;
+    color: hsl(var(--muted-foreground));
+    margin-bottom: 1rem;
+}
+
+/* Tabs - shadcn style */
+.nav-tabs {
+    border-bottom: 1px solid hsl(var(--border)) !important;
+}
+
+.nav-tabs .nav-link {
+    color: hsl(var(--muted-foreground)) !important;
+    border: none !important;
+    padding: 0.75rem 1rem !important;
+    font-weight: 500 !important;
+    font-size: 0.875rem !important;
+    transition: all 0.15s ease !important;
+    background: transparent !important;
+    letter-spacing: -0.01em;
+}
+
+.nav-tabs .nav-link:hover {
+    color: hsl(var(--foreground)) !important;
+    background: hsl(var(--muted) / 0.5) !important;
+}
+
+.nav-tabs .nav-link.active {
+    color: hsl(var(--foreground)) !important;
+    background: transparent !important;
+    border-bottom: 2px solid var(--qd-violet) !important;
+    font-weight: 600 !important;
+}
+
+.nav-tabs .nav-link span {
+    color: inherit !important;
+}
+
+/* Form labels - shadcn style */
+label {
+    color: hsl(var(--foreground)) !important;
+    font-size: 0.875rem !important;
+    font-weight: 500 !important;
+    margin-bottom: 0.5rem !important;
+    letter-spacing: -0.01em !important;
+    text-transform: none !important;
+}
+
+/* Input fields - shadcn style */
+input, select, textarea {
+    background: hsl(var(--background)) !important;
+    border: 1px solid hsl(var(--border)) !important;
+    color: hsl(var(--foreground)) !important;
+    border-radius: calc(var(--radius) - 2px) !important;
+    padding: 0.5rem 0.75rem !important;
+    font-size: 0.875rem !important;
+    transition: all 0.15s ease !important;
+    letter-spacing: -0.01em;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none !important;
+    border-color: var(--qd-violet) !important;
+    box-shadow: 0 0 0 3px hsl(var(--ring) / 0.1) !important;
+}
+
+select option {
+    background: hsl(var(--popover)) !important;
+    color: hsl(var(--popover-foreground)) !important;
+}
+
+/* Dropdown/Select - shadcn style */
+.Select-control,
+.dash-dropdown .Select-control {
+    background: hsl(var(--background)) !important;
+    border: 1px solid hsl(var(--border)) !important;
+    border-radius: calc(var(--radius) - 2px) !important;
+    color: hsl(var(--foreground)) !important;
+    min-height: 2.5rem !important;
+    font-size: 0.875rem !important;
+}
+
+.Select-control:hover,
+.dash-dropdown .Select-control:hover {
+    border-color: hsl(var(--ring) / 0.3) !important;
+}
+
+.Select-menu-outer,
+.dash-dropdown .Select-menu-outer {
+    background: hsl(var(--card)) !important;
+    border: 1px solid hsl(var(--border)) !important;
+    border-radius: calc(var(--radius) - 2px) !important;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1) !important;
+    margin-top: 4px !important;
+}
+
+.Select-option,
+.dash-dropdown .Select-option {
+    background: transparent !important;
+    color: hsl(var(--foreground)) !important;
+    padding: 0.5rem 0.75rem !important;
+    font-size: 0.875rem !important;
+    cursor: pointer !important;
+}
+
+.Select-option:hover,
+.Select-option.is-focused,
+.dash-dropdown .Select-option:hover,
+.dash-dropdown .Select-option.is-focused {
+    background: hsl(var(--accent)) !important;
+    color: hsl(var(--foreground)) !important;
+}
+
+.Select-option.is-selected,
+.dash-dropdown .Select-option.is-selected {
+    background: hsl(var(--accent)) !important;
+    color: hsl(var(--foreground)) !important;
+}
+
+.Select-value-label,
+.dash-dropdown .Select-value-label {
+    color: hsl(var(--foreground)) !important;
+    font-size: 0.875rem !important;
+}
+
+.Select-placeholder,
+.dash-dropdown .Select-placeholder {
+    color: hsl(var(--muted-foreground)) !important;
+}
+
+.Select-arrow-zone,
+.dash-dropdown .Select-arrow-zone {
+    padding-right: 0.5rem !important;
+}
+
+/* Dash Core Components dropdown */
+.dash-dropdown .Select-input > input {
+    color: hsl(var(--foreground)) !important;
+}
+
+.VirtualizedSelectOption {
+    background: transparent !important;
+    color: hsl(var(--foreground)) !important;
+    padding: 0.5rem 0.75rem !important;
+}
+
+.VirtualizedSelectFocusedOption {
+    background: hsl(var(--accent)) !important;
+    color: hsl(var(--foreground)) !important;
+}
+
+/* Fix Dash Dropdown Menu */
+.dash-dropdown .Select-menu {
+    max-height: 300px !important;
+    overflow-y: auto !important;
+}
+
+.dash-dropdown .Select-option {
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+}
+
+/* Fix Dropdown Selected Value Display */
+.dash-dropdown .Select-value {
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+    line-height: 2.5rem !important;
+}
+
+.dash-dropdown .Select-value-label {
+    line-height: 2.5rem !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+}
+
+/* Checkbox/Radio - shadcn style */
+input[type="checkbox"],
+input[type="radio"] {
+    accent-color: var(--qd-violet) !important;
+}
+
+.form-check-label {
+    color: hsl(var(--foreground)) !important;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+}
+
+/* Plotly charts */
+.js-plotly-plot {
+    background: transparent !important;
+}
+
+/* Scrollbar - shadcn style */
+::-webkit-scrollbar {
+    width: 0.625rem;
+    height: 0.625rem;
+}
+
+::-webkit-scrollbar-track {
+    background: hsl(var(--muted));
+}
+
+::-webkit-scrollbar-thumb {
+    background: hsl(var(--muted-foreground) / 0.3);
+    border-radius: calc(var(--radius) - 2px);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--muted-foreground) / 0.5);
+}
+
+/* Utilities */
+.mono {
+    font-family: 'JetBrains Mono', monospace !important;
+}
+
+/* Remove any remaining animations for clean minimal look */
+* {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}

@@ -1,0 +1,18 @@
+{
+  "timestamp": "20251111_102710",
+  "num_questions": 0,
+  "collection_name": "housing_statutes_wyoming",
+  "model": "gpt-4-turbo-preview",
+  "top_k": 5,
+  "aggregate_metrics": {
+    "retrieval": {
+      "avg_precision": 0.0,
+      "avg_recall": 0.0,
+      "avg_f1": 0.0
+    },
+    "answer_quality": {
+      "exact_match_rate": 0.0
+    }
+  },
+  "results": []
+}

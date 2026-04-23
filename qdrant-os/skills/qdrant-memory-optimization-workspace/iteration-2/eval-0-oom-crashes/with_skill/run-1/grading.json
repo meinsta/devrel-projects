@@ -1,0 +1,35 @@
+{
+  "expectations": [
+    {
+      "text": "Recommends enabling mmap storage as immediate fix",
+      "passed": true,
+      "evidence": "Step 1: Enable mmap storage immediately (stops the crashes). 'Switch vector storage from in-RAM to memory-mapped files.'"
+    },
+    {
+      "text": "Recommends quantization (scalar or binary)",
+      "passed": true,
+      "evidence": "Step 2: Apply scalar quantization (4x memory reduction). Step 3: Consider binary quantization if your model supports it (32x reduction)."
+    },
+    {
+      "text": "Explains HNSW index overhead",
+      "passed": true,
+      "evidence": "'Your HNSW index consuming 80GB out of 96GB leaves almost no headroom.' Working backward memory math provided."
+    },
+    {
+      "text": "Links to Qdrant documentation",
+      "passed": true,
+      "evidence": "Links to storage docs, quantization docs, monitoring docs with full URLs."
+    },
+    {
+      "text": "Does NOT recommend just buying more RAM as primary solution",
+      "passed": true,
+      "evidence": "'Do not shard before trying quantization + mmap.' Explicitly says NOT to do various things. No mention of adding RAM."
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 0,
+    "total": 5,
+    "pass_rate": 1.0
+  }
+}

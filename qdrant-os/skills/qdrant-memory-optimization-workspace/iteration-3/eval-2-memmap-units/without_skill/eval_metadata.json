@@ -1,0 +1,1 @@
+{"eval_id": 2, "eval_name": "memmap-units", "prompt": "Does Qdrant support FP16 storage and what is the full list of quantization options with their memory savings?"}

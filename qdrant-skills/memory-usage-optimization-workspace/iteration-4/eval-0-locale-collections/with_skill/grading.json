@@ -1,0 +1,35 @@
+{
+  "expectations": [
+    {
+      "text": "Actually connects to the cluster and lists collections",
+      "passed": true,
+      "evidence": "Response shows actual API response from the cluster listing all 12 collections with raw JSON: '{\"result\":{\"collections\":[{\"name\":\"products-it-it\"},...]}'. Includes real cluster URL and Qdrant version 1.16.3."
+    },
+    {
+      "text": "Identifies the 10+ products-{locale} collections as an antipattern",
+      "passed": true,
+      "evidence": "Finding 1 explicitly names 'Collection proliferation' and states '11 separate locale product collections each hold only 50-500 vectors' and calls it 'the locale-per-collection anti-pattern. One collection per locale creates O(locales) fixed overhead.'"
+    },
+    {
+      "text": "Calculates or mentions the per-collection overhead (12-14 MB each)",
+      "passed": true,
+      "evidence": "Response states 'Collection-level internal state: ~12-14 MB fixed' and '12 collections x 13 MB baseline = ~156 MB overhead', and 'fixed overhead per collection is ~88x the data.'"
+    },
+    {
+      "text": "Recommends consolidating into a single collection with a tenant field",
+      "passed": true,
+      "evidence": "Priority 1 recommendation: 'Replace the 11 products-{locale} collections with a single products collection. Add locale as a payload field (keyword type) and filter by it at query time.' Includes full migration steps and example query filter."
+    },
+    {
+      "text": "Checks collection config (on_disk, quantization) not just collection count",
+      "passed": true,
+      "evidence": "Step 2 provides a full config table per collection showing vectors.on_disk, hnsw_config.on_disk, quantization_config, on_disk_payload. Also notes embeddings-archive has 'always_ram: false' and 'on_disk: false' as a misconfiguration."
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 0,
+    "total": 5,
+    "pass_rate": 1.0
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "skill_name": "qdrant-cost-reduction-advisor",
+  "evals": [
+    {
+      "id": 0,
+      "name": "cost-sticker-shock",
+      "prompt": "hey so we just got the qdrant cloud proposal back and it's $600k annually. that's way too much for a single use case. we have 462M vectors with openai embeddings at 1536 dims. is there any way to bring this down to like $150-200k range",
+      "expected_output": "Should explain that the proposal assumes full RAM deployment, recommend scalar quantization (4x reduction), suggest mmap storage, mention FDE/premium support can be removed, and present optimized pricing scenarios.",
+      "assertions": [
+        {"text": "Identifies full RAM as the cost driver", "type": "content"},
+        {"text": "Recommends quantization (scalar or binary)", "type": "content"},
+        {"text": "Mentions mmap storage as cost reduction lever", "type": "content"},
+        {"text": "Mentions optional add-ons (FDE/premium) can be removed", "type": "content"},
+        {"text": "Provides concrete cost estimates or formula", "type": "content"}
+      ]
+    },
+    {
+      "id": 1,
+      "name": "scaling-costs",
+      "prompt": "we need a formula to calculate qdrant pricing as we scale. currently at 10M vectors with scalar quantization, planning to hit 100M by end of year. using cohere embed-v3 at 1024 dims. what will our monthly cost look like",
+      "expected_output": "Should provide the RAM/cost formula, calculate estimates for 10M and 100M vectors with scalar quantization, mention binary quantization as option for Cohere models, and discuss scaling patterns.",
+      "assertions": [
+        {"text": "Provides cost formula (vectors * dims * bytes * overhead)", "type": "content"},
+        {"text": "Calculates estimate for current 10M vectors", "type": "content"},
+        {"text": "Calculates estimate for target 100M vectors", "type": "content"},
+        {"text": "Mentions binary quantization is compatible with Cohere", "type": "content"}
+      ]
+    },
+    {
+      "id": 2,
+      "name": "oom-as-cost-problem",
+      "prompt": "our qdrant cluster costs too much to run. we're paying $12k/month and our CEO asked if we can cut it by 50%. we have 50M vectors at 1536 dims, everything in RAM, no quantization. QPS is maybe 30-40",
+      "expected_output": "Should diagnose that no quantization + full RAM is the problem, recommend scalar quantization as first step, suggest mmap since QPS is low, and show the expected cost reduction path.",
+      "assertions": [
+        {"text": "Identifies no quantization + full RAM as the cost driver", "type": "content"},
+        {"text": "Recommends scalar quantization (4x reduction)", "type": "content"},
+        {"text": "Recommends mmap storage given low QPS", "type": "content"},
+        {"text": "Provides cost reduction estimate", "type": "content"}
+      ]
+    }
+  ]
+}

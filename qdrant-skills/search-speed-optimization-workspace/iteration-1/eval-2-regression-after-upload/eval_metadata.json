@@ -1,0 +1,32 @@
+{
+  "eval_id": 2,
+  "eval_name": "regression-after-upload",
+  "prompt": "Our Qdrant search was running fine at around 20ms per query last week, but now it's taking 200-300ms. We didn't change any config. We're running Qdrant 1.12 on an SSD-backed cluster with about 2M vectors at 768 dimensions. We did a big data upload over the weekend though. What could be causing this?",
+  "assertions": [
+    {
+      "name": "classified_as_regression_pattern",
+      "description": "Explicitly classified as a performance regression pattern (Phase 3D or equivalent)",
+      "check": "Response explicitly identifies this as a regression/degradation pattern, not a general 'slow search' issue. Must route to the correct diagnostic branch."
+    },
+    {
+      "name": "ordered_diagnosis_correctly",
+      "description": "Checked optimizer status FIRST, then segments, then cache, then data growth",
+      "check": "Response checks causes in the correct priority order: optimizer running > unmerged segments > cache eviction > data growth. Optimizer must be checked before any config recommendations."
+    },
+    {
+      "name": "warned_against_config_changes_during_optimizer",
+      "description": "Explicitly warned not to make config changes while optimizer is running",
+      "check": "Response contains an explicit warning against changing configuration (HNSW params, quantization, etc.) while the optimizer is still running"
+    },
+    {
+      "name": "referenced_qdrant_docs",
+      "description": "Included links to specific Qdrant documentation pages",
+      "check": "Response contains at least one URL linking to qdrant.tech documentation"
+    },
+    {
+      "name": "suggested_future_upload_workflow",
+      "description": "Provided a recommended workflow for future bulk uploads to prevent this",
+      "check": "Response suggests a preventive workflow for future uploads (e.g., disable indexing during upload, then re-enable; or upload during low-traffic windows)"
+    }
+  ]
+}

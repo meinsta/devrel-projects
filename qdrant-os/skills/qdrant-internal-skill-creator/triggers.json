@@ -1,0 +1,23 @@
+{
+  "skill": "qdrant-internal-skill-creator",
+  "should_trigger": [
+    "I want to create a skill for diagnosing qdrant search accuracy issues",
+    "help me build an internal skill for qdrant cluster sizing recommendations",
+    "how do I turn our SA knowledge about qdrant pricing into a skill",
+    "create a qdrant troubleshooting skill for our support team",
+    "I want to build a skill that helps SAs handle qdrant deal objections",
+    "make a new qdrant skill for migration planning from pinecone",
+    "we need a skill that embeds our internal qdrant deployment playbooks",
+    "help me create a skill for qdrant performance diagnostics"
+  ],
+  "should_not_trigger": [
+    "help me create a skill for my python project",
+    "I want to build a skill for code review automation",
+    "how do I create a general purpose coding assistant skill",
+    "build a skill for react component generation",
+    "our qdrant node is using too much memory, getting OOM killed",
+    "how do I set up scalar quantization in qdrant",
+    "what's the best HNSW ef value for 10M vectors",
+    "help me write a python script to batch upload vectors to qdrant"
+  ]
+}

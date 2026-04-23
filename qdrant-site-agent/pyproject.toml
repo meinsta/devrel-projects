@@ -1,0 +1,22 @@
+[project]
+name = "qdrant-site-agent"
+version = "0.1.0"
+description = "AI agents for editing and creating content on the Qdrant website. Built on Pella."
+requires-python = ">=3.11"
+dependencies = [
+    "typer>=0.12.0",
+    "rich>=13.0.0",
+    "pyyaml>=6.0",
+    "httpx>=0.25.0",
+    "python-dotenv>=1.0.0",
+]
+
+[project.scripts]
+qdrant-site = "qdrant_site_agent.cli:app"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/qdrant_site_agent"]

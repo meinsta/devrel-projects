@@ -1,0 +1,438 @@
+{
+  "timestamp": "2025-11-11T11:13:57.028794",
+  "collection_name": "housing_statutes_wyoming",
+  "model": "gpt-4-turbo-preview",
+  "top_k": 5,
+  "total_questions": 10,
+  "vanilla_rag": {
+    "success_rate": 1.0,
+    "accuracy": 0.6,
+    "correct_count": 6,
+    "success_count": 10
+  },
+  "agentic_rag": {
+    "success_rate": 0.0,
+    "accuracy": 0.0,
+    "correct_count": 0,
+    "success_count": 0
+  },
+  "results": [
+    {
+      "question_idx": 55,
+      "question": "Is there a state/territory law regulating residential evictions?",
+      "state": "Wyoming",
+      "golden_answer": "Yes",
+      "golden_yes_no": "Yes",
+      "vanilla": {
+        "answer": "Yes, the statutes provided do not directly address the process of eviction itself but imply the existence of regulations surrounding residential evictions through the obligations and prohibitions placed on renters. For instance, Statute 1 (1-21-1205) outlines prohibited acts by renters, such as damaging the property or denying access to the owner for repairs, which could potentially lead to eviction scenarios if violated. Similarly, Statute 5 (1-21-1204) lists renters' duties, including maintaining the rental unit in a clean and safe condition and being current on all payments required by the rental agreement. Failure to comply with these duties could also serve as grounds for eviction under Wyoming law. However, the specific process and regulations for carrying out evictions are not detailed in the excerpts provided.",
+        "yes_no": "Yes",
+        "correct": true,
+        "citations": [
+          "WY Stat \u00a7 1-21-1205 (2021)",
+          "WY Stat \u00a7 1-21-1205 (2021)",
+          "WY Stat \u00a7 35-18-107 (2021)",
+          "WY Stat \u00a7 35-18-107 (2021)",
+          "WY Stat \u00a7 1-21-1204 (2021)"
+        ],
+        "citations_in_answer": [
+          "Statute 1",
+          "Statute 5"
+        ],
+        "retrieved_count": 5,
+        "success": true,
+        "error": null,
+        "usage": {
+          "prompt_tokens": 691,
+          "completion_tokens": 158,
+          "total_tokens": 849
+        }
+      },
+      "agentic": {
+        "answer": "",
+        "yes_no": null,
+        "correct": false,
+        "citations": [],
+        "citations_in_answer": [],
+        "retrieved_count": 0,
+        "success": false,
+        "error": "CrewAI not installed. Install with: uv add crewai crewai-tools",
+        "usage": {}
+      }
+    },
+    {
+      "question_idx": 212,
+      "question": "Does the law specify a minimum number of days a tenant can be late on rent before the landlord can file an eviction action for nonpayment?",
+      "state": "Wyoming",
+      "golden_answer": "Yes",
+      "golden_yes_no": "Yes",
+      "vanilla": {
+        "answer": "No, the provided statutes do not specify a minimum number of days a tenant can be late on rent before the landlord can file an eviction action for nonpayment. The statutes presented focus on lessee's rights to enforce their rights without fear of rental agreement termination (Statute 1 and Statute 2), procedures for rental payments and consequences of non-payment for leases with the state (Statute 3 and Statute 4), and limitations on actions or proceedings concerning abandoned property (Statute 5). None of these statutes address the specific scenario of landlord eviction actions for nonpayment of rent by tenants in a private leasing context.",
+        "yes_no": "No",
+        "correct": false,
+        "citations": [
+          "WY Stat \u00a7 35-18-107 (2021)",
+          "WY Stat \u00a7 35-18-107 (2021)",
+          "WY Stat \u00a7 36-5-109 (2021)",
+          "WY Stat \u00a7 36-5-109 (2021)",
+          "WY Stat \u00a7 34-24-130 (2021)"
+        ],
+        "citations_in_answer": [
+          "Statute 1",
+          "Statute 5",
+          "Statute 3",
+          "Statute 4",
+          "Statute 2"
+        ],
+        "retrieved_count": 5,
+        "success": true,
+        "error": null,
+        "usage": {
+          "prompt_tokens": 723,
+          "completion_tokens": 127,
+          "total_tokens": 850
+        }
+      },
+      "agentic": {
+        "answer": "",
+        "yes_no": null,
+        "correct": false,
+        "citations": [],
+        "citations_in_answer": [],
+        "retrieved_count": 0,
+        "success": false,
+        "error": "CrewAI not installed. Install with: uv add crewai crewai-tools",
+        "usage": {}
+      }
+    },
+    {
+      "question_idx": 236,
+      "question": "Does the law require the tenant to respond to an eviction action before a hearing?",
+      "state": "Wyoming",
+      "golden_answer": "No",
+      "golden_yes_no": "No",
+      "vanilla": {
+        "answer": "Yes\n\nThe provided statutes do not directly address the procedural requirements for a tenant to respond to an eviction action before a hearing. However, the general legal principle in eviction proceedings is that a tenant has the right to be notified of the eviction action and has an opportunity to respond or contest the eviction before a hearing is conducted. This is implicit in the nature of legal proceedings, which require notice and an opportunity to be heard for both parties involved.\n\nStatute 1 and its duplicate, Statute 2, discuss affirmative defenses a tenant may use in actions brought by a landlord to recover rent for breach of lease, particularly in cases involving domestic abuse or sexual violence. While these statutes focus on the conditions under which a tenant can assert these defenses, they imply that a tenant must engage in the legal process, potentially including responding to an eviction action, to utilize these defenses effectively.\n\nStatutes 3, 4, and 5 do not directly relate to eviction proceedings but rather to hearings concerning estates and conveyances. They do, however, underscore the general legal principle that interested parties have the right to appear, contest, and participate in legal proceedings, which by analogy supports the notion that tenants would need to respond to eviction actions to contest them.\n\nIn summary, while the specific procedural step of responding to an eviction action before a hearing is not explicitly outlined in the provided statutes, the legal framework and principles they represent suggest that participation and response by the tenant are necessary components of the legal process, including eviction proceedings.",
+        "yes_no": "Yes",
+        "correct": false,
+        "citations": [
+          "WY Stat \u00a7 1-21-1303 (2021)",
+          "WY Stat \u00a7 1-21-1303 (2021)",
+          "WY Stat \u00a7 2-7-603 (2021)",
+          "WY Stat \u00a7 2-7-603 (2021)",
+          "WY Stat \u00a7 1-32-303 (2021)"
+        ],
+        "citations_in_answer": [
+          "Statute 1",
+          "Statute 2"
+        ],
+        "retrieved_count": 5,
+        "success": true,
+        "error": null,
+        "usage": {
+          "prompt_tokens": 1649,
+          "completion_tokens": 301,
+          "total_tokens": 1950
+        }
+      },
+      "agentic": {
+        "answer": "",
+        "yes_no": null,
+        "correct": false,
+        "citations": [],
+        "citations_in_answer": [],
+        "retrieved_count": 0,
+        "success": false,
+        "error": "CrewAI not installed. Install with: uv add crewai crewai-tools",
+        "usage": {}
+      }
+    },
+    {
+      "question_idx": 329,
+      "question": "In eviction proceedings, does the filing of an appeal stay the execution of a writ?",
+      "state": "Wyoming",
+      "golden_answer": "Yes",
+      "golden_yes_no": "Yes",
+      "vanilla": {
+        "answer": "No, the filing of an appeal does not automatically stay the execution of a writ in eviction proceedings. According to Statute 1 (1-21-1014), an appeal by a defendant will not stay the proceedings on judgment unless, within forty-eight (48) hours after judgment, Sundays excepted, the appellant executes and files with the court his bond to the plaintiff, with two (2) or more sufficient sureties approved by the court. This bond is conditioned on the appellant paying all costs which have accrued or may thereafter accrue and all damages which the plaintiff may have sustained or may thereafter sustain in consequence of the wrongful detention of the premises during the pendency of the appeal. Only upon taking the appeal and filing the bond will all further proceedings in the case be stayed.",
+        "yes_no": "No",
+        "correct": false,
+        "citations": [
+          "WY Stat \u00a7 1-21-1014 (2021)",
+          "WY Stat \u00a7 1-21-1014 (2021)",
+          "WY Stat \u00a7 1-21-1013 (2021)",
+          "WY Stat \u00a7 1-21-1013 (2021)",
+          "WY Stat \u00a7 1-17-210 (2021)"
+        ],
+        "citations_in_answer": [
+          "Statute 1"
+        ],
+        "retrieved_count": 5,
+        "success": true,
+        "error": null,
+        "usage": {
+          "prompt_tokens": 889,
+          "completion_tokens": 158,
+          "total_tokens": 1047
+        }
+      },
+      "agentic": {
+        "answer": "",
+        "yes_no": null,
+        "correct": false,
+        "citations": [],
+        "citations_in_answer": [],
+        "retrieved_count": 0,
+        "success": false,
+        "error": "CrewAI not installed. Install with: uv add crewai crewai-tools",
+        "usage": {}
+      }
+    },
+    {
+      "question_idx": 581,
+      "question": "Is it specified whether the law requires a tenant to pay a bond in order to appeal an eviction judgment?",
+      "state": "Wyoming",
+      "golden_answer": "Yes",
+      "golden_yes_no": "Yes",
+      "vanilla": {
+        "answer": "Yes\n\nThe law does require a tenant to pay a bond in order to appeal an eviction judgment. This is specified in Statute 3 and Statute 4 under section 1-21-1014 (b), which states that an appeal by a defendant (in this context, the tenant) will not stay the proceedings on judgment unless, within forty-eight (48) hours after judgment, Sundays excepted, the appellant (tenant) executes and files with the court his bond to the plaintiff (landlord), with two (2) or more sufficient sureties approved by the court. This bond is conditioned on the appellant agreeing to pay all costs which have accrued or may thereafter accrue and all damages which the plaintiff may have sustained or may thereafter sustain in consequence of the wrongful detention of the premises during the pendency of the appeal.",
+        "yes_no": "Yes",
+        "correct": true,
+        "citations": [
+          "WY Stat \u00a7 1-21-1015 (2021)",
+          "WY Stat \u00a7 1-21-1015 (2021)",
+          "WY Stat \u00a7 1-21-1014 (2021)",
+          "WY Stat \u00a7 1-21-1014 (2021)",
+          "WY Stat \u00a7 15-6-433 (2021)"
+        ],
+        "citations_in_answer": [
+          "Statute 3",
+          "Statute 4"
+        ],
+        "retrieved_count": 5,
+        "success": true,
+        "error": null,
+        "usage": {
+          "prompt_tokens": 1303,
+          "completion_tokens": 169,
+          "total_tokens": 1472
+        }
+      },
+      "agentic": {
+        "answer": "",
+        "yes_no": null,
+        "correct": false,
+        "citations": [],
+        "citations_in_answer": [],
+        "retrieved_count": 0,
+        "success": false,
+        "error": "CrewAI not installed. Install with: uv add crewai crewai-tools",
+        "usage": {}
+      }
+    },
+    {
+      "question_idx": 582,
+      "question": "Does the law require a tenant to pay a bond in order to appeal an eviction judgment?",
+      "state": "Wyoming",
+      "golden_answer": "Yes",
+      "golden_yes_no": "Yes",
+      "vanilla": {
+        "answer": "Yes\n\nThe law requires a tenant to pay a bond in order to appeal an eviction judgment. According to Statute 3 (1-21-1014), an appeal by a defendant (in this context, a tenant) will not stay the proceedings on judgment unless, within forty-eight (48) hours after judgment, the appellant (tenant) executes and files with the court his bond to the plaintiff (landlord), with two (2) or more sufficient sureties approved by the court. This bond is conditioned on the appellant paying all costs which have accrued or may thereafter accrue and all damages which the plaintiff may have sustained or may thereafter sustain in consequence of the wrongful detention of the premises during the pendency of the appeal. This requirement is crucial for the appeal process in eviction cases, ensuring that the rights of the landlord are secured during the appeal.",
+        "yes_no": "Yes",
+        "correct": true,
+        "citations": [
+          "WY Stat \u00a7 1-21-1015 (2021)",
+          "WY Stat \u00a7 1-21-1015 (2021)",
+          "WY Stat \u00a7 1-21-1014 (2021)",
+          "WY Stat \u00a7 1-21-1014 (2021)",
+          "WY Stat \u00a7 15-6-433 (2021)"
+        ],
+        "citations_in_answer": [
+          "Statute 3"
+        ],
+        "retrieved_count": 5,
+        "success": true,
+        "error": null,
+        "usage": {
+          "prompt_tokens": 1300,
+          "completion_tokens": 173,
+          "total_tokens": 1473
+        }
+      },
+      "agentic": {
+        "answer": "",
+        "yes_no": null,
+        "correct": false,
+        "citations": [],
+        "citations_in_answer": [],
+        "retrieved_count": 0,
+        "success": false,
+        "error": "CrewAI not installed. Install with: uv add crewai crewai-tools",
+        "usage": {}
+      }
+    },
+    {
+      "question_idx": 1848,
+      "question": "Can a landlord evict a tenant for material falsification on the rental application?",
+      "state": "Wyoming",
+      "golden_answer": "No",
+      "golden_yes_no": "No",
+      "vanilla": {
+        "answer": "No\n\nThe provided statutes focus on admission for residential services, discrimination based on disability, and procedures related to local improvement assessments. None of these statutes directly address the issue of eviction due to material falsification on a rental application. Therefore, without specific statutory language addressing eviction for falsification on a rental application, it cannot be conclusively stated based on the provided statutes that a landlord can evict a tenant for this reason. Legal actions and grounds for eviction are typically detailed in landlord-tenant laws or specific lease agreements, which are not covered in the excerpts provided.",
+        "yes_no": "No",
+        "correct": true,
+        "citations": [
+          "WY Stat \u00a7 25-5-117 (2021)",
+          "WY Stat \u00a7 25-5-117 (2021)",
+          "WY Stat \u00a7 40-26-107 (2021)",
+          "WY Stat \u00a7 40-26-107 (2021)",
+          "WY Stat \u00a7 15-6-408 (2021)"
+        ],
+        "citations_in_answer": [],
+        "retrieved_count": 5,
+        "success": true,
+        "error": null,
+        "usage": {
+          "prompt_tokens": 2197,
+          "completion_tokens": 112,
+          "total_tokens": 2309
+        }
+      },
+      "agentic": {
+        "answer": "",
+        "yes_no": null,
+        "correct": false,
+        "citations": [],
+        "citations_in_answer": [],
+        "retrieved_count": 0,
+        "success": false,
+        "error": "CrewAI not installed. Install with: uv add crewai crewai-tools",
+        "usage": {}
+      }
+    },
+    {
+      "question_idx": 1849,
+      "question": "Can a landlord evict a tenant for material breach? The law should explicitly mention \"material breach\", or allow for eviction if there is a substantial violation of the lease, material noncompliance with the lease, or when the breach is one that materially affects health, safety or welfare",
+      "state": "Wyoming",
+      "golden_answer": "No",
+      "golden_yes_no": "No",
+      "vanilla": {
+        "answer": "Yes\n\nWhile the provided statutes do not explicitly mention \"material breach\" in the context of eviction, they establish principles that allow for the interpretation that a landlord can evict a tenant for substantial violations of the lease or actions that materially affect the lease's terms, health, safety, or welfare. Specifically, Statute 3 and Statute 4 outline scenarios where a tenant can defend against eviction or liability for rent under certain conditions, implying that outside of these defenses, a landlord has grounds to pursue eviction for breaches of the lease. Furthermore, Statute 5 emphasizes that there are no implied tenancies beyond the agreed terms, suggesting that any significant noncompliance with the lease terms (such as a material breach) could lead to eviction, as the relationship between landlord and tenant is strictly governed by the explicit terms of the lease and any holding over without compliance could be considered a tenancy by sufferance, which offers minimal protection to the tenant. However, it's important to note that the explicit term \"material breach\" is not used, but the principles allowing for eviction in cases of substantial lease violations are present.",
+        "yes_no": "Yes",
+        "correct": false,
+        "citations": [
+          "WY Stat \u00a7 3-3-610 (2021)",
+          "WY Stat \u00a7 3-3-610 (2021)",
+          "WY Stat \u00a7 1-21-1303 (2021)",
+          "WY Stat \u00a7 1-21-1303 (2021)",
+          "WY Stat \u00a7 34-2-128 (2021)"
+        ],
+        "citations_in_answer": [
+          "Statute 3",
+          "Statute 4",
+          "Statute 5"
+        ],
+        "retrieved_count": 5,
+        "success": true,
+        "error": null,
+        "usage": {
+          "prompt_tokens": 1758,
+          "completion_tokens": 224,
+          "total_tokens": 1982
+        }
+      },
+      "agentic": {
+        "answer": "",
+        "yes_no": null,
+        "correct": false,
+        "citations": [],
+        "citations_in_answer": [],
+        "retrieved_count": 0,
+        "success": false,
+        "error": "CrewAI not installed. Install with: uv add crewai crewai-tools",
+        "usage": {}
+      }
+    },
+    {
+      "question_idx": 1850,
+      "question": "Can a landlord evict a tenant for removal of unit from market? This includes when the law allows a tenant to be evicted based on: the landlord selling the property; demolition, rehabilitation, or a change in use of the premises; repairs that would require the tenant to lose access to the property; a change to a policy of excluding children; or conversion of a rental property to a condominium, cooperative, or other form of ownership arrangement.",
+      "state": "Wyoming",
+      "golden_answer": "No",
+      "golden_yes_no": "No",
+      "vanilla": {
+        "answer": "No\n\nThe provided statutes do not explicitly address the eviction of a tenant for reasons such as the landlord selling the property, demolition, rehabilitation, or a change in use of the premises; repairs that would require the tenant to lose access to the property; a change to a policy of excluding children; or conversion of a rental property to a condominium, cooperative, or other form of ownership arrangement. The statutes focus on the rights and remedies related to occupying claimants and heirs (Statutes 1 and 2), actions between tenants in common or coparceners regarding rents, profits, and waste (Statutes 3 and 4), and the owner's remedies for eviction due to non-vacation by the renter as required by a court order and for damages to the rental property (Statute 5). None of these statutes directly address eviction for the removal of a unit from the market for the reasons specified in the question.",
+        "yes_no": "No",
+        "correct": true,
+        "citations": [
+          "WY Stat \u00a7 1-32-216 (2021)",
+          "WY Stat \u00a7 1-32-216 (2021)",
+          "WY Stat \u00a7 1-32-119 (2021)",
+          "WY Stat \u00a7 1-32-119 (2021)",
+          "WY Stat \u00a7 1-21-1211 (2021)"
+        ],
+        "citations_in_answer": [
+          "Statute 5"
+        ],
+        "retrieved_count": 5,
+        "success": true,
+        "error": null,
+        "usage": {
+          "prompt_tokens": 951,
+          "completion_tokens": 187,
+          "total_tokens": 1138
+        }
+      },
+      "agentic": {
+        "answer": "",
+        "yes_no": null,
+        "correct": false,
+        "citations": [],
+        "citations_in_answer": [],
+        "retrieved_count": 0,
+        "success": false,
+        "error": "CrewAI not installed. Install with: uv add crewai crewai-tools",
+        "usage": {}
+      }
+    },
+    {
+      "question_idx": 1851,
+      "question": "Can a landlord evict a tenant for commiting substantial damage to the property?",
+      "state": "Wyoming",
+      "golden_answer": "Yes",
+      "golden_yes_no": "Yes",
+      "vanilla": {
+        "answer": "Yes, a landlord can evict a tenant for committing substantial damage to the property. According to Statute 1 (1-21-1211), if a renter damages the rental property, the owner may apply any property or money held as a deposit to the payment of damages as provided in W.S. 1-21-1208(a). Furthermore, the statute allows the owner to take any legal action available to recover damages caused to the unit by the renter. This implies that substantial damage to the property by a tenant can be grounds for eviction, as the landlord has remedies available both to apply the security deposit towards damages and to pursue further legal action for any damages beyond what the deposit covers.",
+        "yes_no": "Yes",
+        "correct": true,
+        "citations": [
+          "WY Stat \u00a7 1-21-1211 (2021)",
+          "WY Stat \u00a7 1-21-1211 (2021)",
+          "WY Stat \u00a7 11-6-103 (2021)",
+          "WY Stat \u00a7 11-6-103 (2021)",
+          "WY Stat \u00a7 1-32-207 (2021)"
+        ],
+        "citations_in_answer": [
+          "Statute 1"
+        ],
+        "retrieved_count": 5,
+        "success": true,
+        "error": null,
+        "usage": {
+          "prompt_tokens": 960,
+          "completion_tokens": 143,
+          "total_tokens": 1103
+        }
+      },
+      "agentic": {
+        "answer": "",
+        "yes_no": null,
+        "correct": false,
+        "citations": [],
+        "citations_in_answer": [],
+        "retrieved_count": 0,
+        "success": false,
+        "error": "CrewAI not installed. Install with: uv add crewai crewai-tools",
+        "usage": {}
+      }
+    }
+  ]
+}

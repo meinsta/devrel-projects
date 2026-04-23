@@ -1,0 +1,35 @@
+{
+  "expectations": [
+    {
+      "text": "Asks for actual configuration (on_disk, quantization, payload settings) BEFORE providing a breakdown",
+      "passed": false,
+      "evidence": "Response immediately provides a detailed breakdown with estimated values (lines 19-95). Configuration questions are asked AFTER the breakdown, in the 'Immediate Diagnostic Steps' section (lines 116-139). The proper approach would be to ask for configuration first."
+    },
+    {
+      "text": "Recommends checking metrics endpoint to separate data usage from cache",
+      "passed": false,
+      "evidence": "Response mentions OS page cache effects (lines 83-87) and discusses memory-mapped files, but never recommends checking a metrics endpoint. No reference to any metrics or monitoring endpoint is provided."
+    },
+    {
+      "text": "Mentions full-text indexes as a possible hidden RAM consumer",
+      "passed": false,
+      "evidence": "Response does not mention full-text indexes at all. It covers HNSW graphs, point ID mapping, payloads, segments, quantization, mmap/page cache, and WAL buffers, but completely omits full-text indexes as a potential memory consumer."
+    },
+    {
+      "text": "Does NOT invent specific GB estimates for ID tracker or payload without knowing the actual config",
+      "passed": false,
+      "evidence": "Response invents specific GB estimates throughout: lines 46-50 provide UUID mapping estimates (9-10GB) and integer ID estimates (5-6GB) without knowing actual config; lines 62-61 provide RocksDB cache estimates (512MB-2GB); lines 100-108 provide a full breakdown table with specific GB values for all components without verifying actual configuration. Example: 'If you are using UUID point IDs (128-bit), this mapping adds: 460M * (16 bytes UUID + 4 bytes internal ID + overhead) = ~9-10GB' is presented as fact without knowing if UUIDs are actually used."
+    },
+    {
+      "text": "Suggests investigating with support/core team if config review doesn't explain the gap",
+      "passed": false,
+      "evidence": "Response ends with 'Root Cause Summary' (lines 163-175) but does not suggest contacting Qdrant support or core team if the configuration review doesn't explain the remaining memory gap. No escalation path is provided."
+    }
+  ],
+  "summary": {
+    "passed": 0,
+    "failed": 5,
+    "total": 5,
+    "pass_rate": 0.0
+  }
+}

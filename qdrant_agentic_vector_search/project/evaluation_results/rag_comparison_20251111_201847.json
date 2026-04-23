@@ -1,0 +1,71 @@
+{
+  "timestamp": "2025-11-11T20:18:47.538021",
+  "collection_name": "housing_statutes_wyoming",
+  "model": "gpt-4o-mini",
+  "top_k": 10,
+  "total_questions": 1,
+  "vanilla_rag": {
+    "success_rate": 1.0,
+    "accuracy": 0.0,
+    "correct_count": 0,
+    "success_count": 1
+  },
+  "agentic_rag": {
+    "success_rate": 1.0,
+    "accuracy": 1.0,
+    "correct_count": 1,
+    "success_count": 1
+  },
+  "results": [
+    {
+      "question_idx": 212,
+      "question": "Does the law specify a minimum number of days a tenant can be late on rent before the landlord can file an eviction action for nonpayment?",
+      "state": "Wyoming",
+      "golden_answer": "Yes",
+      "golden_yes_no": "Yes",
+      "vanilla": {
+        "answer": "No. The provided statutes do not specify a minimum number of days a tenant can be late on rent before a landlord can file an eviction action for nonpayment. Statute 3 (36-5-109) outlines the procedure for rental payments due to the state and mentions a 30-day notice period for cancellation of the lease if rent is not paid, but it does not explicitly address the timeline for eviction actions by landlords for nonpayment of rent. Therefore, the statutes do not provide a clear minimum timeframe for initiating eviction proceedings.",
+        "yes_no": "No",
+        "correct": false,
+        "citations": [
+          "WY Stat \u00a7 35-18-107 (2021)",
+          "WY Stat \u00a7 35-18-107 (2021)",
+          "WY Stat \u00a7 36-5-109 (2021)",
+          "WY Stat \u00a7 36-5-109 (2021)",
+          "WY Stat \u00a7 34-24-130 (2021)",
+          "WY Stat \u00a7 34-24-130 (2021)",
+          "WY Stat \u00a7 1-21-1207 (2021)",
+          "WY Stat \u00a7 1-21-1207 (2021)",
+          "WY Stat \u00a7 1-21-1203 (2021)",
+          "WY Stat \u00a7 1-21-1203 (2021)"
+        ],
+        "citations_in_answer": [
+          "Statute 3"
+        ],
+        "retrieved_count": 10,
+        "success": true,
+        "error": null,
+        "usage": {
+          "prompt_tokens": 2068,
+          "completion_tokens": 107,
+          "total_tokens": 2175
+        }
+      },
+      "agentic": {
+        "answer": "Yes. Wyoming law specifies a minimum of three (3) days that a tenant can be late on rent before a landlord may file an eviction action for nonpayment. The landlord must provide a written notice demanding payment or possession of the property, and the notice must allow at least three days for the tenant to pay or vacate before any legal action can commence, as established by WY Stat \u00a7 1-21-1205.",
+        "yes_no": "Yes",
+        "correct": true,
+        "citations": [
+          "WY Stat \u00a7 1-21-1205"
+        ],
+        "citations_in_answer": [
+          "WY Stat \u00a7 1-21-1205"
+        ],
+        "retrieved_count": 10,
+        "success": true,
+        "error": null,
+        "usage": {}
+      }
+    }
+  ]
+}

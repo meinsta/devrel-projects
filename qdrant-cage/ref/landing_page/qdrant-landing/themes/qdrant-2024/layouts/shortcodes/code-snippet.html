@@ -1,0 +1,88 @@
+<!-- Example usage: -->
+{{/* {{< code-snippet path="/documentation/headless/snippets/points-id/" order="python http go" > */}}
+<!-- Shortcode to render code snippets from a specified path -->
+<!-- path : The path to the directory containing the code snippets -->
+<!-- order : Optional. A space-separated list of snippet names to render first -->
+<!-- The rest will be rendered in the order they are found in the directory -->
+<!-- Global order of snippets is defined in the _index.md file of the section -->
+
+{{/* {{< code-snippet path="/path/to/snippets" order="snippet1 snippet2" > */}}
+
+
+<!-- Extract shortcode parameters -->
+{{ $path := .Get "path" }}
+{{ $order := .Get "order" }}
+{{ $block := .Get "block" }}
+
+
+<!-- Convert order string to a slice if provided -->
+{{ if $order }}
+  {{ $order = split $order " " }}
+{{ end }}
+
+
+<!-- If order is not provided, try to get it from the nearest _index.md -->
+{{ if not $order }}
+  {{ $currentPath := $path }}
+  {{ $foundOrder := false }}
+
+  {{ $currentPathParts := split $currentPath "/" }}
+  {{ $numParts := len $currentPathParts }}
+
+
+  <!-- Iterate from longest path to shortest -->
+  {{ range seq $numParts }}
+    {{ $index := sub $numParts . }}
+    {{ $currentPath = delimit (first (add $index 1) $currentPathParts) "/" }}
+
+    {{ $sectionPage := $.Site.GetPage "section" $currentPath }}
+    {{ if and $sectionPage $sectionPage.Params.snippetsOrder }}
+      {{ $order = $sectionPage.Params.snippetsOrder }}
+      {{ $foundOrder = true }}
+      {{ break }}
+    {{ end }}
+  {{ end }}
+
+
+  <!-- If no snippetsOrder found, set an empty order -->
+  {{ if not $foundOrder }}
+    {{ $order = slice }}
+  {{ end }}
+{{ end }}
+
+
+<!-- Read all files from the given path -->
+{{ $files := dict }}
+
+{{ range $dir := slice (printf "content/%s" $path) (printf "content/%s/generated/%s" $path $block) }}
+  {{ if not (fileExists $dir) }}
+    {{ continue }}
+  {{ end }}
+  {{ range (readDir $dir) }}
+    <!--- Skip files starting with `_` and non-markdown files --->
+    {{ if or (strings.HasPrefix .Name "_") (not (strings.HasSuffix .Name ".md")) }}
+      {{ continue }}
+    {{ end }}
+  
+    {{ $filePath := printf "%s/%s" $dir .Name }}
+    {{ $content := readFile $filePath | markdownify }}
+    {{ $files = merge $files (dict (strings.TrimSuffix ".md" .Name) $content) }}
+  {{ end }}
+{{ end }}
+
+
+<!-- Render snippets in the specified order first -->
+{{ range $order }}
+  {{ $snippet := index $files . }}
+  {{ if $snippet }}
+    {{ $snippet | markdownify }}
+  {{ end }}
+{{ end }}
+
+
+<!-- Render remaining files that were not in the order list -->
+{{ range $name, $content := $files }}
+  {{ if not (in $order $name) }}
+    {{ $content | markdownify }}
+  {{ end }}
+{{ end }}

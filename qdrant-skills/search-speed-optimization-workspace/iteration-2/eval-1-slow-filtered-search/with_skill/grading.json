@@ -1,0 +1,35 @@
+{
+  "expectations": [
+    {
+      "text": "followed_3C_checklist: Response explicitly references a structured filtered search diagnostic or follows a labeled checklist, not ad-hoc",
+      "passed": false,
+      "evidence": "The response is organized with 'Root Cause', 'Contributing Factors' (numbered 1-5), 'Fix: Step by Step' (Steps 1-5), 'Summary Table', and 'References'. While well-structured, it does not explicitly reference a '3C checklist' or any named diagnostic framework/checklist. The structure is a standard diagnostic report, not an explicitly labeled checklist methodology."
+    },
+    {
+      "text": "explained_filterable_hnsw_interaction: Response explains how HNSW graph and payload indexes interact for filtered search (filterable index, subgraph links, pre/post-filter)",
+      "passed": true,
+      "evidence": "The response explains: 'Without an HNSW graph, the payload index on the category field cannot do what it's designed to do. Filtered HNSW works by traversing graph links and pruning nodes that don't match the filter. With no graph, there are no links to traverse, and the payload index provides minimal benefit.' It also discusses is_tenant for 'separate HNSW entry points per category value' and Step 5 explains that 'the HNSW graph needs to be rebuilt to incorporate the filterable links. If the HNSW was built before the payload index existed, the graph won't have filter-aware links.'"
+    },
+    {
+      "text": "referenced_qdrant_docs: Response contains at least one URL linking to qdrant.tech documentation",
+      "passed": true,
+      "evidence": "Lines 165-169 contain five qdrant.tech URLs: Payload index documentation, Tenant index, Filterable HNSW, Optimizer configuration, and Search optimization guide."
+    },
+    {
+      "text": "included_monitoring_checklist: Response includes post-fix verification steps (check indexed_vectors_count, segment count, re-run search)",
+      "passed": true,
+      "evidence": "Step 5 instructs to 'Poll until optimizer_status = ok and indexed_vectors_count = 500' with a curl command. Step 1 says 'Wait for optimizer_status to return ok and indexed_vectors_count to become 500 before proceeding.' The summary table tracks segment count ('Will auto-resolve after optimizer runs'). While it could be more explicit as a checklist, it does include checking indexed_vectors_count, segment count resolution, and monitoring optimizer completion."
+    },
+    {
+      "text": "did_not_recommend_unnecessary_indexes: Response correctly notes category already has an index and does NOT recommend creating a redundant one",
+      "passed": true,
+      "evidence": "The response states 'The category field does have a keyword payload index (confirmed in payload_schema)' and does not recommend creating a new category index. Instead, it recommends recreating it with is_tenant: true (deleting first, then recreating with the additional flag), which is a modification of the existing index, not a redundant one."
+    }
+  ],
+  "summary": {
+    "passed": 4,
+    "failed": 1,
+    "total": 5,
+    "pass_rate": 0.8
+  }
+}

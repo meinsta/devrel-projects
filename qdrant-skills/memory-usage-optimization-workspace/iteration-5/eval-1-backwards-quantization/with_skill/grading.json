@@ -1,0 +1,40 @@
+{
+  "expectations": [
+    {
+      "text": "Actually connects and inspects the embeddings-archive collection config",
+      "passed": true,
+      "evidence": "Response shows verbatim JSON from GET /collections/embeddings-archive including all config fields: vectors.on_disk=false, quantization_config.scalar.always_ram=false, optimizer_status=ok, points_count=200, etc."
+    },
+    {
+      "text": "Identifies always_ram=false as the problem (quantized vectors on disk)",
+      "passed": true,
+      "evidence": "Problem 1 section explicitly states: 'always_ram: false means Qdrant does NOT load the quantized vectors into RAM... Without always_ram: true, that purpose is defeated.' Summary table confirms current value false vs correct value true."
+    },
+    {
+      "text": "Identifies on_disk=false as the problem (originals in RAM)",
+      "passed": true,
+      "evidence": "Problem 2 section: 'The original float32 vectors have on_disk: false. This means the full-precision vectors remain accessible in RAM (not pushed to disk).' Summary table shows vectors.on_disk current=false, correct=true."
+    },
+    {
+      "text": "Explains the correct pattern: always_ram=true for quantized, on_disk=true for originals",
+      "passed": true,
+      "evidence": "Phase 3 Root Cause section: 'Quantized vectors: always_ram: true -- small int8 representation stays in RAM for candidate selection. Original vectors: on_disk: true -- large float32 representation goes to disk, only read during rescoring.' Patch example in Phase 4 also shows the correct config."
+    },
+    {
+      "text": "Checks optimizer status before concluding quantization failed",
+      "passed": true,
+      "evidence": "Phase 1 raw config shows optimizer_status=ok noted. Secondary observation section discusses indexed_vectors_count=0 and relates it to optimizer behavior: 'the optimizer has not built an HNSW index... quantization config exists but may not yet be reflected in segment-level storage.'"
+    },
+    {
+      "text": "Warns against the performance impact of always_ram=false",
+      "passed": true,
+      "evidence": "What NOT to do section: 'Do not set always_ram: false to save even more RAM. This causes disk thrashing on every search because the quantized candidates must be loaded from disk on every query, leading to extreme latency and CPU overhead.'"
+    }
+  ],
+  "summary": {
+    "passed": 6,
+    "failed": 0,
+    "total": 6,
+    "pass_rate": 1.0
+  }
+}

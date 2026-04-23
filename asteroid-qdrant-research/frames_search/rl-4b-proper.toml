@@ -1,0 +1,24 @@
+# 4B proper eval: train on 75% of FRAMES, hold out 25% for clean eval
+# Uses FramesSearchEnv (not curriculum) with holdout_frac=0.25
+# This gives ~600 training questions, ~200 held-out
+
+model = "Qwen/Qwen3-4B-Instruct-2507"
+max_steps = 100
+
+batch_size = 16
+rollouts_per_example = 4
+
+[sampling]
+max_tokens = 2048
+
+[[env]]
+id = "thierrydamiba/frames-search"
+args = { holdout_frac = 0.25 }
+
+[wandb]
+project = "asteroid"
+entity = "thierrydamiba"
+name = "frames-4b-proper-holdout25"
+
+[checkpoints]
+interval = 10

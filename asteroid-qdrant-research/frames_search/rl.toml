@@ -1,0 +1,22 @@
+# FRAMES training: beat Context-1's F1=0.82
+# 4 tools, F1 reward, 200 steps, multi-hop questions
+
+model = "Qwen/Qwen3-30B-A3B-Instruct-2507"
+max_steps = 200
+
+batch_size = 64
+rollouts_per_example = 4
+
+[sampling]
+max_tokens = 1024
+
+[[env]]
+id = "thierrydamiba/frames-search"
+
+[wandb]
+project = "asteroid"
+entity = "thierrydamiba"
+name = "asteroid-frames-30b"
+
+[checkpoints]
+interval = 25

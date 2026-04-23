@@ -1,0 +1,31 @@
+{
+  "eval_id": 2,
+  "eval_name": "full-cluster-diagnosis",
+  "prompt": "Our memory usage is way higher than we expected across the whole cluster. Can you do a full diagnostic and tell us everything that's wrong?",
+  "assertions": [
+    {
+      "text": "Actually connects and inspects multiple collections",
+      "type": "execution_check"
+    },
+    {
+      "text": "Identifies the locale collections antipattern (10+ products-{locale} collections)",
+      "type": "content_check"
+    },
+    {
+      "text": "Identifies products-us issues: vectors in RAM, no quantization, full-text index on description",
+      "type": "content_check"
+    },
+    {
+      "text": "Identifies embeddings-archive backwards quantization (always_ram=false, on_disk=false)",
+      "type": "content_check"
+    },
+    {
+      "text": "Provides prioritized recommendations matching Phase 4 order",
+      "type": "content_check"
+    },
+    {
+      "text": "Mentions total collection count and overhead calculation",
+      "type": "content_check"
+    }
+  ]
+}

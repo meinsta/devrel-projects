@@ -1,0 +1,35 @@
+{
+  "expectations": [
+    {
+      "text": "Actually connects to the cluster and lists collections",
+      "passed": true,
+      "evidence": "Response shows actual GET /collections output with 12 specific collections listed including products-us, embeddings-archive, products-en-gb, products-de-de, etc. Raw API data section confirms connection to 94214c31-6930-4f9f-9f33-ec90c15a76c0.eu-west-2-0.aws.cloud.qdrant.io:6333."
+    },
+    {
+      "text": "Identifies the 10+ products-{locale} collections as an antipattern",
+      "passed": true,
+      "evidence": "Root Cause 1 section explicitly identifies '11 separate locale collections (products-{locale}) each holding only 50 points' as an antipattern. States 'This is a classic multi-tenant pattern that should use a single collection with a locale payload field.'"
+    },
+    {
+      "text": "Calculates or mentions the per-collection overhead (12-14 MB each)",
+      "passed": true,
+      "evidence": "Step 1 states 'Each collection carries a fixed baseline overhead of 12-14 MB regardless of data volume.' Also calculates '12 x ~13 MB = ~156 MB baseline' in the Collection overhead section."
+    },
+    {
+      "text": "Recommends consolidating into a single collection with a tenant field",
+      "passed": true,
+      "evidence": "Priority 1 recommendation: 'Consolidate 11 locale product collections into one collection with a locale keyword field'. Recommendation table shows this as the top priority action."
+    },
+    {
+      "text": "Checks collection config (on_disk, quantization) not just collection count",
+      "passed": true,
+      "evidence": "Step 2 provides detailed collection config summary including on_disk settings, quantization config for embeddings-archive (always_ram=false), hnsw_config.on_disk, optimizer_status, and payload schema details."
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 0,
+    "total": 5,
+    "pass_rate": 1.0
+  }
+}

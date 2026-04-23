@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agentic Memory in Production - Qdrant</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0D0D0D;
+            color: white;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        .presentation {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            padding: 0.75rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(13, 13, 13, 0.95);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .logo span {
+            color: #DC244C;
+        }
+
+        .slide-counter {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .controls {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-icon {
+            padding: 0.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-icon:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-icon:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .btn-primary {
+            background: #DC244C;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #ff3d5a;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+            position: relative;
+        }
+
+        .slide-container {
+            max-width: 100%;
+            max-height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .slide-container img {
+            max-width: 100%;
+            max-height: calc(100vh - 120px);
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .nav-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            z-index: 10;
+        }
+
+        .nav-arrow:hover {
+            background: rgba(220, 36, 76, 0.5);
+        }
+
+        .nav-arrow:disabled {
+            opacity: 0.2;
+            cursor: not-allowed;
+        }
+
+        .nav-arrow.prev {
+            left: 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .nav-arrow.next {
+            right: 0;
+            border-radius: 8px 0 0 8px;
+        }
+
+        .progress-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 3px;
+            background: #DC244C;
+            transition: width 0.3s ease;
+        }
+
+        .thumbnail-strip {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(13, 13, 13, 0.95);
+            padding: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            overflow-x: auto;
+            z-index: 100;
+        }
+
+        .thumbnail-strip.visible {
+            display: flex;
+        }
+
+        .thumbnail-strip .thumb {
+            flex-shrink: 0;
+            width: 120px;
+            height: 68px;
+            margin-right: 0.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            opacity: 0.5;
+            transition: all 0.2s;
+            object-fit: cover;
+            border: 2px solid transparent;
+        }
+
+        .thumbnail-strip .thumb:hover {
+            opacity: 0.8;
+        }
+
+        .thumbnail-strip .thumb.active {
+            opacity: 1;
+            border-color: #DC244C;
+        }
+
+        /* Fullscreen */
+        .presentation.fullscreen header,
+        .presentation.fullscreen .thumbnail-strip {
+            display: none;
+        }
+
+        .presentation.fullscreen main {
+            padding: 0;
+        }
+
+        .presentation.fullscreen .slide-container img {
+            max-height: 100vh;
+            border-radius: 0;
+        }
+
+        /* Keyboard hint */
+        .keyboard-hint {
+            position: fixed;
+            bottom: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.6);
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .keyboard-hint.visible {
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .nav-arrow {
+                width: 40px;
+                height: 60px;
+            }
+
+            header {
+                padding: 0.5rem 1rem;
+            }
+
+            .btn-primary span {
+                display: none;
+            }
+        }
+
+        .title-overlay {
+            position: absolute;
+            top: 52%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            pointer-events: none;
+            z-index: 5;
+            display: none;
+            width: 90%;
+        }
+
+        .title-overlay.visible {
+            display: block;
+        }
+
+        .title-cover {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(180deg,
+                rgba(13, 17, 26, 0) 0%,
+                rgba(13, 17, 26, 0.95) 20%,
+                rgba(13, 17, 26, 1) 35%,
+                rgba(13, 17, 26, 1) 65%,
+                rgba(13, 17, 26, 0.95) 80%,
+                rgba(13, 17, 26, 0) 100%
+            );
+        }
+
+        .title-overlay h1 {
+            position: relative;
+            font-size: 3.2rem;
+            font-weight: 700;
+            color: #F0F3FA;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        @media (max-width: 768px) {
+            .title-overlay h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation" id="presentation">
+        <header>
+            <div class="logo"><span>Q</span>drant</div>
+            <div class="slide-counter">
+                <span id="currentSlide">1</span> / <span id="totalSlides">44</span>
+            </div>
+            <div class="controls">
+                <button class="btn btn-icon" id="toggleThumbs" title="Toggle thumbnails">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="3" width="7" height="7"></rect>
+                        <rect x="3" y="14" width="7" height="7"></rect>
+                        <rect x="14" y="14" width="7" height="7"></rect>
+                    </svg>
+                </button>
+                <button class="btn btn-icon" id="toggleFullscreen" title="Fullscreen (F)">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                    </svg>
+                </button>
+                <a href="https://docs.google.com/presentation/d/1QpnJOeO3-HHMpAwMw7eHJHnsagDGUAMZHOGWsMlYXRg/edit" target="_blank" class="btn btn-primary">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                    </svg>
+                    <span>Edit</span>
+                </a>
+            </div>
+        </header>
+
+        <main>
+            <button class="nav-arrow prev" id="prevBtn" disabled>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M15 18l-6-6 6-6"></path>
+                </svg>
+            </button>
+
+            <div class="slide-container">
+                <img id="slideImage" src="slides/slide-01.jpg" alt="Slide 1">
+            </div>
+
+            <button class="nav-arrow next" id="nextBtn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M9 18l6-6-6-6"></path>
+                </svg>
+            </button>
+
+            <div class="progress-bar" id="progressBar"></div>
+        </main>
+
+        <div class="thumbnail-strip" id="thumbnailStrip"></div>
+
+        <div class="keyboard-hint" id="keyboardHint">
+            Use arrow keys to navigate
+        </div>
+    </div>
+
+    <script>
+        const totalSlides = 44;
+        let currentSlide = 1;
+        let thumbsVisible = false;
+
+        const slideImage = document.getElementById('slideImage');
+        const currentSlideEl = document.getElementById('currentSlide');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const progressBar = document.getElementById('progressBar');
+        const thumbnailStrip = document.getElementById('thumbnailStrip');
+        const toggleThumbs = document.getElementById('toggleThumbs');
+        const toggleFullscreen = document.getElementById('toggleFullscreen');
+        const presentation = document.getElementById('presentation');
+        const keyboardHint = document.getElementById('keyboardHint');
+        const titleOverlay = document.getElementById('titleOverlay');
+
+        // Generate thumbnails
+        for (let i = 1; i <= totalSlides; i++) {
+            const thumb = document.createElement('img');
+            thumb.className = 'thumb' + (i === 1 ? ' active' : '');
+            thumb.src = `slides/slide-${String(i).padStart(2, '0')}.jpg`;
+            thumb.alt = `Slide ${i}`;
+            thumb.onclick = () => goToSlide(i);
+            thumbnailStrip.appendChild(thumb);
+        }
+
+        function updateSlide() {
+            const slideNum = String(currentSlide).padStart(2, '0');
+            slideImage.src = `slides/slide-${slideNum}.jpg`;
+            currentSlideEl.textContent = currentSlide;
+
+            prevBtn.disabled = currentSlide === 1;
+            nextBtn.disabled = currentSlide === totalSlides;
+
+            progressBar.style.width = `${(currentSlide / totalSlides) * 100}%`;
+
+            // Show title overlay only on slide 1
+            titleOverlay.classList.toggle('visible', currentSlide === 1);
+
+            // Update thumbnails
+            document.querySelectorAll('.thumb').forEach((thumb, index) => {
+                thumb.classList.toggle('active', index === currentSlide - 1);
+            });
+
+            // Scroll thumbnail into view
+            if (thumbsVisible) {
+                const activeThumb = document.querySelector('.thumb.active');
+                activeThumb?.scrollIntoView({ behavior: 'smooth', inline: 'center' });
+            }
+        }
+
+        function goToSlide(n) {
+            currentSlide = Math.max(1, Math.min(n, totalSlides));
+            updateSlide();
+        }
+
+        function nextSlide() {
+            if (currentSlide < totalSlides) {
+                currentSlide++;
+                updateSlide();
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlide > 1) {
+                currentSlide--;
+                updateSlide();
+            }
+        }
+
+        prevBtn.onclick = prevSlide;
+        nextBtn.onclick = nextSlide;
+
+        toggleThumbs.onclick = () => {
+            thumbsVisible = !thumbsVisible;
+            thumbnailStrip.classList.toggle('visible', thumbsVisible);
+        };
+
+        toggleFullscreen.onclick = () => {
+            if (!document.fullscreenElement) {
+                presentation.requestFullscreen();
+                presentation.classList.add('fullscreen');
+            } else {
+                document.exitFullscreen();
+                presentation.classList.remove('fullscreen');
+            }
+        };
+
+        document.addEventListener('fullscreenchange', () => {
+            presentation.classList.toggle('fullscreen', !!document.fullscreenElement);
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            switch(e.key) {
+                case 'ArrowRight':
+                case 'ArrowDown':
+                case ' ':
+                case 'PageDown':
+                    e.preventDefault();
+                    nextSlide();
+                    break;
+                case 'ArrowLeft':
+                case 'ArrowUp':
+                case 'PageUp':
+                    e.preventDefault();
+                    prevSlide();
+                    break;
+                case 'Home':
+                    e.preventDefault();
+                    goToSlide(1);
+                    break;
+                case 'End':
+                    e.preventDefault();
+                    goToSlide(totalSlides);
+                    break;
+                case 'f':
+                case 'F':
+                    toggleFullscreen.click();
+                    break;
+                case 't':
+                case 'T':
+                    toggleThumbs.click();
+                    break;
+                case 'Escape':
+                    if (thumbsVisible) {
+                        thumbsVisible = false;
+                        thumbnailStrip.classList.remove('visible');
+                    }
+                    break;
+            }
+        });
+
+        // Click to advance
+        slideImage.onclick = (e) => {
+            const rect = slideImage.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            if (x > rect.width / 2) {
+                nextSlide();
+            } else {
+                prevSlide();
+            }
+        };
+
+        // Show keyboard hint briefly
+        setTimeout(() => {
+            keyboardHint.classList.add('visible');
+            setTimeout(() => keyboardHint.classList.remove('visible'), 3000);
+        }, 1000);
+
+        // Touch swipe support
+        let touchStartX = 0;
+        slideImage.addEventListener('touchstart', (e) => {
+            touchStartX = e.touches[0].clientX;
+        });
+
+        slideImage.addEventListener('touchend', (e) => {
+            const touchEndX = e.changedTouches[0].clientX;
+            const diff = touchStartX - touchEndX;
+            if (Math.abs(diff) > 50) {
+                if (diff > 0) nextSlide();
+                else prevSlide();
+            }
+        });
+
+        // Preload adjacent slides
+        function preloadSlides() {
+            [currentSlide - 1, currentSlide + 1].forEach(n => {
+                if (n >= 1 && n <= totalSlides) {
+                    const img = new Image();
+                    img.src = `slides/slide-${String(n).padStart(2, '0')}.jpg`;
+                }
+            });
+        }
+
+        slideImage.onload = preloadSlides;
+    </script>
+</body>
+</html>

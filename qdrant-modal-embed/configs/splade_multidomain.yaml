@@ -1,0 +1,44 @@
+# Multi-Domain SPLADE Training Configuration
+#
+# Train a generalized sparse encoder on multiple e-commerce datasets:
+# - Amazon ESCI
+# - Wayfair WANDS  
+# - Home Depot
+#
+# Run: uv run modal run modal_app.py --config-path configs/splade_multidomain.yaml --mode train-multi
+
+# Run identification
+run_name: splade_multidomain
+
+# Model architecture
+base_model: distilbert/distilbert-base-uncased
+architecture: splade
+pooling_strategy: max
+
+# Training hyperparameters
+batch_size: 32
+learning_rate: 2e-5
+num_epochs: 1
+warmup_ratio: 0.1
+
+# SPLADE sparsity regularization
+query_regularizer_weight: 5e-5
+document_regularizer_weight: 3e-5
+
+# Checkpointing
+save_steps: 1000
+logging_steps: 100
+
+# Multi-domain data settings
+# Limit samples per dataset to balance training
+# Set to null to use all available data from each source
+max_samples_per_dataset: 50000
+
+# Which datasets to include (all by default)
+include_esci: true
+include_wands: true
+include_homedepot: true
+
+# Evaluation limits
+max_products: 10000
+max_queries: 1000

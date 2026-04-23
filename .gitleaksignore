@@ -1,0 +1,8 @@
+# False positives — documented below
+#
+# qdrant-cage/ref/landing_page/ — Segment analytics write keys (public by design)
+# qdrant-cage/ref/.../from-weaviate.md — placeholder "your-qdrant-api-key" in docs
+# qdrant-cage/ref/.../security.md — placeholder "your_secret_api_key_here" in docs
+# qdrant-cage/ref/qdrant/tests/e2e_tests/test_data/cert/key.pem — test cert from qdrant OSS repo
+# qdrant-cage/ref/qdrant/tests/integration-tests-api-key.sh — "my-ro-secret" test value
+# qdrant-cage/ref/.../llms-full.txt — placeholder docs + demo JWT with empty payload

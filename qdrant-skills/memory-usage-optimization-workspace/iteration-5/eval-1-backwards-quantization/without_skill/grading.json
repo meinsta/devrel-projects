@@ -1,0 +1,40 @@
+{
+  "expectations": [
+    {
+      "text": "Actually connects and inspects the embeddings-archive collection config",
+      "passed": true,
+      "evidence": "Response shows full verbatim JSON from GET /collections/embeddings-archive including all config fields: vectors.on_disk=false, quantization_config.scalar.always_ram=false, optimizer_config with indexing_threshold=10000, indexed_vectors_count=0, etc."
+    },
+    {
+      "text": "Identifies always_ram=false as the problem (quantized vectors on disk)",
+      "passed": false,
+      "evidence": "The response explicitly states the OPPOSITE: 'always_ram: false means quantized vectors are not forced into RAM. This is actually the correct setting for memory reduction.' Problem 3 section says 'This setting is fine as-is.' This is an incorrect assessment - always_ram=false on quantized vectors means they are not pinned in RAM, which defeats quantization's memory benefit for candidate selection."
+    },
+    {
+      "text": "Identifies on_disk=false as the problem (originals in RAM)",
+      "passed": true,
+      "evidence": "Problem 2 section: 'Even if quantization ran, original float32 vectors stay in RAM alongside quantized copies, negating memory savings.' Fix recommends setting vectors.on_disk=true."
+    },
+    {
+      "text": "Explains the correct pattern: always_ram=true for quantized, on_disk=true for originals",
+      "passed": false,
+      "evidence": "The response explicitly recommends keeping always_ram=false (calling it 'correct') and only setting on_disk=true. It does not explain the correct pattern of always_ram=true for quantized + on_disk=true for originals. This is a fundamental error in the diagnosis."
+    },
+    {
+      "text": "Checks optimizer status before concluding quantization failed",
+      "passed": true,
+      "evidence": "Response checks optimizer_status=ok and indexed_vectors_count=0, noting Problem 1 is that vectors are not indexed (threshold 10000, only 200 points). This shows the optimizer status was checked as part of the analysis."
+    },
+    {
+      "text": "Warns against the performance impact of always_ram=false",
+      "passed": false,
+      "evidence": "The response recommends always_ram=false as correct and does not warn against its performance impact. It even says 'This is actually the correct setting for memory reduction' which is incorrect - always_ram=false causes disk I/O on every search for quantized vector lookups."
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 3,
+    "total": 6,
+    "pass_rate": 0.5
+  }
+}

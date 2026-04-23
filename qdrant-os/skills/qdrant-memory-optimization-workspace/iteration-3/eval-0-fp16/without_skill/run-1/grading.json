@@ -1,0 +1,35 @@
+{
+  "expectations": [
+    {
+      "text": "Says Qdrant supports FP16 vector storage",
+      "passed": true,
+      "evidence": "Yes, Qdrant supports float16 vector storage via datatype parameter."
+    },
+    {
+      "text": "Explains FP16 gives 2x disk reduction",
+      "passed": true,
+      "evidence": "Goes from ~1.15TB to ~575GB."
+    },
+    {
+      "text": "Mentions FP16 stacks with quantization",
+      "passed": true,
+      "evidence": "Can be combined with scalar quantization for RAM reduction."
+    },
+    {
+      "text": "Mentions 2-bit or 4-bit quantization options",
+      "passed": false,
+      "evidence": "Only mentions scalar (int8) quantization. No mention of 2-bit or 4-bit."
+    },
+    {
+      "text": "Does NOT say Qdrant lacks FP16 support",
+      "passed": true,
+      "evidence": "Correctly identifies FP16 support."
+    }
+  ],
+  "summary": {
+    "passed": 4,
+    "failed": 1,
+    "total": 5,
+    "pass_rate": 0.8
+  }
+}

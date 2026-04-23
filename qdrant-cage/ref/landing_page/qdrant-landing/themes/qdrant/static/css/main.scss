@@ -1,0 +1,185 @@
+@use "helpers/functions";
+@use "helpers/utils";
+@use "mixins/marquee";
+
+@import "colors";
+@import "../../../../node_modules/bootstrap/scss/bootstrap.scss";
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800|Roboto:400,700,700i&display=swap');
+@import url('font-awesome.css');
+@import url('flaticon.css');
+
+@import "variables";
+@import "reset";
+
+@import "blocks/scroll-to-top";
+@import "blocks/sec-title";
+@import "blocks/mobile-menu";
+@import "blocks/optimized-section";
+@import "blocks/clients-section";
+@import "blocks/prices-page";
+@import "syntax-highlight";
+
+/***
+
+====================================================================
+	Projects Section Two
+====================================================================
+
+***/
+
+.projects-section-two {
+  position: relative;
+  padding: 76px 0 42px;
+  background-color: #f1eff7;
+}
+
+.pull-left {
+  float: left;
+}
+
+.pull-right {
+  float: right;
+}
+
+.asterisk {
+  color: var(--brand-primary);
+}
+
+/*
+
+
+QDRANT - RELATED
+
+
+*/
+
+/** todo: move to related files */
+
+.features-section .feature-block .text li {
+  display: block;
+  position: relative;
+  text-align: left;
+  padding-left: 25px;
+}
+
+.features-section .feature-block .text li:before {
+  position: absolute;
+  content: "\f107";
+  left: 0;
+  top: 0;
+  width: 24px;
+  height: 24px;
+  color: var(--brand-primary);
+  font-size: 12px;
+  line-height: 24px;
+  text-align: center;
+  font-family: "Flaticon";
+}
+
+/** Link Group **/
+.link-group.active .link-group-heading {
+  box-shadow: inset 3px 0 0 0 var(--brand-primary);
+  padding-left: 0.5rem;
+}
+
+.link-group li {
+  margin-top: 10px;
+  line-height: 1.3;
+}
+
+.link-group-heading span {
+  font-family: "Roboto Condensed";
+}
+
+.link-group .btn,
+.link-group a {
+  display: flex;
+  align-items: center;
+  font-family: $font-family-non-content;
+  text-decoration: none;
+  color: var(--brand-secondary);
+  .link-group__icon {
+    color: var(--brand-dark-gray);
+    font-size: 10px;
+    margin-left: 6px;
+    margin-bottom: 1px;
+  }
+}
+
+.link-group a:hover {
+  color: var(--brand-primary);
+  .link-group__icon {
+    color: var(--brand-primary);
+  }
+}
+
+.link-group.active nav li.active > a {
+  color: var(--brand-primary);
+  &:hover {
+    color: var(--brand-secondary);
+  }
+}
+
+.installation-section p {
+  font-size: 16px;
+  color: #5a5a5a;
+}
+
+.text-brand-p {
+  color: var(--brand-primary);
+}
+
+.text-brand-s {
+  color: var(--brand-secondary);
+}
+
+.news-icon {
+  font-size: 40px;
+}
+
+blockquote {
+  border-left: 3px solid var(--brand-gray);
+  padding-left: 12px;
+  font-style: italic;
+}
+
+.divider {
+  border-bottom: 1px solid var(--brand-mid-grey);
+}
+
+.marquee {
+  @include marquee.base(80px, 200px, 12, 6, 20px, false, 50s);
+}
+
+@import "blocks/forms/forms";
+@import "blocks/categories-widget";
+@import "blocks/tags-widget";
+@import "blocks/header";
+@import "blocks/banner";
+@import "blocks/page-title";
+@import "blocks/logo";
+@import "blocks/buttons";
+@import "blocks/copy-btn";
+@import "blocks/pagination";
+@import "blocks/hero-code";
+@import "blocks/features-section";
+@import "blocks/business-section-two";
+@import "blocks/widget-header";
+@import "blocks/post-preview";
+@import "blocks/steps-form";
+@import "blocks/documentation";
+@import "blocks/article";
+@import "blocks/blog";
+@import "blocks/qdrant-blog";
+@import "blocks/article-card";
+@import "blocks/breadcrumbs";
+@import "blocks/share-post";
+@import "blocks/table_of_content";
+@import "blocks/feedback";
+@import "blocks/footer";
+@import "responsive";
+
+@import "mathjax";
+@import "lang-switcher";
+@import "blocks/top-banner";

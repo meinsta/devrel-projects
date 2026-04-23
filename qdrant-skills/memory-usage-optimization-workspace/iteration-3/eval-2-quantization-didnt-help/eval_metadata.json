@@ -1,0 +1,31 @@
+{
+  "eval_id": 2,
+  "eval_name": "quantization-didnt-help",
+  "prompt": "We enabled scalar quantization on our collection but RAM usage didn't decrease at all. Looking at the node-level metrics, there's still a bunch of cache memory. What went wrong?",
+  "assertions": [
+    {
+      "text": "Explains quantization reduces forced-resident memory, NOT OS page cache",
+      "type": "content_check"
+    },
+    {
+      "text": "Describes cache as expected and healthy, not a problem to eliminate",
+      "type": "content_check"
+    },
+    {
+      "text": "Recommends checking metrics endpoint to confirm data usage actually dropped",
+      "type": "content_check"
+    },
+    {
+      "text": "Notes that vectors are memory-mapped by default, so on_disk=True may be redundant",
+      "type": "content_check"
+    },
+    {
+      "text": "Mentions full-text indexes as a possible hidden RAM consumer",
+      "type": "content_check"
+    },
+    {
+      "text": "Warns against setting always_ram=False (causes performance collapse)",
+      "type": "content_check"
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+# Secrets and credentials
+.env
+.env.*
+!.env.example
+!.env.template
+!.env.sample
+*.local.json
+
+# Claude Code local settings
+.claude/settings.local.json
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+*.egg-info/
+dist/
+build/
+
+# Node
+node_modules/
+.next/
+.nuxt/
+
+# Data / artifacts
+*.log
+*.sqlite
+*.db
+*.parquet
+*.npy
+*.npz
+qdrant_storage/
+qdrant_store/
+
+# OS
+.DS_Store
+Thumbs.db

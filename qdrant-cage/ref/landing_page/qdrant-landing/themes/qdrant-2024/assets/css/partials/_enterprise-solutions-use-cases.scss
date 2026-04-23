@@ -1,0 +1,150 @@
+@use '../helpers/functions' as *;
+
+.enterprise-solutions-use-cases {
+  background-color: $neutral-94;
+
+  padding-top: $spacer * 3;
+  padding-bottom: $spacer * 3;
+
+  &__description {
+    max-width: pxToRem(920);
+    margin: 0 auto $spacer * 2.5;
+    font-size: $spacer * 1.5;
+    line-height: pxToRem(34);
+    color: $neutral-20;
+    text-align: center;
+  }
+
+  &__description-image {
+    display: block;
+    width: 100%;
+    margin: 0 auto $spacer * 2.5;
+    max-width: pxToRem(320);
+  }
+
+  &__title {
+    margin-bottom: $spacer * 5;
+    font-size: $spacer * 2.5;
+    line-height: $spacer * 3;
+    color: $neutral-20;
+    text-align: center;
+  }
+
+  &__cases > div {
+    &:first-of-type {
+      .enterprise-solutions-use-cases__case {
+        &-preview {
+          width: 100%;
+          align-self: flex-end;
+          padding-left: $spacer * 3;
+        }
+      }
+    }
+
+    &:last-of-type {
+      .enterprise-solutions-use-cases__case {
+        &-preview {
+          margin-top: -$spacer * 2;
+        }
+      }
+    }
+  }
+
+  &__case {
+    padding: $spacer * 1.5 0 0;
+
+    &-text {
+      width: 100%;
+      padding: 0 $spacer * 1.5;
+    }
+
+    &-title {
+      font-size: $spacer * 2;
+      line-height: pxToRem(40);
+      margin-bottom: $spacer * 1.5;
+      color: $neutral-20;
+    }
+
+    &-description {
+      font-size: pxToRem(18);
+      line-height: pxToRem(27);
+      margin-bottom: $spacer * 1.5;
+      color: $neutral-40;
+    }
+
+    &-preview {
+      width: 100%;
+      margin-top: $spacer * 1.5;
+
+      img {
+        max-height: pxToRem(368);
+        width: 100%;
+      }
+    }
+  }
+
+  @include media-breakpoint-up(lg) {
+    padding-top: $spacer * 5;
+    padding-bottom: $spacer * 10;
+
+    &__description {
+      font-size: $spacer * 2;
+      line-height: pxToRem(38);
+    }
+
+    &__title {
+      font-size: $spacer * 3.5;
+      line-height: pxToRem(67);
+    }
+
+    &__cases > div:first-of-type {
+      .enterprise-solutions-use-cases__case {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0;
+
+        &-text {
+          max-width: pxToRem(512);
+        }
+
+        &-preview {
+          width: pxToRem(520);
+          flex-shrink: 0;
+          padding-top: $spacer * 3;
+          padding-left: 0;
+
+          img {
+            max-height: none;
+          }
+        }
+
+        &-title,
+        &-description {
+          margin-bottom: $spacer * 1.5;
+        }
+      }
+    }
+
+    &__case {
+      padding: $spacer * 3 0 0;
+
+      &-text {
+        padding: 0 $spacer * 4 0 $spacer * 3;
+      }
+
+      &-title,
+      &-description {
+        margin-bottom: pxToRem(12);
+      }
+
+      &-preview {
+        margin-top: 0;
+
+        img {
+          object-fit: contain;
+        }
+      }
+    }
+  }
+}

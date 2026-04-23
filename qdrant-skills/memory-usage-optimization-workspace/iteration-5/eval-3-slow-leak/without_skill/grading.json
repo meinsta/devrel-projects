@@ -1,0 +1,40 @@
+{
+  "expectations": [
+    {
+      "text": "Identifies this as the Phase 3A memory growth pattern",
+      "passed": false,
+      "evidence": "The response does not identify this as Phase 3A. It frames the issue primarily as mmap page cache accumulation, jemalloc fragmentation, and background optimizer activity. The Phase 3A classification (known pre-v1.13 slow-growth bug) is not named or used as a framework."
+    },
+    {
+      "text": "Mentions the 1-12 MB/day growth is a known issue in versions before v1.13",
+      "passed": true,
+      "evidence": "Section 4 'Known Cache Hygiene Issue (Addressed in Later Versions)' mentions cache hygiene PRs #6323 and #6396 and states they address 'delayed mmap population leaving pages in the OS cache even when corresponding segments were dropped during optimization.' The response does reference v1.13 context and recommends upgrading within 1.13.x series. However, it does not directly cite '1-12 MB/day is a known issue in versions before v1.13' - it frames it differently as cache hygiene bugs."
+    },
+    {
+      "text": "Does NOT dismiss restart behavior as proof it was 'just cache'",
+      "passed": true,
+      "evidence": "The summary table lists all causes as 'Drops on Restart? Yes' including both cache and non-cache causes. The response does not treat restart as proof of cache-only behavior. It explicitly lists multiple possible causes including a real bug."
+    },
+    {
+      "text": "Recommends checking GET /telemetry to separate data from cache",
+      "passed": true,
+      "evidence": "Diagnostic Step 3: 'Check optimizer activity. GET /telemetry returns optimizer statistics per collection.' However, the response does not specifically recommend using telemetry to separate data memory from cache the way the eval expects. The more direct recommendation is the proc/drop_caches test. Partial credit - telemetry is mentioned but not as the primary tool for data vs cache separation."
+    },
+    {
+      "text": "Recommends checking collection count for overhead",
+      "passed": false,
+      "evidence": "The response does not recommend checking collection count for overhead. It discusses segment fragmentation and WAL config but does not mention that each collection carries 12-14 MB baseline overhead or recommend checking collection count as a diagnostic step for slow memory growth."
+    },
+    {
+      "text": "Recommends upgrading to latest version and escalating to support if persists",
+      "passed": true,
+      "evidence": "Response recommends: 'Upgrade to a newer version. Later releases (1.15+) include improvements to memory pressure handling.' Also mentions upgrading within 1.13.x series. No explicit escalation to support is mentioned, but upgrade recommendation is present."
+    }
+  ],
+  "summary": {
+    "passed": 4,
+    "failed": 2,
+    "total": 6,
+    "pass_rate": 0.667
+  }
+}

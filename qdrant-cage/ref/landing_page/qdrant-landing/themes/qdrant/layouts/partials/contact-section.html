@@ -1,0 +1,96 @@
+<!-- Contact Form Section -->
+<script charset="utf-8" type="text/javascript" src="//js-eu1.hsforms.net/forms/embed/v2.js"></script>
+{{ $variant := .Scratch.Get "variant" }}
+
+{{ if eq $variant "compact" }}
+
+{{ $randNum := delimit (shuffle (seq 1 9)) "" }}
+<section class="newsletter-form newsletter-form_compact">
+    <p class="newsletter-form_compact__title">A place to learn how to become an expert traveler through vector space.
+        Subscribe and we will update you on features and news.</p>
+    <div id="hubspot-1">
+        <script>
+          hbspt.forms.create({
+            region: "eu1",
+            portalId: "139603372",
+            formId: "049d96c6-ef65-4e41-ba69-a3335b9334cf",
+            cssClass: "newsletter-form_compact__form",
+            submitText: "Subscribe",
+            target: '#hubspot-1',
+            pageId: '{{- .Permalink -}}',
+            formInstanceId: '{{- .Permalink -}}-compact',
+          });
+        </script>
+    </div>
+
+</section>
+
+{{ else if eq $variant "two-columns" }}
+
+{{ $randNum2 := delimit (shuffle (seq 1 9)) "" }}
+<section class="newsletter-form newsletter-form_two-columns">
+    <div class="auto-container">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="newsletter-form_two-columns__title">Stay updated with Qdrant</h2>
+            </div>
+            <div class="col-12 col-md-6">
+                <p class="newsletter-form_two-columns__subtitle">We will update you on new features and news regarding <br class="d-none d-lg-inline"> Qdrant and Vector Similarity Search.</p>
+            </div>
+            <div class="col-12 col-md-6" id="hubspot-2">
+                <script>
+                  hbspt.forms.create({
+                    region: "eu1",
+                    portalId: "139603372",
+                    formId: "049d96c6-ef65-4e41-ba69-a3335b9334cf",
+                    cssClass: "newsletter-form_two-columns__form",
+                    submitText: "Subscribe",
+                    target: '#hubspot-2',
+                    pageId: '{{ .Permalink }}',
+                    formInstanceId: '{{- .Permalink -}}-two-columns',
+                  });
+                </script>
+            </div>
+        </div>
+    </div>
+</section>
+
+{{ else }}
+
+{{ $randNum3 := delimit (shuffle (seq 1 9)) "" }}
+<section class="clients-section contact-section">
+    <div class="auto-container">
+        <div class="row">
+            <div class="col-12 sec-title">
+                <h2>Get Updates from Qdrant</h2>
+                <div class="text">We will update you on new features and news regarding Qdrant and Vector Similarity
+                    Search
+                </div>
+            </div>
+            <div class="content-column col-12">
+                <!-- Newsletter Form -->
+                <div class="newsletter-form newsletter-form_default" id="hubspot-3">
+                    <script>
+                      hbspt.forms.create({
+                        region: "eu1",
+                        portalId: "139603372",
+                        formId: "049d96c6-ef65-4e41-ba69-a3335b9334cf",
+                        cssClass: "newsletter-form_default__form",
+                        submitButtonClass: "theme-btn btn-style-four btn-style-four_rounded btn-style-four_reversed btn-style-four_big btn-style-four_responsive",
+                        submitText: "Subscribe",
+                        target: '#hubspot-3',
+                        pageId: '{{ .Permalink }}',
+                        formInstanceId: '{{- .Permalink -}}-default',
+                      });
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{{ end }}
+
+<!-- End of Contact Section -->
+
+

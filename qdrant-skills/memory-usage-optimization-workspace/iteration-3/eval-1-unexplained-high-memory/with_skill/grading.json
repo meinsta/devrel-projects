@@ -1,0 +1,35 @@
+{
+  "expectations": [
+    {
+      "text": "Asks for actual configuration (on_disk, quantization, payload settings) BEFORE providing a breakdown",
+      "passed": false,
+      "evidence": "The response provides a detailed breakdown of memory components starting at line 11 ('What Is Actually Consuming Those Extra ~12-13 GB'). The configuration check appears only later in the 'Recommended Next Steps' section (lines 98-111). The order is reversed from the assertion requirement."
+    },
+    {
+      "text": "Recommends checking metrics endpoint to separate data usage from cache",
+      "passed": true,
+      "evidence": "Lines 70-76 explicitly recommend: 'check the Qdrant metrics endpoint directly rather than relying on OS-level monitoring' and 'Look for `qdrant_collections_total_ram_bytes` and related metrics.' This is also mentioned in the 'Recommended Next Steps' section."
+    },
+    {
+      "text": "Mentions full-text indexes as a possible hidden RAM consumer",
+      "passed": true,
+      "evidence": "Section '4. Payload Indexes' (lines 43-56) explicitly states: 'Full-text indexes are a particularly common hidden cause of high memory. A full-text index across 460 million documents can consume gigabytes of RAM, well beyond what most teams expect when they add a text search field.'"
+    },
+    {
+      "text": "Does NOT invent specific GB estimates for ID tracker or payload without knowing the actual config",
+      "passed": false,
+      "evidence": "Line 32 states: 'Even small payloads add up: 460M points with an average payload of just 20 bytes is 9.2 GB before accounting for storage overhead.' This is a specific GB estimate (9.2 GB) provided without confirming the actual payload size in the user's configuration. While the estimate is conditional ('if `on_disk_payload` is not set to `True`'), it still presents a specific number as if it applies to the user's scenario without first confirming payload sizes."
+    },
+    {
+      "text": "Suggests investigating with support/core team if config review doesn't explain the gap",
+      "passed": false,
+      "evidence": "The response concludes with 'Recommended Next Steps' that include gathering configuration and checking metrics, but does not explicitly suggest contacting support/core team if the investigation doesn't resolve the issue. The response ends at line 132 with a summary table without a fallback recommendation for professional support."
+    }
+  ],
+  "summary": {
+    "passed": 2,
+    "failed": 3,
+    "total": 5,
+    "pass_rate": 0.40
+  }
+}

@@ -1,0 +1,32 @@
+# SPLADE Training Configuration
+#
+# Train a sparse encoder on Amazon ESCI e-commerce dataset.
+# Run: uv run modal run modal_app.py --config-path configs/splade_standard.yaml --mode train
+
+# Run identification
+run_name: splade_standard
+
+# Model architecture
+base_model: distilbert/distilbert-base-uncased  # Base transformer
+architecture: splade  # Standard SPLADE (MLMTransformer + SpladePooling)
+pooling_strategy: max  # Max pooling over tokens
+
+# Training hyperparameters
+batch_size: 32
+learning_rate: 2e-5
+num_epochs: 1
+warmup_ratio: 0.1
+
+# SPLADE sparsity regularization
+# Higher values = sparser vectors (fewer active terms)
+query_regularizer_weight: 5e-5
+document_regularizer_weight: 3e-5
+
+# Checkpointing
+save_steps: 1000
+logging_steps: 100
+
+# Data limits (set to null for full dataset)
+max_samples: 100000  # Training samples
+max_products: 10000  # Products for evaluation
+max_queries: 1000    # Queries for evaluation

@@ -1,0 +1,27 @@
+{
+  "eval_id": 2,
+  "eval_name": "multitenancy",
+  "prompt": "I'm building a multi-tenant SaaS with Qdrant. We have about 500 tenants but only ~20 are active at any time. Each tenant has around 100k vectors at 768 dimensions. How do I keep memory costs down?",
+  "assertions": [
+    {
+      "text": "Recommends on_disk=True for vectors",
+      "type": "content_check"
+    },
+    {
+      "text": "Uses is_tenant=True in the payload index for tenant_id",
+      "type": "content_check"
+    },
+    {
+      "text": "Explains that OS page cache keeps active tenants warm automatically",
+      "type": "content_check"
+    },
+    {
+      "text": "Provides memory estimate based on active vectors (not total)",
+      "type": "content_check"
+    },
+    {
+      "text": "Provides Python code for both collection creation and tenant index",
+      "type": "content_check"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "eval_id": 3,
+  "eval_name": "slow-leak-pattern",
+  "prompt": "Our Qdrant cluster memory keeps growing slowly, about 10-12 MB per day, even though we're not ingesting any new data. We've restarted the nodes a few times and memory drops immediately, but then it starts climbing again. We're on version 1.13. Is this a memory leak?",
+  "assertions": [
+    {
+      "text": "Identifies this as the Phase 3A memory growth pattern",
+      "type": "content_check"
+    },
+    {
+      "text": "Mentions the 1-12 MB/day growth is a known issue in versions before v1.13",
+      "type": "content_check"
+    },
+    {
+      "text": "Does NOT dismiss restart behavior as proof it was 'just cache'",
+      "type": "content_check"
+    },
+    {
+      "text": "Recommends checking GET /telemetry to separate data from cache",
+      "type": "content_check"
+    },
+    {
+      "text": "Recommends checking collection count for overhead",
+      "type": "content_check"
+    },
+    {
+      "text": "Recommends upgrading to latest version and escalating to support if persists",
+      "type": "content_check"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "eval_id": 1,
+  "eval_name": "unexplained-high-memory",
+  "prompt": "We have 460 million points with 16-byte vectors. Our calculation says 7-8GB but each instance is using 20GB. We stopped ingestion for a week, barely any queries, still 20GB average across all six instances. What is Qdrant storing that takes 20GB?",
+  "assertions": [
+    {
+      "text": "Identifies additional RAM consumers beyond raw vectors (HNSW graph, ID tracker, metadata, collection overhead)",
+      "type": "content_check"
+    },
+    {
+      "text": "Asks about or checks on_disk settings and quantization config",
+      "type": "content_check"
+    },
+    {
+      "text": "Explains cache behavior (memmap cache inflates reported memory)",
+      "type": "content_check"
+    },
+    {
+      "text": "Suggests checking collection config to verify what is in RAM vs cached",
+      "type": "content_check"
+    },
+    {
+      "text": "Diagnoses before prescribing solutions",
+      "type": "content_check"
+    }
+  ]
+}

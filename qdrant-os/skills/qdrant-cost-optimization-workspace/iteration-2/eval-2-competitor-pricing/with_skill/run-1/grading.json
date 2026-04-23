@@ -1,0 +1,35 @@
+{
+  "expectations": [
+    {
+      "text": "Suggests checking if competitor quote uses different quantization",
+      "passed": true,
+      "evidence": "'Pinecone quote almost certainly includes aggressive quantization baked into their pricing.' 'Ask What Quantization Pinecone Is Using.'"
+    },
+    {
+      "text": "Recommends showing apples-to-apples comparison",
+      "passed": true,
+      "evidence": "'How to Build an Apples-to-Apples Comparison' section with steps."
+    },
+    {
+      "text": "Mentions specific Qdrant advantages",
+      "passed": true,
+      "evidence": "Mentions open source, transparency about compression vs competitors who silently apply quantization."
+    },
+    {
+      "text": "Provides a path to reduce the Qdrant price",
+      "passed": true,
+      "evidence": "Remove FDE/Premium ($200k+), apply scalar quantization, presents optimized pricing scenarios."
+    },
+    {
+      "text": "Does NOT trash the competitor",
+      "passed": true,
+      "evidence": "Opens with 'Acknowledge It. Don't dismiss the concern.' States facts about competitor behavior without trashing."
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 0,
+    "total": 5,
+    "pass_rate": 1.0
+  }
+}

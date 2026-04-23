@@ -1,0 +1,22 @@
+# BrowseComp+ baseline RL training
+# 4-tool retrieval harness, all-MiniLM + BM25, answer_found reward
+# 830 questions (625 train, 205 holdout at 25%)
+model = "Qwen/Qwen3-4B-Instruct-2507"
+max_steps = 100
+batch_size = 8
+rollouts_per_example = 4
+
+[sampling]
+max_tokens = 2048
+
+[[env]]
+id = "thierrydamiba/frames-search"
+args = { benchmark = "browsecomp", holdout_frac = 0.25 }
+
+[wandb]
+project = "asteroid"
+entity = "thierrydamiba"
+name = "browsecomp-4b-baseline"
+
+[checkpoints]
+interval = 10

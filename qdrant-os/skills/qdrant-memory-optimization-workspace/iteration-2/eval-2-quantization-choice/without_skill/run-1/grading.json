@@ -1,0 +1,35 @@
+{
+  "expectations": [
+    {
+      "text": "Recommends scalar quantization as starting point",
+      "passed": true,
+      "evidence": "'Use Scalar Quantization (SQ, int8) as the primary recommendation.' Clearly the first choice."
+    },
+    {
+      "text": "Mentions binary quantization is compatible with OpenAI models",
+      "passed": true,
+      "evidence": "'OpenAI embeddings do work with binary quantization better than many other models because they are high-dimensional and normalized.'"
+    },
+    {
+      "text": "Explains rescoring/oversampling for binary quantization",
+      "passed": true,
+      "evidence": "'You must use oversampling (e.g., 2-3x) and rescoring against original vectors to recover quality.'"
+    },
+    {
+      "text": "Provides memory estimation or formula",
+      "passed": true,
+      "evidence": "Detailed calculation: '1536 dims * 4 bytes = 6,144 bytes per vector. 80M vectors = ~460 GB.' Summary table with all options."
+    },
+    {
+      "text": "Does NOT recommend product quantization as first choice",
+      "passed": true,
+      "evidence": "PQ discussed as third option. 'Why PQ is not the top recommendation here' section explicitly."
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 0,
+    "total": 5,
+    "pass_rate": 1.0
+  }
+}

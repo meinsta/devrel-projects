@@ -1,0 +1,30 @@
+{
+  "expectations": [
+    {
+      "text": "Lists all quantization options (scalar, 4-bit, 2-bit, binary, product)",
+      "passed": true,
+      "evidence": "Lists all six: float32, float16, scalar int8, 4-bit, 2-bit, binary 1-bit, plus product."
+    },
+    {
+      "text": "Confirms FP16 is supported",
+      "passed": true,
+      "evidence": "Float16 (FP16) -- yes, Qdrant does support this."
+    },
+    {
+      "text": "Explains FP16 stacks with quantization",
+      "passed": true,
+      "evidence": "Stacks with quantization (store FP16 full vectors on disk, quantized in RAM)."
+    },
+    {
+      "text": "Does NOT say only scalar and binary exist",
+      "passed": true,
+      "evidence": "Explicitly corrects this: 'The claim that Qdrant only supports scalar and binary misses the 4-bit, 2-bit, product quantization methods, and FP16 storage entirely.'"
+    }
+  ],
+  "summary": {
+    "passed": 4,
+    "failed": 0,
+    "total": 4,
+    "pass_rate": 1.0
+  }
+}

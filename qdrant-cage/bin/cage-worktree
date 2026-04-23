@@ -1,0 +1,121 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+SUBCOMMAND="${1:-}"
+
+usage() {
+  cat <<'EOF'
+cage worktree - worktree lifecycle management
+
+usage: cage worktree <prepare|list|clean>
+
+prepare <name>   create and bootstrap a feature worktree
+list             show active worktrees
+clean            remove merged worktrees
+EOF
+}
+
+prepare_worktree() {
+  local NAME="${1:-}"
+  if [ -z "$NAME" ]; then
+    echo "error: worktree name required" >&2
+    echo "usage: cage worktree prepare <feature-name>" >&2
+    exit 1
+  fi
+
+  local BRANCH="feat/$NAME"
+  local WORKTREE_DIR="../$(basename "$(pwd)")-$NAME"
+
+  echo "preparing worktree: $NAME"
+  echo "  branch: $BRANCH"
+  echo "  directory: $WORKTREE_DIR"
+
+  # create branch and worktree
+  git worktree add -b "$BRANCH" "$WORKTREE_DIR" 2>/dev/null || \
+    git worktree add "$WORKTREE_DIR" "$BRANCH"
+
+  echo "  worktree created"
+
+  # bootstrap: install dependencies if package managers detected
+  cd "$WORKTREE_DIR"
+
+  if [ -f "pyproject.toml" ]; then
+    echo "  installing python dependencies..."
+    uv sync --quiet 2>/dev/null || true
+  fi
+
+  # check for pnpm workspaces or individual package.json files
+  if [ -f "pnpm-lock.yaml" ] || [ -f "pnpm-workspace.yaml" ]; then
+    echo "  installing node dependencies..."
+    pnpm install --frozen-lockfile --silent 2>/dev/null || true
+  elif [ -f "package.json" ]; then
+    echo "  installing node dependencies..."
+    pnpm install --frozen-lockfile --silent 2>/dev/null || true
+  fi
+
+  # install pre-commit hooks
+  if [ -f ".pre-commit-config.yaml" ]; then
+    echo "  installing pre-commit hooks..."
+    pre-commit install --quiet 2>/dev/null || true
+  fi
+
+  # mark as prepared
+  mkdir -p .cage
+  date -u +"%Y-%m-%dT%H:%M:%SZ" > .cage/.prepared
+
+  echo ""
+  echo "worktree ready: $WORKTREE_DIR"
+  echo "  cd $WORKTREE_DIR"
+  echo "  cage infra start"
+}
+
+list_worktrees() {
+  echo "=== active worktrees ==="
+  echo ""
+  git worktree list | while IFS= read -r line; do
+    DIR=$(echo "$line" | awk '{print $1}')
+    BRANCH=$(echo "$line" | grep -o '\[.*\]' | tr -d '[]')
+
+    PREPARED=""
+    if [ -f "$DIR/.cage/.prepared" ]; then
+      PREPARED=" (prepared: $(cat "$DIR/.cage/.prepared"))"
+    fi
+
+    echo "  $BRANCH -> $DIR$PREPARED"
+  done
+}
+
+clean_worktrees() {
+  echo "cleaning merged worktrees..."
+
+  CURRENT_BRANCH=$(git branch --show-current)
+  MAIN_BRANCH=$(git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null | sed 's@^refs/remotes/origin/@@' || echo "main")
+
+  git worktree list --porcelain | grep "^worktree " | awk '{print $2}' | while IFS= read -r dir; do
+    # skip main worktree
+    [ "$dir" = "$(git rev-parse --show-toplevel)" ] && continue
+
+    BRANCH=$(git -C "$dir" branch --show-current 2>/dev/null || echo "")
+    [ -z "$BRANCH" ] && continue
+
+    # check if branch is merged
+    if git branch --merged "$MAIN_BRANCH" 2>/dev/null | grep -q "$BRANCH"; then
+      echo "  removing $BRANCH ($dir) - already merged"
+      git worktree remove "$dir" 2>/dev/null || true
+      git branch -d "$BRANCH" 2>/dev/null || true
+    fi
+  done
+
+  echo "done."
+}
+
+case "$SUBCOMMAND" in
+  prepare) shift; prepare_worktree "$@" ;;
+  list) list_worktrees ;;
+  clean) clean_worktrees ;;
+  --help|-h) usage ;;
+  *)
+    echo "usage: cage worktree <prepare|list|clean>" >&2
+    exit 1
+    ;;
+esac

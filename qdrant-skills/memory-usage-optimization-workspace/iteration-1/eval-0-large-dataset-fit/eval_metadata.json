@@ -1,0 +1,31 @@
+{
+  "eval_id": 0,
+  "eval_name": "large-dataset-fit",
+  "prompt": "I have 50 million 1536-dim OpenAI embeddings and only 32GB RAM on my server. How should I configure Qdrant to handle this? I need decent search quality still.",
+  "assertions": [
+    {
+      "text": "Includes a memory estimation showing raw data exceeds 32GB",
+      "type": "content_check"
+    },
+    {
+      "text": "Recommends on_disk=True for vectors",
+      "type": "content_check"
+    },
+    {
+      "text": "Recommends quantization (scalar or binary) with always_ram=True",
+      "type": "content_check"
+    },
+    {
+      "text": "Provides a working Python create_collection code example",
+      "type": "content_check"
+    },
+    {
+      "text": "Mentions oversampling or rescore for accuracy recovery",
+      "type": "content_check"
+    },
+    {
+      "text": "Mentions disk IOPS requirement (local SSD)",
+      "type": "content_check"
+    }
+  ]
+}

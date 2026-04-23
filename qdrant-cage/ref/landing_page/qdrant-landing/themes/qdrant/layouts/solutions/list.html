@@ -1,0 +1,43 @@
+{{ define "main" }}
+
+<section>
+    <div class="auto-container pt-4 pt-md-5">
+        <div class="row clearfix">
+
+            {{ range .Pages }}
+
+            {{ if .Params.short_description  }}
+
+            <div class="d-flex col-lg-4 col-md-6 col-sm-12">
+                <!-- News block Two -->
+                <div class="news-block-two">
+                    <div class="inner-box inner-box_pb">
+                        <div class="upper-box">
+                            <h4>
+                                {{ if .Params.default_link }}
+                                <a href="{{ .Params.default_link }}">{{ .Title }}</a>
+                                {{ else }}
+                                    {{ .Title }}
+                                {{ end }}
+                            </h4>
+                        </div>
+                        <div class="image">
+                            {{ if .Params.default_link }}
+                                <a href="{{ .Params.default_link }}" data-caption="{{ .Params.image_caption }}"><img src="{{ .Params.image }}" alt="" /></a>
+                            {{ else }}
+                                <img src="{{ .Params.image }}" alt="" />
+                            {{ end }}
+                        </div>
+                        <div class="lower-box">
+                            <p>{{ .Params.short_description | markdownify }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{ end }}
+            {{ end }}
+        </div>
+    </div>
+</section>
+
+{{ end }}

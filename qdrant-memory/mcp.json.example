@@ -1,0 +1,17 @@
+{
+  "mcpServers": {
+    "qdrant-code-intel": {
+      "command": "uvx",
+      "args": [
+        "qdrant-coding-memory",
+        "start-mcp-server",
+        "--context", "claude-code",
+        "--project", "."
+      ],
+      "env": {
+        "QDRANT_URL": "${QDRANT_URL}",
+        "QDRANT_API_KEY": "${QDRANT_API_KEY}"
+      }
+    }
+  }
+}

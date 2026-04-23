@@ -1,0 +1,60 @@
+{
+  "expectations": [
+    {
+      "text": "identified_optimizer_as_likely_cause",
+      "passed": true,
+      "evidence": "Response explicitly states 'The optimizer is still running' as the #1 most likely cause (line 7). Section 'Most Likely Cause: Optimizer Still Running / Unmerged Segments' (line 13) clearly identifies optimizer activity as primary suspect. Line 117 reinforces 'Check optimizer status first. If it is still running, wait. This alone explains the 10-15x regression and resolves itself.'"
+    },
+    {
+      "text": "recommended_check_optimizer_status",
+      "passed": true,
+      "evidence": "Response provides explicit API endpoint recommendation at line 28-36: 'Check the optimizer status via the REST API: GET /collections/{collection_name}' and specifies what to look for: 'optimizer_status' field. Also mentions v1.17+ endpoint at line 40-42: 'GET /collections/{collection_name}/optimizations'. Step 1 of diagnostic checklist (line 108) reiterates this check."
+    },
+    {
+      "text": "mentioned_unmerged_segments",
+      "passed": true,
+      "evidence": "Response explains unmerged segments at lines 15-24: 'When you perform a large bulk upload to Qdrant, the data initially lands in many small, unindexed segments.' Describes fan-out penalty (line 22): 'Instead of searching 2-4 well-indexed segments, you might be searching 50+ segments.' Mentions segments_count check at line 36 to detect high segment count indicating unmerged state."
+    },
+    {
+      "text": "did_not_jump_to_config_changes",
+      "passed": true,
+      "evidence": "Response prioritizes waiting for optimizer (line 45-46) before suggesting any configuration changes. Only at step 4 of recommended actions (line 123) does it mention search parameters. Section 'What NOT to Do' (lines 139-144) explicitly warns against reactive parameter changes: 'Do not lower hnsw_ef or ef_construct reactively. The latency is not caused by HNSW parameters being too high. It is caused by the optimizer not having finished rebuilding indexes.' Quantization suggestion appears as step 5 (line 125), well after waiting/optimizer checks."
+    },
+    {
+      "text": "mentioned_cache_eviction_possibility",
+      "passed": true,
+      "evidence": "Response includes dedicated section 'Second Most Likely Cause: OS Page Cache Eviction' (line 61). Explains the mechanism at lines 63-65: 'A large bulk upload generates massive I/O (writing new segments, WAL entries, merging). This I/O pressure can evict cached pages from the OS page cache... they now hit cold pages that must be read from disk.' Provides confirmation method (line 69): 'If search latency gradually improves over the first few hundred queries after the upload finishes, this confirms cache warming is occurring.'"
+    },
+    {
+      "text": "classified_as_regression_pattern",
+      "passed": true,
+      "evidence": "Response explicitly identifies this as a regression/degradation pattern in the opening (line 1): 'Diagnosing Search Latency Regression After Bulk Upload (20ms to 200-300ms)' and line 5: 'A 10-15x latency regression after a bulk data upload'. Routes to post-upload specific causes (optimizer running, unmerged segments, cache eviction) rather than treating as general slow search issue."
+    },
+    {
+      "text": "ordered_diagnosis_correctly",
+      "passed": true,
+      "evidence": "Response checks causes in correct priority order: (1) Optimizer status first (line 7, 117), (2) Segment count/unmerged segments (line 8, 119), (3) Cache eviction/gradual improvement test (line 9, 121). Diagnostic Checklist (lines 104-114) and Recommended Actions (lines 115-125) confirm this order. Optimizer is checked before any config recommendations (step 4 at line 123 checks search parameters only after optimizer completes)."
+    },
+    {
+      "text": "warned_against_config_changes_during_optimizer",
+      "passed": false,
+      "evidence": "Response does not contain explicit warning against changing configuration while optimizer is running. Lines 139-144 contain 'What NOT to Do' section with warnings about restarting Qdrant, lowering hnsw_ef reactively, and re-uploading, but lacks specific warning: 'Do not change HNSW parameters or quantization configuration while the optimizer is still running.' The response suggests triggering re-optimization via PATCH at lines 48-59 without warning that configuration changes during optimizer execution may interfere."
+    },
+    {
+      "text": "referenced_qdrant_docs",
+      "passed": false,
+      "evidence": "Response contains no URLs linking to qdrant.tech documentation or any Qdrant documentation. While it references API endpoints (/collections/{collection_name}), configuration fields (indexing_threshold_kb, hnsw_config), and version numbers (v1.17+), there are zero clickable documentation links (no https://qdrant.tech URLs or similar). Documentation references are implicit only."
+    },
+    {
+      "text": "suggested_future_upload_workflow",
+      "passed": true,
+      "evidence": "Response provides detailed preventive workflow in 'Long-term Prevention' section (lines 152-160): (1) Before uploading, set indexing_threshold_kb to very high value (100000000) to prevent HNSW building during upload (line 156), (2) Upload data in batches of 64-256 points with 2-4 parallel streams (line 157), (3) After upload, restore indexing_threshold_kb to default (20000) to let optimizer merge first, then build HNSW once on merged segments (line 158). This is a complete preventive workflow for future uploads."
+    }
+  ],
+  "summary": {
+    "passed": 7,
+    "failed": 2,
+    "total": 9,
+    "pass_rate": 0.778
+  }
+}

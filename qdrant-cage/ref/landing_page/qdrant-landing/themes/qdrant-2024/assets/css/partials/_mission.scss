@@ -1,0 +1,56 @@
+@use '../helpers/functions' as *;
+
+.mission {
+  background-color: $neutral-94;
+  position: relative;
+
+  &__card {
+    justify-content: flex-start;
+    padding: $spacer * 2 $spacer * 2.5;
+    color: $neutral-20;
+
+    &-title {
+      margin-bottom: $spacer * 2.5;
+      font-size: map-get($font-sizes, 4);
+      line-height: pxToRem(50);
+    }
+
+    &-content {
+      margin-bottom: 0;
+      font-size: map-get($font-sizes-text, 'xl');
+      line-height: pxToRem(30);
+    }
+  }
+
+  &__container {
+    position: relative;
+    padding-top: $spacer * 4;
+    padding-bottom: $spacer * 4;
+
+    &:before,
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: pxToRem(1);
+      background-color: $neutral-90;
+      left: 0;
+    }
+
+    &:before {
+      top: 0;
+    }
+
+    &:after {
+      bottom: 0;
+    }
+  }
+
+  @include media-breakpoint-up(xl) {
+    &__container {
+      padding-top: $spacer * 5;
+      padding-bottom: $spacer * 5;
+    }
+  }
+}

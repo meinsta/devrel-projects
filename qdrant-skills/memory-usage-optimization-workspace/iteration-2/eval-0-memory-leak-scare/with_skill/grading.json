@@ -1,0 +1,40 @@
+{
+  "expectations": [
+    {
+      "text": "Explains this is likely OS page cache, not a memory leak",
+      "passed": true,
+      "evidence": "Response explicitly states in the short answer 'Almost certainly not a memory leak' and dedicates 'What Is Actually Happening' section (lines 7-16) to explaining OS page cache behavior with mmap files. Clearly contrasts page cache from actual memory leak."
+    },
+    {
+      "text": "Distinguishes between actual data RAM and page cache",
+      "passed": true,
+      "evidence": "Lines 11-13 explain that RSS includes page cache and that Qdrant uses memory-mapped files with OS caching. Lines 30-32 recommend checking Qdrant's memory display which 'separates data usage from cache'. Line 34 explains genuine leaks show 'actual allocator consuming memory independent of query activity'."
+    },
+    {
+      "text": "Explains why restart drops memory (flushes cache)",
+      "passed": true,
+      "evidence": "Lines 13-14 explicitly state 'When you restart the cluster, the cache is cold. The OS has not yet cached anything, so memory reads as low.' The summary table (lines 153-158) directly addresses this symptom and confirms it 'Confirms this is cache, not data'."
+    },
+    {
+      "text": "Recommends checking Qdrant metrics for actual data vs cache breakdown",
+      "passed": true,
+      "evidence": "Lines 19-34 provide explicit recommendations: GET /metrics endpoint, looking for app_info, and using web dashboard that 'separates data usage from cache in its memory display'. Provides concrete steps to verify the diagnosis."
+    },
+    {
+      "text": "Does NOT immediately jump to 'enable quantization' as the fix",
+      "passed": true,
+      "evidence": "Response does NOT recommend quantization as first action. Instead, Action 1 (lines 86-103) addresses on_disk vector configuration. Quantization is mentioned in context of verifying existing configuration (line 65-68) and ensuring it's done correctly, not as the primary fix. Emphasis is on verification and understanding before taking action."
+    },
+    {
+      "text": "Mentions upgrading to latest version if slow growth persists",
+      "passed": true,
+      "evidence": "Action 4 (lines 135-137) explicitly states 'Upgrade Qdrant if on an older version' and notes that 'Memory management has improved significantly across recent releases. If you are running anything below 1.11, upgrading alone may reduce your baseline.'"
+    }
+  ],
+  "summary": {
+    "passed": 6,
+    "failed": 0,
+    "total": 6,
+    "pass_rate": 1.0
+  }
+}

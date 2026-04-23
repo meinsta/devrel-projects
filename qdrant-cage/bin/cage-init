@@ -1,0 +1,230 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+CAGE_DIR="$(cd "$(dirname "$0")/.." && pwd)"
+TARGET="${1:-.}"
+
+if [ "$TARGET" != "." ]; then
+  mkdir -p "$TARGET"
+  cd "$TARGET"
+fi
+
+PROJECT_ROOT="$(pwd)"
+PROJECT_NAME="$(basename "$PROJECT_ROOT")"
+
+echo "initializing CAGE in $PROJECT_ROOT"
+
+# shared contracts directory
+mkdir -p shared
+cat > shared/domain-values.json <<'ENDJSON'
+{
+  "_comment": "centralized domain values consumed by all services. pre-commit hooks enforce sync.",
+  "values": {}
+}
+ENDJSON
+
+cat > shared/api-field-snapshots.json <<'ENDJSON'
+{
+  "_comment": "API response shape snapshots. pre-commit hooks enforce coverage.",
+  "endpoints": {}
+}
+ENDJSON
+
+cat > shared/schemas.json <<'ENDJSON'
+{
+  "_comment": "data schemas shared across services. pre-commit hooks enforce sync.",
+  "schemas": {}
+}
+ENDJSON
+
+# docs structure
+mkdir -p docs/{features,designs,bugs-archive,wireframes}
+
+cat > docs/features/README.md <<'EOF'
+# features
+
+permanent implementation knowledge lives here. one file per feature.
+if you learned something painful to fix a bug or understand a subsystem,
+write it back here before the task is considered done.
+EOF
+
+cat > docs/designs/README.md <<'EOF'
+# designs
+
+temporary technical plans live here. delete after implementation.
+each design doc should reference the feature it implements.
+EOF
+
+cat > docs/bugs.md <<'EOF'
+# active bugs
+
+unresolved issues go here. move to bugs-archive/ when resolved.
+
+## template
+
+### [BUG-NNN] short description
+- **reported**: YYYY-MM-DD
+- **severity**: critical | high | medium | low
+- **surfaces**: which services/pages affected
+- **repro**: steps to reproduce
+- **root cause**: (fill in during investigation)
+- **fix**: (fill in when resolved)
+EOF
+
+cat > docs/bugs-archive/README.md <<'EOF'
+# resolved bugs
+
+bugs move here from ../bugs.md when resolved.
+keep for institutional knowledge.
+EOF
+
+# execution policy
+cat > cage.rules <<'EOF'
+# cage execution policy
+# format: ACTION PREFIX [ALTERNATIVE]
+#   block   - reject outright
+#   prompt  - ask user before executing
+#   allow   - always allow (default for unlisted commands)
+#
+# lines starting with # are comments
+# ALTERNATIVE is the sanctioned command to suggest instead
+
+# build commands - use scripted lifecycle
+block   next build                    cage infra start
+block   npx next build                cage infra start
+
+# infrastructure management - use cage commands
+block   lsof                          cage infra stop
+block   kill                          cage infra stop
+block   killall                       cage infra stop
+block   pkill                         cage infra stop
+
+# destructive operations - require confirmation
+prompt  rm -rf
+prompt  git merge
+prompt  git push
+prompt  git reset --hard
+prompt  git push --force
+prompt  git checkout .
+prompt  git clean
+
+# direct deploy scripts - use orchestrators
+# block   deploy/                       cage deploy
+
+# terraform - use safe wrappers
+# block   terraform plan                cage tf plan
+# block   terraform apply               cage tf apply
+# block   terraform destroy             cage tf destroy
+EOF
+
+# pre-commit config
+cat > .pre-commit-config.yaml <<'EOF'
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-json
+      - id: check-added-large-files
+        args: ['--maxkb=500']
+      - id: detect-private-key
+      - id: no-commit-to-branch
+        args: ['--branch', 'main', '--branch', 'develop']
+
+  - repo: local
+    hooks:
+      - id: cage-contract-sync
+        name: cage contract sync
+        entry: cage check contracts
+        language: system
+        pass_filenames: false
+        always_run: true
+
+      - id: cage-architectural-checks
+        name: cage architectural checks
+        entry: cage check architecture
+        language: system
+        pass_filenames: false
+        always_run: true
+EOF
+
+# CLAUDE.md for the project
+cat > CLAUDE.md <<EOF
+# $PROJECT_NAME
+
+## cage project
+
+this project uses CAGE (contract-enforced agent-guided engineering).
+
+### commands
+
+use scripted lifecycle commands, never raw commands:
+- \`cage infra start\` - start all services
+- \`cage infra stop\` - stop all services
+- \`cage worktree prepare\` - bootstrap a new worktree
+- \`cage merge <branch>\` - safe merge from worktree
+- \`cage status\` - audit staleness, contract health
+- \`cage check\` - run architectural checks
+
+### execution policy
+
+read \`cage.rules\` before running shell commands. blocked commands have sanctioned alternatives.
+
+### contracts
+
+cross-service truth lives in \`shared/\`. never duplicate these values in service code.
+pre-commit hooks enforce sync automatically.
+
+- \`shared/domain-values.json\` - domain constants
+- \`shared/api-field-snapshots.json\` - API response shapes
+- \`shared/schemas.json\` - data schemas
+
+### docs
+
+- \`docs/features/\` - permanent implementation knowledge
+- \`docs/designs/\` - temporary technical plans (delete after implementation)
+- \`docs/bugs.md\` - active unresolved issues
+- \`docs/bugs-archive/\` - resolved issues
+
+if you learned something painful during a fix, write it back into docs before the task is done.
+
+### skills
+
+- \`/spec\` - create feature spec (product manager workflow)
+- \`/feature\` - implement a feature on a worktree
+- \`/review\` - code review with product + architectural context
+- \`/audit\` - run audits with git tag tracking
+- \`/qa\` - browser-based QA testing
+- \`/ship\` - commit, push, create PR
+EOF
+
+# gitignore
+cat >> .gitignore <<'EOF'
+.cage/
+*.env
+.env.*
+!.env.example
+node_modules/
+__pycache__/
+.next/
+dist/
+EOF
+
+# local cage state directory
+mkdir -p .cage
+
+echo ""
+echo "CAGE initialized in $PROJECT_ROOT"
+echo ""
+echo "  shared/              - cross-service contracts"
+echo "  docs/                - feature docs, designs, bugs"
+echo "  cage.rules           - execution policy"
+echo "  .pre-commit-config.yaml - architectural checks"
+echo "  CLAUDE.md            - agent context"
+echo ""
+echo "next steps:"
+echo "  1. install pre-commit: pre-commit install"
+echo "  2. add services and update cage.rules"
+echo "  3. define contracts in shared/"

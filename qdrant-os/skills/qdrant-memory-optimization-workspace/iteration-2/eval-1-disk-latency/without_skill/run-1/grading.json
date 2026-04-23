@@ -1,0 +1,35 @@
+{
+  "expectations": [
+    {
+      "text": "Distinguishes between full disk and mmap",
+      "passed": true,
+      "evidence": "Section 1: Use Memmap Storage Instead of Pure On-Disk. Explains OS page cache behavior."
+    },
+    {
+      "text": "Recommends mmap as the middle ground",
+      "passed": true,
+      "evidence": "'This is the single biggest win. Qdrant supports mmap as a storage option, which sits between full RAM and pure disk.'"
+    },
+    {
+      "text": "Recommends quantization with always_ram=true",
+      "passed": true,
+      "evidence": "Section 3: scalar quantization with always_ram=True explicitly shown in code."
+    },
+    {
+      "text": "Sets latency expectations (under 500ms or similar)",
+      "passed": true,
+      "evidence": "Table shows combined strategy at 30-80ms. Summary says '30-100ms.'"
+    },
+    {
+      "text": "Does NOT recommend going back to full RAM",
+      "passed": true,
+      "evidence": "Summary says 'you do not have to choose between all in RAM and all on disk.' Does not recommend full RAM."
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 0,
+    "total": 5,
+    "pass_rate": 1.0
+  }
+}

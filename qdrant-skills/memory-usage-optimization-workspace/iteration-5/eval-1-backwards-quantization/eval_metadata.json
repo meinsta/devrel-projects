@@ -1,0 +1,31 @@
+{
+  "eval_id": 1,
+  "eval_name": "backwards-quantization-config",
+  "prompt": "We enabled scalar quantization on our embeddings-archive collection but memory usage didn't seem to drop. What went wrong?",
+  "assertions": [
+    {
+      "text": "Actually connects and inspects the embeddings-archive collection config",
+      "type": "execution_check"
+    },
+    {
+      "text": "Identifies always_ram=false as the problem (quantized vectors on disk)",
+      "type": "content_check"
+    },
+    {
+      "text": "Identifies on_disk=false as the problem (originals in RAM)",
+      "type": "content_check"
+    },
+    {
+      "text": "Explains the correct pattern: always_ram=true for quantized, on_disk=true for originals",
+      "type": "content_check"
+    },
+    {
+      "text": "Checks optimizer status before concluding quantization failed",
+      "type": "content_check"
+    },
+    {
+      "text": "Warns against the performance impact of always_ram=false",
+      "type": "content_check"
+    }
+  ]
+}

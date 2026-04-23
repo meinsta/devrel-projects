@@ -1,0 +1,323 @@
+{
+  "metadata": {
+    "skill_name": "qdrant-memory-optimization",
+    "skill_path": "<path/to/skill>",
+    "executor_model": "<model-name>",
+    "analyzer_model": "<model-name>",
+    "timestamp": "2026-03-02T09:47:26Z",
+    "evals_run": [
+      0,
+      1,
+      2
+    ],
+    "runs_per_configuration": 3
+  },
+  "runs": [
+    {
+      "eval_id": 0,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "failed": 0,
+        "total": 5,
+        "time_seconds": 0.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Recommends enabling mmap storage as immediate fix",
+          "passed": true,
+          "evidence": "Section titled 'Immediate fix: enable mmap storage' states 'Switch your vector storage from in-memory to mmap. This moves vector data to disk-backed memory-mapped files' and 'This stops the OOM kills immediately.' Includes API example with memmap_threshold."
+        },
+        {
+          "text": "Recommends quantization (scalar or binary)",
+          "passed": true,
+          "evidence": "Section 'Then: apply quantization (the biggest lever)' recommends scalar quantization as starting point: 'Recommended starting point: scalar quantization with always_ram: true.' Also covers binary, 4-bit, 2-bit, and float16 options with a comparison table."
+        },
+        {
+          "text": "Explains HNSW index overhead",
+          "passed": true,
+          "evidence": "States 'The HNSW index has overhead of roughly 1.5x the raw vector data, and it resists being paged out because graph traversal needs fast random access.' Also provides formula: 'RAM needed = vectors * dimensions * bytes_per_element * 1.5 (HNSW overhead)'."
+        },
+        {
+          "text": "Links to Qdrant documentation",
+          "passed": true,
+          "evidence": "Multiple documentation links provided: 'https://qdrant.tech/documentation/concepts/storage/', 'https://qdrant.tech/documentation/guides/quantization/', 'https://qdrant.tech/documentation/concepts/vectors/', and 'https://qdrant.tech/documentation/guides/monitoring/'."
+        },
+        {
+          "text": "Does NOT recommend just buying more RAM as primary solution",
+          "passed": true,
+          "evidence": "The response never suggests buying more RAM. Instead it focuses on mmap, quantization, FP16 storage, and monitoring. The 'What NOT to do' section explicitly advises against jumping to sharding or full disk, reinforcing optimization-first approach."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "failed": 0,
+        "total": 5,
+        "time_seconds": 0.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Distinguishes between full disk and mmap",
+          "passed": true,
+          "evidence": "Explicit section 'What went wrong' states: 'The issue is that you switched to full disk storage, not mmap (memory-mapped files). These are fundamentally different.' Then provides bullet points contrasting: 'Full disk: Every query reads directly from disk... Result: 2-5 seconds per query' vs 'mmap: Data lives on disk files, but the OS caches frequently accessed pages in RAM automatically... Result: 50-500ms per query.'"
+        },
+        {
+          "text": "Recommends mmap as the middle ground",
+          "passed": true,
+          "evidence": "Section titled 'The middle ground: mmap + scalar quantization' with 'This is the recommended configuration for most production workloads.' Step 1 is explicitly 'Switch from full disk to mmap' with API example."
+        },
+        {
+          "text": "Recommends quantization with always_ram=true",
+          "passed": true,
+          "evidence": "Step 2: 'Add scalar quantization with always_ram: true' with 'This is the critical optimization.' Includes API example with 'scalar': {'type': 'int8', 'always_ram': true}."
+        },
+        {
+          "text": "Sets latency expectations (under 500ms or similar)",
+          "passed": true,
+          "evidence": "Provides a detailed latency comparison table showing 'mmap + scalar (recommended)' at '50ms' p50 and '500ms' p95. Also states 'With mmap + scalar quantization, expect 50-500ms p95, which should be fine for a chatbot use case.'"
+        },
+        {
+          "text": "Does NOT recommend going back to full RAM",
+          "passed": true,
+          "evidence": "Explicitly states at the end: 'Do not go back to full RAM. The mmap + quantization approach is the standard production configuration and handles the vast majority of real-time workloads.'"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "failed": 0,
+        "total": 5,
+        "time_seconds": 0.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Recommends scalar quantization as starting point",
+          "passed": true,
+          "evidence": "Section titled 'Step 1: Scalar quantization (start here)' states: 'Scalar (int8) is always the right starting point, even when your model supports binary. It works with every embedding model, has less than 1% accuracy loss, and gives you 4x compression.' The recommended order of implementation also lists scalar first."
+        },
+        {
+          "text": "Mentions binary quantization is compatible with OpenAI models",
+          "passed": true,
+          "evidence": "States: 'Your model (text-embedding-3-small) is on the verified compatible list for binary quantization.' Also: 'Since you are using OpenAI text-embedding-3-small, all of these options are viable. The model is well-suited for binary quantization with rescoring.'"
+        },
+        {
+          "text": "Explains rescoring/oversampling for binary quantization",
+          "passed": true,
+          "evidence": "Under 'Critical settings for binary quantization': 'You MUST use oversampling (3-5x) and rescoring. Without rescoring, recall drops to around 70%. With rescoring, it recovers to 95-98%.' Also: 'Full-precision vectors should stay on mmap/disk for rescoring.'"
+        },
+        {
+          "text": "Provides memory estimation or formula",
+          "passed": true,
+          "evidence": "Provides explicit formula: 'RAM = vectors * dimensions * bytes_per_element * 1.5 (HNSW overhead)' with calculation: '80,000,000 * 1536 * 4 * 1.5 = 737 GB.' Also includes a full table with RAM estimates for each quantization level (737 GB, 369 GB, 184 GB, 92 GB, 46 GB, 23 GB) and a decision matrix mapping hardware constraints to quantization choices."
+        },
+        {
+          "text": "Does NOT recommend product quantization as first choice",
+          "passed": true,
+          "evidence": "Product quantization is never mentioned in the response. The recommended order is scalar first, then binary if more compression is needed. No product quantization appears anywhere."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 0,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.6,
+        "passed": 3,
+        "failed": 2,
+        "total": 5,
+        "time_seconds": 0.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Recommends enabling mmap storage as immediate fix",
+          "passed": true,
+          "evidence": "Option 1 is 'Enable memory-mapped (mmap) storage' and states 'This is the fastest way to stop OOM kills.' The recommended action plan lists 'Enable mmap immediately to stop the crashes' as step 1."
+        },
+        {
+          "text": "Recommends quantization (scalar or binary)",
+          "passed": true,
+          "evidence": "Option 2 covers quantization with both scalar ('Scalar quantization (int8): Compresses each float32 element (4 bytes) to 1 byte. 4x memory reduction') and binary ('Binary quantization: Compresses each element to 1 bit, giving 32x reduction'). Also recommends combining with always_ram: true."
+        },
+        {
+          "text": "Explains HNSW index overhead",
+          "passed": false,
+          "evidence": "The response mentions 'HNSW consuming 80GB' but does not explain what HNSW index overhead is, why it uses so much memory, or provide any details about the graph structure, per-node connections, or overhead multiplier. The only related mention is Option 5 about reducing HNSW parameters (m, ef_construct), but this describes tuning, not an explanation of overhead."
+        },
+        {
+          "text": "Links to Qdrant documentation",
+          "passed": false,
+          "evidence": "No documentation links are provided anywhere in the response. The response mentions configuring memmap_threshold and quantization but does not link to any Qdrant docs."
+        },
+        {
+          "text": "Does NOT recommend just buying more RAM as primary solution",
+          "passed": true,
+          "evidence": "The response does not recommend buying more RAM. It focuses entirely on mmap, quantization, combination approaches, sharding, and HNSW tuning. The intro says 'Here are your options beyond adding more RAM.'"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "failed": 0,
+        "total": 5,
+        "time_seconds": 0.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Distinguishes between full disk and mmap",
+          "passed": true,
+          "evidence": "The section 'The middle ground: memory-mapped files (mmap)' describes mmap as distinct from full disk: 'Instead of full disk or full RAM, use mmap-based storage.' The 'Why latency jumped' section explains full disk behavior: 'each HNSW graph traversal step requires a disk read... this adds up to seconds.' However, the distinction is less explicit than it could be, as it does not directly contrast the two side-by-side. Still, the response clearly treats them as different approaches."
+        },
+        {
+          "text": "Recommends mmap as the middle ground",
+          "passed": true,
+          "evidence": "Section titled 'The middle ground: memory-mapped files (mmap)' explicitly positions mmap as the solution between full RAM and full disk. States it gives 'latency in the 50-500ms range instead of 3-4 seconds.'"
+        },
+        {
+          "text": "Recommends quantization with always_ram=true",
+          "passed": true,
+          "evidence": "Section 'Even better: mmap + quantization' recommends scalar quantization with 'Keep quantized vectors in RAM by setting always_ram: true.' Includes JSON config example with 'always_ram': true."
+        },
+        {
+          "text": "Sets latency expectations (under 500ms or similar)",
+          "passed": true,
+          "evidence": "States mmap gives 'latency in the 50-500ms range' and the combined approach gives 'Expected latency should be well under 500ms for most workloads, which should be acceptable for a chatbot.'"
+        },
+        {
+          "text": "Does NOT recommend going back to full RAM",
+          "passed": true,
+          "evidence": "The response never suggests going back to full RAM. It positions mmap + quantization as the solution. The 'If you need lower latency' section suggests NVMe SSDs, larger instance, or binary quantization, but does not recommend reverting to full RAM storage mode."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "failed": 0,
+        "total": 5,
+        "time_seconds": 0.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Recommends scalar quantization as starting point",
+          "passed": true,
+          "evidence": "Section titled 'Scalar quantization (int8) - recommended starting point' and the recommendation section states: 'Start with scalar quantization. It is safe, predictable, and gives you 4x reduction.'"
+        },
+        {
+          "text": "Mentions binary quantization is compatible with OpenAI models",
+          "passed": true,
+          "evidence": "States: 'Your model (text-embedding-3-small) is compatible with binary quantization' and 'OpenAI embeddings work well with binary quantization.'"
+        },
+        {
+          "text": "Explains rescoring/oversampling for binary quantization",
+          "passed": true,
+          "evidence": "States: 'Requires oversampling (3-5x) and rescoring to maintain good recall. Without rescoring, expect significant accuracy degradation.' Also: 'Make sure to enable oversampling (set to 3-5x) and rescoring against full-precision vectors. This gives 32x compression with 95%+ recall when rescoring is enabled.'"
+        },
+        {
+          "text": "Provides memory estimation or formula",
+          "passed": true,
+          "evidence": "Provides formula: '80M * 1536 * 4 bytes (float32) = ~491 GB just for raw vectors' and per-quantization estimates: '~123 GB for quantized vectors' (scalar) and '~15 GB for quantized vectors' (binary). Note: the formula does not include HNSW overhead multiplier (only raw vector size), but it does provide concrete memory estimates."
+        },
+        {
+          "text": "Does NOT recommend product quantization as first choice",
+          "passed": true,
+          "evidence": "Product quantization is mentioned as a 'configurable middle ground' option but is clearly listed third, after scalar and binary. The recommendation section explicitly states 'Start with scalar quantization' as step 1 and binary as step 2. Product quantization is not recommended as a first choice."
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 1.0,
+        "stddev": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "without_skill": {
+      "pass_rate": {
+        "mean": 0.8667,
+        "stddev": 0.2309,
+        "min": 0.6,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.13",
+      "time_seconds": "+0.0",
+      "tokens": "+0"
+    }
+  },
+  "notes": []
+}

@@ -1,0 +1,35 @@
+{
+  "expectations": [
+    {
+      "text": "Mentions 4-bit quantization (8x compression)",
+      "passed": true,
+      "evidence": "4-bit quantization: 8x compression, 1-3% typical accuracy loss."
+    },
+    {
+      "text": "Mentions 2-bit quantization (16x compression)",
+      "passed": true,
+      "evidence": "2-bit quantization: 16x compression, 3-5% typical accuracy loss."
+    },
+    {
+      "text": "Recommends trying 4-bit before 2-bit",
+      "passed": true,
+      "evidence": "Try 4-bit first (8x), escalate to 2-bit (16x) if needed."
+    },
+    {
+      "text": "Does NOT say only product quantization is the middle option",
+      "passed": true,
+      "evidence": "Directly recommends 4-bit and 2-bit, not PQ as primary middle option."
+    },
+    {
+      "text": "Mentions these work with open-source models",
+      "passed": true,
+      "evidence": "Both methods well-suited for open-source models lacking binary-compatible properties."
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 0,
+    "total": 5,
+    "pass_rate": 1.0
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "expectations": [
+    {
+      "text": "Provides cost formula (RAM units, pricing per unit)",
+      "passed": true,
+      "evidence": "'1 RAM unit = 8 GB RAM + 32 GB disk = ~$53/month'. Full formula with ceil(Total RAM GB / 8)."
+    },
+    {
+      "text": "Calculates estimate for current 10M vectors",
+      "passed": true,
+      "evidence": "Shows 10M at scalar: ~$159/month."
+    },
+    {
+      "text": "Calculates estimate for target 100M vectors",
+      "passed": true,
+      "evidence": "Shows 100M at scalar: ~$1,537/month ($18,444/year)."
+    },
+    {
+      "text": "Mentions binary quantization is compatible with Cohere",
+      "passed": true,
+      "evidence": "Mentions testing binary compatibility with Cohere embed-v3."
+    },
+    {
+      "text": "Mentions the 80% RAM utilization guideline",
+      "passed": true,
+      "evidence": "References keeping under 80% utilization guideline."
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 0,
+    "total": 5,
+    "pass_rate": 1.0
+  }
+}

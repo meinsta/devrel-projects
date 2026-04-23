@@ -1,0 +1,40 @@
+{
+  "expectations": [
+    {
+      "text": "Explains cache is separate from quantization savings",
+      "passed": true,
+      "evidence": "Response clearly explains in 'Root Cause Analysis' section 4: 'Even if Qdrant is configured to keep vectors on disk, the Linux kernel will aggressively page-cache recently accessed mmap'd pages. This appears in tools like htop, free, or Prometheus node exporter as high cached or buff/cache memory. This is not used memory in the traditional sense, but it looks alarming in metrics dashboards.' Also restated in the checklist question about OS page cache vs RSS."
+    },
+    {
+      "text": "Explains that original vectors still get cached via memmap during rescoring",
+      "passed": true,
+      "evidence": "Response explains in section 3: 'Scalar quantization does not delete or replace the original vectors. The originals are required for re-scoring (rescoring) during search: Qdrant uses the compressed vectors for approximate candidate selection, then re-scores the top candidates using the full-precision originals for accuracy.' Also mentions in section 1 that 'Qdrant will continue to memory-map those original vectors unless you explicitly tell it to keep them on disk.'"
+    },
+    {
+      "text": "Recommends setting on_disk=True for original vectors",
+      "passed": true,
+      "evidence": "Step 1 explicitly recommends: 'When creating or recreating the collection, set the vector config to store originals on disk: {...\"on_disk\": true...}' with explanation that 'Qdrant will not load original vectors into RAM proactively.'"
+    },
+    {
+      "text": "Warns against setting always_ram=False (causes CPU spikes)",
+      "passed": false,
+      "evidence": "Response recommends setting always_ram: false in Step 2, but does NOT warn about CPU spikes. Instead it states: 'With always_ram: false, the quantized vectors are also stored via mmap and subject to OS page eviction. Search will be somewhat slower because the quantized vectors are no longer pinned, but RAM usage will drop significantly.' The response mentions 'somewhat slower' performance but does not specifically warn about CPU spikes as a potential consequence."
+    },
+    {
+      "text": "Provides the correct pattern: quantized vectors in RAM, originals explicitly on disk",
+      "passed": true,
+      "evidence": "Response provides this exact pattern in recommended configuration with on_disk: true for vectors and always_ram: true for quantization. Explicitly states: 'If you want the performance benefit of RAM-pinned quantized vectors (fast HNSW traversal) while keeping original vectors on disk, set always_ram: true and on_disk: true together. That is the typical production tuning: quantized vectors in RAM for speed, originals on disk and loaded on demand for rescoring.'"
+    },
+    {
+      "text": "Provides working Python code for the fix",
+      "passed": false,
+      "evidence": "Response provides JSON examples for API calls (PUT /collections endpoint, GET requests) but does not provide any Python code. The assertion specifically asks for 'working Python code for the fix' which is absent from the response."
+    }
+  ],
+  "summary": {
+    "passed": 4,
+    "failed": 2,
+    "total": 6,
+    "pass_rate": 0.67
+  }
+}

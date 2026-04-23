@@ -1,0 +1,21 @@
+{{ with (.Site.GetPage "/community/community-features") }}
+  <section class="community-features">
+    <div class="container">
+      <h2 class="community-features__title">{{ .Params.title }}</h2>
+      <div class="row g-4 gy-lg-3">
+        {{ range $index, $element := .Params.features }}
+          <div class="col-12 col-lg-4">
+            <a class="card community-features__card" href="{{ .link.url }}">
+              <img class="community-features__card-icon" src="{{ .icon.src }}" alt="{{ .icon.alt }}" />
+              <h6 class="community-features__card-title">{{ .title }}</h6>
+              <p class="community-features__card-description">{{ .description }}</p>
+              <span class="community-features__card-link link link_md align-self-start">
+                {{ .link.text }}
+              </span>
+            </a>
+          </div>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+{{ end }}

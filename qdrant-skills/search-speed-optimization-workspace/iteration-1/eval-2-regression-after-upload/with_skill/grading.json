@@ -1,0 +1,35 @@
+{
+  "expectations": [
+    {
+      "text": "classified_as_regression_pattern",
+      "passed": true,
+      "evidence": "Line 5 explicitly identifies 'Phase 3D: Search was fast, now it's slow' as the correct diagnostic classification. Line 40 states 'Classification: Performance regression (Phase 3D), triggered by the weekend bulk upload.' Lines 100-101 confirm 'This is the classic search was fast, now 5x slower after upload pattern documented in the common patterns table.'"
+    },
+    {
+      "text": "ordered_diagnosis_correctly",
+      "passed": true,
+      "evidence": "Lines 44-94 follow the exact correct priority order: (1) Optimizer still running (lines 48-62, marked MOST LIKELY), (2) Unmerged segments (lines 64-74, marked HIGHLY LIKELY), (3) Page cache eviction (lines 75-84, marked POSSIBLE secondary cause), (4) Data volume growth (lines 86-90, marked LESS LIKELY). Optimizer is checked first with explicit instruction on line 62 to check optimizer_status before any other recommendations."
+    },
+    {
+      "text": "warned_against_config_changes_during_optimizer",
+      "passed": true,
+      "evidence": "Line 118 explicitly states 'Do not make config changes while the optimizer is running.' This warning appears immediately after discussing optimizer status checking. Lines 193 reinforce this in the 'What NOT to Do' section: 'Do not change config while the optimizer is running. This will restart the optimization process and prolong the regression.' This is an explicit, unambiguous warning."
+    },
+    {
+      "text": "referenced_qdrant_docs",
+      "passed": true,
+      "evidence": "Response contains multiple qdrant.tech documentation URLs: (1) Line 62: https://qdrant.tech/documentation/concepts/optimizer/#optimization-monitoring (2) Line 68: https://qdrant.tech/documentation/concepts/optimizer/#merge-optimizer (3) Line 120: https://qdrant.tech/documentation/concepts/optimizer/#optimization-monitoring (4) Line 130: https://qdrant.tech/documentation/concepts/optimizer/#merge-optimizer (5) Line 163: https://qdrant.tech/documentation/guides/quantization/#scalar-quantization (6) Line 179: https://qdrant.tech/documentation/guides/optimize/#fine-tuning-search-parameters (7) Line 187: https://qdrant.tech/documentation/guides/monitoring/"
+    },
+    {
+      "text": "suggested_future_upload_workflow",
+      "passed": true,
+      "evidence": "Lines 181-187 provide preventive recommendations for future uploads: (1) Line 183 suggests 'Plan uploads during low-traffic windows' and 'consider rate-limiting the upload or using smaller batch sizes.' (2) Lines 185-186 recommend monitoring setup and alerting on optimizer status and segment count. This constitutes a future upload workflow to prevent similar regressions. The response explicitly frames this as 'For Future Bulk Uploads' in section 6."
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 0,
+    "total": 5,
+    "pass_rate": 1.0
+  }
+}

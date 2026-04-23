@@ -1,0 +1,17 @@
+# BrowseComp+ 4B with Qdrant-native tools
+# 6-tool harness: search_corpus (weighted RRF), search_similar (recommend),
+# search_grouped (dedup), read_document, text_search, prune_chunks
+model = "Qwen/Qwen3-4B-Instruct-2507"
+max_steps = 100
+batch_size = 8
+rollouts_per_example = 4
+
+[sampling]
+max_tokens = 2048
+
+[[env]]
+id = "thierrydamiba/frames-search"
+args = { benchmark = "browsecomp", holdout_frac = 0.25 }
+
+[checkpoints]
+interval = 10

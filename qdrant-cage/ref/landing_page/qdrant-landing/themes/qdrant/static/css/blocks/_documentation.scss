@@ -1,0 +1,159 @@
+@use "../mixins/mixins" as mixins;
+@use "../helpers/functions" as lib;
+
+.documentation {
+  padding-top: 2rem;
+  margin-top: 0.5rem;
+  border-top: 1px solid var(--brand-light-grey);
+
+  &__article {
+    @include mixins.content-reset;
+
+    font-family: $font-family-content;
+    font-size: lib.rem(16);
+    font-weight: 400;
+    line-height: lib.rem(32);
+
+    @include mixins.content-image;
+
+    h1 {
+      font-size: 2.25rem;
+    }
+
+    h2 {
+      font-size: 1.75rem;
+    }
+
+    h3 {
+      font-size: 1.25rem;
+    }
+
+    h4 {
+      font-size: 1.1rem;
+    }
+
+    h5 {
+      font-size: 1rem;
+    }
+
+    h6 {
+      font-size: 1rem;
+    }
+
+    // Correct spacing of unordered list in table cells
+    & table tr td ul {
+        margin: 0;
+    }
+  }
+
+  &__sidebar-inner {
+    display: none;
+    top: lib.rem(8);
+    @include media-breakpoint-up(md) {
+      display: block;
+    }
+  }
+
+  &__sidebar-list {
+    @include media-breakpoint-up(md) {
+      -ms-overflow-style: none; /* IE and Edge */
+      scrollbar-width: none; /* Firefox */
+      scroll-behavior: smooth;
+      overflow-y: scroll;
+      max-height: calc(100vh - 90px);
+    }
+
+    &::-webkit-scrollbar {
+      width: 1px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: transparent;
+    }
+
+    &:hover {
+      scrollbar-width: none; /* Firefox */
+      scrollbar-color: var(--brand-gray) var(--brand-mid-grey) !important;
+
+      &::-webkit-scrollbar {
+        display: block;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: var(--brand-gray);
+      }
+    }
+
+    @media (hover: none) {
+      scrollbar-width: none; /* Firefox */
+      scrollbar-color: var(--brand-gray) var(--brand-mid-grey) !important;
+
+      &::-webkit-scrollbar-thumb {
+        background: var(--brand-gray);
+      }
+    }
+  }
+
+  &__sidebar-link-group {
+    & > summary {
+      list-style: none;
+      margin-right: 10px;
+      position: relative;
+
+      &::-webkit-details-marker {
+        display: none;
+      }
+
+      &:after {
+        display: block;
+        width: lib.rem(10);
+        height: lib.rem(20);
+        position: absolute;
+        top: 6px;
+        right: 0;
+        content: "\f0da";
+        text-align: center;
+        color: #272727;
+        font-family: 'Font Awesome 5 Free';
+        font-size: lib.rem(14);
+        font-weight: 600;
+      }
+    }
+
+    &[open] > summary {
+      &:after {
+        content: "\f0d7";
+      }
+    }
+  }
+
+  &__sidebar-delimiter {
+    font-size: 1rem;
+    font-weight: 600;
+    padding-top: 1rem;
+    padding-bottom: 0.3rem;
+  }
+
+  &__sidebar-toggle {
+    & i:after {
+      display: inline-block;
+      width: lib.rem(18);
+      height: lib.rem(18);
+      content: "\f078";
+      text-align: center;
+      font-family: 'Font Awesome 5 Free';
+      font-size: lib.rem(18);
+      font-weight: 600;
+      color: white;
+      font-style: normal;
+    }
+    &.active {
+      & i:after {
+        content: "\f077";
+      }
+    }
+  }
+}

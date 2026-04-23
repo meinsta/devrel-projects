@@ -1,0 +1,1317 @@
+{
+  "name": "baseline",
+  "metrics": {
+    "total_queries": 30,
+    "hit_rate_at_5": 0.833,
+    "avg_source_hits_at_5": 1.67,
+    "keyword_coverage_top1": 0.639,
+    "avg_top1_score": 0.6494,
+    "avg_latency_ms": 6.89,
+    "misses": [
+      "how does HNSW indexing work",
+      "filter search results by payload",
+      "hybrid search with dense and sparse vectors",
+      "on-disk storage vs in-memory",
+      "qdrant cloud create cluster"
+    ]
+  },
+  "results": [
+    {
+      "query": "how to create a collection",
+      "expected_sources": [
+        "qdrant.tech/documentation/concepts/collections"
+      ],
+      "source_hits_in_top5": 1,
+      "keyword_hits_in_top1": 2,
+      "keyword_total": 2,
+      "top1_score": 0.6254,
+      "latency_ms": 75.8,
+      "hits": [
+        {
+          "source": "https://qdrant.tech/documentation/examples/graphrag-qdrant-neo4j/",
+          "title": "GraphRAG with Neo4j",
+          "score": 0.6254,
+          "snippet": "```\ndef create_collection(client, collection_name, vector_dimension):\n```\n\ntry:\n\n```\n# Try to fetch the collection status\ntry:\n    collection_info = client.get_collection(collection_name)\n    print(f\""
+        },
+        {
+          "source": "https://qdrant.tech/documentation/faq/qdrant-fundamentals/",
+          "title": "Qdrant Fundamentals FAQ",
+          "score": 0.5348,
+          "snippet": "Collections\n-----------\n\n### How many collections can I create?\n\nAs many as you want, but be aware that each collection requires additional resources.\nIt is *highly* recommended not to create many sma"
+        },
+        {
+          "source": "https://qdrant.tech/documentation/concepts/collections/",
+          "title": "Collections",
+          "score": 0.5298,
+          "snippet": "**When should you create multiple collections?** When you have a limited number of users and you need isolation. This approach is flexible, but it may be more costly, since creating numerous collectio"
+        },
+        {
+          "source": "https://qdrant.tech/documentation/guides/multitenancy/",
+          "title": "Multitenancy",
+          "score": 0.5277,
+          "snippet": "client\n    .createCollectionAsync(\n        CreateCollection.newBuilder()\n            .setCollectionName(\"{collection_name}\")\n            // ... other collection parameters\n            .setShardNumber("
+        },
+        {
+          "source": "https://qdrant.tech/documentation/data-management/fluvio/",
+          "title": "InfinyOn Fluvio",
+          "score": 0.4904,
+          "snippet": "```\n{\n    \"collection_name\": \"{collection_name}\",\n    \"id\": \"a10435b5-2a58-427a-a3a0-a5d845b147b7\",\n    \"vectors\": {\n        \"some-other-dense\": [\n            0.1,\n            0.2,\n            0.3,\n  "
+        }
+      ]
+    },
+    {
+      "query": "upsert points with payload",
+      "expected_sources": [
+        "qdrant.tech/documentation/concepts/points"
+      ],
+      "source_hits_in_top5": 1,
+      "keyword_hits_in_top1": 1,
+      "keyword_total": 2,
+      "top1_score": 0.6817,
+      "latency_ms": 11.13,
+      "hits": [
+        {
+          "source": "https://qdrant.tech/documentation/platforms/n8n/",
+          "title": "N8N",
+          "score": 0.6817,
+          "snippet": "* [Upsert Points](https://api.qdrant.tech/v-1-14-x/api-reference/points/upsert-points) - Insert or update points in a collection\n* [Retrieve Point](https://api.qdrant.tech/v-1-14-x/api-reference/point"
+        },
+        {
+          "source": "https://qdrant.tech/documentation/tutorials-operations/embedding-model-migration/",
+          "title": "Migrate to a New Embedding Model",
+          "score": 0.6597,
+          "snippet": "# Re-embed the points using the new model\n    upsert_operations = [\n        models.UpsertOperation(\n            upsert=models.PointsList(\n                points=[models.PointStruct(\n                  "
+        },
+        {
+          "source": "https://qdrant.tech/documentation/concepts/points/",
+          "title": "Points",
+          "score": 0.6412,
+          "snippet": "client\n    .upsert_points(\n        UpsertPointsBuilder::new(\n            \"{collection_name}\",\n            vec![\n                PointStruct::new(\n                    1,\n                    HashMap::fr"
+        },
+        {
+          "source": "https://qdrant.tech/documentation/concepts/payload/",
+          "title": "Payload",
+          "score": 0.6332,
+          "snippet": "client.upsert(\n    collection_name=\"{collection_name}\",\n    points=[\n        models.PointStruct(\n            id=1,\n            vector=[0.05, 0.61, 0.76, 0.74],\n            payload={\n                \"c"
+        },
+        {
+          "source": "https://qdrant.tech/documentation/concepts/inference/",
+          "title": "Inference",
+          "score": 0.6172,
+          "snippet": "let points = vec![\n        PointStruct::new(\n            1,\n            Document::new(\n                \"Recipe for baking chocolate chip cookies\",\n                \"<the-model-to-use>\"\n            ),\n "
+        }
+      ]
+    },
+    {
+      "query": "cosine distance vs dot product",
+      "expected_sources": [
+        "qdrant.tech/documentation/concepts/collections"
+      ],
+      "source_hits_in_top5": 1,
+      "keyword_hits_in_top1": 0,
+      "keyword_total": 2,
+      "top1_score": 0.5712,
+      "latency_ms": 3.12,
+      "hits": [
+        {
+          "source": "https://qdrant.tech/documentation/concepts/collections/",
+          "title": "Collections",
+          "score": 0.5712,
+          "snippet": "Distance metrics are used to measure similarities among vectors.\nThe choice of metric depends on the way vectors obtaining and, in particular, on the method of neural network encoder training.\n\nQdrant"
+        },
+        {
+          "source": "https://qdrant.tech/blog/qdrant-1.14.x/",
+          "title": "Qdrant 1.14",
+          "score": 0.4349,
+          "snippet": "One of the most important advancements is the ability to prioritize recency. In many scenarios, such as in news or job listings, users want to see the most recent results first. Until now, this wasn\u2019t"
+        },
+        {
+          "source": "https://qdrant.tech/documentation/faq/qdrant-fundamentals/",
+          "title": "Qdrant Fundamentals FAQ",
+          "score": 0.4324,
+          "snippet": "* You used the `Cosine` distance metric in the [collection settings](https://qdrant.tech/concepts/collections/#collections). In this case, Qdrant pre-normalizes your vectors for faster distance comput"
+        },
+        {
+          "source": "https://qdrant.tech/documentation/embeddings/cohere/",
+          "title": "Cohere",
+          "score": 0.3819,
+          "snippet": "```\nclient.query_points(\n    collection_name=\"MyCollection\",\n    query=cohere_client.embed(\n        model=\"embed-english-v3.0\",  # New Embed v3 model\n        input_type=\"search_query\",  # Input type f"
+        },
+        {
+          "source": "https://qdrant.tech/documentation/concepts/search/",
+          "title": "Search",
+          "score": 0.3516,
+          "snippet": "| Index | Sparse Query | Dense Query |\n| --- | --- | --- |\n| Scoring Metric | Default is `Dot product`, no need to specify it | `Distance` has supported metrics e.g. Dot, Cosine |\n| Search Type | Alwa"
+        }
+      ]
+    },
+    {
+      "query": "how does HNSW indexing work",
+      "expected_sources": [
+        "qdrant.tech/documentation/concepts/indexing"
+      ],
+      "source_hits_in_top5": 0,
+      "keyword_hits_in_top1": 1,
+      "keyword_total": 2,
+      "top1_score": 0.6751,
+      "latency_ms": 4.95,
+      "hits": [
+        {
+          "source": "https://qdrant.tech/documentation/tutorials-search-engineering/retrieval-quality/",
+          "title": "Measure Search Quality",
+          "score": 0.6751,
+          "snippet": "HNSW is a hierarchical graph, where each node has a set of links to other nodes. The number of edges per node is called the `m` parameter.\nThe larger the value of it, the higher the precision of the s"
+        },
+        {
+          "source": "https://qdrant.tech/blog/qdrant-1.16.x/",
+          "title": "Qdrant 1.16",
+          "score": 0.6404,
+          "snippet": "How does it work?\nDuring a single iteration of HNSW search, the neighbors of the current node are scored using quantized vectors in order to add them to the search queue.\nWithout inline storage, this "
+        },
+        {
+          "source": "https://qdrant.tech/articles/what-is-vector-quantization/",
+          "title": "Vector Quantization",
+          "score": 0.6354,
+          "snippet": "To understand why this process is so computationally demanding, let\u2019s take a look at the nature of the [HNSW index](https://qdrant.tech/documentation/concepts/indexing/#vector-index).\n\nThe **HNSW (Hie"
+        },
+        {
+          "source": "https://qdrant.tech/documentation/overview/",
+          "title": "What is Qdrant?",
+          "score": 0.6154,
+          "snippet": "The fact that a payload index extends the HNSW graph means it\u2019s more efficient to create it before indexing the data, as the optimizer will need to build the graph once. However, in some cases, you ma"
+        },
+        {
+          "source": "https://qdrant.tech/documentation/concepts/search/",
+          "title": "Search",
+          "score": 0.5713,
+          "snippet": "* `hnsw_ef` - value that specifies `ef` parameter of the HNSW algorithm.\n* `exact` - option to not use the approximate search (ANN). If set to true, the search may run for a long as it performs a full"
+        }
+      ]
+    },
+    {
+      "query": "filter search results by payload",
+      "expected_sources": [
+        "qdrant.tech/documentation/concepts/filtering"
+      ],
+      "source_hits_in_top5": 0,
+      "keyword_hits_in_top1": 2,
+      "keyword_total": 2,
+      "top1_score": 0.7035,
+      "latency_ms": 1.68,
+      "hits": [
+        {
+          "source": "https://qdrant.tech/documentation/concepts/search/",
+          "title": "Search",
+          "score": 0.7035,
+          "snippet": "In addition to payload filtering, it might be useful to filter out results with a low similarity score.\nFor example, if you know the minimal acceptance score for your model and do not want any results"
+        },
+        {
+          "source": "https://qdrant.tech/documentation/quickstart/",
+          "title": "Local Quickstart",
+          "score": 0.5792,
+          "snippet": "```\nsearchResult = await client.query(\"test_collection\", {\n    query: [0.2, 0.1, 0.9, 0.7],\n    filter: {\n        must: [{ key: \"city\", match: { value: \"London\" } }],\n    },\n    with_payload: true,\n  "
+        },
+        {
+          "source": "https://qdrant.tech/documentation/guides/text-search/",
+          "title": "Text Search",
+          "score": 0.567,
+          "snippet": "| Keyword | Text |\n| --- | --- |\n| Used for exact string matches | Used for filtering on individual terms |\n| Ideal for IDs, categories, tags | Ideal for larger text fields |\n| Not tokenized | [Tokeni"
+        },
+        {
+          "source": "https://qdrant.tech/benchmarks/",
+          "title": "Vector Database Benchmarks",
+          "score": 0.5507,
+          "snippet": "To measure how well different search engines perform in this scenario, we have prepared a set of **Filtered ANN Benchmark Datasets** -\n<https://github.com/qdrant/ann-filtering-benchmark-datasets>\n\nIt "
+        },
+        {
+          "source": "https://qdrant.tech/documentation/concepts/search/",
+          "title": "Search",
+          "score": 0.5413,
+          "snippet": "Note that payload and vector data is missing in these results by default.\nSee [payload and vector in the result](#payload-and-vector-in-the-result) on how\nto include it.\n\nIf the collection was created"
+        }
+      ]
+    },
+    {
+      "query": "scalar quantization configuration",
+      "expected_sources": [
+        "qdrant.tech/documentation/guides/quantization"
+      ],
+      "source_hits_in_top5": 2,
+      "keyword_hits_in_top1": 1,
+      "keyword_total": 2,
+      "top1_score": 0.6645,
+      "latency_ms": 4.32,
+      "hits": [
+        {
+          "source": "https://qdrant.tech/documentation/guides/quantization/",
+          "title": "Quantization",
+          "score": 0.6645,
+          "snippet": "Quantization will be automatically applied to all vectors during the indexation process.\nQuantized vectors are stored alongside the original vectors in the collection, so you will still have access to"
+        },
+        {
+          "source": "https://qdrant.tech/articles/what-is-vector-quantization/",
+          "title": "Vector Quantization",
+          "score": 0.6624,
+          "snippet": "* [1. What is Scalar Quantization?](#1-what-is-scalar-quantization)\n* [2. What is Binary Quantization?](#2-what-is-binary-quantization)\n* [3. What is Product Quantization?](#3-what-is-product-quantiza"
+        },
+        {
+          "source": "https://qdrant.tech/articles/what-is-vector-quantization/",
+          "title": "Vector Quantization",
+          "score": 0.6318,
+          "snippet": "Scalar Quantization is a great choice if you\u2019re looking to boost search speed and compression without losing much accuracy. It also slightly improves performance, as distance calculations (such as dot"
+        },
+        {
+          "source": "https://qdrant.tech/documentation/guides/quantization/",
+          "title": "Quantization",
+          "score": 0.6106,
+          "snippet": "* `*` - for compatible models with high-dimensional vectors (approx. 1536+ dimensions)\n* `**` - for compatible models with medium-dimensional vectors (approx. 1024-1536 dimensions)\n* `***` - for compa"
+        },
+        {
+          "source": "https://qdrant.tech/articles/what-is-vector-quantization/",
+          "title": "Vector Quantization",
+          "score": 0.6088,
+          "snippet": "![Scalar Quantization example](https://qdrant.tech/articles_data/what-is-vector-quantization/scalar-quant.png)\n\nTo set up Scalar Quantization in Qdrant, you need to include the `quantization_config` s"
+        }
+      ]
+    },
+    {
+      "query": "what is binary quantization",
+      "expected_sources": [
+        "qdrant.tech/documentation/guides/quantization",
+        "qdrant.tech/articles/binary-quantization"
+      ],
+      "source_hits_in_top5": 2,
+      "keyword_hits_in_top1": 2,
+      "keyword_total": 2,
+      "top1_score": 0.6795,
+      "latency_ms": 2.19,
+      "hits": [
+        {
+          "source": "https://qdrant.tech/documentation/guides/quantization/",
+          "title": "Quantization",
+          "score": 0.6795,
+          "snippet": "1.5-bit quantization is similar, but merges buckets of pairs of elements into a binary triptets\n\n![2-bit quantization](https://qdrant.tech/docs/2-bit-quantization.png)\n\n2-bit quantization\n\nSee how to "
+        },
+        {
+          "source": "https://qdrant.tech/blog/qdrant-1.15.x/",
+          "title": "Qdrant 1.15",
+          "score": 0.6388,
+          "snippet": "We introduce a new **binary quantization** storage that uses **2 and 1.5 bits** per dimension, improving precision for smaller vectors. Previous one-bit compression resulted in significant data loss a"
+        },
+        {
+          "source": "https://qdrant.tech/articles/what-is-vector-quantization/",
+          "title": "Vector Quantization",
+          "score": 0.6289,
+          "snippet": "[Product Quantization](https://qdrant.tech/documentation/guides/quantization/#product-quantization) is a method used to compress high-dimensional vectors by representing them with a smaller set of rep"
+        },
+        {
+          "source": "https://qdrant.tech/articles/what-is-vector-quantization/",
+          "title": "Vector Quantization",
+          "score": 0.6259,
+          "snippet": "Scalar Quantization is a great choice if you\u2019re looking to boost search speed and compression without losing much accuracy. It also slightly improves performance, as distance calculations (such as dot"
+        },
+        {
+          "source": "https://qdrant.tech/documentation/guides/quantization/",
+          "title": "Quantization",
+          "score": 0.6032,
+          "snippet": "Quantization is primarily used to reduce the memory footprint and accelerate the search process in high-dimensional vector spaces.\nIn the context of the Qdrant, quantization allows you to optimize the"
+        }
+      ]
+    },
+    {
+      "query": "hybrid search with dense and sparse vectors",
+      "expected_sources": [
+        "qdrant.tech/documentation/concepts/hybrid-queries",
+        "qdrant.tech/documentation/tutorials-search-engineering/hybrid-search-fastembed"
+      ],
+      "source_hits_in_top5": 0,
+      "keyword_hits_in_top1": 1,
+      "keyword_total": 3,
+      "top1_score": 0.7418,
+      "latency_ms": 9.73,
+      "hits": [
+        {
+          "source": "https://qdrant.tech/articles/hybrid-search/",
+          "title": "Hybrid Search Revamped",
+          "score": 0.7418,
+          "snippet": "Lessons learned: multi-vector representations\n---------------------------------------------\n\nMany of you have already started building hybrid search systems and reached out to us with questions and fe"
+        },
+        {
+          "source": "https://qdrant.tech/articles/sparse-vectors/",
+          "title": "Sparse Vectors",
+          "score": 0.7263,
+          "snippet": "[Machine Learning](https://qdrant.tech/articles/machine-learning/)\n\n[RAG & GenAI](https://qdrant.tech/articles/rag-and-genai/)\n\n[Practical Examples](https://qdrant.tech/articles/practicle-examples/)\n\n"
+        },
+        {
+          "source": "https://qdrant.tech/articles/hybrid-search/",
+          "title": "Hybrid Search Revamped",
+          "score": 0.6805,
+          "snippet": "![Multiple vectors per point](https://qdrant.tech/articles_data/hybrid-search/multiple-vectors.png)\n\nThere is no single way of building a hybrid search. The process of designing it is an exploratory e"
+        },
+        {
+          "source": "https://qdrant.tech/articles/qdrant-1.8.x/",
+          "title": "Qdrant 1.8",
+          "score": 0.6796,
+          "snippet": "* **Faster [sparse vectors](https://qdrant.tech/articles/sparse-vectors/):** [Hybrid search](https://qdrant.tech/articles/hybrid-search/) is up to 16x faster now!\n* **CPU resource management:** You ca"
+        },
+        {
+          "source": "https://qdrant.tech/documentation/overview/vector-search/",
+          "title": "Understanding Vector Search",
+          "score": 0.6746,
+          "snippet": "Vector search is an exciting alternative to sparse methods. It solves the issues we had with the keyword-based search without needing to maintain lots of heuristics manually. It requires an additional"
+        }
+      ]
+    },
+    {
+      "query": "multitenancy best practices",
+      "expected_sources": [
+        "qdrant.tech/documentation/guides/multitenancy"
+      ],
+      "source_hits_in_top5": 2,
+      "keyword_hits_in_top1": 1,
+      "keyword_total": 2,
+      "top1_score": 0.642,
+      "latency_ms": 5.95,
+      "hits": [
+        {
+          "source": "https://qdrant.tech/blog/qdrant-1.11.x/",
+          "title": "Qdrant 1.11",
+          "score": 0.642,
+          "snippet": "Before we dive into the specifics of our optimizations, let\u2019s first go over Multitenancy. This is one of our most significant features, [best used for scaling and data isolation](https://qdrant.tech/a"
+        },
+        {
+          "source": "https://qdrant.tech/documentation/guides/multitenancy/",
+          "title": "Multitenancy",
+          "score": 0.64,
+          "snippet": "Tiered multitenancy\n-------------------\n\nIn some real-world applications, tenants might not be equally distributed. For example, a SaaS application might have a few large customers and many small ones"
+        },
+        {
+          "source": "https://qdrant.tech/blog/qdrant-1.16.x/",
+          "title": "Qdrant 1.16",
+          "score": 0.64,
+          "snippet": "Real-world usage patterns often fall between these two use cases. It\u2019s common to have a small number of large tenants and a huge tail of smaller ones. You may even have tenants that grow over time, st"
+        },
+        {
+          "source": "https://qdrant.tech/documentation/guides/multitenancy/",
+          "title": "Multitenancy",
+          "score": 0.5761,
+          "snippet": "**How many collections should you create?** In most cases, a single collection per embedding model with payload-based partitioning for different tenants and use cases. This approach is called multiten"
+        },
+        {
+          "source": "https://qdrant.tech/blog/qdrant-1.16.x/",
+          "title": "Qdrant 1.16",
+          "score": 0.5308,
+          "snippet": "Multitenancy is a common requirement for SaaS applications, where multiple customers (tenants) share the same database instance. In Qdrant, when an instance is shared between multiple users, you may n"
+        }
+      ]
+    },
+    {
+      "query": "how to take a snapshot",
+      "expected_sources": [
+        "qdrant.tech/documentation/concepts/snapshots"
+      ],
+      "source_hits_in_top5": 2,
+      "keyword_hits_in_top1": 1,
+      "keyword_total": 1,
+      "top1_score": 0.5829,
+      "latency_ms": 8.72,
+      "hits": [
+        {
+          "source": "https://qdrant.tech/documentation/concepts/snapshots/",
+          "title": "Snapshots",
+          "score": 0.5829,
+          "snippet": "* [Snapshots](#snapshots)\n  + [Create snapshot](#create-snapshot)\n    - [Delete snapshot](#delete-snapshot)\n  + [List snapshot](#list-snapshot)\n  + [Retrieve snapshot](#retrieve-snapshot)\n  + [Restore"
+        },
+        {
+          "source": "https://qdrant.tech/documentation/concepts/snapshots/",
+          "title": "Snapshots",
+          "score": 0.5818,
+          "snippet": "Snapshots can be restored in three possible ways:\n\n1. [Recovering from a URL or local file](#recover-from-a-url-or-local-file) (useful for restoring a snapshot file that is on a remote server or alrea"
+        },
+        {
+          "source": "https://qdrant.tech/documentation/tutorials-operations/create-snapshot/",
+          "title": "Create & Restore Snapshots",
+          "score": 0.5058,
+          "snippet": "* [Backup & Restore Qdrant with Snapshots](#backup--restore-qdrant-with-snapshots)\n  + [Prerequisites](#prerequisites)\n    - [Establish a connection to Qdrant](#establish-a-connection-to-qdrant)\n    -"
+        },
+        {
+          "source": "https://qdrant.tech/documentation/tutorials-operations/create-snapshot/",
+          "title": "Create & Restore Snapshots",
+          "score": 0.4883,
+          "snippet": "The snapshots are now stored locally. We can use them to restore the collection to a different Qdrant instance, or treat them as a backup. We will create another collection using the same data on the "
+        },
+        {
+          "source": "https://qdrant.tech/documentation/tutorials-operations/create-snapshot/",
+          "title": "Create & Restore Snapshots",
+          "score": 0.4806,
+          "snippet": "Once we have the snapshot URLs, we can download them. Please make sure to include the API key in the request headers.\nDownloading the snapshot **can be done only through the HTTP API**, so we are goin"
+        }
+      ]
+    },
+    {
+      "query": "qdrant docker setup",
+      "expected_sources": [
+        "qdrant.tech/documentation/quickstart",
+        "qdrant.tech/documentation/guides/installation"
+      ],
+      "source_hits_in_top5": 2,
+      "keyword_hits_in_top1": 1,
+      "keyword_total": 1,
+      "top1_score": 0.8325,
+      "latency_ms": 3.17,
+      "hits": [
+        {
+          "source": "https://qdrant.tech/documentation/guides/installation/",
+          "title": "Installation",
+          "score": 0.8325,
+          "snippet": "However, you can also use Docker and Docker Compose to run Qdrant in production, by following the setup instructions in the [Docker](#docker) and [Docker Compose](#docker-compose) Development sections"
+        },
+        {
+          "source": "https://qdrant.tech/documentation/guides/installation/",
+          "title": "Installation",
+          "score": 0.7697,
+          "snippet": "Pull the image:\n\n```\ndocker pull qdrant/qdrant\n```\n\nIn the following command, revise `$(pwd)/path/to/data` for your Docker configuration. Then use the updated command to run the container:\n\n```\ndocker"
+        },
+        {
+          "source": "https://qdrant.tech/documentation/tutorials-search-engineering/hybrid-search-fastembed/",
+          "title": "Setup Hybrid Search with FastEmbed",
+          "score": 0.7554,
+          "snippet": "> **Note:** Before you begin, create a project directory and a virtual python environment in it.\n\n1. Download the Qdrant image from DockerHub.\n\n```\ndocker pull qdrant/qdrant\n```\n\n2. Start Qdrant insid"
+        },
+        {
+          "source": "https://qdrant.tech/documentation/frameworks/testcontainers/",
+          "title": "Testcontainers",
+          "score": 0.7228,
+          "snippet": "```\nvar qdrantContainer = new QdrantBuilder()\n  .WithImage(\"qdrant/qdrant\")\n  .Build();\n\nawait qdrantContainer.StartAsync();\n```\n\nTestcontainers modules provide options/methods to configure ENVs, volu"
+        },
+        {
+          "source": "https://qdrant.tech/documentation/guides/running-with-gpu/",
+          "title": "Running with GPU",
+          "score": 0.696,
+          "snippet": "* [Running Qdrant with GPU Support](#running-qdrant-with-gpu-support)\n  + [Configuration](#configuration)\n  + [Standalone GPU Support](#standalone-gpu-support)\n  + [NVIDIA GPUs](#nvidia-gpus)\n    - [P"
+        }
+      ]
+    },
+    {
+      "query": "distributed deployment sharding",
+      "expected_sources": [
+        "qdrant.tech/documentation/guides/distributed_deployment"
+      ],
+      "source_hits_in_top5": 1,
+      "keyword_hits_in_top1": 2,
+      "keyword_total": 2,
+      "top1_score": 0.7133,
+      "latency_ms": 4.11,
+      "hits": [
+        {
+          "source": "https://qdrant.tech/documentation/guides/multitenancy/",
+          "title": "Multitenancy",
+          "score": 0.7133,
+          "snippet": "* [**User-defined Sharding**](https://qdrant.tech/documentation/guides/distributed_deployment/#user-defined-sharding) allows you to create named Shards within a collection. It allows to isolate large "
+        },
+        {
+          "source": "https://qdrant.tech/blog/qdrant-1.16.x/",
+          "title": "Qdrant 1.16",
+          "score": 0.6622,
+          "snippet": "* [User-defined Sharding](https://qdrant.tech/documentation/guides/distributed_deployment/#user-defined-sharding) allows you to create named shards within a collection. It enables you to isolate large"
+        },
+        {
+          "source": "https://qdrant.tech/articles/vector-search-production/",
+          "title": "Vector Search in Production",
+          "score": 0.6002,
+          "snippet": "Your sharding strategy also depends on how many collections you have. A single collection is arguably easier to balance, because there is less to move/balance. Also, a single collection also has the l"
+        },
+        {
+          "source": "https://qdrant.tech/documentation/overview/",
+          "title": "What is Qdrant?",
+          "score": 0.5672,
+          "snippet": "In Qdrant Cloud, replication factor changes are applied automatically, and shard rebalancing is available. In self-hosted deployments, you must manually create or drop replicas and move shards between"
+        },
+        {
+          "source": "https://qdrant.tech/documentation/guides/distributed_deployment/",
+          "title": "Distributed Deployment",
+          "score": 0.5618,
+          "snippet": "Distributed Deployment - Qdrant\n{\"@context\":\"https://schema.org\",\"@graph\":[{\"@id\":\"https://qdrant.tech/documentation/guides/distributed\\_deployment/#article\",\"@type\":\"Article\",\"abstract\":\"Distributed "
+        }
+      ]
+    },
+    {
+      "query": "recommendation API positive negative examples",
+      "expected_sources": [
+        "qdrant.tech/documentation/concepts/explore"
+      ],
+      "source_hits_in_top5": 3,
+      "keyword_hits_in_top1": 3,
+      "keyword_total": 3,
+      "top1_score": 0.6091,
+      "latency_ms": 1.94,
+      "hits": [
+        {
+          "source": "https://qdrant.tech/documentation/concepts/explore/",
+          "title": "Explore",
+          "score": 0.6091,
+          "snippet": "Recommendation API\n------------------\n\nIn addition to the regular search, Qdrant also allows you to search based on multiple positive and negative examples. The API is called ***recommend***, and the "
+        },
+        {
+          "source": "https://qdrant.tech/documentation/concepts/explore/",
+          "title": "Explore",
+          "score": 0.4213,
+          "snippet": "The way positive and negative examples should be arranged in the context pairs is completely up to you. So you can have the flexibility of trying out different permutation techniques based on your mod"
+        },
+        {
+          "source": "https://qdrant.tech/documentation/tutorials-search-engineering/collaborative-filtering/",
+          "title": "Collaborative Filtering",
+          "score": 0.4138,
+          "snippet": "Every time Spotify recommends the next song from a band you\u2019ve never heard of, it uses a recommendation algorithm based on other users\u2019 interactions with that song. This type of algorithm is known as "
+        },
+        {
+          "source": "https://qdrant.tech/documentation/concepts/explore/",
+          "title": "Explore",
+          "score": 0.4087,
+          "snippet": "The way to produce the searching vector is by first averaging all the positive and negative examples separately, and then combining them into a single vector using the following formula:\n\n```\navg_posi"
+        },
+        {
+          "source": "https://qdrant.tech/articles/qdrant-1.7.x/",
+          "title": "Qdrant 1.7",
+          "score": 0.4067,
+          "snippet": "The recently launched [Discovery API](https://qdrant.tech/documentation/concepts/explore/#discovery-api) extends the range of scenarios for leveraging vectors. While its interface mirrors the [Recomme"
+        }
+      ]
+    },
+    {
+      "query": "JWT authentication RBAC",
+      "expected_sources": [
+        "qdrant.tech/documentation/guides/security"
+      ],
+      "source_hits_in_top5": 2,
+      "keyword_hits_in_top1": 1,
+      "keyword_total": 2,
+      "top1_score": 0.5405,
+      "latency_ms": 4.93,
+      "hits": [
+        {
+          "source": "https://qdrant.tech/documentation/guides/security/",
+          "title": "Security",
+          "score": 0.5405,
+          "snippet": "Here is an example using `jwt-cli`:\n\n```\njwt encode --payload '{\n  \"access\": \"r\",\n  \"exp\": 1766055305\n}' --secret 'your-api-key'\n```\n\n#### JWT Configuration\n\nThese are the available options, or **clai"
+        },
+        {
+          "source": "https://qdrant.tech/articles/data-privacy/",
+          "title": "Data Privacy & RBAC",
+          "score": 0.5007,
+          "snippet": "In Qdrant, JWT forms the foundation through which powerful access controls can be built. Let\u2019s understand how.\n\nJWT is enabled on the Qdrant instance by specifying the API key and turning on the **jwt"
+        },
+        {
+          "source": "https://qdrant.tech/articles/data-privacy/",
+          "title": "Data Privacy & RBAC",
+          "score": 0.4964,
+          "snippet": "* [Vector Database Security: An Overview](#vector-database-security-an-overview)\n* [How Qdrant Handles Data Privacy and Security](#how-qdrant-handles-data-privacy-and-security)\n  + [API Keys and TLS E"
+        },
+        {
+          "source": "https://qdrant.tech/documentation/guides/security/",
+          "title": "Security",
+          "score": 0.4727,
+          "snippet": "For convenience, we have added a JWT generation tool the Qdrant Web UI under the \ud83d\udd11 tab, if you\u2019re using the default url, it will be at `http://localhost:6333/dashboard#/jwt`.\n\n* **JWT Header** - Qdran"
+        },
+        {
+          "source": "https://qdrant.tech/blog/qdrant-1.9.x/",
+          "title": "Qdrant 1.9",
+          "score": 0.3982,
+          "snippet": "Qdrant now supports [granular access control using JSON Web Tokens (JWT)](https://qdrant.tech/documentation/guides/security/#granular-access-control-with-jwt). JWT will let you easily limit a user\u2019s a"
+        }
+      ]
+    },
+    {
+      "query": "fastembed supported models",
+      "expected_sources": [
+        "qdrant.tech/documentation/fastembed"
+      ],
+      "source_hits_in_top5": 2,
+      "keyword_hits_in_top1": 1,
+      "keyword_total": 2,
+      "top1_score": 0.6222,
+      "latency_ms": 1.52,
+      "hits": [
+        {
+          "source": "https://qdrant.tech/documentation/fastembed/",
+          "title": "FastEmbed Overview",
+          "score": 0.6222,
+          "snippet": "* Light: Unlike other inference frameworks, such as PyTorch, FastEmbed requires very little external dependencies. Because it uses the ONNX runtime, it is perfect for serverless environments like AWS "
+        },
+        {
+          "source": "https://qdrant.tech/articles/how-to-choose-an-embedding-model/",
+          "title": "Choosing an Embedding Model",
+          "score": 0.5873,
+          "snippet": "1. **Throughput**: How many embeddings can you generate per second? This directly impacts your system\u2019s ability to\n   handle load. Larger models typically have lower throughput, which might become a b"
+        },
+        {
+          "source": "https://qdrant.tech/articles/late-interaction-models/",
+          "title": "Late Interaction Models",
+          "score": 0.5817,
+          "snippet": "The traditional dense embedding models we tested are less complex than late interaction or sparse models. With fewer parameters, these models are expected to be faster during inference and more cost-e"
+        },
+        {
+          "source": "https://qdrant.tech/documentation/fastembed/fastembed-rerankers/",
+          "title": "Reranking with FastEmbed",
+          "score": 0.5688,
+          "snippet": "You can list the cross-encoder rerankers supported in FastEmbed using the following command.\n\n```\nTextCrossEncoder.list_supported_models()\n```\n\nThis command displays the available models, including de"
+        },
+        {
+          "source": "https://qdrant.tech/articles/late-interaction-models/",
+          "title": "Late Interaction Models",
+          "score": 0.5673,
+          "snippet": "[Machine Learning](https://qdrant.tech/articles/machine-learning/)\n\n[RAG & GenAI](https://qdrant.tech/articles/rag-and-genai/)\n\n[Practical Examples](https://qdrant.tech/articles/practicle-examples/)\n\n"
+        }
+      ]
+    },
+    {
+      "query": "colbert multivector search",
+      "expected_sources": [
+        "qdrant.tech/documentation/tutorials-search-engineering/using-multivector-representations",
+        "qdrant.tech/documentation/fastembed/fastembed-colbert"
+      ],
+      "source_hits_in_top5": 3,
+      "keyword_hits_in_top1": 0,
+      "keyword_total": 2,
+      "top1_score": 0.7189,
+      "latency_ms": 2.02,
+      "hits": [
+        {
+          "source": "https://qdrant.tech/articles/hybrid-search/",
+          "title": "Hybrid Search Revamped",
+          "score": 0.7189,
+          "snippet": "Lessons learned: multi-vector representations\n---------------------------------------------\n\nMany of you have already started building hybrid search systems and reached out to us with questions and fe"
+        },
+        {
+          "source": "https://qdrant.tech/documentation/tutorials-search-engineering/using-multivector-representations/",
+          "title": "Multivector Representations (ColBERT)",
+          "score": 0.7048,
+          "snippet": "Let\u2019s demonstrate how to effectively use multivectors using [FastEmbed](https://github.com/qdrant/fastembed), which wraps ColBERT into a simple API.\n\nInstall FastEmbed and Qdrant:\n\n```\npip install qdr"
+        },
+        {
+          "source": "https://qdrant.tech/documentation/fastembed/fastembed-colbert/",
+          "title": "Working with ColBERT",
+          "score": 0.6543,
+          "snippet": "Working with ColBERT - Qdrant\n{\"@context\":\"https://schema.org\",\"@graph\":[{\"@id\":\"https://qdrant.tech/documentation/fastembed/fastembed-colbert/#article\",\"@type\":\"Article\",\"abstract\":\"How to Generate C"
+        },
+        {
+          "source": "https://qdrant.tech/documentation/tutorials-search-engineering/using-multivector-representations/",
+          "title": "Multivector Representations (ColBERT)",
+          "score": 0.6128,
+          "snippet": "```\nresults = client.query_points(\n    collection_name=\"dense_multivector_demo\",\n    prefetch=models.Prefetch(\n        query=dense_query,\n        using=\"dense\",\n    ),\n    query=colbert_query,\n    usi"
+        },
+        {
+          "source": "https://qdrant.tech/documentation/tutorials-search-engineering/reranking-hybrid-search/",
+          "title": "Reranking in Hybrid Search",
+          "score": 0.6119,
+          "snippet": "* **Dense embeddings** from the model all-MiniLM-L6-v2 using cosine distance for comparisons.\n* **Late interaction embeddings** from colbertv2.0, also using cosine distance, but with a multivector con"
+        }
+      ]
+    },
+    {
+      "query": "on-disk storage vs in-memory",
+      "expected_sources": [
+        "qdrant.tech/documentation/concepts/storage"
+      ],
+      "source_hits_in_top5": 0,
+      "keyword_hits_in_top1": 0,
+      "keyword_total": 3,
+      "top1_score": 0.5341,
+      "latency_ms": 1.04,
+      "hits": [
+        {
+          "source": "https://qdrant.tech/blog/qdrant-1.11.x/",
+          "title": "Qdrant 1.11",
+          "score": 0.5341,
+          "snippet": "When managing billions of records across millions of tenants, keeping all data in RAM is inefficient. That is especially true when only a small subset is frequently accessed. As of 1.11, you can offlo"
+        },
+        {
+          "source": "https://qdrant.tech/blog/qdrant-1.12.x/",
+          "title": "Qdrant 1.12",
+          "score": 0.5338,
+          "snippet": "* **Cold Query Latency:** On-disk indexes require I/O to load index segments, introducing slight latency on first access. Subsequent queries will benefit from disk caching.\n* **Hot vs. Cold Indexes:**"
+        },
+        {
+          "source": "https://qdrant.tech/documentation/faq/database-optimization/",
+          "title": "Database Optimization FAQ",
+          "score": 0.4963,
+          "snippet": "* [Frequently Asked Questions: Database Optimization](#frequently-asked-questions-database-optimization)\n  + - [How do I reduce memory usage?](#how-do-i-reduce-memory-usage)\n    - [How do you choose t"
+        },
+        {
+          "source": "https://qdrant.tech/documentation/concepts/collections/",
+          "title": "Collections",
+          "score": 0.4784,
+          "snippet": "Vectors all live in RAM for very quick access. The `on_disk` parameter can be\nset in the vector configuration. If true, all vectors will live on disk. This\nwill enable the use of\n[memmaps](https://qdr"
+        },
+        {
+          "source": "https://qdrant.tech/documentation/tutorials-operations/large-scale-search/",
+          "title": "Large-Scale Search",
+          "score": 0.463,
+          "snippet": "On the high level, memory usage consists of 3 components:\n\n* System memory - 8.34Gb - this is memory reserved for internal systems and OS, it doesn\u2019t depend on the dataset size.\n* Data memory - 39.27G"
+        }
+      ]
+    },
+    {
+      "query": "batch upload optimization",
+      "expected_sources": [
+        "qdrant.tech/documentation/tutorials-develop/bulk-upload",
+        "qdrant.tech/articles/indexing-optimization"
+      ],
+      "source_hits_in_top5": 3,
+      "keyword_hits_in_top1": 1,
+      "keyword_total": 2,
+      "top1_score": 0.4928,
+      "latency_ms": 5.02,
+      "hits": [
+        {
+          "source": "https://qdrant.tech/documentation/tutorials-develop/bulk-upload/",
+          "title": "Bulk Upload Vectors",
+          "score": 0.4928,
+          "snippet": "The first important detail about data uploading is that the bottleneck is usually located on the client side, not on the server side.\nThis means that if you are uploading a large dataset, you should p"
+        },
+        {
+          "source": "https://qdrant.tech/articles/binary-quantization/",
+          "title": "Binary Quantization: 40x Faster",
+          "score": 0.4757,
+          "snippet": "We\u2019re setting `m` to 0 i.e. disabling the HNSW graph construction. This allows faster uploads of vectors and payloads. We will turn it back on down below, once all the data is loaded.\n\n#### Next, we u"
+        },
+        {
+          "source": "https://qdrant.tech/articles/indexing-optimization/",
+          "title": "Optimizing Bulk Uploads",
+          "score": 0.4639,
+          "snippet": "Optimizing Memory for Bulk Uploads - Qdrant\n{\"@context\":\"https://schema.org\",\"@graph\":[{\"@id\":\"https://qdrant.tech/articles/indexing-optimization/#article\",\"@type\":\"Article\",\"abstract\":\"Efficient memo"
+        },
+        {
+          "source": "https://qdrant.tech/documentation/tutorials-develop/bulk-upload/",
+          "title": "Bulk Upload Vectors",
+          "score": 0.462,
+          "snippet": "Bulk Operations - Qdrant\n{\"@context\":\"https://schema.org\",\"@graph\":[{\"@id\":\"https://qdrant.tech/documentation/tutorials-develop/bulk-upload/#article\",\"@type\":\"Article\",\"abstract\":\"Bulk Upload Vectors "
+        },
+        {
+          "source": "https://qdrant.tech/documentation/concepts/collections/",
+          "title": "Collections",
+          "score": 0.4313,
+          "snippet": "Dynamic parameter updates may be helpful, for example, for more efficient initial loading of vectors.\nFor example, you can disable indexing during the upload process, and enable it immediately after t"
+        }
+      ]
+    },
+    {
+      "query": "full text search tokenization",
+      "expected_sources": [
+        "qdrant.tech/documentation/guides/text-search"
+      ],
+      "source_hits_in_top5": 1,
+      "keyword_hits_in_top1": 1,
+      "keyword_total": 3,
+      "top1_score": 0.671,
+      "latency_ms": 2.78,
+      "hits": [
+        {
+          "source": "https://qdrant.tech/articles/bm42/",
+          "title": "BM42: Hybrid Search Baseline",
+          "score": 0.671,
+          "snippet": "+ It is computationally and memory expensive. We need to generate more values for each token in the document, which increases both the storage size and retrieval time.\n  + It is not always clear where"
+        },
+        {
+          "source": "https://qdrant.tech/documentation/guides/text-search/",
+          "title": "Text Search",
+          "score": 0.6236,
+          "snippet": "| Keyword | Text |\n| --- | --- |\n| Used for exact string matches | Used for filtering on individual terms |\n| Ideal for IDs, categories, tags | Ideal for larger text fields |\n| Not tokenized | [Tokeni"
+        },
+        {
+          "source": "https://qdrant.tech/documentation/tutorials-search-engineering/neural-search/",
+          "title": "Build a Neural Search Service",
+          "score": 0.5514,
+          "snippet": "The code from this tutorial has been used to develop a [live online demo](https://qdrant.to/semantic-search-demo).\nYou can try it to get an intuition for cases when the neural search is useful.\nThe de"
+        },
+        {
+          "source": "https://qdrant.tech/articles/bm42/",
+          "title": "BM42: Hybrid Search Baseline",
+          "score": 0.539,
+          "snippet": "The classical transformer models are trained to predict masked tokens in the context, so the attention weights define which context tokens influence the masked token most.\n\nApart from regular text tok"
+        },
+        {
+          "source": "https://qdrant.tech/documentation/tutorials-search-engineering/reranking-hybrid-search/",
+          "title": "Reranking in Hybrid Search",
+          "score": 0.535,
+          "snippet": "1. **Documents**: Just like before, we start with the raw input\u2014our set of documents that need to be indexed for search.\n2. **Dense Embeddings**: We\u2019ll generate dense embeddings for each document, jus"
+        }
+      ]
+    },
+    {
+      "query": "named vectors multiple embeddings per point",
+      "expected_sources": [
+        "qdrant.tech/documentation/concepts/vectors"
+      ],
+      "source_hits_in_top5": 1,
+      "keyword_hits_in_top1": 1,
+      "keyword_total": 2,
+      "top1_score": 0.6247,
+      "latency_ms": 5.16,
+      "hits": [
+        {
+          "source": "https://qdrant.tech/documentation/concepts/points/",
+          "title": "Points",
+          "score": 0.6247,
+          "snippet": "|  |  |\n| --- | --- |\n| Dense Vectors | A regular vectors, generated by majority of the embedding models. |\n| Sparse Vectors | Vectors with no fixed length, but only a few non-zero elements. Useful fo"
+        },
+        {
+          "source": "https://qdrant.tech/documentation/concepts/vectors/",
+          "title": "Vectors",
+          "score": 0.5647,
+          "snippet": "There are two scenarios where multivectors are useful:\n\n* **Multiple representation of the same object** - For example, you can store multiple embeddings for pictures of the same object, taken from di"
+        },
+        {
+          "source": "https://qdrant.tech/articles/hybrid-search/",
+          "title": "Hybrid Search Revamped",
+          "score": 0.5578,
+          "snippet": "Support for multiple vectors per point is nothing new in Qdrant, but introducing the Query API makes it even\nmore powerful. The 1.10 release supports the multivectors, allowing you to treat embedding "
+        },
+        {
+          "source": "https://qdrant.tech/documentation/fastembed/fastembed-postprocessing/",
+          "title": "Multi-Vector Postprocessing",
+          "score": 0.5545,
+          "snippet": "Generate multi-vector embeddings for the movie descriptions.\n\n```\ndescriptions_embeddings = list(model.embed(descriptions))\n```\n\nLet\u2019s check the shape of one of the multi-vector embeddings.\n\n```\ndescr"
+        },
+        {
+          "source": "https://qdrant.tech/documentation/fastembed/fastembed-postprocessing/",
+          "title": "Multi-Vector Postprocessing",
+          "score": 0.5536,
+          "snippet": "Currently, the postprocessing module includes MUVERA (Multi-Vector Retrieval Algorithm) for speeding up multi-vector\nembeddings. Additional postprocessing techniques are planned for future releases.\n\n"
+        }
+      ]
+    },
+    {
+      "query": "GPU accelerated indexing",
+      "expected_sources": [
+        "qdrant.tech/documentation/guides/running-with-gpu"
+      ],
+      "source_hits_in_top5": 1,
+      "keyword_hits_in_top1": 1,
+      "keyword_total": 1,
+      "top1_score": 0.6019,
+      "latency_ms": 1.43,
+      "hits": [
+        {
+          "source": "https://qdrant.tech/blog/qdrant-1.13.x/",
+          "title": "Qdrant 1.13",
+          "score": 0.6019,
+          "snippet": "Our custom implementation of GPU-accelerated HNSW indexing **is built entirely in-house**. Unlike solutions that depend on third-party libraries, our approach is vendor-agnostic, meaning it works seam"
+        },
+        {
+          "source": "https://qdrant.tech/documentation/guides/running-with-gpu/",
+          "title": "Running with GPU",
+          "score": 0.5884,
+          "snippet": "```\ngpu:\n    # Enable GPU indexing.\n    indexing: false\n    # Force half precision for `f32` values while indexing.\n    # `f16` conversion will take place \n    # only inside GPU memory and won't affec"
+        },
+        {
+          "source": "https://qdrant.tech/blog/qdrant-1.13.x/",
+          "title": "Qdrant 1.13",
+          "score": 0.5713,
+          "snippet": "**Additional Benefits:**\n\n* **Multi-GPU Support:** Index segments concurrently to handle large-scale workloads.\n* **Hardware Flexibility:** Doesn\u2019t require high-end GPUs to achieve significant perform"
+        },
+        {
+          "source": "https://qdrant.tech/blog/qdrant-1.13.x/",
+          "title": "Qdrant 1.13",
+          "score": 0.5583,
+          "snippet": "Qdrant 1.13 - GPU Indexing, Strict Mode & New Storage Engine - Qdrant\n{\"@context\":\"https://schema.org\",\"@graph\":[{\"@id\":\"https://qdrant.tech/blog/qdrant-1.13.x/#article\",\"@type\":\"Article\",\"abstract\":\""
+        },
+        {
+          "source": "https://qdrant.tech/documentation/tutorials-search-engineering/static-embeddings/",
+          "title": "Static Embeddings",
+          "score": 0.4866,
+          "snippet": "We didn\u2019t perform any proper benchmarking of the encoding speed, but one of the experiments done on `TREC-COVID` dataset\nfrom [BeIR](https://github.com/beir-cellar/beir) shows that we can **encode and"
+        }
+      ]
+    },
+    {
+      "query": "payload index types",
+      "expected_sources": [
+        "qdrant.tech/documentation/concepts/indexing",
+        "qdrant.tech/documentation/concepts/payload"
+      ],
+      "source_hits_in_top5": 3,
+      "keyword_hits_in_top1": 2,
+      "keyword_total": 2,
+      "top1_score": 0.6229,
+      "latency_ms": 2.23,
+      "hits": [
+        {
+          "source": "https://qdrant.tech/documentation/concepts/indexing/",
+          "title": "Indexing",
+          "score": 0.6229,
+          "snippet": "Payload index may occupy some additional memory, so it is recommended to only use the index for those fields that are used in filtering conditions.\nIf you need to filter by many fields and the memory "
+        },
+        {
+          "source": "https://qdrant.tech/documentation/guides/capacity-planning/",
+          "title": "Capacity Planning",
+          "score": 0.6004,
+          "snippet": "* **Text fields** consume space based on length and encoding (e.g. a large chunk of text vs a few words).\n* **Floats** have fixed sizes of 8 bytes for `int64` or `float64`.\n* **Boolean fields** typica"
+        },
+        {
+          "source": "https://qdrant.tech/documentation/concepts/indexing/",
+          "title": "Indexing",
+          "score": 0.5769,
+          "snippet": "The indexes in the segments exist independently, but the parameters of the indexes themselves are configured for the whole collection.\n\nNot all segments automatically have indexes.\nTheir necessity is "
+        },
+        {
+          "source": "https://qdrant.tech/documentation/overview/",
+          "title": "What is Qdrant?",
+          "score": 0.5612,
+          "snippet": "The fact that a payload index extends the HNSW graph means it\u2019s more efficient to create it before indexing the data, as the optimizer will need to build the graph once. However, in some cases, you ma"
+        },
+        {
+          "source": "https://qdrant.tech/documentation/concepts/indexing/",
+          "title": "Indexing",
+          "score": 0.5488,
+          "snippet": "To configure on-disk payload index, you can use the following index parameters:\n\n```\nPUT /collections/{collection_name}/index\n{\n    \"field_name\": \"payload_field_name\",\n    \"field_schema\": {\n        \"t"
+        }
+      ]
+    },
+    {
+      "query": "qdrant cloud create cluster",
+      "expected_sources": [
+        "qdrant.tech/documentation/cloud/create-cluster"
+      ],
+      "source_hits_in_top5": 0,
+      "keyword_hits_in_top1": 2,
+      "keyword_total": 2,
+      "top1_score": 0.8448,
+      "latency_ms": 6.61,
+      "hits": [
+        {
+          "source": "https://qdrant.tech/documentation/private-cloud/qdrant-cluster-management/",
+          "title": "Cluster Management",
+          "score": 0.8448,
+          "snippet": "* [Edit on Github](https://github.com/qdrant/landing_page/tree/master/qdrant-landing/content/documentation/private-cloud/qdrant-cluster-management.md)\n* [Create an issue](https://github.com/qdrant/lan"
+        },
+        {
+          "source": "https://qdrant.tech/documentation/cloud-getting-started/",
+          "title": "Getting Started",
+          "score": 0.8127,
+          "snippet": "Getting Started - Qdrant\n{\"@context\":\"https://schema.org\",\"@graph\":[{\"@id\":\"https://qdrant.tech/documentation/cloud-getting-started/#article\",\"@type\":\"Article\",\"abstract\":\"Getting Started with Qdrant "
+        },
+        {
+          "source": "https://qdrant.tech/documentation/tutorials-basics/search-beginners/",
+          "title": "Semantic Search 101",
+          "score": 0.7708,
+          "snippet": "1. Register for a [Qdrant Cloud account](https://cloud.qdrant.io) using your email, Google, or Github credentials.\n2. Under **Create a Free Cluster**, enter a cluster name and select your preferred cl"
+        },
+        {
+          "source": "https://qdrant.tech/documentation/support/",
+          "title": "Support",
+          "score": 0.7606,
+          "snippet": "Please provide as much detail as possible when submitting your request. This helps us help you faster.\n\nThis includes but is not limited to:\n\n* The ID of your Qdrant Cloud cluster (auto-filled if poss"
+        },
+        {
+          "source": "https://qdrant.tech/documentation/examples/graphrag-qdrant-neo4j/",
+          "title": "GraphRAG with Neo4j",
+          "score": 0.7591,
+          "snippet": "* Go to [Qdrant Cloud](https://qdrant.tech/) and sign up or log in.\n* Once logged in, click on **Create New Cluster**.\n* Follow the on-screen instructions to create your cluster.\n* Once your cluster i"
+        }
+      ]
+    },
+    {
+      "query": "sparse vectors SPLADE",
+      "expected_sources": [
+        "qdrant.tech/documentation/fastembed/fastembed-splade",
+        "qdrant.tech/articles/sparse-vectors"
+      ],
+      "source_hits_in_top5": 4,
+      "keyword_hits_in_top1": 2,
+      "keyword_total": 2,
+      "top1_score": 0.771,
+      "latency_ms": 1.39,
+      "hits": [
+        {
+          "source": "https://qdrant.tech/articles/sparse-vectors/",
+          "title": "Sparse Vectors",
+          "score": 0.771,
+          "snippet": "* [What are sparse and dense vectors?](#what-are-sparse-and-dense-vectors)\n* [Understanding sparse vectors](#understanding-sparse-vectors)\n* [SPLADE](#splade)\n* [Creating a sparse vector](#creating-a-"
+        },
+        {
+          "source": "https://qdrant.tech/documentation/fastembed/fastembed-splade/",
+          "title": "Working with SPLADE",
+          "score": 0.6601,
+          "snippet": "Working with SPLADE - Qdrant\n{\"@context\":\"https://schema.org\",\"@graph\":[{\"@id\":\"https://qdrant.tech/documentation/fastembed/fastembed-splade/#article\",\"@type\":\"Article\",\"abstract\":\"How to Generate Spa"
+        },
+        {
+          "source": "https://qdrant.tech/articles/sparse-vectors/",
+          "title": "Sparse Vectors",
+          "score": 0.6486,
+          "snippet": "What is a Sparse Vector? How to Achieve Vector-based Hybrid Search - Qdrant\n{\"@context\":\"https://schema.org\",\"@graph\":[{\"@id\":\"https://qdrant.tech/articles/sparse-vectors/#article\",\"@type\":\"Article\",\""
+        },
+        {
+          "source": "https://qdrant.tech/articles/modern-sparse-neural-retrieval/",
+          "title": "Modern Sparse Neural Retrieval",
+          "score": 0.6266,
+          "snippet": "Implicitly generate sparse vectors (Click to expand)\n\n```\nresponse = qdrant_client.query_points(\n    collection_name=\"movies\",\n    query=models.Document(text=\"A movie about music\", model=sparse_model_"
+        },
+        {
+          "source": "https://qdrant.tech/articles/sparse-vectors/",
+          "title": "Sparse Vectors",
+          "score": 0.5867,
+          "snippet": "This expansion has a direct relationship with what we can control when making a SPLADE model: Sparsity via Regularisation. The number of tokens (BERT wordpieces) we use to represent each document. If "
+        }
+      ]
+    },
+    {
+      "query": "capacity planning memory calculation",
+      "expected_sources": [
+        "qdrant.tech/documentation/guides/capacity-planning"
+      ],
+      "source_hits_in_top5": 1,
+      "keyword_hits_in_top1": 1,
+      "keyword_total": 3,
+      "top1_score": 0.5437,
+      "latency_ms": 2.54,
+      "hits": [
+        {
+          "source": "https://qdrant.tech/documentation/guides/capacity-planning/",
+          "title": "Capacity Planning",
+          "score": 0.5437,
+          "snippet": "* How many vectors you have and their dimensions.\n* The amount of payload data you\u2019re using and their indexes.\n* What data you want to store in memory versus on disk.\n* Your cluster\u2019s replication sett"
+        },
+        {
+          "source": "https://qdrant.tech/documentation/tutorials-operations/large-scale-search/",
+          "title": "Large-Scale Search",
+          "score": 0.5395,
+          "snippet": "On the high level, memory usage consists of 3 components:\n\n* System memory - 8.34Gb - this is memory reserved for internal systems and OS, it doesn\u2019t depend on the dataset size.\n* Data memory - 39.27G"
+        },
+        {
+          "source": "https://qdrant.tech/documentation/guides/monitoring/",
+          "title": "Monitoring & Telemetry",
+          "score": 0.4914,
+          "snippet": "| Name | Type | Meaning |\n| --- | --- | --- |\n| memory\\_active\\_bytes | gauge | Total number of bytes in active pages allocated by the application ([ref](https://jemalloc.net/jemalloc.3.html#stats.act"
+        },
+        {
+          "source": "https://qdrant.tech/documentation/quickstart/",
+          "title": "Local Quickstart",
+          "score": 0.4707,
+          "snippet": "* [Installation](https://qdrant.tech/documentation/guides/installation/)\n* [Administration](https://qdrant.tech/documentation/guides/administration/)\n* [Running with GPU](https://qdrant.tech/documenta"
+        },
+        {
+          "source": "https://qdrant.tech/documentation/overview/",
+          "title": "What is Qdrant?",
+          "score": 0.4707,
+          "snippet": "* [Installation](https://qdrant.tech/documentation/guides/installation/)\n* [Administration](https://qdrant.tech/documentation/guides/administration/)\n* [Running with GPU](https://qdrant.tech/documenta"
+        }
+      ]
+    },
+    {
+      "query": "RRF reciprocal rank fusion",
+      "expected_sources": [
+        "qdrant.tech/documentation/concepts/hybrid-queries"
+      ],
+      "source_hits_in_top5": 1,
+      "keyword_hits_in_top1": 2,
+      "keyword_total": 2,
+      "top1_score": 0.5641,
+      "latency_ms": 1.46,
+      "hits": [
+        {
+          "source": "https://qdrant.tech/blog/qdrant-1.16.x/",
+          "title": "Qdrant 1.16",
+          "score": 0.5641,
+          "snippet": "* The constant `k` that determines how Reciprocal Rank Fusion (RRF) fuses result sets [is now configurable](https://qdrant.tech/documentation/concepts/hybrid-queries/#parametrized-rrf).\n* The Metrics "
+        },
+        {
+          "source": "https://qdrant.tech/blog/qdrant-1.11.x/",
+          "title": "Qdrant 1.11",
+          "score": 0.5286,
+          "snippet": "*To learn more, check out the [Query API documentation](https://qdrant.tech/documentation/concepts/hybrid-queries/).*\n\n### Query API: Distribution-Based Score Fusion\n\nIn version 1.10, we added Recipro"
+        },
+        {
+          "source": "https://qdrant.tech/documentation/concepts/hybrid-queries/",
+          "title": "Hybrid Queries",
+          "score": 0.526,
+          "snippet": "[RRF](https://plg.uwaterloo.ca/~gvcormac/cormacksigir09-rrf.pdf) considers the positions of results within each query, and boosts the ones that appear closer to the top in multiple sets of results.\n\nT"
+        },
+        {
+          "source": "https://qdrant.tech/articles/sparse-vectors/",
+          "title": "Sparse Vectors",
+          "score": 0.4848,
+          "snippet": "You can mix the results from both dense and sparse vectors, based purely on their relative scores. This is a simple and effective approach, but it doesn\u2019t take into account the semantic similarity bet"
+        },
+        {
+          "source": "https://qdrant.tech/articles/bm42/",
+          "title": "BM42: Hybrid Search Baseline",
+          "score": 0.423,
+          "snippet": "client.create_collection(\n    collection_name=\"my-hybrid-collection\",\n    vectors_config={\n        \"jina\": models.VectorParams(\n            size=768,\n            distance=models.Distance.COSINE,\n     "
+        }
+      ]
+    },
+    {
+      "query": "qdrant edge on device search",
+      "expected_sources": [
+        "qdrant.tech/documentation/edge"
+      ],
+      "source_hits_in_top5": 4,
+      "keyword_hits_in_top1": 1,
+      "keyword_total": 2,
+      "top1_score": 0.7199,
+      "latency_ms": 4.58,
+      "hits": [
+        {
+          "source": "https://qdrant.tech/documentation/edge/",
+          "title": "Qdrant Edge Overview",
+          "score": 0.7199,
+          "snippet": "Qdrant Edge - Qdrant\n{\"@context\":\"https://schema.org\",\"@graph\":[{\"@id\":\"https://qdrant.tech/documentation/edge/#article\",\"@type\":\"Article\",\"abstract\":\"Qdrant Edge is in beta The API and functionality "
+        },
+        {
+          "source": "https://qdrant.tech/documentation/edge/edge-quickstart/",
+          "title": "Edge Quickstart",
+          "score": 0.6502,
+          "snippet": "* [Qdrant Edge Quickstart](#qdrant-edge-quickstart)\n  + [Install Qdrant Edge](#install-qdrant-edge)\n  + [Create a Storage Directory](#create-a-storage-directory)\n  + [Configure the Edge Shard](#config"
+        },
+        {
+          "source": "https://qdrant.tech/documentation/edge/edge-fastembed-embeddings/",
+          "title": "On-Device Embeddings",
+          "score": 0.6346,
+          "snippet": "Provision the Device\n====================\n\nAssuming the devices on which you will run Qdrant Edge have intermittent or no internet connectivity, you need to provision them with the necessary dependenc"
+        },
+        {
+          "source": "https://qdrant.tech/documentation/edge/edge-fastembed-embeddings/",
+          "title": "On-Device Embeddings",
+          "score": 0.622,
+          "snippet": "On-Device Embeddings - Qdrant\n{\"@context\":\"https://schema.org\",\"@graph\":[{\"@id\":\"https://qdrant.tech/documentation/edge/edge-fastembed-embeddings/#article\",\"@type\":\"Article\",\"abstract\":\"OnDevice Embed"
+        },
+        {
+          "source": "https://qdrant.tech/documentation/overview/vector-search/",
+          "title": "Understanding Vector Search",
+          "score": 0.6195,
+          "snippet": "* [Edit on Github](https://github.com/qdrant/landing_page/tree/master/qdrant-landing/content/documentation/overview/vector-search.md)\n* [Create an issue](https://github.com/qdrant/landing_page/issues/"
+        }
+      ]
+    },
+    {
+      "query": "migrate from pinecone to qdrant",
+      "expected_sources": [
+        "qdrant.tech/documentation/tutorials-operations/migration"
+      ],
+      "source_hits_in_top5": 2,
+      "keyword_hits_in_top1": 2,
+      "keyword_total": 2,
+      "top1_score": 0.6251,
+      "latency_ms": 17.39,
+      "hits": [
+        {
+          "source": "https://qdrant.tech/documentation/tutorials-operations/migration/",
+          "title": "Migration to Qdrant",
+          "score": 0.6251,
+          "snippet": "With that information, you can migrate your vector database from Pinecone to Qdrant with the following command:\n\n```\ndocker run --net=host --rm -it registry.cloud.qdrant.io/library/qdrant-migration pi"
+        },
+        {
+          "source": "https://qdrant.tech/documentation/tutorials-operations/migration/",
+          "title": "Migration to Qdrant",
+          "score": 0.5874,
+          "snippet": "* [Edit on Github](https://github.com/qdrant/landing_page/tree/master/qdrant-landing/content/documentation/tutorials-operations/migration.md)\n* [Create an issue](https://github.com/qdrant/landing_page"
+        },
+        {
+          "source": "https://qdrant.tech/benchmarks/",
+          "title": "Vector Database Benchmarks",
+          "score": 0.5849,
+          "snippet": "* [Documentation](https://qdrant.tech/documentation/)\n* [Community](https://qdrant.tech/community/)\n* [GitHub](https://github.com/qdrant/qdrant)\n* [Roadmap](https://qdrant.to/roadmap)\n* [Change Log](h"
+        },
+        {
+          "source": "https://qdrant.tech/blog/qdrant-1.15.x/",
+          "title": "Qdrant 1.15",
+          "score": 0.5849,
+          "snippet": "* [Documentation](https://qdrant.tech/documentation/)\n* [Community](https://qdrant.tech/community/)\n* [GitHub](https://github.com/qdrant/qdrant)\n* [Roadmap](https://qdrant.to/roadmap)\n* [Change Log](h"
+        },
+        {
+          "source": "https://qdrant.tech/blog/qdrant-1.16.x/",
+          "title": "Qdrant 1.16",
+          "score": 0.5849,
+          "snippet": "* [Documentation](https://qdrant.tech/documentation/)\n* [Community](https://qdrant.tech/community/)\n* [GitHub](https://github.com/qdrant/qdrant)\n* [Roadmap](https://qdrant.to/roadmap)\n* [Change Log](h"
+        }
+      ]
+    },
+    {
+      "query": "async client python",
+      "expected_sources": [
+        "qdrant.tech/documentation/tutorials-develop/async-api"
+      ],
+      "source_hits_in_top5": 3,
+      "keyword_hits_in_top1": 1,
+      "keyword_total": 1,
+      "top1_score": 0.6957,
+      "latency_ms": 6.65,
+      "hits": [
+        {
+          "source": "https://qdrant.tech/documentation/tutorials-develop/async-api/",
+          "title": "Build With Async API",
+          "score": 0.6957,
+          "snippet": "Asynchronous programming is being broadly adopted in the Python ecosystem. Tools such as FastAPI [have embraced this new\nparadigm](https://fastapi.tiangolo.com/async/), but it is also becoming a stand"
+        },
+        {
+          "source": "https://qdrant.tech/documentation/tutorials-develop/async-api/",
+          "title": "Build With Async API",
+          "score": 0.5025,
+          "snippet": "Modern web frameworks like [FastAPI](https://fastapi.tiangolo.com/) and [Quart](https://quart.palletsprojects.com/en/latest/) support\nasync API out of the box. Mixing asynchronous code with an existin"
+        },
+        {
+          "source": "https://qdrant.tech/documentation/tutorials-develop/async-api/",
+          "title": "Build With Async API",
+          "score": 0.5005,
+          "snippet": "Async API - Qdrant\n{\"@context\":\"https://schema.org\",\"@graph\":[{\"@id\":\"https://qdrant.tech/documentation/tutorials-develop/async-api/#article\",\"@type\":\"Article\",\"abstract\":\"Build HighThroughput Applica"
+        },
+        {
+          "source": "https://qdrant.tech/documentation/edge/edge-data-synchronization-patterns/",
+          "title": "Data Synchronization Patterns",
+          "score": 0.4246,
+          "snippet": "Instead of writing to the server collection directly, you may want to set up a background job or a message queue that handles the synchronization asynchronously. The device running the Edge Shard may "
+        },
+        {
+          "source": "https://qdrant.tech/documentation/interfaces/",
+          "title": "API & SDKs",
+          "score": 0.3899,
+          "snippet": "|  | Client Repository | Installation | Version |\n| --- | --- | --- | --- |\n| [python](https://python-client.qdrant.tech/) | **[Python](https://github.com/qdrant/qdrant-client)** + **[(Client Docs)](h"
+        }
+      ]
+    },
+    {
+      "query": "distance matrix API",
+      "expected_sources": [
+        "qdrant.tech/blog/qdrant-1.12.x"
+      ],
+      "source_hits_in_top5": 2,
+      "keyword_hits_in_top1": 2,
+      "keyword_total": 2,
+      "top1_score": 0.5661,
+      "latency_ms": 3.29,
+      "hits": [
+        {
+          "source": "https://qdrant.tech/blog/qdrant-1.12.x/",
+          "title": "Qdrant 1.12",
+          "score": 0.5661,
+          "snippet": "Qdrant 1.12 - Distance Matrix, Facet Counting & On-Disk Indexing - Qdrant\n{\"@context\":\"https://schema.org\",\"@graph\":[{\"@id\":\"https://qdrant.tech/blog/qdrant-1.12.x/#article\",\"@type\":\"Article\",\"abstrac"
+        },
+        {
+          "source": "https://qdrant.tech/documentation/concepts/collections/",
+          "title": "Collections",
+          "score": 0.5599,
+          "snippet": "Distance metrics are used to measure similarities among vectors.\nThe choice of metric depends on the way vectors obtaining and, in particular, on the method of neural network encoder training.\n\nQdrant"
+        },
+        {
+          "source": "https://qdrant.tech/blog/qdrant-1.12.x/",
+          "title": "Qdrant 1.12",
+          "score": 0.5046,
+          "snippet": "[Log in](https://cloud.qdrant.io/login)[Get Started](https://cloud.qdrant.io/signup)\n\n0\n\nQdrant 1.12 - Distance Matrix, Facet Counting & On-Disk Indexing\n=============================================="
+        },
+        {
+          "source": "https://qdrant.tech/blog/qdrant-1.14.x/",
+          "title": "Qdrant 1.14",
+          "score": 0.4814,
+          "snippet": "This feature introduces a multi-objective optimization: combining semantic similarity with geographical proximity. Suppose each point has a `geo.location` payload field (latitude, longitude). You can "
+        },
+        {
+          "source": "https://qdrant.tech/documentation/fastembed/fastembed-colbert/",
+          "title": "Working with ColBERT",
+          "score": 0.4451,
+          "snippet": "* similarity metric between vectors;\n* the size of each vector (for ColBERT, it\u2019s **128**);\n* similarity metric between multivectors (matrices), for example, `maximum`, so for vector from matrix A, we"
+        }
+      ]
+    }
+  ]
+}

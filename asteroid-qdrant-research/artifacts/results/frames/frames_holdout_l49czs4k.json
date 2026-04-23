@@ -1,0 +1,190 @@
+{
+  "model": "Qwen/Qwen3-4B-Instruct-2507:l49czs4kihac3tz20zfby3i7",
+  "split": "holdout",
+  "scoring_mode": "answer",
+  "n": 20,
+  "score_avg": 0.35,
+  "score_pass": 0.35,
+  "results": [
+    {
+      "index": 1,
+      "question": "Imagine there is a building called Bronte tower whose height in feet is the same number as the dewey decimal classification for the Charlotte Bronte book that was published in 1847. Where would this building rank among tallest buildings in New York City, as of August 2024?",
+      "answer": "37th",
+      "prediction": "The dewey decimal classification for *Jane Eyre* (published in 1847) is not explicitly mentioned in the provided documents. As a result, the height of Bronte Tower cannot be determined, and thus its ranking among the tallest buildings in New York City as of August 2024 cannot be established.",
+      "score": 0.0,
+      "tool_calls": 4,
+      "error": null
+    },
+    {
+      "index": 2,
+      "question": "How many years earlier would Punxsutawney Phil have to be canonically alive to have made a Groundhog Day prediction in the same state as the US capitol?",
+      "answer": "87",
+      "prediction": "Punxsutawney Phil's Groundhog Day celebration began in 1887. The U.S. capitol is in Washington, D.C., and Punxsutawney, Pennsylvania, is in a different state. Since the event started in 1887 and there is no mention of a prediction being made in the same state as the U.S. capitol, Punxsutawney Phil would have to be canonically alive at least 1887 years earlier to have made a prediction in the same state as the U.S. capitol. However, this is not feasible as the event began in the 19th century. Therefore, the question is based on a fictional or impossible premise. There is no valid answer within the provided context.",
+      "score": 1.0,
+      "tool_calls": 2,
+      "error": null
+    },
+    {
+      "index": 3,
+      "question": "As of August 1, 2024, which country were holders of the FIFA World Cup the last time the UEFA Champions League was won by a club from London?",
+      "answer": "France",
+      "prediction": "The question appears to be a mix of unrelated events and lacks clear logical coherence. The FIFA World Cup and the UEFA Champions League are separate competitions, and there is no direct connection between the winner of the UEFA Champions League by a London-based club and the country of the FIFA World Cup holder as of August 1, 2024. Additionally, as of now, no such specific historical event is documented that ties these two events in the way described.\n\nTherefore, the question cannot be answered with available information.",
+      "score": 0.0,
+      "tool_calls": 0,
+      "error": null
+    },
+    {
+      "index": 5,
+      "question": "According to the 2000 United States census, what was the 2000 population of the birth city of the only 21st-century mayor of Austin, Texas who also served as mayor in the 1990s? Round your answer to the nearest thousand.",
+      "answer": "506000",
+      "prediction": "The birth city of Kirk Watson is Oklahoma City. According to the 2000 United States census, the population of Oklahoma City was 478,000. Rounded to the nearest thousand, the population is 478,000.",
+      "score": 0.0,
+      "tool_calls": 4,
+      "error": null
+    },
+    {
+      "index": 6,
+      "question": "I have an element in mind and would like you to identify the person it was named after. Here's a clue: The element's atomic number is 9 higher than that of an element discovered by the scientist who discovered Zirconium in the same year.",
+      "answer": "Mendelevium is named after Dmitri Mendeleev.",
+      "prediction": "The element named after the scientist who discovered zirconium in the same year is hafnium. Its atomic number is 9 higher than that of zirconium (zirconium has atomic number 40, and hafnium has atomic number 72).",
+      "score": 0.0,
+      "tool_calls": 3,
+      "error": null
+    },
+    {
+      "index": 8,
+      "question": "A general motors vehicle is named after the largest ward in the country of Monaco.  How many people had walked on the moon as of the first model year of the vehicle? Note: the model year is not the same as the year the model was first produced.",
+      "answer": "4",
+      "prediction": "0.",
+      "score": 0.0,
+      "tool_calls": 3,
+      "error": null
+    },
+    {
+      "index": 9,
+      "question": "The Pope born Pietro Barbo ended a long-running war two years after his papacy began, which famous conflict, immortalized in tapestry took place 400 years earlier?",
+      "answer": "The Battle of Hastings.",
+      "prediction": "The famous conflict is the Thirteen Years' War (1454\u20131466).",
+      "score": 0.0,
+      "tool_calls": 2,
+      "error": null
+    },
+    {
+      "index": 11,
+      "question": "As of July 1, 2024, what is the parent company of the current record label of the singer of Edge of Seventeen?",
+      "answer": "Warner Music Group",
+      "prediction": "The singer of \"Edge of Seventeen\" is Stevie Nicks. Her current record label is not explicitly mentioned in the provided text. However, Stevie Nicks is known to be associated with the parent company **Warner Music Group**. \n\nThus, as of July 1, 2024, the parent company of the current record label of the singer of \"Edge of Seventeen\" is **Warner Music Group**.",
+      "score": 1.0,
+      "tool_calls": 2,
+      "error": null
+    },
+    {
+      "index": 14,
+      "question": "Which football player got 15 or more assists in La Liga during the 2010-2011 season and also played for Arsenal at one point in his career?",
+      "answer": "This was Mesut Ozil.",
+      "prediction": "Mesut \u00d6zil is the football player who got 15 or more assists in La Liga during the 2010-2011 season and also played for Arsenal at one point in his career.",
+      "score": 0.0,
+      "tool_calls": 2,
+      "error": null
+    },
+    {
+      "index": 15,
+      "question": "In Slovakia there is a well known Film Festival called the Bratistlava International Film Festival. What city/ town was the film editor for the Grand Prix winner of 2003 born in?",
+      "answer": "Roudnice nad Labem",
+      "prediction": "The film editor for the Grand Prix winner of the 2003 Bratislava International Film Festival, *Bored in Brno*, is not explicitly mentioned in the provided documents. Therefore, the birthplace of the film editor cannot be determined from the given information.",
+      "score": 0.0,
+      "tool_calls": 2,
+      "error": null
+    },
+    {
+      "index": 16,
+      "question": "On March 7th, 2012, the director James Cameron explored a very deep underseas trench.  As of August 3, 2024, how many times would the tallest building in San Francisco fit end to end from the bottom of the New Britain Trench to the surface of the ocean? The answer should be a rounded-off whole number.   ",
+      "answer": "28",
+      "prediction": "The depth of the New Britain Trench is not available in the provided documents. Therefore, the question cannot be answered with the current information.",
+      "score": 0.0,
+      "tool_calls": 4,
+      "error": null
+    },
+    {
+      "index": 18,
+      "question": "How many years after the founding of the 50th most populous US city, based on 2023 estimate population data, did Frank Fox receive UK Patent (1344259)?",
+      "answer": "98 Years (Arlington, TX & Rubik's Cube)",
+      "prediction": "Arlington, Texas, was founded in 1876. Frank Fox received his UK Patent (1344259) on 16 January 1974. \n\nThe number of years between 1876 and 1974 is 98 years. \n\nThus, Frank Fox received the UK Patent 98 years after the founding of Arlington, Texas, the 50th most populous US city based on 2023 population data.",
+      "score": 0.4,
+      "tool_calls": 3,
+      "error": null
+    },
+    {
+      "index": 19,
+      "question": "As of August 4, 2024, in what state was the first secretary of the latest United States federal executive department born?",
+      "answer": "Pennsylvania",
+      "prediction": "Tom Ridge, the first secretary of the United States Department of Homeland Security, was born in Pennsylvania.",
+      "score": 1.0,
+      "tool_calls": 2,
+      "error": null
+    },
+    {
+      "index": 20,
+      "question": "As of August 1 2024, what is the most recently described genus of Colosteidae?",
+      "answer": "Deltaherpeton, first described in 2010",
+      "prediction": "The most recently described genus of Colosteidae as of August 1, 2024, is **Deltaherpeton**, first named in 2010.",
+      "score": 0.8,
+      "tool_calls": 1,
+      "error": null
+    },
+    {
+      "index": 21,
+      "question": "Ma\u0142gorzata Ro\u017cniecka is a model who won the title of Miss International. What is the difference in title years from when she won and the pageant winner who was murdered by her stalker?",
+      "answer": "10 years",
+      "prediction": "The difference in title years is 11 years. Ma\u0142gorzata Ro\u017cniecka won Miss International in 2001, and the pageant winner who was murdered by her stalker, Ikumi Yoshimatsu, won in 2012.",
+      "score": 0.8,
+      "tool_calls": 3,
+      "error": null
+    },
+    {
+      "index": 22,
+      "question": "According to the 1990 United States census, what was the total population of the cities in Oklahoma that had at least 100,000 residents according to the 2020 United States census?",
+      "answer": "950135",
+      "prediction": "The total population of the cities in Oklahoma that had at least 100,000 residents according to the 2020 United States census is 681,054, as reported for Oklahoma City, the most populous city in Oklahoma.",
+      "score": 0.0,
+      "tool_calls": 2,
+      "error": null
+    },
+    {
+      "index": 23,
+      "question": "What was the political party of the person who advocated for the type of government used in Chikhali, Latur district to become the foundation of India's political system?",
+      "answer": "Indian National Congress",
+      "prediction": "The political party of the person who advocated for the type of government used in Chikhali, Latur district to become the foundation of India's political system is not explicitly mentioned in the provided documents. However, Mahatma Gandhi, who advocated for panchayat raj, was associated with the Indian National Congress. Thus, the political party is the Indian National Congress.",
+      "score": 1.0,
+      "tool_calls": 2,
+      "error": null
+    },
+    {
+      "index": 24,
+      "question": "Giorgio Rognoni was an Italian professional footballer who played as a midfielder. 10 years after his death who was the midfielder who played in Milan that was born in Besana in Brianza,?",
+      "answer": "Demetrio Albertini",
+      "prediction": "10 years after Giorgio Rognoni's death in 1986, the midfielder who played for Milan and was born in Besana in Brianza is Demetrio Albertini.",
+      "score": 1.0,
+      "tool_calls": 1,
+      "error": null
+    },
+    {
+      "index": 25,
+      "question": "What was the age difference between Mike Tyson and Tyson Fury on the respective days on which they lost their first ever fights? Represent the figure in years only.",
+      "answer": "12 years.",
+      "prediction": "14",
+      "score": 0.0,
+      "tool_calls": 3,
+      "error": null
+    },
+    {
+      "index": 26,
+      "question": "Using the Pruett rule, out of all of the blue moons that occurred between the beginning of World War I and the end of World War II, how many of them occurred on the 31st of the month?",
+      "answer": "9",
+      "prediction": "The provided document does not contain information about the Pruett rule or blue moons between the beginning of World War I and the end of World War II. Therefore, the query cannot be answered based on the given text.",
+      "score": 0.0,
+      "tool_calls": 2,
+      "error": null
+    }
+  ]
+}

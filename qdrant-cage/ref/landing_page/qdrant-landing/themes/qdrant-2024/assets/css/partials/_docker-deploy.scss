@@ -1,0 +1,115 @@
+@use '../helpers/functions' as *;
+
+.docker-deploy {
+  background-color: $neutral-94;
+
+  padding-top: $spacer * 4;
+  padding-bottom: $spacer * 4;
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    row-gap: pxToRem(40);
+  }
+
+  &__description {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__title {
+    font-size: pxToRem(32);
+    line-height: pxToRem(38);
+    color: $neutral-20;
+    text-align: center;
+    margin: 0;
+  }
+
+  &__subtitle {
+    font-size: map-get($font-sizes-text, 'l');
+    line-height: pxToRem(27);
+    margin-top: $spacer * 1.5;
+    margin-bottom: 0;
+    text-align: center;
+  }
+
+  &__link {
+    color: $primary-50;
+    font-size: $font-size-xl;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__preview {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__image {
+    width: 100%;
+    height: pxToRem(229);
+    max-width: pxToRem(335);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    padding-top: pxToRem(54);
+    padding-left: pxToRem(50);
+    padding-bottom: pxToRem(80);
+    padding-right: pxToRem(50);
+  }
+
+  &__image code {
+    color: $neutral-98;
+    font-size: pxToRem(9);
+    line-height: pxToRem(14);
+  }
+
+  @include media-breakpoint-up(lg) {
+    flex-direction: row;
+    padding-top: $spacer * 5;
+    padding-bottom: $spacer * 5;
+    gap: $spacer * 5;
+
+    &__description {
+      justify-content: center;
+    }
+
+    &__title {
+      font-size: map-get($font-sizes, 3);
+      line-height: pxToRem(57);
+      text-align: left;
+    }
+
+    &__subtitle {
+      font-size: map-get($font-sizes-text, 'xl');
+      line-height: pxToRem(30);
+      text-align: left;
+    }
+
+    &__preview {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    &__image {
+      width: pxToRem(584);
+      height: pxToRem(400);
+      max-width: pxToRem(584);
+      padding-top: pxToRem(94);
+      padding-left: pxToRem(107);
+      padding-bottom: pxToRem(80);
+      padding-right: pxToRem(80);
+    }
+
+    &__image code {
+      font-size: pxToRem(15);
+      line-height: pxToRem(24);
+    }
+  }
+}

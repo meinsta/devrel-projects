@@ -1,0 +1,30 @@
+{
+  "expectations": [
+    {
+      "text": "Lists all quantization options (scalar, 4-bit, 2-bit, binary, product)",
+      "passed": false,
+      "evidence": "Lists scalar, binary, product. Does NOT mention 4-bit or 2-bit quantization."
+    },
+    {
+      "text": "Confirms FP16 is supported",
+      "passed": true,
+      "evidence": "Lists float16 as a supported datatype."
+    },
+    {
+      "text": "Explains FP16 stacks with quantization",
+      "passed": true,
+      "evidence": "Can be combined with any of the three quantization methods."
+    },
+    {
+      "text": "Does NOT say only scalar and binary exist",
+      "passed": true,
+      "evidence": "Also mentions product quantization and FP16, so not limited to two."
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 1,
+    "total": 4,
+    "pass_rate": 0.75
+  }
+}

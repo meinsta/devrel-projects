@@ -1,0 +1,1 @@
+{"eval_id": 1, "eval_name": "quantization-bits", "prompt": "What quantization options does Qdrant support? I know about scalar (int8) and binary. Are there other bit-width options like 4-bit or 2-bit quantization?"}

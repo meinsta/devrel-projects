@@ -1,0 +1,23 @@
+{
+  "skill": "qdrant-cost-reduction-advisor",
+  "should_trigger": [
+    "this $600k proposal is way too expensive for a single use case, we need to get it under $200k",
+    "our qdrant monthly bill keeps creeping up, was $3k in january and now it's $8k with the same data",
+    "customer is comparing our qdrant pricing to pinecone and says we're 5x more expensive",
+    "seed-stage startup expected $3-5k/month for qdrant but the quote came back at $18k",
+    "we need a formula to calculate qdrant pricing based on cluster size so we can forecast Q3 budget",
+    "what's the TCO difference between running qdrant self-hosted vs managed cloud at 100M vectors",
+    "CEO asked if we can cut our qdrant spend by 50%, currently paying $12k/month",
+    "can you walk me through the cost implications of scalar vs binary quantization for our 80M vector deployment"
+  ],
+  "should_not_trigger": [
+    "how do I install qdrant on kubernetes using the helm chart",
+    "what embedding model should I use for my legal document corpus",
+    "our qdrant search results have 70% recall, how do we improve accuracy",
+    "compare qdrant vs pinecone feature set for our RAG pipeline",
+    "how do I create a collection with named vectors in qdrant",
+    "how to set up qdrant monitoring with prometheus and grafana",
+    "does qdrant support multi-tenancy with payload-based filtering",
+    "how do I configure qdrant snapshots for disaster recovery on S3"
+  ]
+}

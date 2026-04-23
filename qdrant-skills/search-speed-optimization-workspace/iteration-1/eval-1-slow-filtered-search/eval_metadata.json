@@ -1,0 +1,32 @@
+{
+  "eval_id": 1,
+  "eval_name": "slow-filtered-search",
+  "prompt": "We have a Qdrant Cloud cluster at https://41933e38-7320-4675-b795-ffa6a7ed86d3.us-west-2-0.aws.cloud.qdrant.io:6333 (API key: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3MiOiJtIn0.6JRnmfTUby3x-lHnCQtwSKED5CrrVIyJwr0JOyTzOOI). Filtered search on our products-us collection is extremely slow. We filter by the 'category' field and it takes 10x longer than unfiltered search. What's going on?",
+  "assertions": [
+    {
+      "name": "followed_3C_checklist",
+      "description": "Explicitly walked through the Phase 3C filtered search diagnostic steps",
+      "check": "Response explicitly references Phase 3C or follows a structured checklist for filtered search diagnosis (not just listing issues ad-hoc)"
+    },
+    {
+      "name": "explained_filterable_hnsw_interaction",
+      "description": "Explained that payload indexes need HNSW to be built for filterable search to work",
+      "check": "Response explains the interaction between HNSW graph and payload indexes for filtered search (filterable HNSW index, subgraph links, or pre-filter/post-filter strategies)"
+    },
+    {
+      "name": "referenced_qdrant_docs",
+      "description": "Included links to specific Qdrant documentation pages",
+      "check": "Response contains at least one URL linking to qdrant.tech documentation"
+    },
+    {
+      "name": "included_monitoring_checklist",
+      "description": "Provided post-fix verification steps to confirm the fix worked",
+      "check": "Response includes specific steps to verify after applying the fix (check indexed_vectors_count, segment count, re-run search, etc.)"
+    },
+    {
+      "name": "did_not_recommend_unnecessary_indexes",
+      "description": "Did NOT recommend creating indexes on fields that already have them or on all fields",
+      "check": "Response correctly identifies that category already has an index and does NOT recommend creating a redundant index on it. Also does not suggest indexing all fields."
+    }
+  ]
+}

@@ -1,0 +1,107 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+CAGE_VERSION="0.1.0"
+CAGE_DIR="$(cd "$(dirname "$0")/.." && pwd)"
+CAGE_CORE="$CAGE_DIR/core/dist/cage-core"
+
+usage() {
+  cat <<'EOF'
+cage - contract-enforced agent-guided engineering
+
+usage: cage <command> [args]
+
+commands:
+  init [--template T] [dir]   scaffold a CAGE project
+  scan [dir]                   detect services, generate agent context
+  index [dir]                  index codebase for semantic search
+  search <query>               semantic code search
+  check [contracts|arch|all]   run architectural checks
+  status                       show cage dashboard
+  doctor [dir]                 diagnose project setup
+  policy                       show execution policy
+  merge <branch>               safe worktree merge
+  worktree <prepare|list|clean> worktree lifecycle
+  infra <start|stop|status>    service lifecycle
+  pipeline <get|transition|list|reset> feature lifecycle
+  port <service> <worktree-idx> calculate port assignment
+  version                      print version
+
+run 'cage <command> --help' for details.
+EOF
+}
+
+# commands that go through cage-core
+core_cmd() {
+  if [ ! -x "$CAGE_CORE" ]; then
+    echo "error: cage-core not built. run '$CAGE_DIR/setup' first" >&2
+    exit 1
+  fi
+  exec "$CAGE_CORE" "$@"
+}
+
+case "${1:-}" in
+  # cage-core commands
+  init)       shift; core_cmd init "$@" ;;
+  scan)       shift; core_cmd scan "${1:-.}" ;;
+  index)      shift; core_cmd index "${1:-.}" ;;
+  search)     shift; core_cmd search "$@" ;;
+  doctor)     shift; core_cmd doctor "${1:-.}" ;;
+  status)     shift; core_cmd status "$@" ;;
+  policy)     shift; core_cmd policy parse "${1:-}" ;;
+  pipeline)   shift; core_cmd pipeline "$@" ;;
+  port)       shift; core_cmd port assign "$@" ;;
+
+  # check: route to cage-core or shell depending on subcommand
+  check)
+    shift
+    case "${1:-all}" in
+      contracts)  core_cmd contract validate shared ;;
+      policy)     core_cmd policy parse ;;
+      arch|architecture) core_cmd check run . ;;
+      run)        shift; core_cmd check run "$@" ;;
+      list)       core_cmd check list ;;
+      all)
+        core_cmd contract validate shared
+        echo ""
+        core_cmd check run .
+        echo ""
+        core_cmd policy parse
+        ;;
+      *)          core_cmd check "$@" ;;
+    esac
+    ;;
+
+  # infra: route to cage-core
+  infra)
+    shift
+    case "${1:-}" in
+      start)  core_cmd infra start "${2:-cage-infra.yaml}" ;;
+      stop)   core_cmd infra stop "${2:-.cage/pids}" ;;
+      status) core_cmd infra status "${2:-.cage/pids}" ;;
+      *)      echo "usage: cage infra <start|stop|status>" >&2; exit 1 ;;
+    esac
+    ;;
+
+  # shell commands (stay in bash)
+  merge)
+    shift
+    exec "$CAGE_DIR/bin/cage-merge" "$@"
+    ;;
+  worktree)
+    shift
+    exec "$CAGE_DIR/bin/cage-worktree" "$@"
+    ;;
+
+  version|--version|-v)
+    echo "cage $CAGE_VERSION"
+    ;;
+  help|--help|-h|"")
+    usage
+    ;;
+  *)
+    echo "error: unknown command '$1'" >&2
+    echo "run 'cage --help' for usage" >&2
+    exit 1
+    ;;
+esac

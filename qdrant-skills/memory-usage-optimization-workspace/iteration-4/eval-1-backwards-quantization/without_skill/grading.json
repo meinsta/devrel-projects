@@ -1,0 +1,40 @@
+{
+  "expectations": [
+    {
+      "text": "Actually connects and inspects the embeddings-archive collection config",
+      "passed": true,
+      "evidence": "Response shows the full raw JSON collection config from the API including quantization_config, optimizer_config, and vector params. References real cluster URL and Qdrant version 1.16.3."
+    },
+    {
+      "text": "Identifies always_ram=false as the problem (quantized vectors on disk)",
+      "passed": false,
+      "evidence": "The summary table explicitly states: 'always_ram on quantization | false | Correct, not an issue'. The response concludes 'The quantization config is correctly defined.' It does NOT identify always_ram=false as a problem at all."
+    },
+    {
+      "text": "Identifies on_disk=false as the problem (originals in RAM)",
+      "passed": true,
+      "evidence": "Problem 2 states: 'The collection has on_disk: false on the vector params, meaning those float32 originals are held in RAM, not memory-mapped from disk.' Fix 2 recommends setting vectors.on_disk=true."
+    },
+    {
+      "text": "Explains the correct pattern: always_ram=true for quantized, on_disk=true for originals",
+      "passed": false,
+      "evidence": "The response says always_ram=false is 'Correct, not an issue.' Fix 2 recommends on_disk=true for originals, but the response never recommends setting always_ram=true. The correct dual pattern (always_ram=true + on_disk=true) is not explained."
+    },
+    {
+      "text": "Checks optimizer status before concluding quantization failed",
+      "passed": true,
+      "evidence": "Response checks indexed_vectors_count (0) and explains that indexing_threshold=10000 is why the optimizer never ran. It identifies the quantized index as never having been built due to the threshold. Monitor guidance says 'polling the collection info until indexed_vectors_count equals points_count and optimizer_status is ok.'"
+    },
+    {
+      "text": "Warns against the performance impact of always_ram=false",
+      "passed": false,
+      "evidence": "The response does not warn about performance impact of always_ram=false. Instead it says always_ram=false is 'Correct, not an issue' and provides no warning about disk thrashing or search latency degradation."
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 3,
+    "total": 6,
+    "pass_rate": 0.5
+  }
+}

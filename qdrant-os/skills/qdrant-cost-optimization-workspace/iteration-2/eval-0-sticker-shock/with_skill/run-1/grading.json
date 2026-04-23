@@ -1,0 +1,40 @@
+{
+  "expectations": [
+    {
+      "text": "Identifies full RAM as the cost driver",
+      "passed": true,
+      "evidence": "'The $600k annual figure is what the deployment costs with full-resolution vectors sitting in RAM and no quantization.' Breaks down 2.8TB raw + HNSW overhead."
+    },
+    {
+      "text": "Recommends scalar quantization as first step",
+      "passed": true,
+      "evidence": "Option 1 is scalar quantization. Formula shows 4x reduction."
+    },
+    {
+      "text": "Mentions mmap storage as cost reduction lever",
+      "passed": true,
+      "evidence": "References mmap for storing full vectors on disk while quantized stay in RAM."
+    },
+    {
+      "text": "Mentions FDE or premium support can be removed",
+      "passed": true,
+      "evidence": "'First thing to check: does the proposal include an FDE or Premium Support tier? removing those line items alone could drop the price by $200k+'"
+    },
+    {
+      "text": "Provides concrete cost estimate or formula",
+      "passed": true,
+      "evidence": "Full formula: RAM units = ceil(total/8), $53/unit/month. Calculates 533 units = $28k/month baseline. Shows optimized scenarios."
+    },
+    {
+      "text": "Does NOT dismiss the customer's concern",
+      "passed": true,
+      "evidence": "Opens with 'Yes, you can get into the $150-200k/year range.' Validates the concern."
+    }
+  ],
+  "summary": {
+    "passed": 6,
+    "failed": 0,
+    "total": 6,
+    "pass_rate": 1.0
+  }
+}

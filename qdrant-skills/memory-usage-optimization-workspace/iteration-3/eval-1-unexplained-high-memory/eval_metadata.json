@@ -1,0 +1,27 @@
+{
+  "eval_id": 1,
+  "eval_name": "unexplained-high-memory",
+  "prompt": "We have 460 million points with 16-byte vectors. Our calculation says 7-8GB but each instance is using 20GB. We stopped ingestion for a week, barely any queries, still 20GB average across all six instances. What is Qdrant storing that takes 20GB?",
+  "assertions": [
+    {
+      "text": "Asks for actual configuration (on_disk, quantization, payload settings) BEFORE providing a breakdown",
+      "type": "content_check"
+    },
+    {
+      "text": "Recommends checking metrics endpoint to separate data usage from cache",
+      "type": "content_check"
+    },
+    {
+      "text": "Mentions full-text indexes as a possible hidden RAM consumer",
+      "type": "content_check"
+    },
+    {
+      "text": "Does NOT invent specific GB estimates for ID tracker or payload without knowing the actual config",
+      "type": "content_check"
+    },
+    {
+      "text": "Suggests investigating with support/core team if config review doesn't explain the gap",
+      "type": "content_check"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{"query": "how to create a collection", "expected_sources": ["qdrant.tech/documentation/concepts/collections"], "expected_keywords": ["create", "collection"]}
+{"query": "upsert points with payload", "expected_sources": ["qdrant.tech/documentation/concepts/points"], "expected_keywords": ["upsert", "payload"]}
+{"query": "cosine distance vs dot product", "expected_sources": ["qdrant.tech/documentation/concepts/collections"], "expected_keywords": ["cosine", "dot"]}
+{"query": "how does HNSW indexing work", "expected_sources": ["qdrant.tech/documentation/concepts/indexing"], "expected_keywords": ["HNSW", "index"]}
+{"query": "filter search results by payload", "expected_sources": ["qdrant.tech/documentation/concepts/filtering"], "expected_keywords": ["filter", "payload"]}
+{"query": "scalar quantization configuration", "expected_sources": ["qdrant.tech/documentation/guides/quantization"], "expected_keywords": ["scalar", "quantization"]}
+{"query": "what is binary quantization", "expected_sources": ["qdrant.tech/documentation/guides/quantization", "qdrant.tech/articles/binary-quantization"], "expected_keywords": ["binary", "quantization"]}
+{"query": "hybrid search with dense and sparse vectors", "expected_sources": ["qdrant.tech/documentation/concepts/hybrid-queries", "qdrant.tech/documentation/tutorials-search-engineering/hybrid-search-fastembed"], "expected_keywords": ["hybrid", "sparse", "dense"]}
+{"query": "multitenancy best practices", "expected_sources": ["qdrant.tech/documentation/guides/multitenancy"], "expected_keywords": ["multitenancy", "tenant"]}
+{"query": "how to take a snapshot", "expected_sources": ["qdrant.tech/documentation/concepts/snapshots"], "expected_keywords": ["snapshot"]}
+{"query": "qdrant docker setup", "expected_sources": ["qdrant.tech/documentation/quickstart", "qdrant.tech/documentation/guides/installation"], "expected_keywords": ["docker"]}
+{"query": "distributed deployment sharding", "expected_sources": ["qdrant.tech/documentation/guides/distributed_deployment"], "expected_keywords": ["shard", "distributed"]}
+{"query": "recommendation API positive negative examples", "expected_sources": ["qdrant.tech/documentation/concepts/explore"], "expected_keywords": ["recommend", "positive", "negative"]}
+{"query": "JWT authentication RBAC", "expected_sources": ["qdrant.tech/documentation/guides/security"], "expected_keywords": ["JWT", "RBAC"]}
+{"query": "fastembed supported models", "expected_sources": ["qdrant.tech/documentation/fastembed"], "expected_keywords": ["fastembed", "model"]}
+{"query": "colbert multivector search", "expected_sources": ["qdrant.tech/documentation/tutorials-search-engineering/using-multivector-representations", "qdrant.tech/documentation/fastembed/fastembed-colbert"], "expected_keywords": ["colbert", "multivector"]}
+{"query": "on-disk storage vs in-memory", "expected_sources": ["qdrant.tech/documentation/concepts/storage"], "expected_keywords": ["disk", "memory", "memmap"]}
+{"query": "batch upload optimization", "expected_sources": ["qdrant.tech/documentation/tutorials-develop/bulk-upload", "qdrant.tech/articles/indexing-optimization"], "expected_keywords": ["batch", "upload"]}
+{"query": "full text search tokenization", "expected_sources": ["qdrant.tech/documentation/guides/text-search"], "expected_keywords": ["text", "search", "token"]}
+{"query": "named vectors multiple embeddings per point", "expected_sources": ["qdrant.tech/documentation/concepts/vectors"], "expected_keywords": ["named", "vector"]}
+{"query": "GPU accelerated indexing", "expected_sources": ["qdrant.tech/documentation/guides/running-with-gpu"], "expected_keywords": ["GPU"]}
+{"query": "payload index types", "expected_sources": ["qdrant.tech/documentation/concepts/indexing", "qdrant.tech/documentation/concepts/payload"], "expected_keywords": ["payload", "index"]}
+{"query": "qdrant cloud create cluster", "expected_sources": ["qdrant.tech/documentation/cloud/create-cluster"], "expected_keywords": ["cloud", "cluster"]}
+{"query": "sparse vectors SPLADE", "expected_sources": ["qdrant.tech/documentation/fastembed/fastembed-splade", "qdrant.tech/articles/sparse-vectors"], "expected_keywords": ["sparse", "SPLADE"]}
+{"query": "capacity planning memory calculation", "expected_sources": ["qdrant.tech/documentation/guides/capacity-planning"], "expected_keywords": ["capacity", "memory", "RAM"]}
+{"query": "RRF reciprocal rank fusion", "expected_sources": ["qdrant.tech/documentation/concepts/hybrid-queries"], "expected_keywords": ["RRF", "fusion"]}
+{"query": "qdrant edge on device search", "expected_sources": ["qdrant.tech/documentation/edge"], "expected_keywords": ["edge", "device"]}
+{"query": "migrate from pinecone to qdrant", "expected_sources": ["qdrant.tech/documentation/tutorials-operations/migration"], "expected_keywords": ["migrat", "pinecone"]}
+{"query": "async client python", "expected_sources": ["qdrant.tech/documentation/tutorials-develop/async-api"], "expected_keywords": ["async"]}
+{"query": "distance matrix API", "expected_sources": ["qdrant.tech/blog/qdrant-1.12.x"], "expected_keywords": ["distance", "matrix"]}

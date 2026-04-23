@@ -1,0 +1,16 @@
+.luceneForm {
+  label {
+    color: $neutral-98;
+  }
+
+  select[name='country'] {
+    width: 100% !important;
+    margin-right: 0;
+  }
+  .hs-form-checkbox {
+    list-style: none;
+  }
+  .hs-error-msg {
+    color: $error-50;
+  }
+}

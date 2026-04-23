@@ -1,0 +1,76 @@
+{{ partial "header" . }}
+
+<script charset="utf-8" type="text/javascript" src="//js-eu1.hsforms.net/forms/embed/v2.js"></script>
+
+<!-- Contact Page Section -->
+<section class="login-page-section">
+    <div class="auto-container mt-lg-5 pt-lg-5 mb-lg-5 pb-lg-4">
+        <div class="row clearfix">
+
+            <!-- Image Column -->
+            <div class="image-column col-lg-6 col-md-12 col-sm-12">
+                <div class="inner-column">
+                    <div class="image">
+                        <img src="/images/subscribe.jpg" alt="" />
+                    </div>
+                </div>
+            </div>
+
+            <!-- Form Column -->
+            <div class="form-column col-lg-6 col-md-12 col-sm-12 mb-5">
+                <div class="inner-column">
+                    <h3>Sign up for our <span class="theme_color">newsletter</span></h3>
+                    <div class="welcome">Never miss our news, latest releases and updates.</div>
+
+                    <!-- Contact Form -->
+                    <div class="contact-form" id="hubspot">
+
+                        <!-- Begin Mailchimp Signup Form -->
+
+                        <script>
+                          hbspt.forms.create({
+                            region: "eu1",
+                            portalId: "139603372",
+                            formId: "049d96c6-ef65-4e41-ba69-a3335b9334cf",
+                            submitText: "Subscribe",
+                            target: '#hubspot',
+                            pageId: '{{- .Permalink -}}',
+                          });
+                        </script>
+
+
+                    </div>
+                    <!-- End Contact Form -->
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- End Contact Page Section -->
+
+
+<script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script>
+<script type='text/javascript'>
+  (function ($) {
+    window.fnames = new Array();
+    window.ftypes = new Array();
+    fnames[0] = 'EMAIL';
+    ftypes[0] = 'email';
+    fnames[1] = 'FNAME';
+    ftypes[1] = 'text';
+    fnames[2] = 'LNAME';
+    ftypes[2] = 'text';
+    fnames[3] = 'ADDRESS';
+    ftypes[3] = 'address';
+    fnames[4] = 'PHONE';
+    ftypes[4] = 'phone';
+    fnames[5] = 'BIRTHDAY';
+    ftypes[5] = 'birthday';
+  }(jQuery));
+  var $mcj = jQuery.noConflict(true);
+</script>
+
+
+{{ partial "footer" . }}

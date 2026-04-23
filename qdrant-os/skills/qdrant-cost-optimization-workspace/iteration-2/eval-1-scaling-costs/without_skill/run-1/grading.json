@@ -1,0 +1,35 @@
+{
+  "expectations": [
+    {
+      "text": "Provides cost formula (RAM units, pricing per unit)",
+      "passed": false,
+      "evidence": "Provides a memory formula but NOT the Qdrant pricing formula. No $53/unit, no RAM unit concept. Gives vague estimates like '~$540/mo' and '~$5,400/mo' without showing how."
+    },
+    {
+      "text": "Calculates estimate for current 10M vectors",
+      "passed": true,
+      "evidence": "Shows ~15GB RAM, ~$540/mo managed."
+    },
+    {
+      "text": "Calculates estimate for target 100M vectors",
+      "passed": true,
+      "evidence": "Shows ~150GB RAM, ~$5,400/mo managed."
+    },
+    {
+      "text": "Mentions binary quantization is compatible with Cohere",
+      "passed": false,
+      "evidence": "No mention of binary quantization compatibility with Cohere. Only mentions Matryoshka embeddings."
+    },
+    {
+      "text": "Mentions the 80% RAM utilization guideline",
+      "passed": false,
+      "evidence": "No mention of 80% utilization guideline."
+    }
+  ],
+  "summary": {
+    "passed": 2,
+    "failed": 3,
+    "total": 5,
+    "pass_rate": 0.4
+  }
+}

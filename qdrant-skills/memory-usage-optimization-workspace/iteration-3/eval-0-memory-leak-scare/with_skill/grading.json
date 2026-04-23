@@ -1,0 +1,40 @@
+{
+  "expectations": [
+    {
+      "text": "Distinguishes between DATA memory (80% = danger) and TOTAL memory including cache (80% = often fine)",
+      "passed": true,
+      "evidence": "Response explicitly distinguishes data memory vs cache in multiple places. Line 21: 'Data memory: HNSW graph, ID tracker, payload indexes...Cache: mmap pages the OS is holding for performance.' Line 50 states: 'If data memory is stable (not growing) and within a reasonable range for your collection size, you are not in danger. The 80% alert is firing on cache.' This directly addresses that 80% total memory may be fine while 80% data memory would be concerning."
+    },
+    {
+      "text": "Does NOT dismiss the issue as 'just cache' - acknowledges 1-12MB/day slow growth as a known issue pattern",
+      "passed": true,
+      "evidence": "Response does not dismiss concerns. Line 34 explicitly states: 'Slow creep with zero traffic. If memory grows 1-12 MB per day even with no queries and no ingestion, that is a known issue pattern in some Qdrant versions. It is not normal cache behavior.' This shows the response acknowledges real memory growth patterns beyond just cache accumulation."
+    },
+    {
+      "text": "Recommends checking collection count as a diagnostic step (12-14MB overhead per collection)",
+      "passed": true,
+      "evidence": "Line 60-61: 'Check collection count. If you have many collections (dozens or more), collection overhead may be contributing meaningfully to data memory. Each collection holds 12-14 MB in RAM regardless of size.' This directly matches the assertion requirement."
+    },
+    {
+      "text": "Recommends upgrading to latest Qdrant version",
+      "passed": true,
+      "evidence": "Line 62: 'If Qdrant version is not current, upgrade. Especially if you see slow data memory growth even without traffic. Newer versions have better memory management.' The response recommends upgrading as part of Step 4 and mentions improvements in memory management."
+    },
+    {
+      "text": "Recommends checking Qdrant metrics endpoint to separate data from cache",
+      "passed": true,
+      "evidence": "Response emphasizes this repeatedly. Line 17-19: 'Before drawing any conclusions, check what Qdrant itself reports about its memory usage. Hit the /metrics endpoint or open the Qdrant web dashboard.' Line 50: 'Step 1: Check the Qdrant metrics endpoint or dashboard. Identify the data memory vs cache split.' This is a primary recommendation throughout."
+    },
+    {
+      "text": "Does NOT treat restart as bad practice - acknowledges it as a valid operational tool",
+      "passed": true,
+      "evidence": "Line 44: 'Restart is also a valid operational tool. For example, you might restart a node deliberately before scaling it down to free cache and reduce footprint.' Rather than criticizing restart behavior, the response validates it as a legitimate operational technique and explains the mechanics."
+    }
+  ],
+  "summary": {
+    "passed": 6,
+    "failed": 0,
+    "total": 6,
+    "pass_rate": 1.0
+  }
+}

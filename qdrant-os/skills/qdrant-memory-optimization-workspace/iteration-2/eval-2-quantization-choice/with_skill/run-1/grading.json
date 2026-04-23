@@ -1,0 +1,35 @@
+{
+  "expectations": [
+    {
+      "text": "Recommends scalar quantization as starting point",
+      "passed": false,
+      "evidence": "Recommends binary quantization first: 'Use binary quantization. Your model is on the verified compatibility list.' Scalar is mentioned as fallback only."
+    },
+    {
+      "text": "Mentions binary quantization is compatible with OpenAI models",
+      "passed": true,
+      "evidence": "'Your model (OpenAI text-embedding-3-small) is on the verified compatibility list for binary quantization.'"
+    },
+    {
+      "text": "Explains rescoring/oversampling for binary quantization",
+      "passed": true,
+      "evidence": "'Oversampling at 3-5x to fetch enough candidates. Rescoring enabled against full float32 vectors (recovers recall to 95-98%).'"
+    },
+    {
+      "text": "Provides memory estimation or formula",
+      "passed": true,
+      "evidence": "Full table: None=737GB, Scalar=184GB, Binary=23GB. Uses the formula from the skill."
+    },
+    {
+      "text": "Does NOT recommend product quantization as first choice",
+      "passed": true,
+      "evidence": "Product quantization not mentioned. Only binary (primary) and scalar (fallback)."
+    }
+  ],
+  "summary": {
+    "passed": 4,
+    "failed": 1,
+    "total": 5,
+    "pass_rate": 0.8
+  }
+}

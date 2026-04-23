@@ -1,0 +1,125 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+SUBCOMMAND="${1:-all}"
+
+check_contracts() {
+  echo "checking contract sync..."
+  local errors=0
+
+  if [ ! -d "shared" ]; then
+    echo "  skip: no shared/ directory"
+    return 0
+  fi
+
+  # validate JSON syntax
+  for f in shared/*.json; do
+    if [ -f "$f" ]; then
+      if ! python3 -c "import json; json.load(open('$f'))" 2>/dev/null; then
+        echo "  FAIL: $f has invalid JSON"
+        errors=$((errors + 1))
+      else
+        echo "  ok: $f"
+      fi
+    fi
+  done
+
+  # run project-specific contract checks if they exist
+  if [ -d "checks" ]; then
+    for check in checks/contract-*.sh; do
+      if [ -f "$check" ] && [ -x "$check" ]; then
+        echo "  running $(basename "$check")..."
+        if ! "$check"; then
+          errors=$((errors + 1))
+        fi
+      fi
+    done
+  fi
+
+  return $errors
+}
+
+check_architecture() {
+  echo "checking architectural invariants..."
+  local errors=0
+
+  # run project-specific architectural checks if they exist
+  if [ -d "checks" ]; then
+    for check in checks/arch-*.sh; do
+      if [ -f "$check" ] && [ -x "$check" ]; then
+        echo "  running $(basename "$check")..."
+        if ! "$check"; then
+          errors=$((errors + 1))
+        fi
+      fi
+    done
+  fi
+
+  if [ $errors -eq 0 ]; then
+    echo "  all checks passed"
+  fi
+
+  return $errors
+}
+
+check_policy() {
+  echo "checking execution policy..."
+
+  if [ ! -f "cage.rules" ]; then
+    echo "  FAIL: no cage.rules found"
+    return 1
+  fi
+
+  # validate syntax
+  local line_num=0
+  local errors=0
+  while IFS= read -r line; do
+    line_num=$((line_num + 1))
+    # skip comments and empty lines
+    [[ "$line" =~ ^[[:space:]]*# ]] && continue
+    [[ -z "${line// }" ]] && continue
+
+    ACTION=$(echo "$line" | awk '{print $1}')
+    if [[ "$ACTION" != "block" && "$ACTION" != "prompt" && "$ACTION" != "allow" ]]; then
+      echo "  FAIL: line $line_num: invalid action '$ACTION' (expected block|prompt|allow)"
+      errors=$((errors + 1))
+    fi
+  done < cage.rules
+
+  if [ $errors -eq 0 ]; then
+    echo "  cage.rules syntax valid"
+  fi
+
+  return $errors
+}
+
+case "$SUBCOMMAND" in
+  contracts)
+    check_contracts
+    ;;
+  architecture)
+    check_architecture
+    ;;
+  policy)
+    check_policy
+    ;;
+  all)
+    TOTAL_ERRORS=0
+    check_contracts || TOTAL_ERRORS=$((TOTAL_ERRORS + $?))
+    echo ""
+    check_architecture || TOTAL_ERRORS=$((TOTAL_ERRORS + $?))
+    echo ""
+    check_policy || TOTAL_ERRORS=$((TOTAL_ERRORS + $?))
+    echo ""
+    if [ $TOTAL_ERRORS -eq 0 ]; then
+      echo "all checks passed"
+    else
+      echo "$TOTAL_ERRORS check(s) failed"
+      exit 1
+    fi
+    ;;
+  *)
+    echo "usage: cage check [contracts|architecture|policy|all]" >&2
+    exit 1
+    ;;
+esac

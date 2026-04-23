@@ -1,0 +1,20 @@
+{
+  "state": "wyoming",
+  "collection": "housing_statutes_wyoming",
+  "num_questions": 1,
+  "successful_runs": 1,
+  "failed_runs": 0,
+  "success_rate": 100.0,
+  "results": [
+    {
+      "question_idx": 55,
+      "question": "Is there a state/territory law regulating residential evictions?",
+      "golden_answer": "Yes",
+      "generated_answer": "\"1-21-1211. Owner's remedies; eviction; judicial remedies; damages. (a) If the renter does not vacate the premises as required by a court order issued pursuant to W.S. 1-21-1001 et seq., the sheriff may remove the renter from the premises.\"",
+      "golden_statute_ids": [
+        1074954
+      ],
+      "success": true
+    }
+  ]
+}

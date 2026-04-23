@@ -1,0 +1,33 @@
+{
+  "benchmark": "frames",
+  "model": "Qwen/Qwen3-4B-Instruct-2507:dkh5h5asnq9nly4p3fy5g2s5",
+  "n": 10,
+  "results": [
+    {
+      "label": "baseline (dense + BM25 + unweighted RRF)",
+      "ablation_type": "baseline",
+      "metrics": {
+        "score": 0.7,
+        "output_recall": 1.0,
+        "output_precision": 0.0,
+        "f1": 0.0,
+        "trajectory_recall": 1.0,
+        "n": 10,
+        "errors": 0
+      }
+    },
+    {
+      "label": "+ weighted RRF (dense=1.0, bm25=0.7)",
+      "ablation_type": "weighted_rrf",
+      "metrics": {
+        "score": 0.8,
+        "output_recall": 1.0,
+        "output_precision": 0.0,
+        "f1": 0.0,
+        "trajectory_recall": 1.0,
+        "n": 10,
+        "errors": 0
+      }
+    }
+  ]
+}

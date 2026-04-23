@@ -1,0 +1,91 @@
+{
+  "timestamp": "20251111_105111",
+  "collection_name": "housing_statutes_wyoming",
+  "model": "gpt-4-turbo-preview",
+  "judge_model": "gpt-4-turbo-preview",
+  "num_questions": 1,
+  "metrics": {
+    "retrieval": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "semantic_similarity": 0.1042753280752898,
+    "llm_judge": {},
+    "hallucination": {}
+  },
+  "results": [
+    {
+      "question": "Is there a state/territory law regulating residential evictions?",
+      "state": "Wyoming",
+      "golden_answer": "Yes",
+      "generated_answer": "Yes, the statutes provided do not directly address the process of eviction itself but outline behaviors and obligations that could lead to eviction. Specifically, Statute 1 (1-21-1205) lists prohibited acts by renters, such as intentionally damaging the property or unreasonably denying access to the owner for repairs, which could serve as grounds for eviction under Wyoming law. Additionally, Statute 5 (1-21-1204) outlines the renter's duties, including maintaining the rental unit in a clean and safe condition and being current on all payments required by the rental agreement. Failure to comply with these duties could also lead to eviction proceedings. However, these statutes do not detail the eviction process itself, indicating that while there are regulations that could lead to eviction, the statutes provided do not explicitly cover the eviction process.",
+      "retrieval_metrics": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "retrieved_count": 3,
+        "golden_count": 1,
+        "matched_by_citation": false
+      },
+      "semantic_similarity": 0.1042753280752898,
+      "llm_judge": null,
+      "hallucination": null,
+      "retrieved_chunks": [
+        {
+          "text": "1-21-1205. Prohibited acts by renter.| (a) No renter shall:  (i) Intentionally or negligently destroy, deface, damage, impair or remove any part of the residential rental unit or knowingly permit any person to do so;  (ii) Interfere with another person's peaceful enjoyment of the residential property; or  (iii) Unreasonably deny access to, refuse entry to or withhold consent to enter the residential rental unit to the owner, agent or manager for the purpose of making repairs to or inspecting the unit, and showing the unit for rent or sale. ",
+          "citation": "WY Stat \u00a7 1-21-1205 (2021)",
+          "state": "wyoming",
+          "statute_idx": 1074975,
+          "chunk_idx": 0,
+          "path": "2021 Wyoming Statutes|Title 1 - Code of Civil Procedure|Chapter 21 - Procedure and Actions|Article 12 - Residential Rental Property|Section 1-21-1205 - Prohibited Acts by Renter.",
+          "score": 0.88323796
+        },
+        {
+          "text": "1-21-1205. Prohibited acts by renter.| (a) No renter shall:  (i) Intentionally or negligently destroy, deface, damage, impair or remove any part of the residential rental unit or knowingly permit any person to do so;  (ii) Interfere with another person's peaceful enjoyment of the residential property; or  (iii) Unreasonably deny access to, refuse entry to or withhold consent to enter the residential rental unit to the owner, agent or manager for the purpose of making repairs to or inspecting the unit, and showing the unit for rent or sale. ",
+          "citation": "WY Stat \u00a7 1-21-1205 (2021)",
+          "state": "wyoming",
+          "statute_idx": 1074975,
+          "chunk_idx": 0,
+          "path": "2021 Wyoming Statutes|Title 1 - Code of Civil Procedure|Chapter 21 - Procedure and Actions|Article 12 - Residential Rental Property|Section 1-21-1205 - Prohibited Acts by Renter.",
+          "score": 0.88323796
+        },
+        {
+          "text": "35-18-107. Lessee's rights.| Action by a lessee to enforce his rights under this act shall not be grounds for termination of the rental agreement. ",
+          "citation": "WY Stat \u00a7 35-18-107 (2021)",
+          "state": "wyoming",
+          "statute_idx": 1073892,
+          "chunk_idx": 0,
+          "path": "2021 Wyoming Statutes|Title 35 - Public Health and Safety|Chapter 18 - Mobile Home Warranties|Section 35-18-107 - Lessee's Rights.",
+          "score": 0.86829305
+        },
+        {
+          "text": "35-18-107. Lessee's rights.| Action by a lessee to enforce his rights under this act shall not be grounds for termination of the rental agreement. ",
+          "citation": "WY Stat \u00a7 35-18-107 (2021)",
+          "state": "wyoming",
+          "statute_idx": 1073892,
+          "chunk_idx": 0,
+          "path": "2021 Wyoming Statutes|Title 35 - Public Health and Safety|Chapter 18 - Mobile Home Warranties|Section 35-18-107 - Lessee's Rights.",
+          "score": 0.86829305
+        },
+        {
+          "text": "1-21-1204. Renter's duties.| (a) Each renter shall:  (i) Maintain the residential rental unit occupied in a clean and safe condition and not unreasonably burden any common area;  (ii) Dispose of all garbage and other waste in a clean and safe manner;  (iii) Maintain all plumbing fixtures in a condition as sanitary as the fixtures permit;  (iv) Use all electrical, plumbing, sanitary, heating and other facilities and appliances in a reasonable manner;  (v) Occupy the residential rental unit in the manner for which it was designed and shall not increase the number of occupants above that specified in the rental agreement without written permission of the owner;  (vi) Be current on all payments required by the rental agreement;  (vii) Comply with all lawful requirements of the rental agreement between the owner and the renter; and  (viii) Remove all property and garbage either owned or placed within the residential rental unit by the renter or his guests prior to termination of the rental agreement and clean the rental unit to the condition at the beginning of the rental agreement. ",
+          "citation": "WY Stat \u00a7 1-21-1204 (2021)",
+          "state": "wyoming",
+          "statute_idx": 1074974,
+          "chunk_idx": 0,
+          "path": "2021 Wyoming Statutes|Title 1 - Code of Civil Procedure|Chapter 21 - Procedure and Actions|Article 12 - Residential Rental Property|Section 1-21-1204 - Renter's Duties.",
+          "score": 0.86270314
+        }
+      ],
+      "golden_statutes": [
+        {
+          "statute_idx": 1074954,
+          "citation": "WYO. STAT. \u00a7 1-21-1001",
+          "excerpt": "Any circuit court within the judicial district may inquire against those who make unlawful and forcible entry into lands and tenements and detain the same, or against those who, having a lawful and peaceable entry into lands or tenements, unlawfully or by force hold the same. If it is found that an unlawful and forcible entry was made and the lands or tenements are held by force, or that after a lawful entry the lands are held unlawfully, the judge shall require restitution to the complaining party."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "expectations": [
+    {
+      "text": "Identifies this as Phase 3B unexpectedly high memory",
+      "passed": true,
+      "evidence": "Quick Triage section: 'The symptom is memory higher than expected with everything on disk. This maps to Phase 3B: unexpectedly high memory.' Direct and explicit identification of the Phase 3B pattern."
+    },
+    {
+      "text": "Lists RAM consumers beyond ID tracker: HNSW graph, payload indexes, collection overhead, segment overhead, OS page cache",
+      "passed": true,
+      "evidence": "The 'Hidden Memory Consumers' section lists: 1) ID tracker ~7-8 GB, 2) Payload indexes 2-8 GB, 3) OS page cache, 4) Segment overhead, 5) Collection overhead. HNSW page cache is mentioned under OS page cache section. All major consumers are covered."
+    },
+    {
+      "text": "Correctly states RF=2 doubles data memory but not OS page cache",
+      "passed": true,
+      "evidence": "'Will Doubling the Replication Factor Double Memory?' section: 'RF=2 means 2x data memory (HNSW, ID tracker, quantized vectors) but not 2x OS page cache.' Scenario analysis shows if 12 GB data + 8 GB cache, RF=2 would increase data to ~24 GB but 'cache is shared at the OS level and does not double with replica count.'"
+    },
+    {
+      "text": "Warns about stream_records OOM risk during resharding for large shards",
+      "passed": false,
+      "evidence": "The response does not mention stream_records OOM risk during resharding. It warns about needing telemetry before increasing RF and mentions OOM crashes 'during any resharding or replica migration' but does not specifically identify the stream_records mechanism or call out large shards as the specific OOM risk vector."
+    },
+    {
+      "text": "Recommends checking telemetry to separate data from cache before concluding",
+      "passed": true,
+      "evidence": "Recommendation 1: 'Run telemetry before making any changes. GET /telemetry to separate data memory from OS page cache. This is required before any other action. The 20 GB number is uninterpretable without it.'"
+    },
+    {
+      "text": "Recommends escalating to support if config doesn't explain the gap",
+      "passed": false,
+      "evidence": "The response does not recommend escalating to Qdrant support if the config does not explain the gap. Recommendations 1-5 include telemetry, auditing payload indexes, checking segment count, checking Qdrant version, and not increasing RF - but no escalation path to support is mentioned."
+    }
+  ],
+  "summary": {
+    "passed": 4,
+    "failed": 2,
+    "total": 6,
+    "pass_rate": 0.667
+  }
+}

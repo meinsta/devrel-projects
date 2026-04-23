@@ -1,0 +1,68 @@
+[project]
+name = "cortex-mcp"
+version = "0.4.0"
+description = "Long-term memory for coding agents - LSP-powered code intelligence + hybrid search + persistent memory backed by Qdrant"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.11"
+authors = [
+    { name = "Thierry Damiba" }
+]
+keywords = [
+    "mcp",
+    "claude",
+    "qdrant",
+    "vector-search",
+    "code-intelligence",
+    "lsp",
+    "memory",
+    "ai-agents",
+    "cortex",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+    "mcp>=1.0.0",
+    "qdrant-client>=1.12.0",
+    "fastembed>=0.4.0",
+    "pydantic>=2",
+    # LSP support
+    "multilspy",
+    # Tree-sitter as fallback
+    "tree-sitter>=0.23.0",
+    "tree-sitter-python>=0.23.0",
+    "tree-sitter-javascript>=0.23.0",
+    "tree-sitter-typescript>=0.23.0",
+    "tree-sitter-rust>=0.23.0",
+    "tree-sitter-go>=0.23.0",
+    "tree-sitter-java>=0.23.0",
+    "tree-sitter-c>=0.23.0",
+    "tree-sitter-cpp>=0.23.0",
+    "gitignore-parser>=0.1.0",
+]
+
+[project.scripts]
+# Main CLI with subcommands (start-mcp-server, init, index)
+cortex = "cortex.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/cortex"]
+
+[project.urls]
+Homepage = "https://github.com/thierrydamiba/cortex"
+Documentation = "https://github.com/thierrydamiba/cortex#readme"
+Repository = "https://github.com/thierrydamiba/cortex"
+Issues = "https://github.com/thierrydamiba/cortex/issues"

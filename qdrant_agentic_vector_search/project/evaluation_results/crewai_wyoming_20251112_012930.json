@@ -1,0 +1,32 @@
+{
+  "state": "wyoming",
+  "collection": "housing_statutes_wyoming",
+  "num_questions": 2,
+  "successful_runs": 0,
+  "failed_runs": 2,
+  "success_rate": 0.0,
+  "results": [
+    {
+      "question_idx": 55,
+      "question": "Is there a state/territory law regulating residential evictions?",
+      "golden_answer": "Yes",
+      "generated_answer": null,
+      "golden_statute_ids": [
+        1074954
+      ],
+      "success": false,
+      "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}"
+    },
+    {
+      "question_idx": 212,
+      "question": "Does the law specify a minimum number of days a tenant can be late on rent before the landlord can file an eviction action for nonpayment?",
+      "golden_answer": "Yes",
+      "generated_answer": null,
+      "golden_statute_ids": [
+        1074956
+      ],
+      "success": false,
+      "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}"
+    }
+  ]
+}

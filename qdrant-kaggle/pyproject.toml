@@ -1,0 +1,25 @@
+[project]
+name = "triagegeist"
+version = "0.1.0"
+description = "Vector search-powered ED triage prediction using Qdrant"
+requires-python = ">=3.11"
+dependencies = [
+    "qdrant-client[fastembed]>=1.12.0",
+    "pandas>=2.2.0",
+    "numpy>=1.26.0",
+    "scikit-learn>=1.5.0",
+    "matplotlib>=3.9.0",
+    "seaborn>=0.13.0",
+    "python-dotenv>=1.0.0",
+    "tqdm>=4.66.0",
+]
+
+[project.optional-dependencies]
+notebook = [
+    "jupyter>=1.0.0",
+    "ipykernel>=6.29.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

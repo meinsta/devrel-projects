@@ -1,0 +1,221 @@
+{
+  "timestamp": "2025-11-11T20:28:44.338150",
+  "collection_name": "housing_statutes_wyoming",
+  "model": "gpt-4o-mini",
+  "top_k": 10,
+  "total_questions": 4,
+  "vanilla_rag": {
+    "success_rate": 1.0,
+    "accuracy": 0.25,
+    "correct_count": 1,
+    "success_count": 4
+  },
+  "agentic_rag": {
+    "success_rate": 1.0,
+    "accuracy": 0.25,
+    "correct_count": 1,
+    "success_count": 4
+  },
+  "results": [
+    {
+      "question_idx": 212,
+      "question": "Does the law specify a minimum number of days a tenant can be late on rent before the landlord can file an eviction action for nonpayment?",
+      "state": "Wyoming",
+      "golden_answer": "Yes",
+      "golden_yes_no": "Yes",
+      "vanilla": {
+        "answer": "No. The provided statutes do not specify a minimum number of days a tenant can be late on rent before a landlord can file an eviction action for nonpayment. Statute 3 (36-5-109) outlines the procedure for rental payments due to the state and mentions a 30-day notice period for nonpayment before lease cancellation, but it does not directly address eviction actions or specify a grace period for tenants. Therefore, the statutes do not establish a clear timeframe for when a landlord may initiate eviction proceedings for late rent.",
+        "yes_no": "No",
+        "correct": false,
+        "citations": [
+          "WY Stat \u00a7 35-18-107 (2021)",
+          "WY Stat \u00a7 35-18-107 (2021)",
+          "WY Stat \u00a7 36-5-109 (2021)",
+          "WY Stat \u00a7 36-5-109 (2021)",
+          "WY Stat \u00a7 34-24-130 (2021)",
+          "WY Stat \u00a7 34-24-130 (2021)",
+          "WY Stat \u00a7 1-21-1207 (2021)",
+          "WY Stat \u00a7 1-21-1207 (2021)",
+          "WY Stat \u00a7 1-21-1203 (2021)",
+          "WY Stat \u00a7 1-21-1203 (2021)"
+        ],
+        "citations_in_answer": [
+          "Statute 3"
+        ],
+        "retrieved_count": 10,
+        "success": true,
+        "error": null,
+        "usage": {
+          "prompt_tokens": 2068,
+          "completion_tokens": 106,
+          "total_tokens": 2174
+        }
+      },
+      "agentic": {
+        "answer": "Yes. Wyoming law requires landlords to provide tenants with a written notice demanding payment of rent or possession of the property, granting at least a three-day period before filing an eviction action for nonpayment. This three-day \"pay or quit\" notice serves as the statutory minimum grace period during which tenants can cure the default to avoid eviction. Only after this notice period expires without payment may the landlord proceed with filing the eviction complaint. This requirement is est",
+        "yes_no": "Yes",
+        "correct": true,
+        "citations": [
+          "WY Stat \u00a7 1-21-1205"
+        ],
+        "citations_in_answer": [
+          "WY Stat \u00a7 1-21-1205"
+        ],
+        "retrieved_count": 10,
+        "success": true,
+        "error": null,
+        "usage": {}
+      }
+    },
+    {
+      "question_idx": 236,
+      "question": "Does the law require the tenant to respond to an eviction action before a hearing?",
+      "state": "Wyoming",
+      "golden_answer": "No",
+      "golden_yes_no": "No",
+      "vanilla": {
+        "answer": "No. The law does not explicitly require the tenant to respond to an eviction action before a hearing. However, it is important to note that if the tenant denies the allegations in the petition, the court may proceed immediately to hear evidence on the petition or set a later time for an adjudicatory hearing, which must occur within a specified timeframe (not exceeding sixty days) unless good cause is shown for a delay (Statute 7, 14-6-226(b)). This indicates that while a response is not mandated prior to a hearing, the tenant has the opportunity to contest the eviction during the hearing process.",
+        "yes_no": "No",
+        "correct": true,
+        "citations": [
+          "WY Stat \u00a7 1-21-1303 (2021)",
+          "WY Stat \u00a7 1-21-1303 (2021)",
+          "WY Stat \u00a7 2-7-603 (2021)",
+          "WY Stat \u00a7 2-7-603 (2021)",
+          "WY Stat \u00a7 1-32-303 (2021)",
+          "WY Stat \u00a7 1-32-303 (2021)",
+          "WY Stat \u00a7 14-6-226 (2021)",
+          "WY Stat \u00a7 14-6-226 (2021)",
+          "WY Stat \u00a7 40-26-131 (2021)",
+          "WY Stat \u00a7 40-26-131 (2021)"
+        ],
+        "citations_in_answer": [
+          "Statute 7"
+        ],
+        "retrieved_count": 10,
+        "success": true,
+        "error": null,
+        "usage": {
+          "prompt_tokens": 3468,
+          "completion_tokens": 124,
+          "total_tokens": 3592
+        }
+      },
+      "agentic": {
+        "answer": "   Yes, Wyoming law requires tenants to respond to eviction actions following proper notice. The statutes outline systematic requirements that ensure fairness in eviction processes, mandating that tenants are informed and have a reasonable time frame to react.   --- ",
+        "yes_no": "Yes",
+        "correct": false,
+        "citations": [],
+        "citations_in_answer": [],
+        "retrieved_count": 10,
+        "success": true,
+        "error": null,
+        "usage": {}
+      }
+    },
+    {
+      "question_idx": 1848,
+      "question": "Can a landlord evict a tenant for material falsification on the rental application?",
+      "state": "Wyoming",
+      "golden_answer": "No",
+      "golden_yes_no": "No",
+      "vanilla": {
+        "answer": "Yes. A landlord can evict a tenant for material falsification on the rental application. According to Statute 9 (1-21-1002), proceedings for forcible entry and detainer (eviction) may be initiated against renters in violation of any terms imposed under W.S. 1-21-1204 or 1-21-1205. If the rental application contains material falsifications, this could be considered a violation of the rental agreement terms, thereby justifying eviction proceedings.",
+        "yes_no": "Yes",
+        "correct": false,
+        "citations": [
+          "WY Stat \u00a7 25-5-117 (2021)",
+          "WY Stat \u00a7 25-5-117 (2021)",
+          "WY Stat \u00a7 40-26-107 (2021)",
+          "WY Stat \u00a7 40-26-107 (2021)",
+          "WY Stat \u00a7 15-6-408 (2021)",
+          "WY Stat \u00a7 15-6-408 (2021)",
+          "WY Stat \u00a7 1-21-1208 (2021)",
+          "WY Stat \u00a7 1-21-1208 (2021)",
+          "WY Stat \u00a7 1-21-1002 (2021)",
+          "WY Stat \u00a7 1-21-1002 (2021)"
+        ],
+        "citations_in_answer": [
+          "Statute 9"
+        ],
+        "retrieved_count": 10,
+        "success": true,
+        "error": null,
+        "usage": {
+          "prompt_tokens": 3976,
+          "completion_tokens": 102,
+          "total_tokens": 4078
+        }
+      },
+      "agentic": {
+        "answer": "Yes, landlords in Wyoming can evict tenants for material falsification on rental applications, as it constitutes a breach of rental obligations. The relevant statutes, including WY Stat \u00a7 1-21-1204 and WY Stat \u00a7 1-21-1205, delineate the procedural requirements for evictions, reinforcing that any significant misrepresentation on applications can be seen as a violation of the lease terms. These laws ensure that landlords must provide proper written notice before proceeding with eviction actions, w",
+        "yes_no": "Yes",
+        "correct": false,
+        "citations": [
+          "WY Stat \u00a7 1-21-1204",
+          "WY Stat \u00a7 1-21-1205"
+        ],
+        "citations_in_answer": [
+          "WY Stat \u00a7 1-21-1204",
+          "WY Stat \u00a7 1-21-1205"
+        ],
+        "retrieved_count": 10,
+        "success": true,
+        "error": null,
+        "usage": {}
+      }
+    },
+    {
+      "question_idx": 1850,
+      "question": "Can a landlord evict a tenant for removal of unit from market? This includes when the law allows a tenant to be evicted based on: the landlord selling the property; demolition, rehabilitation, or a change in use of the premises; repairs that would require the tenant to lose access to the property; a change to a policy of excluding children; or conversion of a rental property to a condominium, cooperative, or other form of ownership arrangement.",
+      "state": "Wyoming",
+      "golden_answer": "No",
+      "golden_yes_no": "No",
+      "vanilla": {
+        "answer": "**No.** \n\nAccording to Wyoming housing law, specifically under Statute 1-21-1211, a landlord cannot evict a tenant solely for the removal of the unit from the market unless it falls under specific legal grounds outlined in the statutes. The eviction process requires a court order, and the reasons for eviction must align with the provisions set forth in W.S. 1-21-1001 et seq. The statutes do not explicitly provide for eviction based on the landlord's decision to sell the property or change its use without following the proper legal procedures. Therefore, unless the landlord has a valid court order for eviction based on specific grounds, they cannot evict a tenant simply for removing the unit from the market.",
+        "yes_no": null,
+        "correct": false,
+        "citations": [
+          "WY Stat \u00a7 1-32-216 (2021)",
+          "WY Stat \u00a7 1-32-216 (2021)",
+          "WY Stat \u00a7 1-32-119 (2021)",
+          "WY Stat \u00a7 1-32-119 (2021)",
+          "WY Stat \u00a7 1-21-1211 (2021)",
+          "WY Stat \u00a7 1-21-1211 (2021)",
+          "WY Stat \u00a7 2-7-614 (2021)",
+          "WY Stat \u00a7 2-7-614 (2021)",
+          "WY Stat \u00a7 1-21-1205 (2021)",
+          "WY Stat \u00a7 1-21-1205 (2021)"
+        ],
+        "citations_in_answer": [
+          "Statute 1"
+        ],
+        "retrieved_count": 10,
+        "success": true,
+        "error": null,
+        "usage": {
+          "prompt_tokens": 1611,
+          "completion_tokens": 147,
+          "total_tokens": 1758
+        }
+      },
+      "agentic": {
+        "answer": "Yes. A landlord can evict a tenant for removing a unit from the market based on conditions such as property sale or significant alterations. This is supported by WY Stat \u00a7 1-21-119, which allows lease termination under these circumstances, and WY Stat \u00a7 1-21-1205, which outlines the procedural requirements for eviction notices.",
+        "yes_no": "Yes",
+        "correct": false,
+        "citations": [
+          "WY Stat \u00a7 1-21-119",
+          "WY Stat \u00a7 1-21-1205"
+        ],
+        "citations_in_answer": [
+          "WY Stat \u00a7 1-21-119",
+          "WY Stat \u00a7 1-21-1205"
+        ],
+        "retrieved_count": 10,
+        "success": true,
+        "error": null,
+        "usage": {}
+      }
+    }
+  ]
+}

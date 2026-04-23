@@ -1,0 +1,35 @@
+{
+  "expectations": [
+    {
+      "text": "Recommends enabling mmap storage as immediate fix",
+      "passed": true,
+      "evidence": "Section 1: Switch HNSW to Memory-Mapped (mmap) Storage. 'This is the single highest-impact change.'"
+    },
+    {
+      "text": "Recommends quantization (scalar or binary)",
+      "passed": true,
+      "evidence": "Section 3: Quantization. Covers scalar, binary, and product quantization."
+    },
+    {
+      "text": "Explains HNSW index overhead",
+      "passed": true,
+      "evidence": "'The HNSW graph size is directly proportional to the m parameter.' Provides RAM reduction estimates."
+    },
+    {
+      "text": "Links to Qdrant documentation",
+      "passed": false,
+      "evidence": "No links to Qdrant documentation provided. Only code snippets."
+    },
+    {
+      "text": "Does NOT recommend just buying more RAM as primary solution",
+      "passed": true,
+      "evidence": "Does not recommend adding RAM. Lists 8 alternatives."
+    }
+  ],
+  "summary": {
+    "passed": 4,
+    "failed": 1,
+    "total": 5,
+    "pass_rate": 0.8
+  }
+}

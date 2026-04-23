@@ -1,0 +1,27 @@
+{
+  "skill": "qdrant-memory-optimization",
+  "should_trigger": [
+    "qdrant keeps getting OOM killed on our production k8s cluster, HNSW index eating 80GB on 96GB nodes",
+    "memory at 87% with only 200 users, need to support 5000 by end of year",
+    "switched from RAM to disk storage in qdrant to save memory but latency went from 15ms to 3-4 seconds",
+    "what quantization should we use to reduce qdrant memory footprint? using openai embeddings",
+    "mmap vs keeping everything in RAM for our qdrant use case, 50M vectors at 1536 dims",
+    "HNSW index is consuming 80GB of RAM on a 96GB node, no room for growth",
+    "how do we fit 100M vectors in qdrant without buying bigger machines",
+    "our 4-node qdrant cluster seems over-provisioned, only using 20% capacity",
+    "qdrant node crashes from RAM consumption during peak hours",
+    "need to estimate memory requirements for scaling from 10M to 100M vectors in qdrant"
+  ],
+  "should_not_trigger": [
+    "how do I install qdrant on kubernetes using the helm chart",
+    "what embedding model should I use for my legal documents",
+    "our qdrant search results have 70% recall, how do we improve accuracy",
+    "compare qdrant vs pinecone for our RAG pipeline",
+    "how to create a collection with named vectors in qdrant",
+    "help me write a python script to batch upload vectors to qdrant",
+    "how to set up qdrant monitoring with prometheus and grafana",
+    "we want to squeeze every millisecond of latency out of qdrant, willing to use more hardware",
+    "how do I configure qdrant snapshots for disaster recovery on S3",
+    "does qdrant support multi-tenancy with payload-based filtering"
+  ]
+}

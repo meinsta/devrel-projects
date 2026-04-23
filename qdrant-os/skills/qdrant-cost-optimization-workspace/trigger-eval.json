@@ -1,0 +1,82 @@
+[
+  {
+    "query": "hey so we just got the qdrant cloud proposal back and it's $47k/month for a 3-node cluster with 462M vectors. that's insane for what is basically a search feature in our patient records app. is there any way to bring this down significantly without losing too much search quality? we're using openai embeddings at 1536 dims",
+    "should_trigger": true
+  },
+  {
+    "query": "qdrant keeps getting OOM killed on our production k8s cluster. we have 96GB RAM nodes and the HNSW index alone is eating 80GB. three crashes this week, our SRE team is losing it. what are our options besides just throwing more RAM at it",
+    "should_trigger": true
+  },
+  {
+    "query": "trying to put together a budget for next fiscal year. we currently have 50M vectors in qdrant cloud and expect to hit 200M by Q4. need some kind of formula or calculator to estimate what this will cost us so finance doesn't freak out when the bill quadruples",
+    "should_trigger": true
+  },
+  {
+    "query": "our qdrant setup is on 4 nodes with replication factor 3 but honestly we only have like 15M vectors and maybe 30 QPS. feels like we're massively over-provisioned. whats the minimum viable setup that still gives us HA",
+    "should_trigger": true
+  },
+  {
+    "query": "we switched from full RAM to disk-based storage in qdrant to save money but now search latency went from 15ms to like 3-4 seconds which is completely unusable for our chatbot. is there a middle ground or are we stuck choosing between fast-and-expensive or slow-and-cheap",
+    "should_trigger": true
+  },
+  {
+    "query": "what's the TCO difference between running qdrant self-hosted on aws ec2 vs qdrant cloud for roughly 100M vectors at 768 dimensions? our DevOps team thinks self-hosted is cheaper but I'm not sure they're accounting for everything",
+    "should_trigger": true
+  },
+  {
+    "query": "we're paying $12k/month for qdrant and our CEO asked if we can get it under $5k without degrading the product. we use cohere embed-v3 embeddings, about 80M vectors, current config is all-RAM with no quantization. any quick wins?",
+    "should_trigger": true
+  },
+  {
+    "query": "resource utilization on our qdrant cluster is already at 87% memory and we only have 200 active users. product wants to support 5000 users by EOY. at this rate we'd need to 25x our infrastructure which would cost a fortune. there has to be a smarter way to scale",
+    "should_trigger": true
+  },
+  {
+    "query": "can you walk me through the cost implications of scalar vs binary quantization for our setup? we have 300M vectors with jina embeddings v2, running on qdrant cloud. the sales team quoted us $380k/year and we need to get that number way down",
+    "should_trigger": true
+  },
+  {
+    "query": "hey so our qdrant monthly bill keeps creeping up, was $3k in january now its $8.5k in june and all we did was add a couple new collections. something feels wrong with how we're configuring storage, like each collection defaults to full RAM even for our batch processing pipelines that dont need low latency",
+    "should_trigger": true
+  },
+  {
+    "query": "we're setting up qdrant for the first time on our k8s cluster using the helm chart. the persistent volume is 500GB NVMe SSD. should we enable mmap storage from the start or just go with the default settings and optimize later",
+    "should_trigger": false
+  },
+  {
+    "query": "I need to write a python script that does batch upserts into qdrant with error handling and retry logic. we have about 10M documents to embed and insert. whats the best way to structure the upload pipeline with the qdrant-client library",
+    "should_trigger": false
+  },
+  {
+    "query": "we're evaluating qdrant vs weaviate vs pinecone for our RAG pipeline. main criteria are hybrid search support, filtering performance, and managed cloud availability in eu-west. can you help compare these three",
+    "should_trigger": false
+  },
+  {
+    "query": "how do I set up scalar quantization in qdrant? I found the docs but I'm confused about the always_ram parameter and whether I need to recreate the collection or if I can apply it to an existing one",
+    "should_trigger": false
+  },
+  {
+    "query": "our qdrant search results aren't great, we're getting like 70% recall. we're using dot product distance with openai embeddings. should we switch to cosine? also wondering if our chunk size is too big, currently at 2000 tokens per chunk",
+    "should_trigger": false
+  },
+  {
+    "query": "we need to set up monitoring and alerting for our qdrant cluster. what prometheus metrics should we track and what are reasonable thresholds for alerts? mainly worried about memory usage and query latency percentiles",
+    "should_trigger": false
+  },
+  {
+    "query": "does qdrant support multi-tenancy? we have a SaaS product and each customer needs their own isolated search index. trying to figure out if we should use separate collections per tenant or use payload-based filtering within a single collection",
+    "should_trigger": false
+  },
+  {
+    "query": "we want to squeeze every millisecond of latency out of our qdrant setup. willing to throw hardware at it. currently at p95 of 25ms and need to get to p95 under 10ms. what tuning options do we have for maximum speed",
+    "should_trigger": false
+  },
+  {
+    "query": "how do I configure qdrant snapshots for disaster recovery? we need automated daily backups stored in S3 and the ability to restore to a point in time. running qdrant 1.9 on kubernetes",
+    "should_trigger": false
+  },
+  {
+    "query": "trying to decide between openai text-embedding-3-large at 3072 dims vs text-embedding-3-small at 1536 dims for our legal document search. the large model costs more per API call but gives better retrieval quality. which would you recommend for a corpus of about 2M legal documents",
+    "should_trigger": false
+  }
+]

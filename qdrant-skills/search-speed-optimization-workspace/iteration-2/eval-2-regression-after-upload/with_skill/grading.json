@@ -1,0 +1,35 @@
+{
+  "expectations": [
+    {
+      "text": "classified_as_regression_pattern: Response explicitly identifies this as a regression/degradation pattern, not general slow search",
+      "passed": true,
+      "evidence": "Title: 'Diagnosis: Search Latency Regression After Bulk Upload'. Summary: 'A 10-15x latency regression (20ms to 200-300ms) immediately following a large data upload is a classic post-upload pattern.' The response consistently frames this as a regression from a known-good baseline, not general slow search."
+    },
+    {
+      "text": "ordered_diagnosis_correctly: Checks optimizer first, then segments, then cache, then data growth",
+      "passed": true,
+      "evidence": "The sections are ordered: '1. Optimizer Still Running After Upload (Most Likely)', '2. Unmerged Segments from Bulk Upload', '3. OS Page Cache Eviction', '4. Data Volume Growth (Unlikely to Be Primary Cause)'. This matches the required order: optimizer -> segments -> cache -> data growth."
+    },
+    {
+      "text": "warned_against_config_changes_during_optimizer: Explicitly warns not to change config while optimizer runs",
+      "passed": true,
+      "evidence": "Under cause #1: 'Do NOT change any configuration while the optimizer is running. Changing config parameters (like segment count or HNSW settings) while optimization is in progress will restart the optimization process from scratch, prolonging the regression further.' Also in the action plan: 'Do not change any configuration. Resist the urge to tune hnsw_ef, segment counts, or other parameters while the optimizer is running.'"
+    },
+    {
+      "text": "referenced_qdrant_docs: Response contains at least one URL linking to qdrant.tech documentation",
+      "passed": true,
+      "evidence": "Lines 85-88 contain four qdrant.tech URLs: Optimizer monitoring, Merge optimizer, Fine-tuning search parameters, and Scalar quantization documentation."
+    },
+    {
+      "text": "suggested_future_upload_workflow: Suggests preventive workflow for future uploads",
+      "passed": true,
+      "evidence": "The 'For Future Uploads' section provides four bullet points: use batch upsert API with reasonably sized batches (100-500 points), upload during low-traffic periods, monitor optimizer_status before expecting production-level latency, and set up monitoring alerts on optimizer status."
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 0,
+    "total": 5,
+    "pass_rate": 1.0
+  }
+}

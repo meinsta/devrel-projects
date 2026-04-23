@@ -1,0 +1,19 @@
+{
+  "name": "qdrant-slides",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "slidev --port 9864",
+    "build": "slidev build",
+    "export": "slidev export"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.6.3",
+  "dependencies": {
+    "@slidev/cli": "^52.11.2",
+    "@slidev/theme-default": "^0.25.0"
+  }
+}

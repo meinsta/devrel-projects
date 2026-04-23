@@ -1,0 +1,47 @@
+=========================================
+  CAGE TEST AUDIT
+  project: /tmp/cage-test-uncaged-6
+=========================================
+
+## 1. CONTRACT INTEGRITY
+   are domain values used from shared/, not hardcoded?
+   hardcoded values: 0 (0 event types, 0 statuses, 0 roles)
+
+## 2. BOUNDARY INTEGRITY
+   any cross-service imports?
+   cross-service imports: 0
+
+## 3. API CONSISTENCY
+   are new endpoints in api-field-snapshots.json?
+   code endpoints: 5, snapshots: 2, undocumented: 3
+
+## 4. CODE DUPLICATION
+   similar functions across services?
+   formatDate duplicated across 2 files
+
+## 5. IMPORT HYGIENE
+   are HTTP calls centralized through lib/api-client?
+   direct HTTP imports: 0, raw fetch calls: 0
+
+## 6. DOMAIN VALUES COVERAGE
+   are new values in shared/domain-values.json?
+   event types in contract: 4
+   rsvp statuses in contract: 4
+
+## 7. DOC FRESHNESS
+   were docs updated?
+   recently modified doc files: 0
+
+## 8. REGRESSION CHECK
+   do existing patterns still work?
+   shared/ imports still in place: 4
+   api-client imports: 2
+
+=========================================
+  TOTAL VIOLATIONS: 4
+=========================================
+
+  RESULT: 4 violation(s) detected
+
+--- JSON ---
+{"hardcoded_values":0,"boundary_crossings":0,"missing_snapshots":3,"code_duplication":1,"import_bypasses":0,"domain_event_types":4,"domain_rsvp_statuses":4,"doc_changes":0,"shared_imports":4,"client_imports":2,"total_violations":4}

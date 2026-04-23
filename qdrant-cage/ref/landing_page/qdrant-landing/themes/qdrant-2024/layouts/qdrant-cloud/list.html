@@ -1,0 +1,13 @@
+{{ define "main" }}
+  {{ partial "site-header" . }}
+  {{ partial "qdrant-cloud-hero" . }}
+  {{ partial "qdrant-cloud-bento-cards" . }}
+  {{ partial "qdrant-cloud-features-link" . }}
+
+  {{ with (.Site.GetPage "/headless/marketplaces") }}
+    {{ partial "marketplaces" (dict "context" . "class" "qdrant-cloud-marketplaces") }}
+  {{ end }}
+
+  {{ partial "additional-resources" . }}
+  {{ partial "get-started" . }}
+{{ end }}

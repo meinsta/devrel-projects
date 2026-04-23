@@ -1,0 +1,37 @@
+/* copy button for documentation */
+
+.copy-code {
+	position: absolute;
+	right: 8px;
+	top: 8px;
+}
+
+.copy-code__btn {
+	padding: 4px;
+	background: var(--neutral-n-50);
+	i {
+		display: block;
+		width: 24px;
+		height: 24px;
+		background-color: var(--neutral-n-700);
+		-webkit-mask-image: url("/css/assets/copy.svg");
+		mask-image: url("/css/assets/copy.svg");
+		mask-size: contain;
+		mask-repeat: no-repeat;
+		mask-position: center;
+	}
+}
+
+.copy-code__btn:hover {
+	i {
+		background-color: var(--neutral-n-600);
+	}
+}
+
+.copy-code__btn_light {
+	color: white;
+}
+
+.copy-code__btn_light:hover {
+	background: transparent;
+}

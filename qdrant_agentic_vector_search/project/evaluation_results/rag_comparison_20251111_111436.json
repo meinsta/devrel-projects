@@ -1,0 +1,146 @@
+{
+  "timestamp": "2025-11-11T11:14:36.883259",
+  "collection_name": "housing_statutes_wyoming",
+  "model": "gpt-4-turbo-preview",
+  "top_k": 5,
+  "total_questions": 3,
+  "vanilla_rag": {
+    "success_rate": 1.0,
+    "accuracy": 0.3333333333333333,
+    "correct_count": 1,
+    "success_count": 3
+  },
+  "agentic_rag": {
+    "success_rate": 0.0,
+    "accuracy": 0.0,
+    "correct_count": 0,
+    "success_count": 0
+  },
+  "results": [
+    {
+      "question_idx": 55,
+      "question": "Is there a state/territory law regulating residential evictions?",
+      "state": "Wyoming",
+      "golden_answer": "Yes",
+      "golden_yes_no": "Yes",
+      "vanilla": {
+        "answer": "Yes, while the provided statutes do not directly address the process of eviction, they outline specific obligations and prohibited acts for renters (Statutes 1 and 5) and protect lessees from retaliation when they enforce their rights (Statute 3). These statutes indirectly relate to the conditions under which a renter may be evicted, such as violating the terms of the rental agreement by damaging property, interfering with others' enjoyment of the property, or failing to maintain the rental unit in a clean and safe condition. Statute 3 implies protection against eviction for renters who lawfully assert their rights, suggesting a regulatory framework exists around the process of eviction to ensure it is not used unjustly against tenants asserting their legal rights. However, the specific process and regulations for eviction itself are not detailed in the provided excerpts.",
+        "yes_no": "Yes",
+        "correct": true,
+        "citations": [
+          "WY Stat \u00a7 1-21-1205 (2021)",
+          "WY Stat \u00a7 1-21-1205 (2021)",
+          "WY Stat \u00a7 35-18-107 (2021)",
+          "WY Stat \u00a7 35-18-107 (2021)",
+          "WY Stat \u00a7 1-21-1204 (2021)"
+        ],
+        "citations_in_answer": [
+          "Statute 3"
+        ],
+        "retrieved_count": 5,
+        "success": true,
+        "error": null,
+        "usage": {
+          "prompt_tokens": 691,
+          "completion_tokens": 164,
+          "total_tokens": 855
+        }
+      },
+      "agentic": {
+        "answer": "",
+        "yes_no": null,
+        "correct": false,
+        "citations": [],
+        "citations_in_answer": [],
+        "retrieved_count": 0,
+        "success": false,
+        "error": "CrewAI not installed. Install with: uv add crewai crewai-tools",
+        "usage": {}
+      }
+    },
+    {
+      "question_idx": 212,
+      "question": "Does the law specify a minimum number of days a tenant can be late on rent before the landlord can file an eviction action for nonpayment?",
+      "state": "Wyoming",
+      "golden_answer": "Yes",
+      "golden_yes_no": "Yes",
+      "vanilla": {
+        "answer": "No, the provided statutes do not specify a minimum number of days a tenant can be late on rent before the landlord can file an eviction action for nonpayment. The statutes presented focus on lessee's rights in general terms (Statute 1 and 2), procedures for rental payments and consequences of non-payment for leases involving state lands (Statute 3 and 4), and limitations on actions related to abandoned property (Statute 5). None of these excerpts directly address the process or timeline for eviction due to rent arrears in a typical landlord-tenant relationship.",
+        "yes_no": "No",
+        "correct": false,
+        "citations": [
+          "WY Stat \u00a7 35-18-107 (2021)",
+          "WY Stat \u00a7 35-18-107 (2021)",
+          "WY Stat \u00a7 36-5-109 (2021)",
+          "WY Stat \u00a7 36-5-109 (2021)",
+          "WY Stat \u00a7 34-24-130 (2021)"
+        ],
+        "citations_in_answer": [
+          "Statute 1",
+          "Statute 3",
+          "Statute 5"
+        ],
+        "retrieved_count": 5,
+        "success": true,
+        "error": null,
+        "usage": {
+          "prompt_tokens": 723,
+          "completion_tokens": 116,
+          "total_tokens": 839
+        }
+      },
+      "agentic": {
+        "answer": "",
+        "yes_no": null,
+        "correct": false,
+        "citations": [],
+        "citations_in_answer": [],
+        "retrieved_count": 0,
+        "success": false,
+        "error": "CrewAI not installed. Install with: uv add crewai crewai-tools",
+        "usage": {}
+      }
+    },
+    {
+      "question_idx": 236,
+      "question": "Does the law require the tenant to respond to an eviction action before a hearing?",
+      "state": "Wyoming",
+      "golden_answer": "No",
+      "golden_yes_no": "No",
+      "vanilla": {
+        "answer": "Yes.\n\nThe statutes provided do not directly address the procedure for responding to an eviction action in terms of tenant obligations before a hearing. However, the context of these statutes, especially Statute 1 (1-21-1303), implies the necessity for a tenant to engage with the legal process, particularly in asserting an affirmative defense in an action brought by a landlord to recover rent for breach of lease. For a tenant to utilize the affirmative defense due to domestic abuse or sexual violence, they must provide evidence and notice to the landlord as specified. This process inherently requires the tenant to respond to the eviction action to assert their defense effectively.\n\nWhile the statutes focus on specific defenses against eviction and the conditions under which a tenant may not be liable for rent after vacating the premises, the legal framework around eviction proceedings typically necessitates tenant response to contest the eviction or to assert defenses. Failure to respond or appear could result in a default judgment against the tenant. Therefore, while not explicitly stated in the provided statutes, the legal context and the nature of eviction proceedings imply that a response is required from the tenant before a hearing can proceed in a manner that considers their defenses or objections.",
+        "yes_no": "Yes",
+        "correct": false,
+        "citations": [
+          "WY Stat \u00a7 1-21-1303 (2021)",
+          "WY Stat \u00a7 1-21-1303 (2021)",
+          "WY Stat \u00a7 2-7-603 (2021)",
+          "WY Stat \u00a7 2-7-603 (2021)",
+          "WY Stat \u00a7 1-32-303 (2021)"
+        ],
+        "citations_in_answer": [
+          "Statute 1"
+        ],
+        "retrieved_count": 5,
+        "success": true,
+        "error": null,
+        "usage": {
+          "prompt_tokens": 1649,
+          "completion_tokens": 234,
+          "total_tokens": 1883
+        }
+      },
+      "agentic": {
+        "answer": "",
+        "yes_no": null,
+        "correct": false,
+        "citations": [],
+        "citations_in_answer": [],
+        "retrieved_count": 0,
+        "success": false,
+        "error": "CrewAI not installed. Install with: uv add crewai crewai-tools",
+        "usage": {}
+      }
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "name": "qdrant-agent-template",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 3489",
+    "build": "next build",
+    "start": "next start -p 3489",
+    "lint": "next lint",
+    "setup": "tsx scripts/setup-collections.ts",
+    "seed": "tsx scripts/seed-test-data.ts",
+    "seed:squad": "tsx scripts/seed-squad-data.ts",
+    "bench": "tsx scripts/benchmark.ts"
+  },
+  "dependencies": {
+    "@ai-sdk/anthropic": "^1.0.0",
+    "@qdrant/js-client-rest": "^1.12.0",
+    "ai": "^4.0.0",
+    "cohere-ai": "^7.20.0",
+    "next": "^15.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "ulid": "^2.3.0",
+    "zod": "^3.23.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "dotenv": "^16.4.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.7.0"
+  }
+}

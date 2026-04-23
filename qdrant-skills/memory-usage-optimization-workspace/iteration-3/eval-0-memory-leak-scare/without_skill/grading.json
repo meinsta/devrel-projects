@@ -1,0 +1,40 @@
+{
+  "expectations": [
+    {
+      "text": "Distinguishes between DATA memory (80% = danger) and TOTAL memory including cache (80% = often fine)",
+      "passed": true,
+      "evidence": "Response clearly explains RSS (Resident Set Size) vs heap allocations (line 39-40), discusses OS page cache behavior (lines 31-38), and states that the 80% figure includes page cache controlled by the OS, not just Qdrant heap memory. Explicitly notes: 'This includes page cache and mmap regions that the OS controls, not just heap allocations that Qdrant controls directly.'"
+    },
+    {
+      "text": "Does NOT dismiss the issue as 'just cache' - acknowledges 1-12MB/day slow growth as a known issue pattern",
+      "passed": false,
+      "evidence": "The response does not acknowledge 1-12MB/day slow growth as a known issue pattern. Instead, it attributes all post-ingestion memory growth to (1) index optimization work, (2) OS page cache, and (3) WAL buffering. The response concludes 'This is not a memory leak. It is caching working as designed' without mentioning the 1-12MB/day pattern as a documented issue in Qdrant."
+    },
+    {
+      "text": "Recommends checking collection count as a diagnostic step (12-14MB overhead per collection)",
+      "passed": false,
+      "evidence": "The response does not recommend checking collection count or mention per-collection overhead. It recommends checking metrics (qdrant_collections_total, qdrant_segments_count) but does not suggest calculating per-collection memory overhead as a diagnostic step."
+    },
+    {
+      "text": "Recommends upgrading to latest Qdrant version",
+      "passed": false,
+      "evidence": "The response does not recommend upgrading to the latest Qdrant version. While it mentions checking Qdrant version in the final paragraph for opening a GitHub issue, it does not proactively recommend upgrading as a troubleshooting step."
+    },
+    {
+      "text": "Recommends checking Qdrant metrics endpoint to separate data from cache",
+      "passed": true,
+      "evidence": "Response explicitly recommends checking the /metrics endpoint (Prometheus format) and /telemetry in lines 79-89. It instructs to 'Look for these metrics: qdrant_collections_total, qdrant_segments_count' and to 'check optimizer status via: GET /collections/{collection_name}' to understand memory breakdown."
+    },
+    {
+      "text": "Does NOT treat restart as bad practice - acknowledges it as a valid operational tool",
+      "passed": true,
+      "evidence": "Response explains restart behavior (lines 49-56) as expected and expected, stating 'This is exactly the behavior you would expect from a healthy system, not a leaking one.' It treats restart as a normal part of system operation and does not suggest it indicates a problem."
+    }
+  ],
+  "summary": {
+    "passed": 4,
+    "failed": 2,
+    "total": 6,
+    "pass_rate": 0.67
+  }
+}

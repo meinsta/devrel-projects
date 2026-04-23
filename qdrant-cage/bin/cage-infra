@@ -1,0 +1,146 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+SUBCOMMAND="${1:-}"
+CAGE_STATE_DIR=".cage"
+
+usage() {
+  cat <<'EOF'
+cage infra - local infrastructure management
+
+usage: cage infra <start|stop|status>
+
+start   start all services defined in cage-infra.yaml
+stop    stop all running services (safe teardown)
+status  show running services and ports
+
+services are defined in cage-infra.yaml at the project root.
+each service gets a deterministic port slot to avoid conflicts.
+EOF
+}
+
+INFRA_CONFIG="cage-infra.yaml"
+PID_DIR="$CAGE_STATE_DIR/pids"
+
+start_infra() {
+  if [ ! -f "$INFRA_CONFIG" ]; then
+    echo "no $INFRA_CONFIG found. create one with service definitions." >&2
+    echo ""
+    echo "example cage-infra.yaml:"
+    echo ""
+    echo "  services:"
+    echo "    backend:"
+    echo "      command: uv run uvicorn main:app --port \$PORT"
+    echo "      port: 4100"
+    echo "      dir: backend/"
+    echo "    frontend:"
+    echo "      command: pnpm dev --port \$PORT"
+    echo "      port: 4200"
+    echo "      dir: frontend/"
+    exit 1
+  fi
+
+  mkdir -p "$PID_DIR"
+
+  echo "starting infrastructure..."
+
+  # parse yaml and start services (basic parser, no dependency on yq)
+  python3 -c "
+import yaml, sys, os, subprocess, signal
+
+with open('$INFRA_CONFIG') as f:
+    config = yaml.safe_load(f)
+
+services = config.get('services', {})
+pid_dir = '$PID_DIR'
+
+for name, svc in services.items():
+    port = svc.get('port', 3000)
+    cmd = svc.get('command', '').replace('\$PORT', str(port))
+    workdir = svc.get('dir', '.')
+
+    env = os.environ.copy()
+    env['PORT'] = str(port)
+
+    print(f'  starting {name} on port {port}...')
+    proc = subprocess.Popen(
+        cmd, shell=True, cwd=workdir, env=env,
+        stdout=open(f'$CAGE_STATE_DIR/{name}.log', 'w'),
+        stderr=subprocess.STDOUT,
+        preexec_fn=os.setsid
+    )
+
+    with open(f'{pid_dir}/{name}.pid', 'w') as pf:
+        pf.write(str(proc.pid))
+
+    print(f'  {name} started (pid={proc.pid}, port={port})')
+
+print()
+print('all services started. logs in $CAGE_STATE_DIR/')
+" 2>&1
+
+  # register cleanup trap
+  echo "$$" > "$PID_DIR/cage-infra.pid"
+}
+
+stop_infra() {
+  if [ ! -d "$PID_DIR" ]; then
+    echo "no running services found."
+    return 0
+  fi
+
+  echo "stopping infrastructure..."
+
+  for pidfile in "$PID_DIR"/*.pid; do
+    [ -f "$pidfile" ] || continue
+    NAME=$(basename "$pidfile" .pid)
+    PID=$(cat "$pidfile")
+
+    if kill -0 "$PID" 2>/dev/null; then
+      echo "  stopping $NAME (pid=$PID)..."
+      kill -TERM "-$PID" 2>/dev/null || kill -TERM "$PID" 2>/dev/null || true
+      sleep 1
+      if kill -0 "$PID" 2>/dev/null; then
+        kill -9 "$PID" 2>/dev/null || true
+      fi
+    else
+      echo "  $NAME already stopped"
+    fi
+    rm -f "$pidfile"
+  done
+
+  echo "all services stopped."
+}
+
+status_infra() {
+  if [ ! -d "$PID_DIR" ]; then
+    echo "no services registered."
+    return 0
+  fi
+
+  echo "=== infrastructure status ==="
+  echo ""
+
+  for pidfile in "$PID_DIR"/*.pid; do
+    [ -f "$pidfile" ] || continue
+    NAME=$(basename "$pidfile" .pid)
+    PID=$(cat "$pidfile")
+
+    if kill -0 "$PID" 2>/dev/null; then
+      echo "  $NAME: running (pid=$PID)"
+    else
+      echo "  $NAME: stopped (stale pid=$PID)"
+    fi
+  done
+}
+
+case "$SUBCOMMAND" in
+  start) start_infra ;;
+  stop) stop_infra ;;
+  status) status_infra ;;
+  --help|-h) usage ;;
+  *)
+    echo "usage: cage infra <start|stop|status>" >&2
+    exit 1
+    ;;
+esac

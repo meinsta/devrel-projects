@@ -1,0 +1,40 @@
+{
+  "expectations": [
+    {
+      "text": "Actually connects and inspects multiple collections",
+      "passed": true,
+      "evidence": "Response shows a full inventory table of all 12 collections with actual data: points, vector dim, quantization, vectors on disk, HNSW on disk, indexed vectors, payload indexes. Shows memory metrics (RSS ~26.66 MB, 611 open mmaps, 5242 major page faults). References real cluster URL and version 1.16.3."
+    },
+    {
+      "text": "Identifies the locale collections antipattern (10+ products-{locale} collections)",
+      "passed": true,
+      "evidence": "Issue 5 states: 'Architecture problem - 11 per-locale collections instead of one with locale filtering.' Lists all locale collections and explains: 'Each collection carries independent fixed overhead... WAL buffer: 32 MB capacity per collection = 352 MB WAL capacity allocated across 11 locale collections alone.' Recommends single collection with locale keyword field."
+    },
+    {
+      "text": "Identifies products-us issues: vectors in RAM, no quantization, full-text index on description",
+      "passed": true,
+      "evidence": "Issue 1 identifies all collections including products-us have vectors.on_disk=false. Issue 3 identifies no quantization on products-us. Issue 6 covers the full-text index on description: 'description: ~2,000 bytes of repeated AAAA... (junk/test data)... The description field has a full-text index with a word tokenizer. Full-text indexes build an inverted index that lives in RAM.'"
+    },
+    {
+      "text": "Identifies embeddings-archive backwards quantization (always_ram=false, on_disk=false)",
+      "passed": true,
+      "evidence": "Issue 7 states: 'embeddings-archive has int8 scalar quantization with always_ram: false... vectors.on_disk: false means the original float32 vectors stay in RAM... both the original float32 vectors... AND the quantized int8 vectors... are resident in RAM simultaneously.' Fix sets always_ram=true and on_disk=true."
+    },
+    {
+      "text": "Provides prioritized recommendations matching Phase 4 order",
+      "passed": false,
+      "evidence": "The recommended fix order is: Step 1 enable mmap for all collections, Step 2 add quantization to products-* collections, Step 3 fix embeddings-archive quantization, Step 4 consolidate locale collections, Step 5 clean products-us payload. Locale consolidation (the highest-impact architectural issue) is deprioritized to Step 4, placed behind quantization additions. This does not match the expected Phase 4 priority order where locale consolidation is Priority 1."
+    },
+    {
+      "text": "Mentions total collection count and overhead calculation",
+      "passed": true,
+      "evidence": "Response states 'Total collections: 12', 'Total vectors: 1,200'. Issue 5 mentions '11 per-locale collections' and 'up to 320 MB of WAL capacity' eliminated. The cluster overview table shows aggregate memory stats. While the 12-14 MB per-collection fixed overhead figure is not stated explicitly, WAL and per-collection overhead costs are calculated."
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 1,
+    "total": 6,
+    "pass_rate": 0.833
+  }
+}

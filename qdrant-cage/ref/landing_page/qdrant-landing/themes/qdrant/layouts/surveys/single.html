@@ -1,0 +1,31 @@
+{{ partial "header" . }}
+<style>
+  .main-header:not(.fixed-header) {
+    background: var(--brand-secondary);
+  }
+  .main-header:not(.fixed-header) .main-menu .navigation__item a.navigation__link {
+    color: white;
+  }
+  .main-header:not(.fixed-header) .main-menu .btn.btn_in-header {
+    box-shadow: inset 0 0 0 1px white !important;
+  }
+  .main-header:not(.fixed-header) .main-menu .btn.btn_in-header .btn__text {
+    color: white;
+  }
+  .main-header:not(.fixed-header) .main-menu .btn.btn_in-header:hover {
+    box-shadow: inset 0 0 0 1px white !important;
+  }
+  .main-header:not(.fixed-header) .main-menu .btn.btn_in-header:before {
+    box-shadow: inset 0 0 0 1px white !important;
+    background: white;
+  }
+  .main-header:not(.fixed-header) .main-menu .btn.btn_in-header:hover .btn__text {
+    color: var(--brand-secondary);
+  }
+</style>
+
+<section class="container-fluid clearfix pt-lg-3 pt-lg-5">
+    <!-- Content Side -->
+    {{ partial "steps-form" . }}
+</section>
+{{ partial "footer" . }}

@@ -1,0 +1,35 @@
+{
+  "expectations": [
+    {
+      "text": "Mentions 4-bit quantization (8x compression)",
+      "passed": false,
+      "evidence": "Does NOT mention 4-bit quantization. Only mentions Product Quantization as the middle option."
+    },
+    {
+      "text": "Mentions 2-bit quantization (16x compression)",
+      "passed": false,
+      "evidence": "Does NOT mention 2-bit quantization."
+    },
+    {
+      "text": "Recommends trying 4-bit before 2-bit",
+      "passed": false,
+      "evidence": "Does not know about 4-bit or 2-bit. Recommends PQ X16 instead."
+    },
+    {
+      "text": "Does NOT say only product quantization is the middle option",
+      "passed": false,
+      "evidence": "Says Product Quantization is what sits between scalar and binary. Misses 4-bit and 2-bit entirely."
+    },
+    {
+      "text": "Mentions these work with open-source models",
+      "passed": true,
+      "evidence": "Says PQ is far more compatible with open-source models."
+    }
+  ],
+  "summary": {
+    "passed": 1,
+    "failed": 4,
+    "total": 5,
+    "pass_rate": 0.2
+  }
+}

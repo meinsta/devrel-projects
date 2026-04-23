@@ -1,0 +1,44 @@
+{
+  "skill_name": "qdrant-memory-optimization",
+  "evals": [
+    {
+      "id": 0,
+      "name": "oom-crashes",
+      "prompt": "qdrant keeps getting OOM killed on our production k8s cluster. we have 96GB RAM nodes and the HNSW index alone is eating 80GB. three crashes this week, our SRE team is losing it. what are our options besides just throwing more RAM at it",
+      "expected_output": "Should diagnose HNSW as the memory consumer, recommend enabling mmap immediately to stop crashes, then apply scalar quantization for 4x reduction, and set proper alerting thresholds. Should link to Qdrant storage and quantization docs.",
+      "assertions": [
+        {"text": "Recommends enabling mmap storage as immediate fix", "type": "content"},
+        {"text": "Recommends quantization (scalar or binary)", "type": "content"},
+        {"text": "Explains HNSW index overhead", "type": "content"},
+        {"text": "Links to Qdrant documentation", "type": "content"},
+        {"text": "Does NOT recommend just buying more RAM as primary solution", "type": "negative"}
+      ]
+    },
+    {
+      "id": 1,
+      "name": "disk-latency",
+      "prompt": "we switched from full RAM to disk-based storage in qdrant to save memory but now search latency went from 15ms to like 3-4 seconds which is completely unusable for our chatbot. is there a middle ground",
+      "expected_output": "Should diagnose that they're using full disk (not mmap), explain the difference, recommend mmap + scalar quantization with always_ram=true, and set expectations of <500ms latency.",
+      "assertions": [
+        {"text": "Distinguishes between full disk and mmap", "type": "content"},
+        {"text": "Recommends mmap as the middle ground", "type": "content"},
+        {"text": "Recommends quantization with always_ram=true", "type": "content"},
+        {"text": "Sets latency expectations (under 500ms or similar)", "type": "content"},
+        {"text": "Does NOT recommend going back to full RAM", "type": "negative"}
+      ]
+    },
+    {
+      "id": 2,
+      "name": "quantization-choice",
+      "prompt": "what quantization should we use to reduce qdrant memory footprint? we're using openai text-embedding-3-small at 1536 dims, about 80M vectors, currently no quantization enabled",
+      "expected_output": "Should recommend starting with scalar quantization as safe default, mention binary quantization is compatible with OpenAI models for 32x reduction, explain rescoring requirement for binary, and provide memory estimation.",
+      "assertions": [
+        {"text": "Recommends scalar quantization as starting point", "type": "content"},
+        {"text": "Mentions binary quantization is compatible with OpenAI models", "type": "content"},
+        {"text": "Explains rescoring/oversampling for binary quantization", "type": "content"},
+        {"text": "Provides memory estimation or formula", "type": "content"},
+        {"text": "Does NOT recommend product quantization as first choice", "type": "negative"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,140 @@
+@use '../helpers/functions' as *;
+
+.qdrant-for-startups-form {
+  padding-top: $spacer * 4;
+  padding-bottom: $spacer * 4;
+  background-color: $neutral-10;
+
+  &__title {
+    margin-bottom: $spacer * 3;
+    font-size: $spacer * 2.5;
+    line-height: $spacer * 3;
+    color: $neutral-98;
+    text-align: center;
+  }
+
+  .contact-form {
+    max-width: pxToRem(720);
+    margin: 0 auto;
+
+    &__inputs {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: pxToRem(20);
+      margin: $spacer * 2 0;
+
+      &-block {
+        width: 100%;
+
+        label {
+          margin-bottom: pxToRem(6);
+          font-size: pxToRem(14);
+          line-height: pxToRem(21);
+        }
+
+        textarea {
+          height: pxToRem(77);
+          resize: none;
+        }
+      }
+    }
+
+    &__footer {
+      p {
+        margin-bottom: $spacer * 1.5;
+        font-size: pxToRem(12);
+        line-height: pxToRem(18);
+        color: $neutral-60;
+
+        a {
+          color: $neutral-80;
+          font-weight: 600;
+        }
+      }
+
+      button {
+        width: 100%;
+      }
+    }
+
+    &__top-overlay {
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: pxToRem(210);
+      height: pxToRem(210);
+      background-image: url('/img/blurred/blurred-light-15.svg');
+      background-position: top;
+      background-size: cover;
+      border-radius: 0 pxToRem(12) 0 0;
+    }
+  }
+
+  form {
+    &.hs-form > fieldset {
+      margin-bottom: 0;
+    }
+
+    .hs-form-field {
+      margin-bottom: pxToRem(20);
+    }
+
+    .hs_submit {
+      width: 100%;
+      text-align: left;
+      margin-top: pxToRem(12);
+      margin-bottom: $spacer * 2.5;
+
+      input[type='submit'] {
+        width: 100%;
+      }
+    }
+
+    &.hs-form > fieldset.form-columns-2 {
+      gap: 0;
+    }
+
+    fieldset:last-of-type {
+      order: 1;
+
+      p {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  @include media-breakpoint-up(lg) {
+    padding-top: $spacer * 7.5;
+    padding-bottom: $spacer * 7.5;
+
+    &__title {
+      font-size: $spacer * 3.5;
+      line-height: pxToRem(67);
+    }
+
+    .contact-form {
+      &__inputs {
+        &-block {
+          &:nth-of-type(1),
+          &:nth-of-type(2) {
+            width: calc(50% - 12px);
+          }
+        }
+      }
+
+      &__footer {
+        display: flex;
+        justify-content: space-between;
+
+        p {
+          width: pxToRem(360);
+        }
+
+        button {
+          width: auto;
+        }
+      }
+    }
+  }
+}

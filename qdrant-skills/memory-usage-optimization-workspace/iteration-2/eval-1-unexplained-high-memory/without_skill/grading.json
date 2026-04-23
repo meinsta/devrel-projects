@@ -1,0 +1,35 @@
+{
+  "expectations": [
+    {
+      "text": "Identifies additional RAM consumers beyond raw vectors (HNSW graph, ID tracker, metadata, collection overhead)",
+      "passed": true,
+      "evidence": "Response comprehensively identifies six memory consumers: (1) HNSW Graph Index with detailed m=16 calculation (~5-6GB per instance), (2) ID Mapping Tables (~2.45GB per instance), (3) Payload Storage (~7.14GB with 100-byte payloads), (4) Payload Field Indexes (hundreds of MB to multiple GB), (5) Segment Structures and WAL (~0.5GB), and (6) OS Page Cache. The section 'The Six Hidden Memory Consumers' systematically explains each component with memory estimates."
+    },
+    {
+      "text": "Asks about or checks on_disk settings and quantization config",
+      "passed": true,
+      "evidence": "Response directly addresses on_disk settings in Step 1 (checks HNSW m value and on_disk configuration), Step 3 (Move HNSW Graph to Disk with specific API patch example), Step 4 (Move Payload to Disk with on_disk_payload setting), and Step 6 (Consider Scalar Quantization with detailed explanation of vector datatype concerns). The response shows awareness that these can be changed to reduce memory footprint."
+    },
+    {
+      "text": "Explains cache behavior (memmap cache inflates reported memory)",
+      "passed": true,
+      "evidence": "Section '6. OS Page Cache Attributed to the Qdrant Process' explains that RSS includes memory-mapped file pages cached by OS, states 'The process does not require that 20GB to function, but it will use whatever RAM is available for caching,' and shows how page cache inflates reported memory numbers. Includes specific bash command to verify split between RSS anonymous and file-backed memory."
+    },
+    {
+      "text": "Suggests checking collection config to verify what is in RAM vs cached",
+      "passed": true,
+      "evidence": "Step 1 explicitly suggests 'GET /collections/{collection_name}' to inspect collection configuration and check HNSW m value. Step 5 proposes testing page cache behavior: 'Drop the page cache momentarily on one node and observe whether the process actually reduces memory footprint or whether it rebuilds page cache from disk immediately.' Step 2 suggests measuring actual payload size through sample queries."
+    },
+    {
+      "text": "Diagnoses before prescribing solutions",
+      "passed": true,
+      "evidence": "The response structure follows diagnostic order: 'The Short Answer' establishes what's happening, 'Your Baseline Calculation and Why It Falls Short' diagnoses the estimation error, 'The Six Hidden Memory Consumers' explains underlying causes with evidence, 'Putting the Numbers Together' shows the math resolving, and only then provides 'What to Do Next' with six actionable steps. Diagnosis clearly precedes solutions."
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 0,
+    "total": 5,
+    "pass_rate": 1.0
+  }
+}

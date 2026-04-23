@@ -1,0 +1,30 @@
+{
+  "state": "wyoming",
+  "collection": "housing_statutes_wyoming",
+  "num_questions": 2,
+  "successful_runs": 2,
+  "failed_runs": 0,
+  "success_rate": 100.0,
+  "results": [
+    {
+      "question_idx": 55,
+      "question": "Is there a state/territory law regulating residential evictions?",
+      "golden_answer": "Yes",
+      "generated_answer": "I am unable to provide a direct answer to whether there is a state/territory law regulating residential evictions because the QdrantVectorSearchTool is currently inaccessible due to an \"insufficient_quota\" error. Without access to the search tool, I cannot retrieve the necessary information to fulfill the request. The statutes don't contain enough information.",
+      "golden_statute_ids": [
+        1074954
+      ],
+      "success": true
+    },
+    {
+      "question_idx": 212,
+      "question": "Does the law specify a minimum number of days a tenant can be late on rent before the landlord can file an eviction action for nonpayment?",
+      "golden_answer": "Yes",
+      "generated_answer": "I am unable to answer the question \"Does the law specify a minimum number of days a tenant can be late on rent before the landlord can file an eviction action for nonpayment?\" because the `QdrantVectorSearchTool` is returning an \"insufficient_quota\" error, which prevents me from accessing the necessary statutory information. Therefore, I cannot determine if the statutes contain enough information to answer the question.",
+      "golden_statute_ids": [
+        1074956
+      ],
+      "success": true
+    }
+  ]
+}

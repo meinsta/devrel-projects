@@ -1,0 +1,88 @@
+{
+  "state": "wyoming",
+  "num_questions": 10,
+  "correct_answers": 8,
+  "accuracy": 80.0,
+  "results": [
+    {
+      "question_idx": 55,
+      "question": "Is there a state/territory law regulating residential evictions?",
+      "golden_answer": "Yes",
+      "predicted_answer": "Yes",
+      "raw_answer": "Yes",
+      "correct": true
+    },
+    {
+      "question_idx": 212,
+      "question": "Does the law specify a minimum number of days a tenant can be late on rent before the landlord can file an eviction action for nonpayment?",
+      "golden_answer": "Yes",
+      "predicted_answer": "No",
+      "raw_answer": "No",
+      "correct": false
+    },
+    {
+      "question_idx": 236,
+      "question": "Does the law require the tenant to respond to an eviction action before a hearing?",
+      "golden_answer": "No",
+      "predicted_answer": "No",
+      "raw_answer": "No",
+      "correct": true
+    },
+    {
+      "question_idx": 329,
+      "question": "In eviction proceedings, does the filing of an appeal stay the execution of a writ?",
+      "golden_answer": "Yes",
+      "predicted_answer": "Yes",
+      "raw_answer": "Yes",
+      "correct": true
+    },
+    {
+      "question_idx": 581,
+      "question": "Is it specified whether the law requires a tenant to pay a bond in order to appeal an eviction judgment?",
+      "golden_answer": "Yes",
+      "predicted_answer": "Yes",
+      "raw_answer": "Yes",
+      "correct": true
+    },
+    {
+      "question_idx": 582,
+      "question": "Does the law require a tenant to pay a bond in order to appeal an eviction judgment?",
+      "golden_answer": "Yes",
+      "predicted_answer": "Yes",
+      "raw_answer": "Yes",
+      "correct": true
+    },
+    {
+      "question_idx": 1848,
+      "question": "Can a landlord evict a tenant for material falsification on the rental application?",
+      "golden_answer": "No",
+      "predicted_answer": "No",
+      "raw_answer": "No",
+      "correct": true
+    },
+    {
+      "question_idx": 1849,
+      "question": "Can a landlord evict a tenant for material breach? The law should explicitly mention \"material breach\", or allow for eviction if there is a substantial violation of the lease, material noncompliance with the lease, or when the breach is one that materially affects health, safety or welfare",
+      "golden_answer": "No",
+      "predicted_answer": "Yes",
+      "raw_answer": "Yes",
+      "correct": false
+    },
+    {
+      "question_idx": 1850,
+      "question": "Can a landlord evict a tenant for removal of unit from market? This includes when the law allows a tenant to be evicted based on: the landlord selling the property; demolition, rehabilitation, or a change in use of the premises; repairs that would require the tenant to lose access to the property; a change to a policy of excluding children; or conversion of a rental property to a condominium, cooperative, or other form of ownership arrangement.",
+      "golden_answer": "No",
+      "predicted_answer": "No",
+      "raw_answer": "No",
+      "correct": true
+    },
+    {
+      "question_idx": 1851,
+      "question": "Can a landlord evict a tenant for commiting substantial damage to the property?",
+      "golden_answer": "Yes",
+      "predicted_answer": "Yes",
+      "raw_answer": "Yes",
+      "correct": true
+    }
+  ]
+}

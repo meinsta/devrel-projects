@@ -1,0 +1,32 @@
+{
+  "eval_id": 0,
+  "eval_name": "high-latency",
+  "prompt": "We have a Qdrant Cloud cluster at https://41933e38-7320-4675-b795-ffa6a7ed86d3.us-west-2-0.aws.cloud.qdrant.io:6333 (API key: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3MiOiJtIn0.6JRnmfTUby3x-lHnCQtwSKED5CrrVIyJwr0JOyTzOOI). Our search latency on the products-us collection is way too high, queries are taking around 500ms. Can you figure out what's wrong?",
+  "assertions": [
+    {
+      "name": "followed_phase_structure",
+      "description": "Used the Phase 1/2/3/4 diagnostic structure explicitly",
+      "check": "Response explicitly references phases (Phase 1 Detect, Phase 2 Classify, Phase 3 Diagnose, Phase 4 Recommend) or follows a clearly structured diagnostic flow with those labels"
+    },
+    {
+      "name": "separated_qdrant_vs_network_latency",
+      "description": "Distinguished Qdrant internal search time from network/payload transfer overhead",
+      "check": "Response breaks down the 500ms into components: Qdrant internal time vs network round-trip vs payload serialization. Must show actual measurements or estimates, not just mention the concept."
+    },
+    {
+      "name": "referenced_qdrant_docs",
+      "description": "Included links to specific Qdrant documentation pages",
+      "check": "Response contains at least one URL linking to qdrant.tech documentation"
+    },
+    {
+      "name": "correct_latency_classification",
+      "description": "Correctly classified this as a latency issue (not throughput)",
+      "check": "Response identifies this as a latency problem (single query speed) and does not confuse it with throughput (QPS) optimization"
+    },
+    {
+      "name": "avoided_recommending_exact_true",
+      "description": "Did NOT recommend exact=true or brute-force as a solution",
+      "check": "Response does not suggest exact=true as a fix for this latency issue"
+    }
+  ]
+}

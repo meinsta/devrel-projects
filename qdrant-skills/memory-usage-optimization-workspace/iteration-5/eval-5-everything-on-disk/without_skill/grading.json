@@ -1,0 +1,40 @@
+{
+  "expectations": [
+    {
+      "text": "Identifies this as Phase 3B unexpectedly high memory",
+      "passed": false,
+      "evidence": "The response does not identify this as Phase 3B. It provides a detailed analysis of memory components but does not use Phase 3B classification at all. The framing is a general technical breakdown without pattern identification."
+    },
+    {
+      "text": "Lists RAM consumers beyond ID tracker: HNSW graph, payload indexes, collection overhead, segment overhead, OS page cache",
+      "passed": true,
+      "evidence": "The response covers all major consumers: Component 1 (ID tracker with full 3-mapping breakdown ~32 bytes/point), Component 2 (on-disk mmap/page cache explanation), Component 3 (HNSW page cache warming), Component 4 (payload indexes explicitly: 'on_disk_payload: true stores raw payload values in RocksDB on disk. But every payload field index loads its index structure into required RAM'), Component 5 (per-shard WAL and metadata overhead)."
+    },
+    {
+      "text": "Correctly states RF=2 doubles data memory but not OS page cache",
+      "passed": false,
+      "evidence": "The response does not state this correctly. It says 'not necessarily per instance, but the total cluster RAM doubles' and focuses on shard distribution. It does not clearly state the rule that RF=2 doubles data memory but not OS page cache. The analysis is about per-node vs cluster totals, not data vs cache distinction."
+    },
+    {
+      "text": "Warns about stream_records OOM risk during resharding for large shards",
+      "passed": false,
+      "evidence": "The response does not mention stream_records OOM risk during resharding. It mentions adding nodes proportionally and notes 'critical variable is the ratio of total shards to nodes' but does not warn about OOM during resharding operations specifically."
+    },
+    {
+      "text": "Recommends checking telemetry to separate data from cache before concluding",
+      "passed": true,
+      "evidence": "Recommendation 4: 'Understand your RAM measurement. Before treating the 20 GB as pathological, check how much of it is RSS anonymous (heap, required) vs RSS file-backed (page cache, evictable). On Linux, /proc/<pid>/smaps_rollup gives you Rss, Anonymous, and File breakdowns.' Also mentions checking per-segment quantization. The recommendation uses smaps_rollup rather than Qdrant telemetry, but the intent of separating data from cache is addressed."
+    },
+    {
+      "text": "Recommends escalating to support if config doesn't explain the gap",
+      "passed": false,
+      "evidence": "The response does not recommend escalating to Qdrant support. All recommendations are self-service (verify version, audit payload indexes, check segment count, understand measurement, reduce m parameter, scale nodes). No escalation path is mentioned."
+    }
+  ],
+  "summary": {
+    "passed": 2,
+    "failed": 4,
+    "total": 6,
+    "pass_rate": 0.333
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "skill": "qdrant-deal-unblocker",
+  "should_trigger": [
+    "deal with PointClickCare is stalled because they say $600k is too much for one use case",
+    "customer says they need audit logging for SOC2 compliance and won't sign without it",
+    "prospect's team already knows pinecone and is pushing back on switching to qdrant",
+    "customer seeing 600ms to 1min latency spikes and threatening to cancel the POC",
+    "champion lost the budget battle internally, needs ROI ammunition to bring to leadership",
+    "customer built an in-house workaround instead of purchasing, how do we re-engage",
+    "competitor offered them a deal at half our price, need to respond before thursday",
+    "missing feature is blocking their security review and they have an april 10th deadline"
+  ],
+  "should_not_trigger": [
+    "how do I set up scalar quantization in qdrant",
+    "what's the best HNSW ef value for 10M vectors",
+    "help me write a python script to batch upload vectors to qdrant",
+    "how to configure qdrant snapshots for disaster recovery",
+    "our qdrant node is using too much memory, getting OOM killed",
+    "does qdrant support hybrid search with sparse and dense vectors",
+    "we want to squeeze every millisecond of latency out of qdrant",
+    "how do I migrate from pinecone to qdrant technically"
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "expectations": [
+    {
+      "text": "Explains quantization reduces forced-resident memory, NOT OS page cache",
+      "passed": true,
+      "evidence": "Short Answer section: 'Quantization reduces forced-resident data memory. It does not flush the OS page cache, and it was never designed to.' What 'Working Correctly' Looks Like section: 'Total forced-resident data memory drops by roughly 4x for the vector component' while 'OS page cache may still fill available RAM with mmap pages from query activity.'"
+    },
+    {
+      "text": "Describes cache as expected and healthy, not a problem to eliminate",
+      "passed": true,
+      "evidence": "Short Answer: 'This is the intended behavior. The node is not in a degraded state.' Page cache section: 'This is standard OS behavior and it is intentional. The cache makes queries fast by keeping hot vector data in memory.'"
+    },
+    {
+      "text": "Recommends checking metrics endpoint to confirm data usage actually dropped",
+      "passed": true,
+      "evidence": "'How to Verify This Is the Cause' section: 'Check the Qdrant-specific metrics, not the OS-level metrics. Qdrant's /metrics endpoint and the web dashboard separate actual data memory from cache.' Also in conclusion: 'Check the Qdrant /metrics endpoint to see the actual data memory figure.'"
+    },
+    {
+      "text": "Notes that vectors are memory-mapped by default, so on_disk=True may be redundant",
+      "passed": false,
+      "evidence": "The response does NOT mention that vectors are memory-mapped by default or suggest on_disk=True is redundant. Instead it states: 'If on_disk was not explicitly set to True on your vectors config when you enabled quantization, the original vectors may still be memory-resident.' This treats on_disk=True as potentially necessary, not as redundant or default behavior."
+    },
+    {
+      "text": "Mentions full-text indexes as a possible hidden RAM consumer",
+      "passed": true,
+      "evidence": "'Other RAM Consumers to Check' section: 'Full-text indexes: frequently overlooked and can consume substantially more RAM than expected.'"
+    },
+    {
+      "text": "Warns against setting always_ram=False (causes performance collapse)",
+      "passed": true,
+      "evidence": "'Check Your Quantization Configuration' section: 'If you set always_ram=False, Qdrant reads quantized vectors from disk on every search. This eliminates the performance benefit of quantization and causes heavy CPU and I/O load without meaningful memory savings. Do not do this.'"
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 1,
+    "total": 6,
+    "pass_rate": 0.833
+  }
+}

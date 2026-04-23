@@ -1,0 +1,116 @@
+{
+  "timestamp": "2025-11-11T11:19:17.684709",
+  "collection_name": "housing_statutes_wyoming",
+  "model": "gpt-4-turbo-preview",
+  "top_k": 5,
+  "total_questions": 2,
+  "vanilla_rag": {
+    "success_rate": 1.0,
+    "accuracy": 0.5,
+    "correct_count": 1,
+    "success_count": 2
+  },
+  "agentic_rag": {
+    "success_rate": 1.0,
+    "accuracy": 1.0,
+    "correct_count": 2,
+    "success_count": 2
+  },
+  "results": [
+    {
+      "question_idx": 55,
+      "question": "Is there a state/territory law regulating residential evictions?",
+      "state": "Wyoming",
+      "golden_answer": "Yes",
+      "golden_yes_no": "Yes",
+      "vanilla": {
+        "answer": "Yes, the statutes provided do not directly address the process of eviction itself but imply regulations around actions that could lead to eviction. For instance, Statute 1 (1-21-1205) outlines prohibited acts by renters, such as intentionally damaging the property or unreasonably denying access to the landlord for repairs, which could be grounds for eviction under broader landlord-tenant law. However, the specific process for eviction is not detailed in the excerpts provided. Statute 3 (35-18-107) protects a lessee's right to enforce their rights without the threat of rental agreement termination, indirectly touching upon eviction by ensuring that legal actions taken by a tenant to assert their rights cannot be used as a reason for eviction. While these statutes regulate aspects of the landlord-tenant relationship that could lead to eviction, they do not explicitly detail the eviction process itself.",
+        "yes_no": "Yes",
+        "correct": true,
+        "citations": [
+          "WY Stat \u00a7 1-21-1205 (2021)",
+          "WY Stat \u00a7 1-21-1205 (2021)",
+          "WY Stat \u00a7 35-18-107 (2021)",
+          "WY Stat \u00a7 35-18-107 (2021)",
+          "WY Stat \u00a7 1-21-1204 (2021)"
+        ],
+        "citations_in_answer": [
+          "Statute 3",
+          "Statute 1"
+        ],
+        "retrieved_count": 5,
+        "success": true,
+        "error": null,
+        "usage": {
+          "prompt_tokens": 691,
+          "completion_tokens": 174,
+          "total_tokens": 865
+        }
+      },
+      "agentic": {
+        "answer": "Yes. Wyoming has comprehensive state laws regulating residential evictions that set forth lawful grounds for eviction, required notice periods, eviction procedures, and tenant protections. The eviction process must comply with these statutory provisions, including notice requirements and judicial procedures for unlawful detainer actions, ensuring due process and preventing arbitrary evictions. These laws are codified primarily under Title 1, Chapter 21 of the Wyoming Statutes, specifically WY St",
+        "yes_no": "Yes",
+        "correct": true,
+        "citations": [
+          "WY Stat \u00a7 1-21-1205"
+        ],
+        "citations_in_answer": [
+          "WY Stat \u00a7 1-21-1205"
+        ],
+        "retrieved_count": 5,
+        "success": true,
+        "error": null,
+        "usage": {}
+      }
+    },
+    {
+      "question_idx": 212,
+      "question": "Does the law specify a minimum number of days a tenant can be late on rent before the landlord can file an eviction action for nonpayment?",
+      "state": "Wyoming",
+      "golden_answer": "Yes",
+      "golden_yes_no": "Yes",
+      "vanilla": {
+        "answer": "No, the provided statutes do not specify a minimum number of days a tenant can be late on rent before the landlord can file an eviction action for nonpayment. The statutes presented focus on lessee's rights in general terms (Statute 1 and Statute 2), procedures for when rental is due for leases involving state lands (Statute 3 and Statute 4), and limitations on actions related to claims for money or property deemed abandoned (Statute 5). None of these excerpts directly address the process or timeline for eviction due to nonpayment of rent in a typical landlord-tenant relationship outside of state leases.",
+        "yes_no": "No",
+        "correct": false,
+        "citations": [
+          "WY Stat \u00a7 35-18-107 (2021)",
+          "WY Stat \u00a7 35-18-107 (2021)",
+          "WY Stat \u00a7 36-5-109 (2021)",
+          "WY Stat \u00a7 36-5-109 (2021)",
+          "WY Stat \u00a7 34-24-130 (2021)"
+        ],
+        "citations_in_answer": [
+          "Statute 5",
+          "Statute 3",
+          "Statute 4",
+          "Statute 1",
+          "Statute 2"
+        ],
+        "retrieved_count": 5,
+        "success": true,
+        "error": null,
+        "usage": {
+          "prompt_tokens": 723,
+          "completion_tokens": 126,
+          "total_tokens": 849
+        }
+      },
+      "agentic": {
+        "answer": "Yes. Wyoming law requires landlords to provide tenants with a written notice demanding payment of rent or possession of the property, granting at least a three-day period before filing an eviction action for nonpayment. This three-day \"pay or quit\" notice serves as the statutory minimum grace period during which tenants can cure the default to avoid eviction. Only after this notice period expires without payment may the landlord proceed with filing the eviction complaint. This requirement is est",
+        "yes_no": "Yes",
+        "correct": true,
+        "citations": [
+          "WY Stat \u00a7 1-21-1205"
+        ],
+        "citations_in_answer": [
+          "WY Stat \u00a7 1-21-1205"
+        ],
+        "retrieved_count": 5,
+        "success": true,
+        "error": null,
+        "usage": {}
+      }
+    }
+  ]
+}

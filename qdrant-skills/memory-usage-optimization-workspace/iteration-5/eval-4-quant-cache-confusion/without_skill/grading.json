@@ -1,0 +1,40 @@
+{
+  "expectations": [
+    {
+      "text": "Identifies this as Phase 3C quantization no-op pattern",
+      "passed": false,
+      "evidence": "The response does not identify this as Phase 3C. It discusses multiple causes but does not use the Phase 3C classification. The response focuses on HNSW being in RAM and page cache as primary causes rather than identifying the pattern by name."
+    },
+    {
+      "text": "Explains quantization reduces forced-resident memory, not OS page cache",
+      "passed": true,
+      "evidence": "Section 2 'You Are Measuring Page Cache, Not Actual RAM Pressure': 'When Qdrant uses mmap, the OS maps vector files into virtual address space and reads them through the page cache. Tools like htop, docker stats, and top report RSS, which includes all pages the process has touched.' The memory budget table shows original float32 vectors move to 'on disk (mmap, page cache pressure only).'"
+    },
+    {
+      "text": "Recommends checking telemetry for actual data memory vs total (not htop)",
+      "passed": false,
+      "evidence": "The response does not recommend using GET /telemetry to check actual data memory vs total. The checklist mentions 'Do not trust htop RES as a hard requirement' and suggests checking per-segment quantization status, but never recommends the telemetry endpoint as the tool to separate data from cache."
+    },
+    {
+      "text": "Acknowledges the config is actually correct (always_ram=true, on_disk=true) and the 'problem' may just be cache",
+      "passed": false,
+      "evidence": "The response does not clearly acknowledge the config is correct. It immediately pivots to listing five reasons why memory might still be high, treating the config as potentially incomplete rather than correct. Section 1 suggests adding hnsw_config.on_disk=true as if it's a missing fix, not an optional trade-off."
+    },
+    {
+      "text": "Mentions full-text indexes as a possible hidden consumer",
+      "passed": true,
+      "evidence": "Checklist item 5: 'Verify payload indexes are not pinned in RAM unexpectedly. If you have payload indexes configured with on_disk: false, those stay in RAM.' The response acknowledges payload indexes as a potential hidden consumer."
+    },
+    {
+      "text": "Does NOT recommend setting always_ram=false",
+      "passed": true,
+      "evidence": "The corrected configuration reference shows always_ram: true and the response never recommends setting it to false. The response correctly maintains always_ram=true throughout."
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 3,
+    "total": 6,
+    "pass_rate": 0.5
+  }
+}

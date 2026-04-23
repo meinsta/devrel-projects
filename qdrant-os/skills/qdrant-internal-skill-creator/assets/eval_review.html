@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>__SKILL_NAME_PLACEHOLDER__ - Eval Review</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+  :root {
+    --qdrant-red: #DC244C;
+    --qdrant-red-hover: #C41E43;
+    --qdrant-dark: #090E1A;
+    --qdrant-dark-secondary: #121826;
+    --qdrant-light-bg: #F0F3FA;
+    --qdrant-gray-100: #E8ECF4;
+    --qdrant-gray-200: #D1D7E4;
+    --qdrant-gray-300: #9BA3B5;
+    --qdrant-gray-400: #6B7280;
+    --qdrant-white: #FFFFFF;
+    --qdrant-green: #10B981;
+    --qdrant-amber: #F59E0B;
+    --border-radius: 8px;
+    --shadow-sm: 0 1px 2px rgba(9, 14, 26, 0.05);
+    --shadow-md: 0 4px 12px rgba(9, 14, 26, 0.1);
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--qdrant-light-bg);
+    color: var(--qdrant-dark);
+    line-height: 1.6;
+  }
+
+  .header {
+    background: var(--qdrant-dark);
+    padding: 16px 32px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: var(--shadow-md);
+  }
+
+  .header svg {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+  }
+
+  .header-title {
+    color: var(--qdrant-white);
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  .header-subtitle {
+    color: var(--qdrant-gray-300);
+    font-size: 13px;
+    margin-left: auto;
+  }
+
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 24px;
+  }
+
+  .skill-info {
+    background: var(--qdrant-white);
+    border-radius: var(--border-radius);
+    padding: 24px;
+    margin-bottom: 24px;
+    box-shadow: var(--shadow-sm);
+    border-left: 4px solid var(--qdrant-red);
+  }
+
+  .skill-info h2 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--qdrant-dark);
+  }
+
+  .skill-info p {
+    color: var(--qdrant-gray-400);
+    font-size: 14px;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    margin-top: 32px;
+  }
+
+  .section-header h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--qdrant-dark);
+  }
+
+  .badge {
+    background: var(--qdrant-red);
+    color: var(--qdrant-white);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 2px 10px;
+    border-radius: 12px;
+  }
+
+  .badge-green {
+    background: var(--qdrant-green);
+  }
+
+  .badge-amber {
+    background: var(--qdrant-amber);
+    color: var(--qdrant-dark);
+  }
+
+  .trigger-card {
+    background: var(--qdrant-white);
+    border-radius: var(--border-radius);
+    padding: 16px 20px;
+    margin-bottom: 8px;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: box-shadow 0.15s;
+  }
+
+  .trigger-card:hover {
+    box-shadow: var(--shadow-md);
+  }
+
+  .trigger-toggle {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--qdrant-gray-200);
+    border-radius: 4px;
+    cursor: pointer;
+    flex-shrink: 0;
+    position: relative;
+    transition: all 0.15s;
+  }
+
+  .trigger-toggle:checked {
+    background: var(--qdrant-red);
+    border-color: var(--qdrant-red);
+  }
+
+  .trigger-toggle:checked::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 5px;
+    width: 5px;
+    height: 9px;
+    border: solid var(--qdrant-white);
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+
+  .trigger-text {
+    font-size: 14px;
+    color: var(--qdrant-dark);
+    flex: 1;
+  }
+
+  .trigger-type {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    flex-shrink: 0;
+  }
+
+  .type-positive {
+    background: #ECFDF5;
+    color: #065F46;
+  }
+
+  .type-negative {
+    background: #FEF2F2;
+    color: #991B1B;
+  }
+
+  .remove-btn {
+    background: none;
+    border: none;
+    color: var(--qdrant-gray-300);
+    cursor: pointer;
+    font-size: 18px;
+    padding: 4px;
+    line-height: 1;
+    transition: color 0.15s;
+  }
+
+  .remove-btn:hover {
+    color: var(--qdrant-red);
+  }
+
+  .add-row {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+    margin-bottom: 24px;
+  }
+
+  .add-input {
+    flex: 1;
+    padding: 10px 14px;
+    border: 2px solid var(--qdrant-gray-100);
+    border-radius: var(--border-radius);
+    font-size: 14px;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.15s;
+  }
+
+  .add-input:focus {
+    border-color: var(--qdrant-red);
+  }
+
+  .add-input::placeholder {
+    color: var(--qdrant-gray-300);
+  }
+
+  .btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 14px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .btn-primary {
+    background: var(--qdrant-red);
+    color: var(--qdrant-white);
+  }
+
+  .btn-primary:hover {
+    background: var(--qdrant-red-hover);
+  }
+
+  .btn-secondary {
+    background: var(--qdrant-gray-100);
+    color: var(--qdrant-dark);
+  }
+
+  .btn-secondary:hover {
+    background: var(--qdrant-gray-200);
+  }
+
+  .export-bar {
+    background: var(--qdrant-dark);
+    border-radius: var(--border-radius);
+    padding: 20px 24px;
+    margin-top: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: var(--shadow-md);
+  }
+
+  .export-info {
+    color: var(--qdrant-gray-300);
+    font-size: 13px;
+  }
+
+  .export-info strong {
+    color: var(--qdrant-white);
+    font-weight: 600;
+  }
+
+  .export-actions {
+    display: flex;
+    gap: 8px;
+  }
+
+  .json-preview {
+    background: var(--qdrant-dark-secondary);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    margin-top: 16px;
+    display: none;
+    position: relative;
+  }
+
+  .json-preview pre {
+    color: var(--qdrant-gray-300);
+    font-size: 13px;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+
+  .json-preview .copy-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: var(--qdrant-red);
+    color: var(--qdrant-white);
+    border: none;
+    border-radius: 4px;
+    padding: 6px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .json-preview .copy-btn:hover {
+    background: var(--qdrant-red-hover);
+  }
+
+  .empty-state {
+    text-align: center;
+    padding: 32px;
+    color: var(--qdrant-gray-300);
+    font-size: 14px;
+  }
+
+  .stats-bar {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .stat {
+    background: var(--qdrant-white);
+    border-radius: var(--border-radius);
+    padding: 16px 20px;
+    flex: 1;
+    box-shadow: var(--shadow-sm);
+    text-align: center;
+  }
+
+  .stat-value {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--qdrant-dark);
+  }
+
+  .stat-label {
+    font-size: 12px;
+    color: var(--qdrant-gray-400);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 4px;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M18 3L33 12V24L18 33L3 24V12L18 3Z" fill="#DC244C"/>
+    <circle cx="18" cy="14" r="3.5" fill="white"/>
+    <circle cx="12" cy="23" r="3" fill="white" opacity="0.7"/>
+    <circle cx="24" cy="23" r="3" fill="white" opacity="0.7"/>
+    <line x1="18" y1="17" x2="12" y2="20" stroke="white" stroke-width="1.5" opacity="0.5"/>
+    <line x1="18" y1="17" x2="24" y2="20" stroke="white" stroke-width="1.5" opacity="0.5"/>
+  </svg>
+  <span class="header-title">Qdrant Skill Eval Review</span>
+  <span class="header-subtitle">Internal Skill Creator</span>
+</div>
+
+<div class="container">
+  <div class="skill-info">
+    <h2 id="skillName">__SKILL_NAME_PLACEHOLDER__</h2>
+    <p id="skillDesc">__SKILL_DESCRIPTION_PLACEHOLDER__</p>
+  </div>
+
+  <div class="stats-bar">
+    <div class="stat">
+      <div class="stat-value" id="positiveCount">0</div>
+      <div class="stat-label">Positive Triggers</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value" id="negativeCount">0</div>
+      <div class="stat-label">Negative Triggers</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value" id="totalCount">0</div>
+      <div class="stat-label">Total Cases</div>
+    </div>
+  </div>
+
+  <div class="section-header">
+    <h3>Should Trigger</h3>
+    <span class="badge badge-green" id="positiveBadge">0</span>
+  </div>
+  <div id="positiveList"></div>
+  <div class="add-row">
+    <input type="text" class="add-input" id="positiveInput" placeholder="Add a positive trigger query..." />
+    <button class="btn btn-primary" onclick="addTrigger('positive')">Add</button>
+  </div>
+
+  <div class="section-header">
+    <h3>Should NOT Trigger</h3>
+    <span class="badge" id="negativeBadge">0</span>
+  </div>
+  <div id="negativeList"></div>
+  <div class="add-row">
+    <input type="text" class="add-input" id="negativeInput" placeholder="Add a negative trigger query..." />
+    <button class="btn btn-primary" onclick="addTrigger('negative')">Add</button>
+  </div>
+
+  <div class="export-bar">
+    <div class="export-info">
+      <strong id="exportCount">0</strong> trigger cases ready for export
+    </div>
+    <div class="export-actions">
+      <button class="btn btn-secondary" onclick="togglePreview()">Preview JSON</button>
+      <button class="btn btn-primary" onclick="exportJSON()">Export triggers.json</button>
+    </div>
+  </div>
+
+  <div class="json-preview" id="jsonPreview">
+    <button class="copy-btn" onclick="copyJSON()">Copy</button>
+    <pre id="jsonContent"></pre>
+  </div>
+</div>
+
+<script>
+  const evalData = __EVAL_DATA_PLACEHOLDER__;
+
+  let triggers = {
+    positive: [],
+    negative: []
+  };
+
+  function init() {
+    if (evalData && evalData.should_trigger) {
+      triggers.positive = evalData.should_trigger.map(t => ({ text: t, enabled: true }));
+    }
+    if (evalData && evalData.should_not_trigger) {
+      triggers.negative = evalData.should_not_trigger.map(t => ({ text: t, enabled: true }));
+    }
+    render();
+  }
+
+  function render() {
+    renderList('positive', 'positiveList');
+    renderList('negative', 'negativeList');
+    updateStats();
+  }
+
+  function renderList(type, containerId) {
+    const container = document.getElementById(containerId);
+    const items = triggers[type];
+
+    if (items.length === 0) {
+      container.innerHTML = '<div class="empty-state">No triggers added yet</div>';
+      return;
+    }
+
+    container.innerHTML = items.map((item, i) => `
+      <div class="trigger-card">
+        <input type="checkbox" class="trigger-toggle"
+          ${item.enabled ? 'checked' : ''}
+          onchange="toggleTrigger('${type}', ${i})" />
+        <span class="trigger-text">${escapeHtml(item.text)}</span>
+        <span class="trigger-type ${type === 'positive' ? 'type-positive' : 'type-negative'}">
+          ${type === 'positive' ? 'should trigger' : 'should not'}
+        </span>
+        <button class="remove-btn" onclick="removeTrigger('${type}', ${i})" title="Remove">&times;</button>
+      </div>
+    `).join('');
+  }
+
+  function updateStats() {
+    const posCount = triggers.positive.filter(t => t.enabled).length;
+    const negCount = triggers.negative.filter(t => t.enabled).length;
+    const total = posCount + negCount;
+
+    document.getElementById('positiveCount').textContent = posCount;
+    document.getElementById('negativeCount').textContent = negCount;
+    document.getElementById('totalCount').textContent = total;
+    document.getElementById('positiveBadge').textContent = posCount;
+    document.getElementById('negativeBadge').textContent = negCount;
+    document.getElementById('exportCount').textContent = total;
+  }
+
+  function addTrigger(type) {
+    const inputId = type === 'positive' ? 'positiveInput' : 'negativeInput';
+    const input = document.getElementById(inputId);
+    const text = input.value.trim();
+    if (!text) return;
+
+    triggers[type].push({ text, enabled: true });
+    input.value = '';
+    render();
+  }
+
+  function removeTrigger(type, index) {
+    triggers[type].splice(index, 1);
+    render();
+  }
+
+  function toggleTrigger(type, index) {
+    triggers[type][index].enabled = !triggers[type][index].enabled;
+    updateStats();
+  }
+
+  function getExportData() {
+    const skillName = document.getElementById('skillName').textContent;
+    return {
+      skill: skillName === '__SKILL_NAME_PLACEHOLDER__' ? 'my-skill' : skillName,
+      should_trigger: triggers.positive.filter(t => t.enabled).map(t => t.text),
+      should_not_trigger: triggers.negative.filter(t => t.enabled).map(t => t.text)
+    };
+  }
+
+  function togglePreview() {
+    const preview = document.getElementById('jsonPreview');
+    const isVisible = preview.style.display === 'block';
+    preview.style.display = isVisible ? 'none' : 'block';
+
+    if (!isVisible) {
+      document.getElementById('jsonContent').textContent = JSON.stringify(getExportData(), null, 2);
+    }
+  }
+
+  function copyJSON() {
+    const json = JSON.stringify(getExportData(), null, 2);
+    navigator.clipboard.writeText(json).then(() => {
+      const btn = document.querySelector('.copy-btn');
+      btn.textContent = 'Copied!';
+      setTimeout(() => { btn.textContent = 'Copy'; }, 2000);
+    });
+  }
+
+  function exportJSON() {
+    const data = getExportData();
+    const json = JSON.stringify(data, null, 2);
+    const blob = new Blob([json], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'triggers.json';
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+
+  function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+  }
+
+  // Handle enter key on inputs
+  document.getElementById('positiveInput').addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') addTrigger('positive');
+  });
+  document.getElementById('negativeInput').addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') addTrigger('negative');
+  });
+
+  init();
+</script>
+</body>
+</html>

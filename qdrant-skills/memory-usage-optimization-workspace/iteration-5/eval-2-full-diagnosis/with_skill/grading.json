@@ -1,0 +1,40 @@
+{
+  "expectations": [
+    {
+      "text": "Actually connects and inspects multiple collections",
+      "passed": true,
+      "evidence": "Response connects to cluster and inspects all 12 collections. Phase 1 shows inventory table with all 12 collections and their configs. Raw API data section confirms connection. Per-collection details are shown for products-us (5 payload indexes), embeddings-archive (quantization config), and locale collections."
+    },
+    {
+      "text": "Identifies the locale collections antipattern (10+ products-{locale} collections)",
+      "passed": true,
+      "evidence": "Finding 4 and Phase 4 Priority 1: 'The 11 products-{locale} collections (it-it, en-gb, de-de, fr-fr, ko-kr, zh-cn, pt-br, nl-nl, ja-jp, es-es) each contain only 50 points with the same 768-dim vector config and no payload indexes. These are functionally identical except for locale.' Issue table shows it as High severity."
+    },
+    {
+      "text": "Identifies products-us issues: vectors in RAM, no quantization, full-text index on description",
+      "passed": true,
+      "evidence": "Phase 1 Step 5: products-us has description field with full-text word tokenizer index. Finding 3 mentions 'products-us has a full-text index in RAM.' Issue table row 5: 'products-us: full-text index on description in RAM, no on_disk=true on any of 5 payload indexes.' Vectors in RAM confirmed via on_disk=false in inventory table."
+    },
+    {
+      "text": "Identifies embeddings-archive backwards quantization (always_ram=false, on_disk=false)",
+      "passed": true,
+      "evidence": "Finding 2 explicitly: 'embeddings-archive has a misconfigured quantization. Config observed: always_ram=false... always_ram=false means the quantized vectors are NOT pinned in RAM. The original vectors also have on_disk=false, meaning originals stay in RAM. Result: quantization provides zero memory benefit.' Issue table rows 3 and 4 confirm both problems."
+    },
+    {
+      "text": "Provides prioritized recommendations matching Phase 4 order",
+      "passed": true,
+      "evidence": "Phase 4 Recommendations ordered: Priority 1 consolidate locale collections, Priority 2 fix embeddings-archive quantization, Priority 3 move products-us FTS index to disk, Priority 4 plan HNSW on-disk. This matches the expected Phase 4 priority ordering from highest to lowest impact."
+    },
+    {
+      "text": "Mentions total collection count and overhead calculation",
+      "passed": true,
+      "evidence": "Phase 3 Finding 1: '12 collections x 13 MB avg overhead = ~156 MB committed overhead' and 'Ratio: overhead is ~37x the actual data size.' Phase 2 also states '12 collections x 12-14 MB baseline = 144-168 MB in fixed overhead.'"
+    }
+  ],
+  "summary": {
+    "passed": 6,
+    "failed": 0,
+    "total": 6,
+    "pass_rate": 1.0
+  }
+}

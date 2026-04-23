@@ -1,0 +1,76 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+echo "=== CAGE status ==="
+echo ""
+
+# audit staleness
+echo "## audits"
+echo ""
+
+AUDIT_TAGS=$(git tag -l 'audit/*' --sort=-creatordate 2>/dev/null || true)
+
+if [ -z "$AUDIT_TAGS" ]; then
+  echo "  no audits recorded. run /audit to start."
+else
+  declare -A LATEST_AUDITS
+  while IFS= read -r tag; do
+    SURFACE=$(echo "$tag" | cut -d'/' -f2)
+    if [ -z "${LATEST_AUDITS[$SURFACE]:-}" ]; then
+      DATE=$(echo "$tag" | cut -d'/' -f3)
+      DAYS_AGO=$(( ($(date +%s) - $(date -j -f "%Y-%m-%d" "$DATE" +%s 2>/dev/null || date -d "$DATE" +%s 2>/dev/null || echo 0)) / 86400 ))
+      LATEST_AUDITS[$SURFACE]="$DATE ($DAYS_AGO days ago)"
+    fi
+  done <<< "$AUDIT_TAGS"
+
+  for SURFACE in "${!LATEST_AUDITS[@]}"; do
+    echo "  $SURFACE: ${LATEST_AUDITS[$SURFACE]}"
+  done
+fi
+
+echo ""
+
+# worktree registry
+echo "## worktrees"
+echo ""
+
+WORKTREES=$(git worktree list 2>/dev/null || true)
+if [ -z "$WORKTREES" ]; then
+  echo "  no worktrees active."
+else
+  echo "$WORKTREES" | while IFS= read -r line; do
+    echo "  $line"
+  done
+fi
+
+echo ""
+
+# contract health
+echo "## contracts"
+echo ""
+
+if [ -d "shared" ]; then
+  for f in shared/*.json; do
+    if [ -f "$f" ]; then
+      NAME=$(basename "$f")
+      KEYS=$(python3 -c "import json; d=json.load(open('$f')); print(len([k for k in d.keys() if not k.startswith('_')]))" 2>/dev/null || echo "?")
+      echo "  $NAME: $KEYS entries"
+    fi
+  done
+else
+  echo "  no shared/ directory. run 'cage init' first."
+fi
+
+echo ""
+
+# execution policy
+echo "## policy"
+echo ""
+
+if [ -f "cage.rules" ]; then
+  BLOCKED=$(grep -c "^block" cage.rules 2>/dev/null || echo 0)
+  PROMPTED=$(grep -c "^prompt" cage.rules 2>/dev/null || echo 0)
+  echo "  $BLOCKED blocked commands, $PROMPTED prompted commands"
+else
+  echo "  no cage.rules found. run 'cage init' first."
+fi

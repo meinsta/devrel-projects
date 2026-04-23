@@ -1,0 +1,190 @@
+{
+  "model": "Qwen/Qwen3-4B-Instruct-2507",
+  "split": "holdout",
+  "scoring_mode": "answer",
+  "n": 20,
+  "score_avg": 0.19,
+  "score_pass": 0.2,
+  "results": [
+    {
+      "index": 1,
+      "question": "Imagine there is a building called Bronte tower whose height in feet is the same number as the dewey decimal classification for the Charlotte Bronte book that was published in 1847. Where would this building rank among tallest buildings in New York City, as of August 2024?",
+      "answer": "37th",
+      "prediction": "",
+      "score": 0.0,
+      "tool_calls": 1,
+      "error": "Error code: 404 - {'error': {'message': 'Model not found', 'type': 'server_error', 'param': None, 'code': 'not_found_error'}, 'request_id': '9e4b113f9c7ea43c-SJC', 'inference_id': 'req_b618232c5e3a4af7a7b4231caa3654f9'}"
+    },
+    {
+      "index": 2,
+      "question": "How many years earlier would Punxsutawney Phil have to be canonically alive to have made a Groundhog Day prediction in the same state as the US capitol?",
+      "answer": "87",
+      "prediction": "The Groundhog Day celebration in Punxsutawney, Pennsylvania, formally began in 1887. Since the U.S. capital is Washington, D.C., and Punxsutawney is in Pennsylvania, the question asks how many years earlier Punxsutawney Phil would have to be canonically alive to have made a prediction in the same state as the U.S. capitol.\n\nHowever, Pennsylvania and Washington, D.C. are in different states, so the premise of making a prediction \"in the same state as the US capitol\" is not valid. Washington, D.C. is not part of any state, and Punxsutawney is in Pennsylvania.\n\nTherefore, the scenario is impossible\u2014there is no state that shares the same state as the U.S. capitol (D.C.). Hence, Punxsutawney Phil would have to be canonically alive **0 years earlier** because the condition of being in the same state as the U.S. capitol cannot be met.\n\nAnswer: **0 years**.",
+      "score": 1.0,
+      "tool_calls": 2,
+      "error": null
+    },
+    {
+      "index": 3,
+      "question": "As of August 1, 2024, which country were holders of the FIFA World Cup the last time the UEFA Champions League was won by a club from London?",
+      "answer": "France",
+      "prediction": "The question appears to mix unrelated events: the FIFA World Cup and the UEFA Champions League, with a specific date and location condition. However, the UEFA Champions League is a club competition, and the FIFA World Cup is a national team competition. There is no direct link between a club from London winning the UEFA Champions League and the country of the FIFA World Cup holders.\n\nAdditionally, the question references a specific date (August 1, 2024), which is in the future, making it impossible to determine the past event.\n\nTherefore, the question is logically flawed or based on a misunderstanding of how these competitions work.\n\n**Answer: The question is invalid or unanswerable due to a logical inconsistency.**",
+      "score": 0.0,
+      "tool_calls": 0,
+      "error": null
+    },
+    {
+      "index": 5,
+      "question": "According to the 2000 United States census, what was the 2000 population of the birth city of the only 21st-century mayor of Austin, Texas who also served as mayor in the 1990s? Round your answer to the nearest thousand.",
+      "answer": "506000",
+      "prediction": "The only 21st-century mayor of Austin, Texas who also served as mayor in the 1990s is Kirk Watson. He served as mayor from 1997 to 2001 and again since 2023.\n\nTo find the population of his birth city, we need to determine where Kirk Watson was born. From the document, there is no mention of his birthplace. Therefore, we cannot determine the birth city of Kirk Watson from the provided information.\n\nThus, the question cannot be answered with the current data.",
+      "score": 0.0,
+      "tool_calls": 2,
+      "error": null
+    },
+    {
+      "index": 6,
+      "question": "I have an element in mind and would like you to identify the person it was named after. Here's a clue: The element's atomic number is 9 higher than that of an element discovered by the scientist who discovered Zirconium in the same year.",
+      "answer": "Mendelevium is named after Dmitri Mendeleev.",
+      "prediction": "",
+      "score": 0.0,
+      "tool_calls": 1,
+      "error": "Error code: 404 - {'error': {'message': 'Model not found', 'type': 'server_error', 'param': None, 'code': 'not_found_error'}, 'request_id': '9e4b11fadcb9a43c-SJC', 'inference_id': 'req_7bb14a9e4500489596c98efc50d0ca5c'}"
+    },
+    {
+      "index": 8,
+      "question": "A general motors vehicle is named after the largest ward in the country of Monaco.  How many people had walked on the moon as of the first model year of the vehicle? Note: the model year is not the same as the year the model was first produced.",
+      "answer": "4",
+      "prediction": "The General Motors vehicle named after the largest ward in Monaco is the **Chevrolet Monte Carlo**. The largest ward in Monaco is **Larvotto**, not Monte Carlo.\n\nHowever, the vehicle is named after **Monte Carlo**, which is a district, not a ward. Since the question specifies the largest ward, and the largest ward is Larvotto, there is no General Motors vehicle named after Larvotto.\n\nThus, the premise of the question is flawed: there is no known General Motors vehicle named after the largest ward in Monaco.\n\nAdditionally, as of the first model year of the Chevrolet Monte Carlo (1970), **only 12 people** had walked on the Moon (Apollo 11 in 1969, and the first lunar landing was in 1969 with 3 astronauts; by 1970, only 12 total humans had walked on the Moon).\n\nTherefore, the answer is **12**.",
+      "score": 0.0,
+      "tool_calls": 3,
+      "error": null
+    },
+    {
+      "index": 9,
+      "question": "The Pope born Pietro Barbo ended a long-running war two years after his papacy began, which famous conflict, immortalized in tapestry took place 400 years earlier?",
+      "answer": "The Battle of Hastings.",
+      "prediction": "",
+      "score": 0.0,
+      "tool_calls": 2,
+      "error": "Error code: 404 - {'error': {'message': 'Model not found', 'type': 'server_error', 'param': None, 'code': 'not_found_error'}, 'request_id': '9e4b12acd961a43c-SJC', 'inference_id': 'req_80cb86362e3b470c935fc87e209c4abb'}"
+    },
+    {
+      "index": 11,
+      "question": "As of July 1, 2024, what is the parent company of the current record label of the singer of Edge of Seventeen?",
+      "answer": "Warner Music Group",
+      "prediction": "",
+      "score": 0.0,
+      "tool_calls": 2,
+      "error": "Error code: 404 - {'error': {'message': 'Model not found', 'type': 'server_error', 'param': None, 'code': 'not_found_error'}, 'request_id': '9e4b12e9c827a43c-SJC', 'inference_id': 'req_a3435aa7b44c48e78f7d31f155c36953'}"
+    },
+    {
+      "index": 14,
+      "question": "Which football player got 15 or more assists in La Liga during the 2010-2011 season and also played for Arsenal at one point in his career?",
+      "answer": "This was Mesut Ozil.",
+      "prediction": "",
+      "score": 0.0,
+      "tool_calls": 1,
+      "error": "Error code: 404 - {'error': {'message': 'Model not found', 'type': 'server_error', 'param': None, 'code': 'not_found_error'}, 'request_id': '9e4b131e2b62a43c-SJC', 'inference_id': 'req_ba4f7190769a442e8271dda73d8cef5e'}"
+    },
+    {
+      "index": 15,
+      "question": "In Slovakia there is a well known Film Festival called the Bratistlava International Film Festival. What city/ town was the film editor for the Grand Prix winner of 2003 born in?",
+      "answer": "Roudnice nad Labem",
+      "prediction": "",
+      "score": 0.0,
+      "tool_calls": 0,
+      "error": "Error code: 404 - {'error': {'message': 'Model not found', 'type': 'server_error', 'param': None, 'code': 'not_found_error'}, 'request_id': '9e4b133d4f45a43c-SJC', 'inference_id': 'req_0aef3c1fef8342db89f813041e74116b'}"
+    },
+    {
+      "index": 16,
+      "question": "On March 7th, 2012, the director James Cameron explored a very deep underseas trench.  As of August 3, 2024, how many times would the tallest building in San Francisco fit end to end from the bottom of the New Britain Trench to the surface of the ocean? The answer should be a rounded-off whole number.   ",
+      "answer": "28",
+      "prediction": "",
+      "score": 0.0,
+      "tool_calls": 0,
+      "error": "Error code: 404 - {'error': {'message': 'Model not found', 'type': 'server_error', 'param': None, 'code': 'not_found_error'}, 'request_id': '9e4b135c9cd8a43c-SJC', 'inference_id': 'req_5eaaf11601d54aeeb14fd001ff366fe5'}"
+    },
+    {
+      "index": 18,
+      "question": "How many years after the founding of the 50th most populous US city, based on 2023 estimate population data, did Frank Fox receive UK Patent (1344259)?",
+      "answer": "98 Years (Arlington, TX & Rubik's Cube)",
+      "prediction": "",
+      "score": 0.0,
+      "tool_calls": 0,
+      "error": "Error code: 404 - {'error': {'message': 'Model not found', 'type': 'server_error', 'param': None, 'code': 'not_found_error'}, 'request_id': '9e4b137ead3ea43c-SJC', 'inference_id': 'req_d6f42f1b0ec04867832f5b9d361abcfc'}"
+    },
+    {
+      "index": 19,
+      "question": "As of August 4, 2024, in what state was the first secretary of the latest United States federal executive department born?",
+      "answer": "Pennsylvania",
+      "prediction": "",
+      "score": 0.0,
+      "tool_calls": 0,
+      "error": "Error code: 404 - {'error': {'message': 'Model not found', 'type': 'server_error', 'param': None, 'code': 'not_found_error'}, 'request_id': '9e4b139c9fb3a43c-SJC', 'inference_id': 'req_7274abc0489b4ddf8ff5edd905e8a521'}"
+    },
+    {
+      "index": 20,
+      "question": "As of August 1 2024, what is the most recently described genus of Colosteidae?",
+      "answer": "Deltaherpeton, first described in 2010",
+      "prediction": "",
+      "score": 0.0,
+      "tool_calls": 0,
+      "error": "Error code: 404 - {'error': {'message': 'Model not found', 'type': 'server_error', 'param': None, 'code': 'not_found_error'}, 'request_id': '9e4b13bd1bb9a43c-SJC', 'inference_id': 'req_7b1f032cafad4129912706ee660d05be'}"
+    },
+    {
+      "index": 21,
+      "question": "Ma\u0142gorzata Ro\u017cniecka is a model who won the title of Miss International. What is the difference in title years from when she won and the pageant winner who was murdered by her stalker?",
+      "answer": "10 years",
+      "prediction": "The query about a Miss International winner who was murdered by her stalker is not supported by any of the retrieved documents. There is no mention of such an incident in the provided information. Therefore, the difference in title years cannot be determined from the available data.",
+      "score": 0.8,
+      "tool_calls": 3,
+      "error": null
+    },
+    {
+      "index": 22,
+      "question": "According to the 1990 United States census, what was the total population of the cities in Oklahoma that had at least 100,000 residents according to the 2020 United States census?",
+      "answer": "950135",
+      "prediction": "According to the 2020 United States census, the cities in Oklahoma with at least 100,000 residents are Tulsa and Oklahoma City. \n\n- Tulsa had a population of 413,066.\n- Oklahoma City had a population of 681,599 (implied from context, as it is the state capital and the largest city in Oklahoma).\n\nThe total population of these cities is:\n\n413,066 (Tulsa) + 681,599 (Oklahoma City) = **1,094,665**\n\nThus, the total population of the cities in Oklahoma that had at least 100,000 residents according to the 2020 United States census is **1,094,665**.",
+      "score": 0.0,
+      "tool_calls": 3,
+      "error": null
+    },
+    {
+      "index": 23,
+      "question": "What was the political party of the person who advocated for the type of government used in Chikhali, Latur district to become the foundation of India's political system?",
+      "answer": "Indian National Congress",
+      "prediction": "The political party of the person who advocated for the type of government used in Chikhali, Latur district (panchayati raj) to become the foundation of India's political system is not explicitly mentioned in the provided documents. However, Mahatma Gandhi, who advocated for panchayat raj, was associated with the Indian National Congress. Therefore, the political party is the Indian National Congress.",
+      "score": 1.0,
+      "tool_calls": 2,
+      "error": null
+    },
+    {
+      "index": 24,
+      "question": "Giorgio Rognoni was an Italian professional footballer who played as a midfielder. 10 years after his death who was the midfielder who played in Milan that was born in Besana in Brianza,?",
+      "answer": "Demetrio Albertini",
+      "prediction": "Ten years after Giorgio Rognoni's death (1986 + 10 = 1996), the midfielder who played for Milan and was born in Besana in Brianza was Demetrio Albertini.",
+      "score": 1.0,
+      "tool_calls": 2,
+      "error": null
+    },
+    {
+      "index": 25,
+      "question": "What was the age difference between Mike Tyson and Tyson Fury on the respective days on which they lost their first ever fights? Represent the figure in years only.",
+      "answer": "12 years.",
+      "prediction": "",
+      "score": 0.0,
+      "tool_calls": 2,
+      "error": "Error code: 404 - {'error': {'message': 'Model not found', 'type': 'server_error', 'param': None, 'code': 'not_found_error'}, 'request_id': '9e4b14d71c81a43c-SJC', 'inference_id': 'req_964463ec81c741089be815e4a9758622'}"
+    },
+    {
+      "index": 26,
+      "question": "Using the Pruett rule, out of all of the blue moons that occurred between the beginning of World War I and the end of World War II, how many of them occurred on the 31st of the month?",
+      "answer": "9",
+      "prediction": "",
+      "score": 0.0,
+      "tool_calls": 2,
+      "error": "Error code: 404 - {'error': {'message': 'Model not found', 'type': 'server_error', 'param': None, 'code': 'not_found_error'}, 'request_id': '9e4b1500a84ca43c-SJC', 'inference_id': 'req_1f6371c21cd14a8d936062a9807e649b'}"
+    }
+  ]
+}

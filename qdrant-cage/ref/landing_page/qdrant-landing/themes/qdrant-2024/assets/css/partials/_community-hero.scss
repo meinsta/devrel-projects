@@ -1,0 +1,139 @@
+@use '../helpers/functions' as *;
+
+.community-hero {
+  position: relative;
+  padding-top: $spacer * 1.5;
+  padding-bottom: $spacer * 5;
+  background-color: $neutral-10;
+  overflow: hidden;
+
+  &__image {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: pxToRem(-20);
+
+    img {
+      width: 600px;
+      margin: 0 auto;
+    }
+  }
+
+  &__title {
+    font-size: $spacer * 2.5;
+    line-height: $spacer * 3;
+    margin-bottom: $spacer * 1.5;
+    color: $neutral-98;
+    text-align: center;
+  }
+
+  &__description {
+    font-size: pxToRem(18);
+    line-height: pxToRem(27);
+    margin-bottom: $spacer * 1.5;
+    color: $neutral-70;
+    text-align: center;
+  }
+
+  &__form {
+    margin-bottom: $spacer * 1.5;
+
+    form {
+      flex-wrap: wrap;
+    }
+
+    .hs_email {
+      width: 100%;
+
+      input[type='email'] {
+        padding-top: pxToRem(11);
+        padding-bottom: pxToRem(11);
+      }
+    }
+
+    .hs_submit {
+      width: 100%;
+
+      input[type='submit'] {
+        width: 100%;
+        max-height: $spacer * 3;
+      }
+    }
+  }
+
+  &__about {
+    font-size: pxToRem(14);
+    line-height: pxToRem(21);
+    margin-bottom: $spacer * 2.5;
+    color: $neutral-50;
+    text-align: center;
+  }
+
+  &__overlay {
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: pxToRem(200);
+    background-image: url('/img/blurred/blurred-light-12.svg');
+    background-position: center;
+    background-size: cover;
+    pointer-events: none;
+  }
+
+  @include media-breakpoint-up(md) {
+    &__image {
+      margin-bottom: pxToRem(-92);
+
+      img {
+        width: 100%;
+        max-width: pxToRem(1246);
+      }
+    }
+  }
+
+  @include media-breakpoint-up(lg) {
+    padding-bottom: $spacer * 8.5;
+
+    &__title {
+      max-width: pxToRem(680);
+      margin-left: auto;
+      margin-right: auto;
+      font-size: $spacer * 4;
+      line-height: pxToRem(76);
+    }
+
+    &__description {
+      max-width: pxToRem(680);
+      margin-left: auto;
+      margin-right: auto;
+      font-size: pxToRem(20);
+      line-height: pxToRem(30);
+    }
+
+    &__form {
+      position: relative;
+      z-index: 1;
+
+      form {
+        justify-content: center;
+      }
+
+      .hs_submit {
+        max-width: $spacer * 10;
+      }
+    }
+
+    &__about {
+      position: relative;
+      max-width: pxToRem(520);
+      margin: 0 auto;
+      z-index: 1;
+    }
+
+    &__overlay {
+      bottom: -30px;
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "eval_id": 1,
+  "eval_name": "reduce-existing",
+  "prompt": "My Qdrant collection already has 5 million vectors and it's eating 20GB of RAM. How do I reduce memory usage without recreating the collection or losing data?",
+  "assertions": [
+    {
+      "text": "Uses update_collection (not create_collection) to add quantization",
+      "type": "content_check"
+    },
+    {
+      "text": "Mentions that re-quantization happens in the background with no downtime",
+      "type": "content_check"
+    },
+    {
+      "text": "Suggests on_disk_payload as an option",
+      "type": "content_check"
+    },
+    {
+      "text": "Provides working Python code using update_collection",
+      "type": "content_check"
+    },
+    {
+      "text": "Warns about creating payload indexes when enabling on-disk payload",
+      "type": "content_check"
+    }
+  ]
+}

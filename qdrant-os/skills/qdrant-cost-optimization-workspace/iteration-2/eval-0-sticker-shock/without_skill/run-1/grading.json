@@ -1,0 +1,40 @@
+{
+  "expectations": [
+    {
+      "text": "Identifies full RAM as the cost driver",
+      "passed": true,
+      "evidence": "'462M vectors at 1536 dimensions means each vector is ~6KB. That is roughly 2.7TB of raw vector data in memory.'"
+    },
+    {
+      "text": "Recommends scalar quantization as first step",
+      "passed": true,
+      "evidence": "'Start with scalar quantization. It is nearly lossless in practice.'"
+    },
+    {
+      "text": "Mentions mmap storage as cost reduction lever",
+      "passed": true,
+      "evidence": "Mentions disk-based storage with mmap as a lever."
+    },
+    {
+      "text": "Mentions FDE or premium support can be removed",
+      "passed": false,
+      "evidence": "No mention of FDE, premium support, or optional add-ons. Mentions 'contract negotiation' generically but not specific Qdrant add-ons."
+    },
+    {
+      "text": "Provides concrete cost estimate or formula",
+      "passed": false,
+      "evidence": "Gives rough estimates ('$150-170k territory') but no actual formula (no $53/unit, no RAM unit calculation). No cost-formula.md knowledge."
+    },
+    {
+      "text": "Does NOT dismiss the customer's concern",
+      "passed": true,
+      "evidence": "Opens with 'Yeah, $600k for a single use case is brutal.'"
+    }
+  ],
+  "summary": {
+    "passed": 4,
+    "failed": 2,
+    "total": 6,
+    "pass_rate": 0.6667
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "expectations": [
+    {
+      "text": "connected_and_inspected_collection",
+      "passed": true,
+      "evidence": "Response includes actual collection data: 500 points, 768 vector dimension (Cosine distance), 7 segments, 0 indexed vectors, specific payload configuration with 5 indexed fields (description, category, price, product_name, tags), on-disk payload enabled. This is concrete data from the cluster, not generic advice."
+    },
+    {
+      "text": "checked_hnsw_params",
+      "passed": true,
+      "evidence": "Response explicitly mentions specific HNSW parameter values: 'm=16' and 'ef_construct=100'. These values are stated in the Detection Summary table and referenced throughout the analysis. The response also identifies the critical issue that indexed_vectors_count=0 due to indexing_threshold being 10,000."
+    },
+    {
+      "text": "checked_quantization",
+      "passed": true,
+      "evidence": "Response explicitly states 'Quantization: None' in the Cluster Details and discusses quantization status in multiple places: in the Phase 1 Detection Summary table, identifies it as root cause #4, and provides a concrete recommendation to enable scalar quantization with specific parameters (int8 type, always_ram: true)."
+    },
+    {
+      "text": "checked_optimizer_status",
+      "passed": true,
+      "evidence": "Response explicitly mentions 'Optimizer status: ok (not currently running)' in the Cluster Details section and includes a dedicated row in the Phase 1 Detection Summary: 'ok, no active optimizations'. The response also discusses optimizer behavior regarding indexing_threshold and segment merging."
+    },
+    {
+      "text": "prioritized_recommendations",
+      "passed": true,
+      "evidence": "Response provides 5 concrete recommendations explicitly ordered by impact (Phase 4 heading: 'Recommendations (Ordered by Impact)'): 1) Stop returning full payloads (biggest actionable win), 2) Lower indexing threshold to build HNSW index, 3) Use persistent HTTP connections, 4) Check geographic proximity, 5) Enable scalar quantization. Each includes specific technical implementation details (curl commands, JSON parameters, estimated time savings). These are not generic but tailored to the actual collection problems identified."
+    },
+    {
+      "text": "followed_phase_structure",
+      "passed": true,
+      "evidence": "Response explicitly uses Phase 1, Phase 2, Phase 3, and Phase 4 structure with headers: 'Phase 1: Detection Summary' (line 16), 'Phase 2: Classification' (line 28), 'Phase 3: Diagnosis' (line 32), and 'Phase 4: Recommendations' (line 84). Additionally, Phase 3A is referenced at line 30 ('Single query latency too high (Phase 3A)'). The phases are clearly labeled and followed throughout the diagnostic flow."
+    },
+    {
+      "text": "separated_qdrant_vs_network_latency",
+      "passed": true,
+      "evidence": "Response provides detailed breakdown with actual measurements. Lines 43-49 show measured timings: 'Qdrant internal search time WITH payload: ~0.4ms', 'Full HTTP round-trip WITH payload: ~250ms', and 'Full HTTP round-trip WITHOUT payload: ~190ms'. Table on lines 74-80 explicitly breaks down the 500ms into components: Network round-trip (~150-200ms), TLS handshake (~40-80ms), Payload serialization/transfer (~60-80ms), and Qdrant internal search (~0.4ms) totaling ~250-360ms. This clearly separates Qdrant internal performance from network overhead."
+    },
+    {
+      "text": "referenced_qdrant_docs",
+      "passed": false,
+      "evidence": "No URLs linking to qdrant.tech documentation found in the entire response. The document contains curl examples and configuration recommendations, but no actual hyperlinks to official Qdrant documentation. This is a clear FAIL - the assertion requires 'at least one URL linking to qdrant.tech documentation' and there are zero."
+    },
+    {
+      "text": "correct_latency_classification",
+      "passed": true,
+      "evidence": "Response correctly identifies this as a latency problem for single query speed at line 30: 'Single query latency too high (Phase 3A)'. Line 153 explicitly states 'The reported 500ms latency is not caused by slow search within Qdrant' and treats this as a single-query latency issue, not throughput/QPS optimization. The entire diagnosis focuses on reducing response time for individual queries, not on improving queries-per-second capacity."
+    },
+    {
+      "text": "avoided_recommending_exact_true",
+      "passed": true,
+      "evidence": "Response never mentions 'exact=true' or suggests it as a fix at any point. The recommendations focus on: 1) Reducing payload size with with_payload filtering (lines 86-102), 2) Lowering indexing_threshold to build HNSW (lines 104-120), 3) Using HTTP keep-alive (lines 122-124), 4) Geographic proximity (lines 126-128), and 5) Enabling quantization (lines 130-149). No suggestion of exact=true appears in the document."
+    }
+  ],
+  "summary": {
+    "passed": 9,
+    "failed": 1,
+    "total": 10,
+    "pass_rate": 0.9
+  }
+}

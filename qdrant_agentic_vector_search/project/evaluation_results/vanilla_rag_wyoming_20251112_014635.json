@@ -1,0 +1,63 @@
+{
+  "state": "wyoming",
+  "collection": "housing_statutes_wyoming",
+  "num_questions": 3,
+  "answer_accuracy": 33.33333333333333,
+  "retrieval_hit_rate": 0.0,
+  "correct_answers": 1,
+  "retrieval_hits": 0,
+  "avg_statutes_per_q": 3.0,
+  "results": [
+    {
+      "question_idx": 55,
+      "question": "Is there a state/territory law regulating residential evictions?",
+      "golden_answer": "Yes",
+      "predicted_answer": "No",
+      "answer_correct": false,
+      "golden_statute_ids": [
+        1074954
+      ],
+      "retrieved_statute_ids": [
+        1074975,
+        1073892,
+        1074974
+      ],
+      "retrieval_hit": false,
+      "num_retrieved": 3
+    },
+    {
+      "question_idx": 212,
+      "question": "Does the law specify a minimum number of days a tenant can be late on rent before the landlord can file an eviction action for nonpayment?",
+      "golden_answer": "Yes",
+      "predicted_answer": "No",
+      "answer_correct": false,
+      "golden_statute_ids": [
+        1074956
+      ],
+      "retrieved_statute_ids": [
+        1073892,
+        1074977,
+        1074013
+      ],
+      "retrieval_hit": false,
+      "num_retrieved": 3
+    },
+    {
+      "question_idx": 236,
+      "question": "Does the law require the tenant to respond to an eviction action before a hearing?",
+      "golden_answer": "No",
+      "predicted_answer": "No",
+      "answer_correct": true,
+      "golden_statute_ids": [
+        1074957
+      ],
+      "retrieved_statute_ids": [
+        1075441,
+        1074477,
+        1084410
+      ],
+      "retrieval_hit": false,
+      "num_retrieved": 3
+    }
+  ]
+}

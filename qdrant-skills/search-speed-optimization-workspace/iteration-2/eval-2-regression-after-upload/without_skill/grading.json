@@ -1,0 +1,35 @@
+{
+  "expectations": [
+    {
+      "text": "classified_as_regression_pattern: Response explicitly identifies this as a regression/degradation pattern, not general slow search",
+      "passed": true,
+      "evidence": "Title: 'Diagnosing 10-15x Search Latency Regression After Bulk Upload'. TL;DR: 'A 10-15x latency regression (20ms to 200-300ms) immediately following a large data upload... is a textbook post-upload optimization problem.' The response consistently uses 'regression' terminology and frames it as degradation from a known baseline."
+    },
+    {
+      "text": "ordered_diagnosis_correctly: Checks optimizer first, then segments, then cache, then data growth",
+      "passed": true,
+      "evidence": "Steps are ordered: 'Step 1: Check Optimizer Status (Most Likely Cause)', 'Step 2: Check Segment Count', 'Step 3: Check for Page Cache Eviction (Second Most Likely Cause)', 'Step 4: Verify Data Growth Isn't the Issue', 'Step 5: Check for Concurrent Optimizer Resource Contention'. The first four match the required order exactly: optimizer -> segments -> cache -> data growth."
+    },
+    {
+      "text": "warned_against_config_changes_during_optimizer: Explicitly warns not to change config while optimizer runs",
+      "passed": true,
+      "evidence": "TL;DR states: 'Do NOT change any configuration while the optimizer is running. That restarts the optimization process and prolongs the regression.' The 'What NOT to Do' section reinforces: 'Do not change collection parameters while the optimizer is running. Updating hnsw_config, optimizer_config, or quantization_config triggers a re-optimization, restarting the process and extending the downtime.'"
+    },
+    {
+      "text": "referenced_qdrant_docs: Response contains at least one URL linking to qdrant.tech documentation",
+      "passed": true,
+      "evidence": "Lines 135-141 contain seven qdrant.tech URLs: Optimizer documentation, Optimize Performance guide, Indexing optimization article, Bulk Upload tutorial, Collections API, Storage documentation, and Capacity Planning guide."
+    },
+    {
+      "text": "suggested_future_upload_workflow: Suggests preventive workflow for future uploads",
+      "passed": true,
+      "evidence": "The 'Preventive Measures for Future Bulk Uploads' section provides a detailed 5-step workflow: 1) Set indexing_threshold_kb high before upload to disable HNSW during upload, 2) Create payload indexes before uploading, 3) Upload in batches of 64-256 points, 4) Restore indexing_threshold_kb after upload for a single efficient optimization pass, 5) Monitor optimizer_status until Green."
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 0,
+    "total": 5,
+    "pass_rate": 1.0
+  }
+}

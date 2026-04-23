@@ -1,0 +1,59 @@
+{
+  "benchmark": "frames",
+  "model": "Qwen/Qwen3-4B-Instruct-2507:dkh5h5asnq9nly4p3fy5g2s5",
+  "n": 20,
+  "results": [
+    {
+      "label": "baseline (dense + BM25 + unweighted RRF)",
+      "ablation_type": "baseline",
+      "metrics": {
+        "score": 0.9,
+        "output_recall": 1.0,
+        "output_precision": 0.0,
+        "f1": 0.0,
+        "trajectory_recall": 1.0,
+        "n": 20,
+        "errors": 0
+      }
+    },
+    {
+      "label": "+ weighted RRF (dense=1.0, bm25=0.7)",
+      "ablation_type": "weighted_rrf",
+      "metrics": {
+        "score": 0.9,
+        "output_recall": 1.0,
+        "output_precision": 0.0,
+        "f1": 0.0,
+        "trajectory_recall": 1.0,
+        "n": 20,
+        "errors": 0
+      }
+    },
+    {
+      "label": "+ payload-filtered search",
+      "ablation_type": "payload_filtered",
+      "metrics": {
+        "score": 0.95,
+        "output_recall": 1.0,
+        "output_precision": 0.0,
+        "f1": 0.0,
+        "trajectory_recall": 1.0,
+        "n": 20,
+        "errors": 0
+      }
+    },
+    {
+      "label": "+ relevance feedback (1 round(s))",
+      "ablation_type": "relevance_feedback",
+      "metrics": {
+        "score": 0.55,
+        "output_recall": 1.0,
+        "output_precision": 0.0,
+        "f1": 0.0,
+        "trajectory_recall": 1.0,
+        "n": 20,
+        "errors": 0
+      }
+    }
+  ]
+}

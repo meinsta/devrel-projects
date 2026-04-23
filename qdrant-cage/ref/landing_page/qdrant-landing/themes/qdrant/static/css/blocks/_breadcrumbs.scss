@@ -1,0 +1,41 @@
+@use "../helpers/functions" as lib;
+
+.breadcrumbs {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -0.38rem 0 1.5rem;
+  color: var(--neutral-n-300, #8B9CCC);
+
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.3125rem;
+
+  &__crumb {
+    display: inline-block;
+    margin: 0;
+    position: relative;
+    text-transform: capitalize;
+    font-size: lib.rem(14);
+    font-weight: 400;
+    line-height: 1.69rem;
+
+    &:last-child {
+      margin-right: 0;
+      padding-right: 0;
+      color: var(--neutral-n-600, #39508F);
+    }
+
+    &:not(:last-child) {
+      margin-right: 0.38rem;
+    }
+
+    & > a {
+      color: var(--brand-dark-gray);
+
+      &:hover {
+        color: var(--brand-primary);
+      }
+    }
+  }
+}

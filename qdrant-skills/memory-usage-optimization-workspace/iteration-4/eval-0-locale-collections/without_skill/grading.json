@@ -1,0 +1,35 @@
+{
+  "expectations": [
+    {
+      "text": "Actually connects to the cluster and lists collections",
+      "passed": true,
+      "evidence": "Response shows a detailed collections inventory table with actual data: 'products-us (500 points, 768-dim, 2 segments)', 'embeddings-archive (200 points, 1536-dim, 2 segments)', etc. References real cluster URL and version 1.16.3."
+    },
+    {
+      "text": "Identifies the 10+ products-{locale} collections as an antipattern",
+      "passed": true,
+      "evidence": "Problem 1 explicitly states: 'The cluster runs 11 separate per-locale product collections (products-it-it, products-en-gb, products-de-de, etc.), each containing only 50 points. This is the primary architectural problem driving excess memory.'"
+    },
+    {
+      "text": "Calculates or mentions the per-collection overhead (12-14 MB each)",
+      "passed": false,
+      "evidence": "The response does not explicitly state the 12-14 MB per-collection fixed overhead figure. It mentions WAL (32 MB WAL capacity), segment metadata, and optimizer threads, but does not give the specific 12-14 MB per-collection baseline number. The summary table says '10x collection overhead' without quantifying it."
+    },
+    {
+      "text": "Recommends consolidating into a single collection with a tenant field",
+      "passed": true,
+      "evidence": "Recommendation 1 states: 'Merge all products-XX-XX collections into a single collection. The locale field is already present in payloads.' Includes step-by-step API instructions with example query filter using locale."
+    },
+    {
+      "text": "Checks collection config (on_disk, quantization) not just collection count",
+      "passed": true,
+      "evidence": "The full config table shows vectors.on_disk, hnsw.on_disk, quantization per collection. Problems 2-7 cover vectors.on_disk=false, HNSW on disk, quantization misconfiguration on embeddings-archive, and memmap_threshold settings."
+    }
+  ],
+  "summary": {
+    "passed": 4,
+    "failed": 1,
+    "total": 5,
+    "pass_rate": 0.8
+  }
+}

@@ -1,0 +1,110 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+CAGE_DIR="$(cd "$(dirname "$0")" && pwd)"
+HOST="${1:-claude}"
+
+echo "setting up CAGE..."
+echo "  cage dir: $CAGE_DIR"
+echo "  host: $HOST"
+
+# make scripts executable
+chmod +x "$CAGE_DIR/bin/"* 2>/dev/null || true
+chmod +x "$CAGE_DIR/hooks/"*.sh 2>/dev/null || true
+
+# build cage-core binary
+echo ""
+echo "building cage-core..."
+cd "$CAGE_DIR/core"
+
+if ! command -v bun &>/dev/null; then
+  echo "error: bun is required. install from https://bun.sh" >&2
+  exit 1
+fi
+
+bun install --frozen-lockfile 2>/dev/null || bun install
+
+# copy qdrant-edge native binding if not present
+if [ ! -f "node_modules/qdrant-edge/qdrant-edge.darwin-arm64.node" ] && [ -f "$CAGE_DIR/core/qdrant-edge.darwin-arm64.node" ]; then
+  mkdir -p node_modules/qdrant-edge
+  cp "$CAGE_DIR/core/qdrant-edge.darwin-arm64.node" node_modules/qdrant-edge/
+fi
+
+mkdir -p dist
+# for now, cage-core runs via bun (compiled binary needs native .node files)
+# create a wrapper script instead
+cat > dist/cage-core << COREEOF
+#!/usr/bin/env bash
+exec bun run "$CAGE_DIR/core/src/cli.ts" "\$@"
+COREEOF
+chmod +x dist/cage-core
+
+CAGE_CORE_BIN="$CAGE_DIR/core/dist/cage-core"
+echo "  cage-core built: $CAGE_CORE_BIN"
+
+cd "$CAGE_DIR"
+
+# hardcode cage-core path into policy hook
+sed "s|{{CAGE_CORE_BIN}}|$CAGE_CORE_BIN|g" hooks/check-policy.sh > hooks/check-policy-installed.sh
+chmod +x hooks/check-policy-installed.sh
+
+# create global state dir
+mkdir -p ~/.cage
+
+# symlink skills
+if [ "$HOST" = "claude" ] || [ "$HOST" = "auto" ]; then
+  SKILLS_DIR="$HOME/.claude/skills"
+  mkdir -p "$SKILLS_DIR"
+
+  for skill_dir in "$CAGE_DIR/skills/"*/; do
+    [ -d "$skill_dir" ] || continue
+    SKILL_NAME=$(basename "$skill_dir")
+    ln -snf "$skill_dir" "$SKILLS_DIR/cage-$SKILL_NAME"
+    echo "  skill: /cage-$SKILL_NAME"
+  done
+fi
+
+if [ "$HOST" = "codex" ] || [ "$HOST" = "auto" ]; then
+  SKILLS_DIR="$HOME/.codex/skills"
+  mkdir -p "$SKILLS_DIR"
+
+  for skill_dir in "$CAGE_DIR/skills/"*/; do
+    [ -d "$skill_dir" ] || continue
+    SKILL_NAME=$(basename "$skill_dir")
+    ln -snf "$skill_dir" "$SKILLS_DIR/cage-$SKILL_NAME"
+    echo "  skill: cage-$SKILL_NAME (codex)"
+  done
+fi
+
+# PATH suggestion
+SHELL_RC=""
+if [ -f "$HOME/.zshrc" ]; then
+  SHELL_RC="$HOME/.zshrc"
+elif [ -f "$HOME/.bashrc" ]; then
+  SHELL_RC="$HOME/.bashrc"
+fi
+
+if [ -n "$SHELL_RC" ]; then
+  if ! grep -q "cage/bin\|cage/core/dist" "$SHELL_RC" 2>/dev/null; then
+    echo ""
+    echo "add cage to your PATH:"
+    echo "  echo 'export PATH=\"$CAGE_DIR/bin:$CAGE_DIR/core/dist:\$PATH\"' >> $SHELL_RC"
+    echo "  source $SHELL_RC"
+  fi
+fi
+
+echo ""
+echo "CAGE setup complete."
+echo ""
+echo "hooks:"
+echo "  policy: $CAGE_DIR/hooks/check-policy-installed.sh"
+echo "  merge-blocker: $CAGE_DIR/hooks/prepare-commit-msg.sh"
+echo "  bypass-detection: $CAGE_DIR/hooks/check-bypass.sh"
+echo ""
+echo "to install hooks in a project:"
+echo "  cd <your-project>"
+echo "  cage init --template fullstack"
+echo "  pre-commit install"
+echo ""
+echo "for Claude Code policy enforcement, add to settings.json:"
+echo "  {\"hooks\":{\"PreToolUse\":[{\"matcher\":\"Bash\",\"hooks\":[{\"type\":\"command\",\"command\":\"$CAGE_DIR/hooks/check-policy-installed.sh\"}]}]}}"

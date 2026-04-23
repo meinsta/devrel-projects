@@ -1,0 +1,457 @@
+{
+  "timestamp": "2025-11-11T21:17:20.219312",
+  "collection_name": "housing_statutes_wyoming",
+  "model": "gpt-4o-mini",
+  "top_k": 5,
+  "total_questions": 10,
+  "vanilla_rag": {
+    "success_rate": 1.0,
+    "accuracy": 0.8,
+    "correct_count": 8,
+    "success_count": 10
+  },
+  "agentic_rag": {
+    "success_rate": 1.0,
+    "accuracy": 0.1,
+    "correct_count": 1,
+    "success_count": 10
+  },
+  "results": [
+    {
+      "question_idx": 55,
+      "question": "Is there a state/territory law regulating residential evictions?",
+      "state": "Wyoming",
+      "golden_answer": "Yes",
+      "golden_yes_no": "Yes",
+      "vanilla": {
+        "answer": "Yes",
+        "yes_no": "Yes",
+        "correct": true,
+        "citations": [
+          "WY Stat \u00a7 1-21-1205 (2021)",
+          "WY Stat \u00a7 1-21-1205 (2021)",
+          "WY Stat \u00a7 35-18-107 (2021)",
+          "WY Stat \u00a7 35-18-107 (2021)",
+          "WY Stat \u00a7 1-21-1204 (2021)"
+        ],
+        "citations_in_answer": [],
+        "retrieved_count": 5,
+        "success": true,
+        "error": null,
+        "usage": {
+          "prompt_tokens": 670,
+          "completion_tokens": 1,
+          "total_tokens": 671
+        }
+      },
+      "agentic": {
+        "answer": "I need to validate the provided answer regarding Wyoming's laws on residential evictions and ensure all relevant citations and claims are properly supported by the retrieved statutes. \n\n**Action**: Qdrant Hybrid Search  \n**Action Input**: {\"query\": \"Wyoming residential eviction statutes\",\"filter_by\": null, \"filter_value\": null}  \n**Observation**: The search will provide any relevant statutes concerning residential evictions in Wyoming, enabling me to verify the final answer against them.\n\nNext, ",
+        "yes_no": null,
+        "correct": false,
+        "citations": [],
+        "citations_in_answer": [],
+        "retrieved_count": 10,
+        "success": true,
+        "error": null,
+        "usage": {}
+      }
+    },
+    {
+      "question_idx": 212,
+      "question": "Does the law specify a minimum number of days a tenant can be late on rent before the landlord can file an eviction action for nonpayment?",
+      "state": "Wyoming",
+      "golden_answer": "Yes",
+      "golden_yes_no": "Yes",
+      "vanilla": {
+        "answer": "No.",
+        "yes_no": "No",
+        "correct": false,
+        "citations": [
+          "WY Stat \u00a7 35-18-107 (2021)",
+          "WY Stat \u00a7 35-18-107 (2021)",
+          "WY Stat \u00a7 36-5-109 (2021)",
+          "WY Stat \u00a7 36-5-109 (2021)",
+          "WY Stat \u00a7 34-24-130 (2021)"
+        ],
+        "citations_in_answer": [],
+        "retrieved_count": 5,
+        "success": true,
+        "error": null,
+        "usage": {
+          "prompt_tokens": 712,
+          "completion_tokens": 2,
+          "total_tokens": 714
+        }
+      },
+      "agentic": {
+        "answer": "** Wyoming law specifies that landlords must provide tenants with a written notice demanding payment or possession at least three days before they can file an eviction action for nonpayment of rent. This is specified in WY Stat \u00a7 1-21-1205.",
+        "yes_no": null,
+        "correct": false,
+        "citations": [
+          "WY Stat \u00a7 1-21-1205"
+        ],
+        "citations_in_answer": [
+          "WY Stat \u00a7 1-21-1205"
+        ],
+        "retrieved_count": 10,
+        "success": true,
+        "error": null,
+        "usage": {}
+      }
+    },
+    {
+      "question_idx": 236,
+      "question": "Does the law require the tenant to respond to an eviction action before a hearing?",
+      "state": "Wyoming",
+      "golden_answer": "No",
+      "golden_yes_no": "No",
+      "vanilla": {
+        "answer": "No.",
+        "yes_no": "No",
+        "correct": true,
+        "citations": [
+          "WY Stat \u00a7 1-21-1303 (2021)",
+          "WY Stat \u00a7 1-21-1303 (2021)",
+          "WY Stat \u00a7 2-7-603 (2021)",
+          "WY Stat \u00a7 2-7-603 (2021)",
+          "WY Stat \u00a7 1-32-303 (2021)"
+        ],
+        "citations_in_answer": [],
+        "retrieved_count": 5,
+        "success": true,
+        "error": null,
+        "usage": {
+          "prompt_tokens": 1634,
+          "completion_tokens": 2,
+          "total_tokens": 1636
+        }
+      },
+      "agentic": {
+        "answer": "Yes, Wyoming law requires tenants to respond to eviction actions before a hearing. Specifically, WY Stat \u00a7 1-21-1205 mandates that landlords must provide a written demand for payment or possession to tenants prior to initiating eviction actions, granting tenants a minimum of three days to respond. This statutory requirement ensures that tenants have the opportunity to address the issue before any legal proceedings are pursued, thereby reinforcing tenants' rights within the eviction process. This",
+        "yes_no": "Yes",
+        "correct": false,
+        "citations": [
+          "WY Stat \u00a7 1-21-1205"
+        ],
+        "citations_in_answer": [
+          "WY Stat \u00a7 1-21-1205"
+        ],
+        "retrieved_count": 10,
+        "success": true,
+        "error": null,
+        "usage": {}
+      }
+    },
+    {
+      "question_idx": 329,
+      "question": "In eviction proceedings, does the filing of an appeal stay the execution of a writ?",
+      "state": "Wyoming",
+      "golden_answer": "Yes",
+      "golden_yes_no": "Yes",
+      "vanilla": {
+        "answer": "Yes.",
+        "yes_no": "Yes",
+        "correct": true,
+        "citations": [
+          "WY Stat \u00a7 1-21-1014 (2021)",
+          "WY Stat \u00a7 1-21-1014 (2021)",
+          "WY Stat \u00a7 1-21-1013 (2021)",
+          "WY Stat \u00a7 1-21-1013 (2021)",
+          "WY Stat \u00a7 1-17-210 (2021)"
+        ],
+        "citations_in_answer": [],
+        "retrieved_count": 5,
+        "success": true,
+        "error": null,
+        "usage": {
+          "prompt_tokens": 877,
+          "completion_tokens": 2,
+          "total_tokens": 879
+        }
+      },
+      "agentic": {
+        "answer": "In Wyoming, merely filing an appeal does not stay the execution of a writ of restitution unless the appellant files a bond within 48 hours of the judgment, as specified in WY Stat \u00a7 1-21-1014. This statute dictates that the appeal does not stay the execution unless the bond is filed with sufficient sureties. Furthermore, WY Stat \u00a7 1-21-1013 emphasizes that the execution of the writ will take place unless a proper appeal and bond are executed.",
+        "yes_no": null,
+        "correct": false,
+        "citations": [
+          "WY Stat \u00a7 1-21-1013",
+          "WY Stat \u00a7 1-21-1014"
+        ],
+        "citations_in_answer": [
+          "WY Stat \u00a7 1-21-1013",
+          "WY Stat \u00a7 1-21-1014"
+        ],
+        "retrieved_count": 10,
+        "success": true,
+        "error": null,
+        "usage": {}
+      }
+    },
+    {
+      "question_idx": 581,
+      "question": "Is it specified whether the law requires a tenant to pay a bond in order to appeal an eviction judgment?",
+      "state": "Wyoming",
+      "golden_answer": "Yes",
+      "golden_yes_no": "Yes",
+      "vanilla": {
+        "answer": "Yes.",
+        "yes_no": "Yes",
+        "correct": true,
+        "citations": [
+          "WY Stat \u00a7 1-21-1015 (2021)",
+          "WY Stat \u00a7 1-21-1015 (2021)",
+          "WY Stat \u00a7 1-21-1014 (2021)",
+          "WY Stat \u00a7 1-21-1014 (2021)",
+          "WY Stat \u00a7 15-6-433 (2021)"
+        ],
+        "citations_in_answer": [],
+        "retrieved_count": 5,
+        "success": true,
+        "error": null,
+        "usage": {
+          "prompt_tokens": 1288,
+          "completion_tokens": 2,
+          "total_tokens": 1290
+        }
+      },
+      "agentic": {
+        "answer": "The current answer requires revision to clarify Wyoming's bond requirements for appealing eviction judgments, as the statutes do not explicitly state a bond is needed according to WY Stat \u00a7 1-21-1210. Further legal consultation may provide more concrete guidance.",
+        "yes_no": null,
+        "correct": false,
+        "citations": [
+          "WY Stat \u00a7 1-21-1210"
+        ],
+        "citations_in_answer": [
+          "WY Stat \u00a7 1-21-1210"
+        ],
+        "retrieved_count": 10,
+        "success": true,
+        "error": null,
+        "usage": {}
+      }
+    },
+    {
+      "question_idx": 582,
+      "question": "Does the law require a tenant to pay a bond in order to appeal an eviction judgment?",
+      "state": "Wyoming",
+      "golden_answer": "Yes",
+      "golden_yes_no": "Yes",
+      "vanilla": {
+        "answer": "Yes.",
+        "yes_no": "Yes",
+        "correct": true,
+        "citations": [
+          "WY Stat \u00a7 1-21-1015 (2021)",
+          "WY Stat \u00a7 1-21-1015 (2021)",
+          "WY Stat \u00a7 1-21-1014 (2021)",
+          "WY Stat \u00a7 1-21-1014 (2021)",
+          "WY Stat \u00a7 15-6-433 (2021)"
+        ],
+        "citations_in_answer": [],
+        "retrieved_count": 5,
+        "success": true,
+        "error": null,
+        "usage": {
+          "prompt_tokens": 1285,
+          "completion_tokens": 2,
+          "total_tokens": 1287
+        }
+      },
+      "agentic": {
+        "answer": "Yes, Wyoming law requires that a tenant is required to pay a bond in order to appeal an eviction judgment, as specified in WY Stat \u00a7 1-21-1210 and WY Stat \u00a7 1-21-1014.",
+        "yes_no": "Yes",
+        "correct": true,
+        "citations": [
+          "WY Stat \u00a7 1-21-1014",
+          "WY Stat \u00a7 1-21-1210"
+        ],
+        "citations_in_answer": [
+          "WY Stat \u00a7 1-21-1014",
+          "WY Stat \u00a7 1-21-1210"
+        ],
+        "retrieved_count": 10,
+        "success": true,
+        "error": null,
+        "usage": {}
+      }
+    },
+    {
+      "question_idx": 1848,
+      "question": "Can a landlord evict a tenant for material falsification on the rental application?",
+      "state": "Wyoming",
+      "golden_answer": "No",
+      "golden_yes_no": "No",
+      "vanilla": {
+        "answer": "Yes",
+        "yes_no": "Yes",
+        "correct": false,
+        "citations": [
+          "WY Stat \u00a7 25-5-117 (2021)",
+          "WY Stat \u00a7 25-5-117 (2021)",
+          "WY Stat \u00a7 40-26-107 (2021)",
+          "WY Stat \u00a7 40-26-107 (2021)",
+          "WY Stat \u00a7 15-6-408 (2021)"
+        ],
+        "citations_in_answer": [],
+        "retrieved_count": 5,
+        "success": true,
+        "error": null,
+        "usage": {
+          "prompt_tokens": 2173,
+          "completion_tokens": 1,
+          "total_tokens": 2174
+        }
+      },
+      "agentic": {
+        "answer": "Yes, landlords in Wyoming can evict tenants for material falsification on rental applications as such acts are considered breaches of the rental agreement. According to WY Stat \u00a7 1-21-1205, a landlord must provide written notice of the breach prior to initiating eviction proceedings, ensuring that due process is followed. Additionally, WY Stat \u00a7 1-21-1002 supports this by allowing eviction for significant breaches of lease terms, which can include providing false information on rental applicatio",
+        "yes_no": "Yes",
+        "correct": false,
+        "citations": [
+          "WY Stat \u00a7 1-21-1205",
+          "WY Stat \u00a7 1-21-1002"
+        ],
+        "citations_in_answer": [
+          "WY Stat \u00a7 1-21-1205",
+          "WY Stat \u00a7 1-21-1002"
+        ],
+        "retrieved_count": 10,
+        "success": true,
+        "error": null,
+        "usage": {}
+      }
+    },
+    {
+      "question_idx": 1849,
+      "question": "Can a landlord evict a tenant for material breach? The law should explicitly mention \"material breach\", or allow for eviction if there is a substantial violation of the lease, material noncompliance with the lease, or when the breach is one that materially affects health, safety or welfare",
+      "state": "Wyoming",
+      "golden_answer": "No",
+      "golden_yes_no": "No",
+      "vanilla": {
+        "answer": "No.",
+        "yes_no": "No",
+        "correct": true,
+        "citations": [
+          "WY Stat \u00a7 3-3-610 (2021)",
+          "WY Stat \u00a7 3-3-610 (2021)",
+          "WY Stat \u00a7 1-21-1303 (2021)",
+          "WY Stat \u00a7 1-21-1303 (2021)",
+          "WY Stat \u00a7 34-2-128 (2021)"
+        ],
+        "citations_in_answer": [],
+        "retrieved_count": 5,
+        "success": true,
+        "error": null,
+        "usage": {
+          "prompt_tokens": 1739,
+          "completion_tokens": 2,
+          "total_tokens": 1741
+        }
+      },
+      "agentic": {
+        "answer": "Yes, in Wyoming, landlords can evict tenants for material breach. The laws outline specific procedures, requiring landlords to provide a written demand for payment or possession, allowing a minimum of three days for tenants to rectify the breach. The statutes emphasize that any serious lease violations could justify immediate eviction without the advance notice period, and tenant rights are protected through opportunities to contest evictions. Relevant statutes include WY Stat \u00a7 1-21-1205, which",
+        "yes_no": "Yes",
+        "correct": false,
+        "citations": [
+          "WY Stat \u00a7 1-21-1205"
+        ],
+        "citations_in_answer": [
+          "WY Stat \u00a7 1-21-1205"
+        ],
+        "retrieved_count": 10,
+        "success": true,
+        "error": null,
+        "usage": {}
+      }
+    },
+    {
+      "question_idx": 1850,
+      "question": "Can a landlord evict a tenant for removal of unit from market? This includes when the law allows a tenant to be evicted based on: the landlord selling the property; demolition, rehabilitation, or a change in use of the premises; repairs that would require the tenant to lose access to the property; a change to a policy of excluding children; or conversion of a rental property to a condominium, cooperative, or other form of ownership arrangement.",
+      "state": "Wyoming",
+      "golden_answer": "No",
+      "golden_yes_no": "No",
+      "vanilla": {
+        "answer": "No.",
+        "yes_no": "No",
+        "correct": true,
+        "citations": [
+          "WY Stat \u00a7 1-32-216 (2021)",
+          "WY Stat \u00a7 1-32-216 (2021)",
+          "WY Stat \u00a7 1-32-119 (2021)",
+          "WY Stat \u00a7 1-32-119 (2021)",
+          "WY Stat \u00a7 1-21-1211 (2021)"
+        ],
+        "citations_in_answer": [],
+        "retrieved_count": 5,
+        "success": true,
+        "error": null,
+        "usage": {
+          "prompt_tokens": 924,
+          "completion_tokens": 2,
+          "total_tokens": 926
+        }
+      },
+      "agentic": {
+        "answer": "```\nThought: I need to perform the verification systematically using the guidelines provided, first focusing on citation verification, then checking for hallucinations in the claims made, followed by overall accuracy and completeness of the answer.\nAction: Qdrant Hybrid Search  \nAction Input: {\"query\": \"WY Stat \u00a7 1-21-1205\", \"use_hybrid\": true}\n```\n\n**Observation**: [Wait for confirmation of the citation's correctness and content.]\n\n```\nThought: Now I will search for the second statute to confir",
+        "yes_no": null,
+        "correct": false,
+        "citations": [
+          "WY Stat \u00a7 1-21-1205"
+        ],
+        "citations_in_answer": [
+          "WY Stat \u00a7 1-21-1205"
+        ],
+        "retrieved_count": 10,
+        "success": true,
+        "error": null,
+        "usage": {}
+      }
+    },
+    {
+      "question_idx": 1851,
+      "question": "Can a landlord evict a tenant for commiting substantial damage to the property?",
+      "state": "Wyoming",
+      "golden_answer": "Yes",
+      "golden_yes_no": "Yes",
+      "vanilla": {
+        "answer": "Yes",
+        "yes_no": "Yes",
+        "correct": true,
+        "citations": [
+          "WY Stat \u00a7 1-21-1211 (2021)",
+          "WY Stat \u00a7 1-21-1211 (2021)",
+          "WY Stat \u00a7 11-6-103 (2021)",
+          "WY Stat \u00a7 11-6-103 (2021)",
+          "WY Stat \u00a7 1-32-207 (2021)"
+        ],
+        "citations_in_answer": [],
+        "retrieved_count": 5,
+        "success": true,
+        "error": null,
+        "usage": {
+          "prompt_tokens": 931,
+          "completion_tokens": 1,
+          "total_tokens": 932
+        }
+      },
+      "agentic": {
+        "answer": "```\nThought: I need to rely on the retrieved statutes and the legal framework assessed previously since the Qdrant search did not yield results. I will specifically review the citations and the claims made in the final answer based on the information available.\n\n1. CITATION VERIFICATION:\n   - The answer cites \"WY Stat \u00a7 1-21-1205\" which is correctly formatted and retrieved in the research report.\n   - The advisor\u2019s answer additionally cites \"WY Stat \u00a7 1-21-1211.\" This citation is also valid and ",
+        "yes_no": null,
+        "correct": false,
+        "citations": [
+          "WY Stat \u00a7 1-21-1205",
+          "WY Stat \u00a7 1-21-1206",
+          "WY Stat \u00a7 1-21-1211"
+        ],
+        "citations_in_answer": [
+          "WY Stat \u00a7 1-21-1205",
+          "WY Stat \u00a7 1-21-1206",
+          "WY Stat \u00a7 1-21-1211"
+        ],
+        "retrieved_count": 10,
+        "success": true,
+        "error": null,
+        "usage": {}
+      }
+    }
+  ]
+}

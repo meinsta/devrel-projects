@@ -1,0 +1,32 @@
+
+
+<link href="{{ "css/main.css" | absURL }}" rel="stylesheet">
+
+{{ if eq .Section "marketing" }}
+<link href="{{ "css/marketing-landing.css" | absURL }}" rel="stylesheet">
+{{ end }}
+
+{{/*
+{{ $maincss := resources.Get "css/main.css" }}
+{{ $style := $maincss | resources.Minify }}
+
+<link rel="stylesheet"
+      href="{{ $style.Permalink }}"
+      integrity="{{ $style.Data.Integrity }}">
+
+*/}}
+
+
+<link rel="preconnect" href="https://fonts.gstatic.com">
+
+
+<!-- google fonts -->
+<link rel="preload" href="https://fonts.googleapis.com/css2?family={{ .Site.Params.font }}&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ .Site.Params.font }}&display=swap"></noscript>
+
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.2/dist/css/splide-core.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.2/dist/css/splide-core.min.css"></noscript>
+
+{{ if or (eq .Section "documentation") (eq .Section "blog") }}
+<link rel="stylesheet" href="/css/qdr-search.min.css">
+{{ end }}

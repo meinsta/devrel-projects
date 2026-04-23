@@ -1,0 +1,183 @@
+{
+  "baseline_accuracy": 30.0,
+  "optimized_accuracy": 48.275862068965516,
+  "vanilla_benchmark": 82.8,
+  "improvement": -34.52413793103448,
+  "test_size": 29,
+  "results": [
+    {
+      "question": "Is the term 'Summary order for removal' used to refer to the order from the court to the authorities to remove a tenant?",
+      "golden": "No",
+      "predicted": "No",
+      "correct": true
+    },
+    {
+      "question": "Is the term 'Warrant for possession' used to refer to the order from the court to the authorities to remove a tenant?",
+      "golden": "No",
+      "predicted": "Yes",
+      "correct": false
+    },
+    {
+      "question": "Is the term 'Order of possession' used to refer to the order from the court to the authorities to remove a tenant?",
+      "golden": "No",
+      "predicted": "Yes",
+      "correct": false
+    },
+    {
+      "question": "Is the term 'Order of restitution' used to refer to the order from the court to the authorities to remove a tenant?",
+      "golden": "No",
+      "predicted": "No",
+      "correct": true
+    },
+    {
+      "question": "Is the term 'Warrant of eviction' used to refer to the order from the court to the authorities to remove a tenant?",
+      "golden": "No",
+      "predicted": "Yes",
+      "correct": false
+    },
+    {
+      "question": "Is the term 'Writ for removal' used to refer to the order from the court to the authorities to remove a tenant?",
+      "golden": "No",
+      "predicted": "No",
+      "correct": true
+    },
+    {
+      "question": "Is the term 'Writ of possession' used to refer to the order from the court to the authorities to remove a tenant?",
+      "golden": "No",
+      "predicted": "Yes",
+      "correct": false
+    },
+    {
+      "question": "Is the term 'Warrant of ejectment' used to refer to the order from the court to the authorities to remove a tenant?",
+      "golden": "No",
+      "predicted": "Yes",
+      "correct": false
+    },
+    {
+      "question": "Is the term 'Writ of eviction' used to refer to the order from the court to the authorities to remove a tenant?",
+      "golden": "No",
+      "predicted": "Yes",
+      "correct": false
+    },
+    {
+      "question": "Is the term 'Execution' used to refer to the order from the court to the authorities to remove a tenant?",
+      "golden": "No",
+      "predicted": "Yes",
+      "correct": false
+    },
+    {
+      "question": "Is the term 'Eviction order' used to refer to the order from the court to the authorities to remove a tenant?",
+      "golden": "No",
+      "predicted": "Yes",
+      "correct": false
+    },
+    {
+      "question": "Is the term 'Execution for possession' used to refer to the order from the court to the authorities to remove a tenant?",
+      "golden": "No",
+      "predicted": "Yes",
+      "correct": false
+    },
+    {
+      "question": "Is the term 'Writ of assistance' used to refer to the order from the court to the authorities to remove a tenant?",
+      "golden": "No",
+      "predicted": "No",
+      "correct": true
+    },
+    {
+      "question": "Is the term 'Warrant of restitution' used to refer to the order from the court to the authorities to remove a tenant?",
+      "golden": "No",
+      "predicted": "Yes",
+      "correct": false
+    },
+    {
+      "question": "Is the term 'Writ of habere facias possessionem' used to refer to the order from the court to the authorities to remove a tenant?",
+      "golden": "No",
+      "predicted": "Yes",
+      "correct": false
+    },
+    {
+      "question": "Is the term 'Writ of recovery of premises and order to vacate' used to refer to the order from the court to the authorities to remove a tenant?",
+      "golden": "No",
+      "predicted": "Yes",
+      "correct": false
+    },
+    {
+      "question": "Is the term 'Writ of restitution' used to refer to the order from the court to the authorities to remove a tenant?",
+      "golden": "Yes",
+      "predicted": "Yes",
+      "correct": true
+    },
+    {
+      "question": "Is the term 'Writ of execution' used to refer to the order from the court to the authorities to remove a tenant?",
+      "golden": "No",
+      "predicted": "Yes",
+      "correct": false
+    },
+    {
+      "question": "Is the term 'Restitution of premises' used to refer to the order from the court to the authorities to remove a tenant?",
+      "golden": "No",
+      "predicted": "No",
+      "correct": true
+    },
+    {
+      "question": "Are the circumstances that postpone the execution of a writ of eviction specified?",
+      "golden": "Yes",
+      "predicted": "Yes",
+      "correct": true
+    },
+    {
+      "question": "Does a public emergency require postponement of the execution of a write of eviction?",
+      "golden": "No",
+      "predicted": "No",
+      "correct": true
+    },
+    {
+      "question": "Does the completion of a drug treatment program require postponement of the execution of a writ of eviction?",
+      "golden": "No",
+      "predicted": "No",
+      "correct": true
+    },
+    {
+      "question": "Does a tenant's financial insolvency require postponement of the execution of a writ of eviction?",
+      "golden": "No",
+      "predicted": "No",
+      "correct": true
+    },
+    {
+      "question": "Does inclement weather postpone the execution of a writ of eviction?",
+      "golden": "No",
+      "predicted": "No",
+      "correct": true
+    },
+    {
+      "question": "Can a writ of eviction only be executed during the daytime?",
+      "golden": "No",
+      "predicted": "No",
+      "correct": true
+    },
+    {
+      "question": "Does a tenant's ongoing military service require the postponement of the execution of a writ of eviction?",
+      "golden": "No",
+      "predicted": "Yes",
+      "correct": false
+    },
+    {
+      "question": "Does the law require that writs of execution not be executed on holidays?",
+      "golden": "No",
+      "predicted": "No",
+      "correct": true
+    },
+    {
+      "question": "Does the law require that writs of execution be postponed for good cause? This includes when the law states that the court shall specify the time when the tenant must vacate the property, taking into consideration the possibility of harm to the parties and other material facts; or when the court can postpone execution if it deemed additional time was appropriate.",
+      "golden": "No",
+      "predicted": "No",
+      "correct": true
+    },
+    {
+      "question": "Does the law require that writs of execution not be executed on weekends?",
+      "golden": "Yes",
+      "predicted": "No",
+      "correct": false
+    }
+  ]
+}

@@ -1,0 +1,800 @@
+{
+  "state": "wyoming",
+  "num_questions": 99,
+  "correct_answers": 52,
+  "accuracy": 52.52525252525253,
+  "results": [
+    {
+      "question_idx": 55,
+      "question": "Is there a state/territory law regulating residential evictions?",
+      "golden_answer": "Yes",
+      "predicted_answer": "Yes",
+      "raw_answer": "Yes",
+      "correct": true
+    },
+    {
+      "question_idx": 212,
+      "question": "Does the law specify a minimum number of days a tenant can be late on rent before the landlord can file an eviction action for nonpayment?",
+      "golden_answer": "Yes",
+      "predicted_answer": "No",
+      "raw_answer": "No",
+      "correct": false
+    },
+    {
+      "question_idx": 236,
+      "question": "Does the law require the tenant to respond to an eviction action before a hearing?",
+      "golden_answer": "No",
+      "predicted_answer": "No",
+      "raw_answer": "No",
+      "correct": true
+    },
+    {
+      "question_idx": 329,
+      "question": "In eviction proceedings, does the filing of an appeal stay the execution of a writ?",
+      "golden_answer": "Yes",
+      "predicted_answer": "Yes",
+      "raw_answer": "Yes",
+      "correct": true
+    },
+    {
+      "question_idx": 581,
+      "question": "Is it specified whether the law requires a tenant to pay a bond in order to appeal an eviction judgment?",
+      "golden_answer": "Yes",
+      "predicted_answer": "Yes",
+      "raw_answer": "Yes",
+      "correct": true
+    },
+    {
+      "question_idx": 582,
+      "question": "Does the law require a tenant to pay a bond in order to appeal an eviction judgment?",
+      "golden_answer": "Yes",
+      "predicted_answer": "Yes",
+      "raw_answer": "Yes",
+      "correct": true
+    },
+    {
+      "question_idx": 1848,
+      "question": "Can a landlord evict a tenant for material falsification on the rental application?",
+      "golden_answer": "No",
+      "predicted_answer": "No",
+      "raw_answer": "No",
+      "correct": true
+    },
+    {
+      "question_idx": 1849,
+      "question": "Can a landlord evict a tenant for material breach? The law should explicitly mention \"material breach\", or allow for eviction if there is a substantial violation of the lease, material noncompliance with the lease, or when the breach is one that materially affects health, safety or welfare",
+      "golden_answer": "No",
+      "predicted_answer": "Yes",
+      "raw_answer": "Yes",
+      "correct": false
+    },
+    {
+      "question_idx": 1850,
+      "question": "Can a landlord evict a tenant for removal of unit from market? This includes when the law allows a tenant to be evicted based on: the landlord selling the property; demolition, rehabilitation, or a change in use of the premises; repairs that would require the tenant to lose access to the property; a change to a policy of excluding children; or conversion of a rental property to a condominium, cooperative, or other form of ownership arrangement.",
+      "golden_answer": "No",
+      "predicted_answer": "No",
+      "raw_answer": "No",
+      "correct": true
+    },
+    {
+      "question_idx": 1851,
+      "question": "Can a landlord evict a tenant for commiting substantial damage to the property?",
+      "golden_answer": "Yes",
+      "predicted_answer": "Yes",
+      "raw_answer": "Yes",
+      "correct": true
+    },
+    {
+      "question_idx": 1852,
+      "question": "Can a landlord evict a tenant for committing domestic violence? This includes when the a tenant can be evicted if they are a domestic violence offender, or if they endanger another tenant and are subject to a protective order or criminal complaint for domestic abuse.",
+      "golden_answer": "No",
+      "predicted_answer": "Yes",
+      "raw_answer": "Yes",
+      "correct": false
+    },
+    {
+      "question_idx": 1853,
+      "question": "Can a landlord evict a tenant for endangering property? This includes where the law refers to situations that could result in damage to the property; or a pet capable of causing damage to persons or property.",
+      "golden_answer": "No",
+      "predicted_answer": "Yes",
+      "raw_answer": "Yes",
+      "correct": false
+    },
+    {
+      "question_idx": 1854,
+      "question": "Can a landlord evict a tenant for remaining on property after expiration of the lease?",
+      "golden_answer": "Yes",
+      "predicted_answer": "Yes",
+      "raw_answer": "Yes",
+      "correct": true
+    },
+    {
+      "question_idx": 1855,
+      "question": "Can a landlord evict a tenant for refusal to allow the landlord lawful access to the unit?",
+      "golden_answer": "Yes",
+      "predicted_answer": "Yes",
+      "raw_answer": "Yes",
+      "correct": true
+    },
+    {
+      "question_idx": 1856,
+      "question": "Can a landlord evict a tenant for nuisance activity? This includes: maintaining, committing, or permitting the maintenance or commission of a nuisance; conduct that disturbs a neighbor\u2019s or another tenant\u2019s peaceful enjoyment of their premises; causing a serious health hazard to exist on the property; or for misuse of property.",
+      "golden_answer": "Yes",
+      "predicted_answer": "Yes",
+      "raw_answer": "Yes",
+      "correct": true
+    },
+    {
+      "question_idx": 1857,
+      "question": "Can a landlord evict a tenant for having unauthorized occupants?",
+      "golden_answer": "No",
+      "predicted_answer": "Yes",
+      "raw_answer": "Yes",
+      "correct": false
+    },
+    {
+      "question_idx": 1858,
+      "question": "Can a landlord evict a tenant for violating statutory tenant obligations?",
+      "golden_answer": "Yes",
+      "predicted_answer": "Yes",
+      "raw_answer": "Yes",
+      "correct": true
+    },
+    {
+      "question_idx": 1859,
+      "question": "Can a landlord evict a tenant for criminal activity? This includes: criminal or illegal activity generally; committing a specific crime or illegal act; the use, possession, or sale of controlled substances; an unlawful action causing serious physical harm to another person; or criminal nuisance.",
+      "golden_answer": "No",
+      "predicted_answer": "Yes",
+      "raw_answer": "Yes",
+      "correct": false
+    },
+    {
+      "question_idx": 1860,
+      "question": "Can a landlord evict a tenant for breach/breaking the lease, the rental agreement, or a landlord\u2019s rule?",
+      "golden_answer": "No",
+      "predicted_answer": "Yes",
+      "raw_answer": "Yes",
+      "correct": false
+    },
+    {
+      "question_idx": 1861,
+      "question": "Can a landlord evict a tenant if the property is made uninhabitable?",
+      "golden_answer": "Yes",
+      "predicted_answer": "No",
+      "raw_answer": "No",
+      "correct": false
+    },
+    {
+      "question_idx": 1862,
+      "question": "Can a landlord evict a tenant for endangering another person? This includes instances when the law allows for eviction of a tenant if: their behavior or the behavior of members of their family adversely affects the health or safety of other tenants, or the landlord or their representatives; the tenant or a guest are a perpetrator of violence; or the presence of a domestic violence offender at the tenant\u2019s premises results in violent disturbances that pose a threat to the safety of other residents.",
+      "golden_answer": "No",
+      "predicted_answer": "Yes",
+      "raw_answer": "Yes",
+      "correct": false
+    },
+    {
+      "question_idx": 1863,
+      "question": "Can a landlord evict a tenant for refusal of new lease terms? This includes when the law allows for eviction if the tenant refused to sign a lease extension; refused to agree to a fair rent increase; or refused to agree to lease changes at the time of renewal",
+      "golden_answer": "No",
+      "predicted_answer": "Yes",
+      "raw_answer": "Yes",
+      "correct": false
+    },
+    {
+      "question_idx": 1864,
+      "question": "Can a landlord evict a tenant for committing or failing to dispose of waste?",
+      "golden_answer": "No",
+      "predicted_answer": "Yes",
+      "raw_answer": "Yes",
+      "correct": false
+    },
+    {
+      "question_idx": 1865,
+      "question": "Can a landlord evict a tenant because they seek to use the property for personal use?",
+      "golden_answer": "No",
+      "predicted_answer": "No",
+      "raw_answer": "No",
+      "correct": true
+    },
+    {
+      "question_idx": 1866,
+      "question": "Can a landlord evict a tenant for nonpayment of rent?",
+      "golden_answer": "Yes",
+      "predicted_answer": "Yes",
+      "raw_answer": "Yes",
+      "correct": true
+    },
+    {
+      "question_idx": 3331,
+      "question": "Is it specified on what basis it is unlawful to evict a tenant under state/territory law?",
+      "golden_answer": "Yes",
+      "predicted_answer": "Yes",
+      "raw_answer": "Yes",
+      "correct": true
+    },
+    {
+      "question_idx": 3332,
+      "question": "Is it unlawful to evict a tenant based on military or veteran status?",
+      "golden_answer": "No",
+      "predicted_answer": "No",
+      "raw_answer": "No",
+      "correct": true
+    },
+    {
+      "question_idx": 3333,
+      "question": "Is it unlawful to evict a tenant based on their ancestry?",
+      "golden_answer": "No",
+      "predicted_answer": "Yes",
+      "raw_answer": "Yes",
+      "correct": false
+    },
+    {
+      "question_idx": 3334,
+      "question": "Is it unlawful to evict a tenant based on their political affiliations?",
+      "golden_answer": "No",
+      "predicted_answer": "Yes",
+      "raw_answer": "Yes",
+      "correct": false
+    },
+    {
+      "question_idx": 3335,
+      "question": "Is it unlawful to evict a tenant because of their gender identity?",
+      "golden_answer": "No",
+      "predicted_answer": "Yes",
+      "raw_answer": "Yes",
+      "correct": false
+    },
+    {
+      "question_idx": 3336,
+      "question": "Does the law prohibit rental agreements from including a provision allowing a landlord to evict a tenant because they contacted law enforcement services, health services, or safety services?",
+      "golden_answer": "No",
+      "predicted_answer": "No",
+      "raw_answer": "No",
+      "correct": true
+    },
+    {
+      "question_idx": 3337,
+      "question": "Is it unlawful to evict a tenant because they are part of two or more of the federally protected classes under the Fair Housing Act (race, color, religion, national origin, sex, disability, and familial status)?",
+      "golden_answer": "Yes",
+      "predicted_answer": "Yes",
+      "raw_answer": "Yes",
+      "correct": true
+    },
+    {
+      "question_idx": 3338,
+      "question": "Is it unlawful to evict a tenant because of their sexual orientation?",
+      "golden_answer": "No",
+      "predicted_answer": "Yes",
+      "raw_answer": "Yes",
+      "correct": false
+    },
+    {
+      "question_idx": 3339,
+      "question": "Is it unlawful to evict a tenant based on \"creed\" or \"religious creed\"?",
+      "golden_answer": "No",
+      "predicted_answer": "Yes",
+      "raw_answer": "Yes",
+      "correct": false
+    },
+    {
+      "question_idx": 3340,
+      "question": "Is it unlawful to evict a tenant based on their marital status?",
+      "golden_answer": "No",
+      "predicted_answer": "Yes",
+      "raw_answer": "Yes",
+      "correct": false
+    },
+    {
+      "question_idx": 3341,
+      "question": "Is it unlawful to evict a tenant because of their physical appearance?",
+      "golden_answer": "No",
+      "predicted_answer": "No",
+      "raw_answer": "No",
+      "correct": true
+    },
+    {
+      "question_idx": 3342,
+      "question": "Is it unlawful to evict a tenant because they experienced domestic violence?",
+      "golden_answer": "Yes",
+      "predicted_answer": "Yes",
+      "raw_answer": "Yes",
+      "correct": true
+    },
+    {
+      "question_idx": 3343,
+      "question": "Is it unlawful to evict a tenant because of their age?",
+      "golden_answer": "No",
+      "predicted_answer": "No",
+      "raw_answer": "No",
+      "correct": true
+    },
+    {
+      "question_idx": 3344,
+      "question": "Is it unlawful to evict a tenant because of the type of income they receive, their status with regard to public assistance, or because they have a housing voucher?",
+      "golden_answer": "No",
+      "predicted_answer": "Yes",
+      "raw_answer": "Yes",
+      "correct": false
+    },
+    {
+      "question_idx": 3345,
+      "question": "Is it unlawful to evict a tenant because of their immigration status?",
+      "golden_answer": "No",
+      "predicted_answer": "Yes",
+      "raw_answer": "Yes",
+      "correct": false
+    },
+    {
+      "question_idx": 3912,
+      "question": "Does the law require the landlord to give the tenant notice to vacate the property prior to terminating a tenancy?",
+      "golden_answer": "Yes",
+      "predicted_answer": "Yes",
+      "raw_answer": "Yes",
+      "correct": true
+    },
+    {
+      "question_idx": 4615,
+      "question": "Is it specified in which court eviction cases are first heard?",
+      "golden_answer": "Yes",
+      "predicted_answer": "No",
+      "raw_answer": "No",
+      "correct": false
+    },
+    {
+      "question_idx": 4616,
+      "question": "Are eviction cases first heard in housing court?",
+      "golden_answer": "No",
+      "predicted_answer": "Yes",
+      "raw_answer": "Yes",
+      "correct": false
+    },
+    {
+      "question_idx": 4617,
+      "question": "Are eviction cases first heard in municipal court?",
+      "golden_answer": "No",
+      "predicted_answer": "Yes",
+      "raw_answer": "Yes",
+      "correct": false
+    },
+    {
+      "question_idx": 4618,
+      "question": "Are eviction cases first heard in county court?",
+      "golden_answer": "No",
+      "predicted_answer": "Yes",
+      "raw_answer": "Yes",
+      "correct": false
+    },
+    {
+      "question_idx": 4619,
+      "question": "Are eviction cases first heard in high court?",
+      "golden_answer": "No",
+      "predicted_answer": "No",
+      "raw_answer": "No",
+      "correct": true
+    },
+    {
+      "question_idx": 4620,
+      "question": "Are eviction cases first heard in circuit court?",
+      "golden_answer": "Yes",
+      "predicted_answer": "No",
+      "raw_answer": "No",
+      "correct": false
+    },
+    {
+      "question_idx": 4621,
+      "question": "Are eviction cases first heard in state court?",
+      "golden_answer": "No",
+      "predicted_answer": "Yes",
+      "raw_answer": "Yes",
+      "correct": false
+    },
+    {
+      "question_idx": 4622,
+      "question": "Are eviction cases first heard in court of common pleas?",
+      "golden_answer": "No",
+      "predicted_answer": "No",
+      "raw_answer": "No",
+      "correct": true
+    },
+    {
+      "question_idx": 4623,
+      "question": "Are eviction cases first heard in justice of the peace court?",
+      "golden_answer": "No",
+      "predicted_answer": "Yes",
+      "raw_answer": "Yes",
+      "correct": false
+    },
+    {
+      "question_idx": 4624,
+      "question": "Are eviction cases first heard in magistrates court?",
+      "golden_answer": "No",
+      "predicted_answer": "Yes",
+      "raw_answer": "Yes",
+      "correct": false
+    },
+    {
+      "question_idx": 4625,
+      "question": "Are eviction cases first heard in superior court?",
+      "golden_answer": "No",
+      "predicted_answer": "No",
+      "raw_answer": "No",
+      "correct": true
+    },
+    {
+      "question_idx": 4626,
+      "question": "Are eviction cases first heard in district court?",
+      "golden_answer": "No",
+      "predicted_answer": "Yes",
+      "raw_answer": "Yes",
+      "correct": false
+    },
+    {
+      "question_idx": 4627,
+      "question": "Are eviction cases first heard in justice court?",
+      "golden_answer": "No",
+      "predicted_answer": "Yes",
+      "raw_answer": "Yes",
+      "correct": false
+    },
+    {
+      "question_idx": 5264,
+      "question": "Are the primary methods of service permitted for an eviction action specified?",
+      "golden_answer": "No",
+      "predicted_answer": "Yes",
+      "raw_answer": "Yes",
+      "correct": false
+    },
+    {
+      "question_idx": 6510,
+      "question": "Is it specified what must be included on the summons?",
+      "golden_answer": "Yes",
+      "predicted_answer": "Yes",
+      "raw_answer": "Yes",
+      "correct": true
+    },
+    {
+      "question_idx": 6511,
+      "question": "Is it required that the evictions summons served to tenants mention the tenant's right to a jury trial?",
+      "golden_answer": "No",
+      "predicted_answer": "No",
+      "raw_answer": "No",
+      "correct": true
+    },
+    {
+      "question_idx": 6512,
+      "question": "Is it required that the evictions summons served to tenants describe what the tenant must do? This includes: a direction that the defendant file a pleading in response to the complaint; a direction that the defendant respond either orally or in writing; instructions on what a tenant had to do to respond to the summons; a requirement that the defendant appear in court; or a requirement that the defendant file an appearance.",
+      "golden_answer": "No",
+      "predicted_answer": "No",
+      "raw_answer": "No",
+      "correct": true
+    },
+    {
+      "question_idx": 6513,
+      "question": "Is it required that the evictions summons served to tenants describe list the reason for eviction?",
+      "golden_answer": "Yes",
+      "predicted_answer": "Yes",
+      "raw_answer": "Yes",
+      "correct": true
+    },
+    {
+      "question_idx": 6514,
+      "question": "Is it required that the evictions summons served to tenants mention information on legal services the tenant could leverage (e.g., legal aid or legal services that a tenant could contact to request assistance)?",
+      "golden_answer": "No",
+      "predicted_answer": "No",
+      "raw_answer": "No",
+      "correct": true
+    },
+    {
+      "question_idx": 6515,
+      "question": "Is it required that the evictions summons served to tenants state the amount owed by the tenant?",
+      "golden_answer": "No",
+      "predicted_answer": "No",
+      "raw_answer": "No",
+      "correct": true
+    },
+    {
+      "question_idx": 6516,
+      "question": "Is it required that the evictions summons served to tenants provide information on appeal process?",
+      "golden_answer": "No",
+      "predicted_answer": "No",
+      "raw_answer": "No",
+      "correct": true
+    },
+    {
+      "question_idx": 6517,
+      "question": "Is it required that the evictions summons served to tenants describe repercussions for failing to appear in court?",
+      "golden_answer": "No",
+      "predicted_answer": "No",
+      "raw_answer": "No",
+      "correct": true
+    },
+    {
+      "question_idx": 6518,
+      "question": "Is it required that the evictions summons served to tenants state the retaliatory eviction is unlawful?",
+      "golden_answer": "No",
+      "predicted_answer": "No",
+      "raw_answer": "No",
+      "correct": true
+    },
+    {
+      "question_idx": 6519,
+      "question": "Is it required that the evictions summons served to tenants describe what rights the landlord has to dispose of the tenant\u2019s property?",
+      "golden_answer": "No",
+      "predicted_answer": "No",
+      "raw_answer": "No",
+      "correct": true
+    },
+    {
+      "question_idx": 7452,
+      "question": "When a tenant appeals, is the execution of eviction stayed for the duration of the pending appeal?",
+      "golden_answer": "Yes",
+      "predicted_answer": "Yes",
+      "raw_answer": "Yes",
+      "correct": true
+    },
+    {
+      "question_idx": 7483,
+      "question": "For eviction proceedings, does a tenant have to request a stay of execution for an appeal?",
+      "golden_answer": "Yes",
+      "predicted_answer": "Yes",
+      "raw_answer": "Yes",
+      "correct": true
+    },
+    {
+      "question_idx": 8628,
+      "question": "Is it specified what term is used to refer to the order from the court to the authorities to remove a tenant?",
+      "golden_answer": "Yes",
+      "predicted_answer": "No",
+      "raw_answer": "No",
+      "correct": false
+    },
+    {
+      "question_idx": 8629,
+      "question": "Is the term 'Writ of ejectment' used to refer to the order from the court to the authorities to remove a tenant?",
+      "golden_answer": "No",
+      "predicted_answer": "Yes",
+      "raw_answer": "Yes",
+      "correct": false
+    },
+    {
+      "question_idx": 8630,
+      "question": "Is the term 'Warrant for removal' used to refer to the order from the court to the authorities to remove a tenant?",
+      "golden_answer": "No",
+      "predicted_answer": "No",
+      "raw_answer": "No",
+      "correct": true
+    },
+    {
+      "question_idx": 8631,
+      "question": "Is the term 'Summary order for removal' used to refer to the order from the court to the authorities to remove a tenant?",
+      "golden_answer": "No",
+      "predicted_answer": "No",
+      "raw_answer": "No",
+      "correct": true
+    },
+    {
+      "question_idx": 8632,
+      "question": "Is the term 'Warrant for possession' used to refer to the order from the court to the authorities to remove a tenant?",
+      "golden_answer": "No",
+      "predicted_answer": "No",
+      "raw_answer": "No",
+      "correct": true
+    },
+    {
+      "question_idx": 8633,
+      "question": "Is the term 'Order of possession' used to refer to the order from the court to the authorities to remove a tenant?",
+      "golden_answer": "No",
+      "predicted_answer": "Yes",
+      "raw_answer": "Yes",
+      "correct": false
+    },
+    {
+      "question_idx": 8634,
+      "question": "Is the term 'Order of restitution' used to refer to the order from the court to the authorities to remove a tenant?",
+      "golden_answer": "No",
+      "predicted_answer": "No",
+      "raw_answer": "No",
+      "correct": true
+    },
+    {
+      "question_idx": 8635,
+      "question": "Is the term 'Warrant of eviction' used to refer to the order from the court to the authorities to remove a tenant?",
+      "golden_answer": "No",
+      "predicted_answer": "Yes",
+      "raw_answer": "Yes",
+      "correct": false
+    },
+    {
+      "question_idx": 8636,
+      "question": "Is the term 'Writ for removal' used to refer to the order from the court to the authorities to remove a tenant?",
+      "golden_answer": "No",
+      "predicted_answer": "No",
+      "raw_answer": "No",
+      "correct": true
+    },
+    {
+      "question_idx": 8637,
+      "question": "Is the term 'Writ of possession' used to refer to the order from the court to the authorities to remove a tenant?",
+      "golden_answer": "No",
+      "predicted_answer": "Yes",
+      "raw_answer": "Yes",
+      "correct": false
+    },
+    {
+      "question_idx": 8638,
+      "question": "Is the term 'Warrant of ejectment' used to refer to the order from the court to the authorities to remove a tenant?",
+      "golden_answer": "No",
+      "predicted_answer": "Yes",
+      "raw_answer": "Yes",
+      "correct": false
+    },
+    {
+      "question_idx": 8639,
+      "question": "Is the term 'Writ of eviction' used to refer to the order from the court to the authorities to remove a tenant?",
+      "golden_answer": "No",
+      "predicted_answer": "Yes",
+      "raw_answer": "Yes",
+      "correct": false
+    },
+    {
+      "question_idx": 8640,
+      "question": "Is the term 'Execution' used to refer to the order from the court to the authorities to remove a tenant?",
+      "golden_answer": "No",
+      "predicted_answer": "Yes",
+      "raw_answer": "Yes",
+      "correct": false
+    },
+    {
+      "question_idx": 8641,
+      "question": "Is the term 'Eviction order' used to refer to the order from the court to the authorities to remove a tenant?",
+      "golden_answer": "No",
+      "predicted_answer": "Yes",
+      "raw_answer": "Yes",
+      "correct": false
+    },
+    {
+      "question_idx": 8642,
+      "question": "Is the term 'Execution for possession' used to refer to the order from the court to the authorities to remove a tenant?",
+      "golden_answer": "No",
+      "predicted_answer": "Yes",
+      "raw_answer": "Yes",
+      "correct": false
+    },
+    {
+      "question_idx": 8643,
+      "question": "Is the term 'Writ of assistance' used to refer to the order from the court to the authorities to remove a tenant?",
+      "golden_answer": "No",
+      "predicted_answer": "No",
+      "raw_answer": "No",
+      "correct": true
+    },
+    {
+      "question_idx": 8644,
+      "question": "Is the term 'Warrant of restitution' used to refer to the order from the court to the authorities to remove a tenant?",
+      "golden_answer": "No",
+      "predicted_answer": "Yes",
+      "raw_answer": "Yes",
+      "correct": false
+    },
+    {
+      "question_idx": 8645,
+      "question": "Is the term 'Writ of habere facias possessionem' used to refer to the order from the court to the authorities to remove a tenant?",
+      "golden_answer": "No",
+      "predicted_answer": "No",
+      "raw_answer": "No",
+      "correct": true
+    },
+    {
+      "question_idx": 8646,
+      "question": "Is the term 'Writ of recovery of premises and order to vacate' used to refer to the order from the court to the authorities to remove a tenant?",
+      "golden_answer": "No",
+      "predicted_answer": "Yes",
+      "raw_answer": "Yes",
+      "correct": false
+    },
+    {
+      "question_idx": 8647,
+      "question": "Is the term 'Writ of restitution' used to refer to the order from the court to the authorities to remove a tenant?",
+      "golden_answer": "Yes",
+      "predicted_answer": "Yes",
+      "raw_answer": "Yes",
+      "correct": true
+    },
+    {
+      "question_idx": 8648,
+      "question": "Is the term 'Writ of execution' used to refer to the order from the court to the authorities to remove a tenant?",
+      "golden_answer": "No",
+      "predicted_answer": "Yes",
+      "raw_answer": "Yes",
+      "correct": false
+    },
+    {
+      "question_idx": 8649,
+      "question": "Is the term 'Restitution of premises' used to refer to the order from the court to the authorities to remove a tenant?",
+      "golden_answer": "No",
+      "predicted_answer": "Yes",
+      "raw_answer": "Yes",
+      "correct": false
+    },
+    {
+      "question_idx": 8820,
+      "question": "Are the circumstances that postpone the execution of a writ of eviction specified?",
+      "golden_answer": "Yes",
+      "predicted_answer": "No",
+      "raw_answer": "No",
+      "correct": false
+    },
+    {
+      "question_idx": 8821,
+      "question": "Does a public emergency require postponement of the execution of a write of eviction?",
+      "golden_answer": "No",
+      "predicted_answer": "No",
+      "raw_answer": "No",
+      "correct": true
+    },
+    {
+      "question_idx": 8822,
+      "question": "Does the completion of a drug treatment program require postponement of the execution of a writ of eviction?",
+      "golden_answer": "No",
+      "predicted_answer": "No",
+      "raw_answer": "No",
+      "correct": true
+    },
+    {
+      "question_idx": 8823,
+      "question": "Does a tenant's financial insolvency require postponement of the execution of a writ of eviction?",
+      "golden_answer": "No",
+      "predicted_answer": "No",
+      "raw_answer": "No",
+      "correct": true
+    },
+    {
+      "question_idx": 8824,
+      "question": "Does inclement weather postpone the execution of a writ of eviction?",
+      "golden_answer": "No",
+      "predicted_answer": "No",
+      "raw_answer": "No",
+      "correct": true
+    },
+    {
+      "question_idx": 8825,
+      "question": "Can a writ of eviction only be executed during the daytime?",
+      "golden_answer": "No",
+      "predicted_answer": "No",
+      "raw_answer": "No",
+      "correct": true
+    },
+    {
+      "question_idx": 8826,
+      "question": "Does a tenant's ongoing military service require the postponement of the execution of a writ of eviction?",
+      "golden_answer": "No",
+      "predicted_answer": "No",
+      "raw_answer": "No",
+      "correct": true
+    },
+    {
+      "question_idx": 8827,
+      "question": "Does the law require that writs of execution not be executed on holidays?",
+      "golden_answer": "No",
+      "predicted_answer": "No",
+      "raw_answer": "No",
+      "correct": true
+    },
+    {
+      "question_idx": 8828,
+      "question": "Does the law require that writs of execution be postponed for good cause? This includes when the law states that the court shall specify the time when the tenant must vacate the property, taking into consideration the possibility of harm to the parties and other material facts; or when the court can postpone execution if it deemed additional time was appropriate.",
+      "golden_answer": "No",
+      "predicted_answer": "Yes",
+      "raw_answer": "Yes",
+      "correct": false
+    },
+    {
+      "question_idx": 8829,
+      "question": "Does the law require that writs of execution not be executed on weekends?",
+      "golden_answer": "Yes",
+      "predicted_answer": "No",
+      "raw_answer": "No",
+      "correct": false
+    }
+  ]
+}

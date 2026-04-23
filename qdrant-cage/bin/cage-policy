@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if [ ! -f "cage.rules" ]; then
+  echo "no cage.rules found in current directory." >&2
+  echo "run 'cage init' to create one." >&2
+  exit 1
+fi
+
+echo "=== execution policy ==="
+echo ""
+
+echo "## blocked commands"
+grep "^block" cage.rules | while IFS= read -r line; do
+  CMD=$(echo "$line" | awk '{$1=""; print $0}' | sed 's/^ *//')
+  PARTS=($CMD)
+  # split on multiple spaces to find alternative
+  ALT=$(echo "$line" | sed 's/^block[[:space:]]*[^[:space:]]*//' | sed 's/^[[:space:]]*//' | awk '{for(i=1;i<=NF;i++) if(NR==1) {found=0; for(j=1;j<=NF;j++) if($j ~ /^[a-z]/ && found) {print $j; break} else if($j ~ /^[a-z]/) found++}}')
+  echo "  $CMD"
+done
+echo ""
+
+echo "## prompted commands (require confirmation)"
+grep "^prompt" cage.rules | while IFS= read -r line; do
+  CMD=$(echo "$line" | awk '{$1=""; print $0}' | sed 's/^ *//')
+  echo "  $CMD"
+done

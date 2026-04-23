@@ -1,0 +1,134 @@
+{
+  "timestamp": "20251111_094309",
+  "num_questions": 5,
+  "collection_name": "housing_statutes",
+  "model": "gpt-4-turbo-preview",
+  "top_k": 5,
+  "aggregate_metrics": {
+    "retrieval": {
+      "avg_precision": 0.0,
+      "avg_recall": 0.0,
+      "avg_f1": 0.0
+    },
+    "answer_quality": {
+      "exact_match_rate": 0.0
+    }
+  },
+  "results": [
+    {
+      "question_idx": 27,
+      "question": "Is there a state/territory law regulating residential evictions?",
+      "state": "Missouri",
+      "generated_answer": "No, based on the provided statute excerpts, there is no specific mention of a law regulating residential evictions. The excerpts discuss jurisdiction issues regarding residence for electoral purposes (Statute 1 and Statute 2), eminent domain (Statute 3), rights protection without specifying the context (Statute 4), and agreements related to repair, maintenance, renovation, or new construction involving state and federal entities (Statute 5). None of these excerpts directly address the regulation of residential evictions.",
+      "golden_answer": "Yes",
+      "retrieval_metrics": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "retrieved_count": 4,
+        "golden_count": 2
+      },
+      "answer_metrics": {
+        "exact_match": false,
+        "contains_answer": false,
+        "generated_length": 526,
+        "golden_length": 3
+      },
+      "retrieved_count": 5,
+      "golden_statute_count": 2
+    },
+    {
+      "question_idx": 76,
+      "question": "With regards to eviction law, does the jurisdiction have separate legal provisions for different types of landlords?",
+      "state": "Missouri",
+      "generated_answer": "No, based on the provided statute excerpts, there is no specific mention of separate legal provisions for different types of landlords with regards to eviction law. The excerpts do not directly address eviction processes or differentiate legal provisions based on the type of landlord.",
+      "golden_answer": "Yes",
+      "retrieval_metrics": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "retrieved_count": 5,
+        "golden_count": 1
+      },
+      "answer_metrics": {
+        "exact_match": false,
+        "contains_answer": false,
+        "generated_length": 285,
+        "golden_length": 3
+      },
+      "retrieved_count": 5,
+      "golden_statute_count": 1
+    },
+    {
+      "question_idx": 119,
+      "question": "Does the law regulating residential evictions specify the type(s) of landlord(s) regulated?",
+      "state": "Missouri",
+      "generated_answer": "No, based on the provided statute excerpts, there is no specific information regarding the regulation of residential evictions or the types of landlords regulated. The excerpts focus on various aspects of housing and public administration, such as building codes compliance (Statute 1), qualifications for holding office in relation to residence (Statute 2), a reference to rights protected under a section not fully provided (Statute 3), an order of the accounts committee (Statute 4), and regulations concerning public buildings and vending facilities (Statute 5). None of these excerpts directly address residential evictions or specify types of landlords regulated under Missouri housing law as of 2021.",
+      "golden_answer": "Yes",
+      "retrieval_metrics": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "retrieved_count": 5,
+        "golden_count": 1
+      },
+      "answer_metrics": {
+        "exact_match": false,
+        "contains_answer": false,
+        "generated_length": 707,
+        "golden_length": 3
+      },
+      "retrieved_count": 5,
+      "golden_statute_count": 1
+    },
+    {
+      "question_idx": 187,
+      "question": "Does the law specify a minimum number of days a tenant can be late on rent before the landlord can file an eviction action for nonpayment?",
+      "state": "Missouri",
+      "generated_answer": "No, the provided statutes do not specify a minimum number of days a tenant can be late on rent before the landlord can file an eviction action for nonpayment. The excerpts focus on regulations regarding construction, renovations, and the approval process for changes to property managed or owned by state departments, agencies, or institutions, as well as rules for advertising construction proposals. They do not address tenant-landlord relationships, rent payment timelines, or eviction processes for nonpayment of rent.",
+      "golden_answer": "Yes",
+      "retrieval_metrics": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "retrieved_count": 4,
+        "golden_count": 3
+      },
+      "answer_metrics": {
+        "exact_match": false,
+        "contains_answer": false,
+        "generated_length": 522,
+        "golden_length": 3
+      },
+      "retrieved_count": 5,
+      "golden_statute_count": 3
+    },
+    {
+      "question_idx": 261,
+      "question": "Does the law specify rebuttals available to tenants subject to eviction proceedings?",
+      "state": "Missouri",
+      "generated_answer": "No, based on the provided statute excerpts, there is no specific information regarding rebuttals available to tenants subject to eviction proceedings. The excerpts focus on jurisdiction issues, liability of minors and their guardians, standing to pursue action for violations, procedural laws for legal proceedings, and constitutional considerations, but do not directly address tenant rights or defenses in eviction cases.",
+      "golden_answer": "Yes",
+      "retrieval_metrics": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "retrieved_count": 5,
+        "golden_count": 3
+      },
+      "answer_metrics": {
+        "exact_match": false,
+        "contains_answer": false,
+        "generated_length": 423,
+        "golden_length": 3
+      },
+      "retrieved_count": 5,
+      "golden_statute_count": 3
+    }
+  ]
+}
