@@ -135,7 +135,7 @@ async def search(request: SearchRequest):
 
     return [
         SearchResult(
-            id=r["id"],
+            id=str(r["id"]),
             score=r["score"],
             image_url=f"/api/images/{Path(r['image_path']).name}",
             timestamp=r["timestamp"],

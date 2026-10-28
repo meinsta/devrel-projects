@@ -34,6 +34,11 @@ docker run -d -p 6333:6333 qdrant/qdrant
 # Setup (install deps + download models)
 make setup
 
+# Put your input video where BOTH halves read it: the API indexes public/video.mp4,
+# the Next.js page plays frontend/public/video.mp4
+cp my-video.mp4 public/video.mp4
+cp my-video.mp4 frontend/public/video.mp4
+
 # Run the demo
 make dev
 ```
@@ -48,3 +53,10 @@ Then open http://localhost:4321
 4. Background worker syncs to Qdrant server
 5. Search queries use CLIP text encoder
 6. MMR (Maximal Marginal Relevance) returns diverse results
+
+## Notes
+
+- The API reads `public/video.mp4` (repo root); the frontend serves `frontend/public/video.mp4`. Keep both
+  in sync, or set `NEXT_PUBLIC_VIDEO_URL` to a hosted copy of the same file.
+- The frontend's `NEXT_PUBLIC_API_URL` (default `http://localhost:7777`) is called from the visitor's
+  browser, so a hosted frontend needs a publicly reachable API.

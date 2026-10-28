@@ -97,7 +97,7 @@ export default function Home() {
               </h2>
               <div className="relative aspect-video bg-black rounded-xl overflow-hidden">
                 <video
-                  src="/video.mp4"
+                  src={process.env.NEXT_PUBLIC_VIDEO_URL || "/video.mp4"}
                   autoPlay
                   muted
                   loop
